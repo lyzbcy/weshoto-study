@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第6章：销售后端全链路管理 — 微盛管培生学习地图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-pill:999px;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;}
+.layout{display:flex;min-height:100vh;}
+.sidebar{width:280px;background:var(--forest);color:var(--cream);position:fixed;height:100vh;overflow-y:auto;padding:24px 20px;flex-shrink:0;z-index:10;}
+.sidebar h2{font-family:var(--font-head);font-size:18px;margin-bottom:16px;color:var(--marker);}
+.progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
+.nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
+.sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
+.main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
+.main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
+.card{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
+.src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
+.bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
+.objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
+.structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
+.structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
+.task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
+.opt:hover{border-color:var(--sky);}.opt.selected{border-color:var(--forest);background:#E8F0E5;}.opt.selected::before{content:"✓ ";color:var(--correct);}
+.check{background:var(--forest);color:var(--cream);border:none;padding:8px 24px;border-radius:var(--radius-pill);cursor:pointer;font-size:14px;font-family:var(--font-body);}
+.check:hover{opacity:.85;}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;background:#F0EBD8;}.feedback.ok{background:#D4EDD9;color:var(--correct);}.feedback.no{background:#F8D7D5;color:var(--wrong);}.feedback .src{display:block;margin-top:6px;}
+.wrong-box{background:#FFF3F0;border-radius:8px;padding:12px;margin-top:16px;}.wrong-box h4{color:var(--wrong);margin-bottom:8px;}.wrong-box ul{list-style:none;padding-left:0;}.wrong-box li{padding:4px 0;font-size:14px;}
+.report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
+.report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
+.footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+@media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>📋 第6章<br>销售后端全链路</h2>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<ul class="nav-list">
+<li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
+</ul>
+<div class="sidebar-footer">微盛管培生学习地图 · 第6章</div>
+</aside>
+<main class="main">
+<h1>销售后端全链路管理</h1>
+<p style="color:#666;margin-bottom:24px;">合同报价 · 折扣审批 · 合同填写 · 工单管理 · 收款流程 · 全链路闭环</p>
+
+<h2 id="sec1">01 学习目标与阅读路径</h2>
+<div class="objective"><span class="num">1</span><div><strong>理解销售后端全流程</strong>——从报价到合同到工单到收款的完整链路。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>掌握折扣审批的权限层级</strong>——标品6折、商业化85折、企微私有化需审批。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>区分新购/增购/续费三种合同类型</strong>——各自的填写规范和注意事项。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>理解商机锁定逻辑</strong>——招标/非招标场景的报价规则差异。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>说清全链路闭环的核心原则</strong>——每一步都有审批、有记录、有追踪。</div></div>
+
+<h2 id="sec2">02 零基础背景包</h2>
+<div class="card"><h3>背景补充 1：SaaS商业模式</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SaaS（Software as a Service）= 软件即服务。客户不买断软件，而是按年/按账号付费使用。SaaS的合同特点：按年收费、可续费、可增购账号。微盛的产品大部分是SaaS模式。</p></div>
+<div class="card"><h3>背景补充 2：商机锁定</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">企业微信商业化有"商机锁定"机制——第一个报备客户的服务商有优先报价权。如果客户被其他服务商锁定了，你不能直接报价。</p></div>
+<div class="card"><h3>背景补充 3：刊例价</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">刊例价 = 官方定价表。所有产品的标准价格、折扣规则、售卖方式都在刊例价文件里。折扣 = 实际售价 ÷ 标准价格（含赠送）。</p></div>
+
+<h2 id="sec3">03 原文问题定位</h2>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"销售签单后，从合同到收款的标准流程是什么？每个环节有什么风险控制？"</strong></p></div>
+
+<h2 id="sec4">04 原文结构地图</h2>
+<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（报价→审批→合同→工单→开通→收款）</p>
+<div class="structure-map">
+<div class="structure-node cluster"><strong>阶段1：报价前准备</strong></div>
+<div class="structure-node branch">确认商机状态（是否被锁定）</div>
+<div class="structure-node branch">招标场景→需授权函</div>
+<div class="structure-node branch">非招标场景→未锁定可直接报价</div>
+<div class="structure-node cluster"><strong>阶段2：折扣审批</strong></div>
+<div class="structure-node branch">标品≤6折→区域负责人审批</div>
+<div class="structure-node branch">商业化≤85折→区域负责人审批</div>
+<div class="structure-node branch">腾讯会议≤85折→云御审批</div>
+<div class="structure-node branch">企微私有化→云海审批</div>
+<div class="structure-node cluster"><strong>阶段3：合同填写</strong></div>
+<div class="structure-node branch">按刊例价填写产品名称/版本/数量/金额/期限</div>
+<div class="structure-node branch">新购/增购/续费各有填写规范</div>
+<div class="structure-node cluster"><strong>阶段4：工单→开通</strong></div>
+<div class="structure-node branch">企微license（按年）/运维/部署各有独立工单</div>
+<div class="structure-node cluster"><strong>阶段5：收款闭环</strong></div>
+<div class="structure-node branch">合同→工单→开通→收款 形成全链路闭环</div>
+</div>
+
+<h2 id="sec5">05 核心判断与依据</h2>
+<div class="card judgment"><h3>判断1：折扣计算必须包含赠送项目</h3><p><strong>原文依据：</strong><span class="src">原文："折扣计算须包括赠送项目，即合同提供全部服务内容+赠送项目为合同原价"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>送了东西就不算折扣了？不行。送的也按原价算进去，然后算总折扣。</p></div>
+<div class="card judgment"><h3>判断2：商机锁定决定能否报价</h3><p><strong>原文依据：</strong><span class="src">原文："非招标场景，若被其他服务商锁定，不可以报价"</span></p></div>
+<div class="card judgment"><h3>判断3：企微私有化需要三个工单</h3><p><strong>原文依据：</strong><span class="src">原文："企微原生私有化需有3个工单：license、运维、部署"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。license和运维按年收费，部署是一次性。</p></div>
+<div class="card judgment"><h3>判断4：增购和续费必须确认原账号数</h3><p><strong>原文依据：</strong><span class="src">原文："增购、续期需要确认原账号数是否对（经常碰到采购和业务分开加购，导致数量报上来不一致）"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>如果数量不对，合同金额就错了。必须拿后台截图确认。</p></div>
+<div class="card judgment"><h3>判断5：合同上的购买类型必须和订单一致</h3><p><strong>原文依据：</strong><span class="src">原文："合同上的续费、新购、增购一定要和订单上保持一致"</span></p></div>
+
+<h2 id="sec6">06 关键概念拆解</h2>
+<div class="card"><h3>概念1：折扣审批</h3><p><strong>人话解释：</strong>售价低于原价时需要领导审批。不同产品的审批权限不同：标品6折以下要区域负责人批，商业化85折以下也要区域负责人批。审批通过后才能向客户报价。</p></div>
+<div class="card"><h3>概念2：商机锁定</h3><p><strong>人话解释：</strong>企业微信官方有"报备"机制。第一个服务商报备了某个客户，这个客户就被"锁定"给他。其他服务商不能报价，除非客户自己解锁或走招标流程。</p></div>
+<div class="card"><h3>概念3：新购/增购/续费</h3><p><strong>人话解释：</strong>新购=第一次买；增购=已经买了，加买账号或功能；续费=到期了续交。合同填写时必须标明类型，且和系统订单一致。增购和续费还需要写"对齐到期时间"。</p></div>
+<div class="card"><h3>概念4：授权函</h3><p><strong>人话解释：</strong>招标场景下，服务商需要拿到腾讯（企业微信）出具的授权函才能参与投标。没有授权函不能报价。</p></div>
+<div class="card"><h3>概念5：工单</h3><p><strong>人话解释：</strong>合同签完后，系统里建工单→技术团队执行→产品开通。企微私有化需要3个工单（license+运维+部署），每个工单独立处理。</p></div>
+<div class="card"><h3>概念6：全链路闭环</h3><p><strong>人话解释：</strong>合同→工单→开通→收款，4个环节必须完成且对应。不能"收了钱没开工单"或"开工单没合同"。每个环节都有系统记录和审批追踪。</p></div>
+
+<h2 id="sec7">07 苏格拉底式阅读关卡</h2>
+<div class="task" data-task="q1" data-answer="B" data-ok="正确！折扣=售卖价格÷合同原价（标准价格+赠送产品价值）。" data-no="折扣不是简单的打折，必须把赠送项目的价值也算进去。" data-src="原文：折扣=售卖价格÷合同原价（标准售卖产品价值+赠送产品价值）" data-review="回到「05 核心判断」判断1复习">
+<div class="q">1. 折扣审批中，折扣的计算方式是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 售价÷标准价格</button><button class="opt" data-val="B">B. 售价÷（标准价格+赠送产品价值）</button><button class="opt" data-val="C">C. 售价÷成本</button><button class="opt" data-val="D">D. 随便定</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q2" data-answer="A" data-ok="正确！标品折扣权限是6折，低于6折需区域负责人审批。" data-no="标品6折、商业化85折、腾讯会议85折，各产品折扣权限不同。" data-src="原文：标品折扣权限6折→区域负责人" data-review="回到「04 原文结构地图」阶段2复习">
+<div class="q">2. SaaS标品低于多少折扣需要区域负责人审批？</div>
+<div class="opts"><button class="opt" data-val="A">A. 6折</button><button class="opt" data-val="B">B. 8折</button><button class="opt" data-val="C">C. 85折</button><button class="opt" data-val="D">D. 9折</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q3" data-answer="C" data-ok="正确！企微私有化需要3个工单：license+运维+部署。" data-no="企微私有化比较复杂，需要三个独立工单。" data-src="原文：企微原生私有化需有3个工单" data-review="回到「05 核心判断」判断3复习">
+<div class="q">3. 企微原生私有化需要几个工单？</div>
+<div class="opts"><button class="opt" data-val="A">A. 1个</button><button class="opt" data-val="B">B. 2个</button><button class="opt" data-val="C">C. 3个</button><button class="opt" data-val="D">D. 5个</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q4" data-answer="B" data-ok="正确！被锁定后不可以报价，需要客户自主找企微先解锁。" data-no="商机锁定是保护第一个报备的服务商的权益。" data-src="原文：若被其他服务商锁定，不可以报价" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">4. 非招标场景下，如果客户被其他服务商锁定了，你怎么办？</div>
+<div class="opts"><button class="opt" data-val="A">A. 可以直接低价竞争</button><button class="opt" data-val="B">B. 不可以报价，需要客户自主找企微先解锁</button><button class="opt" data-val="C">C. 可以报价但需要加价</button><button class="opt" data-val="D">D. 无所谓，直接报</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q5" data-answer="C" data-ok="正确！合同上的续费/新购/增购必须和系统订单一致。" data-no="合同类型和订单类型必须对应，否则后续流程会出问题。" data-src="原文：合同上的续费、新购、增购一定要和订单上保持一致" data-review="回到「05 核心判断」判断5复习">
+<div class="q">5. 合同上的"新购/增购/续费"类型有什么要求？</div>
+<div class="opts"><button class="opt" data-val="A">A. 随便填，后续可以改</button><button class="opt" data-val="B">B. 只能选新购</button><button class="opt" data-val="C">C. 必须和系统订单上的类型一致</button><button class="opt" data-val="D">D. 由客户决定</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q6" data-answer="A,B" data-multi="true" data-ok="正确！增购和续费都需要确认原账号数，防止数量不一致。" data-no="新购是第一次买，不存在原账号数的问题。" data-src="原文：增购、续期需要确认原账号数是否对" data-review="回到「05 核心判断」判断4复习">
+<div class="q">6. 哪些场景需要确认原账号数？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 增购</button><button class="opt" data-val="B">B. 续费</button><button class="opt" data-val="C">C. 新购</button><button class="opt" data-val="D">D. 退款</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q7" data-answer="D" data-ok="正确！招标场景不论是否锁定都需要授权函才能报价。" data-no="招标是特殊场景，授权函是必需的。" data-src="原文：招标场景，不论是否锁定或无法锁定，都需要授权函才可以报价" data-review="回到「06 关键概念拆解」概念4复习">
+<div class="q">7. 招标场景下报价的前提条件是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 只要有客户需求就可以</button><button class="opt" data-val="B">B. 只要商机未被锁定</button><button class="opt" data-val="C">C. 只要区域负责人同意</button><button class="opt" data-val="D">D. 必须有授权函才能报价</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec8">08 闯关式任务</h2>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对折扣审批权限的理解很到位。" data-no="每个产品的审批人不同：标品和商业化→区域负责人，腾讯会议→云御，企微私有化→云海。" data-src="原文：不同产品折扣权限" data-review="回到「04 原文结构地图」阶段2复习">
+<div class="q">任务：将产品类型匹配到对应的折扣审批人。</div>
+<div style="margin:8px 0;">
+<div style="margin-bottom:6px;">SaaS标品 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
+<div style="margin-bottom:6px;">腾讯会议 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
+<div style="margin-bottom:6px;">企微私有化 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
+</div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec9">09 误解与边界</h2>
+<div class="card danger"><h3>误解1："折扣就是打个折"</h3><p><strong>原文真正说了什么：</strong>折扣有严格的计算公式（含赠送），不同产品的审批权限不同，必须审批后才能报价。</p></div>
+<div class="card danger"><h3>误解2："被锁定就完全没机会了"</h3><p><strong>原文真正说了什么：</strong>被其他服务商锁定后，非招标场景下确实不能报价。但客户可以自主找企微解锁。如果是招标场景，需要授权函（不论是否锁定）。</p></div>
+<div class="card danger"><h3>误解3："工单只是一个流程步骤"</h3><p><strong>原文真正说了什么：</strong>工单是技术执行的依据。企微私有化有3个独立工单（license/运维/部署），每个都对应不同的收费周期和执行团队。</p></div>
+
+<h2 id="sec10">10 背景知识缺口</h2>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>合同模板的具体使用方法</strong>→ "关于合同签约注意事项的指引"</li><li><strong>SaaS账号增购的折扣规则</strong>→ 刊例价文件</li><li><strong>企微私有化的技术架构</strong>→ "企微私有化案例解析"课程</li></ul></div>
+
+<h2 id="sec11">11 复盘与学习报告</h2>
+<div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
+<div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
+<div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
+<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+</main>
+</div>
+<script>
+(function(){
+  "use strict";
+  function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function selectedVals(t){return $all('.opt.selected',t).map(function(o){return o.getAttribute('data-val');}).sort();}
+  function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
+  function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
+  function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
+  document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
+  function init(){updateBar();renderWrong();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>

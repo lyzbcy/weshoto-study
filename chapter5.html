@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第5章：会话内容存档与AI能力 — 微盛管培生学习地图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-pill:999px;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;}
+.layout{display:flex;min-height:100vh;}
+.sidebar{width:280px;background:var(--forest);color:var(--cream);position:fixed;height:100vh;overflow-y:auto;padding:24px 20px;flex-shrink:0;z-index:10;}
+.sidebar h2{font-family:var(--font-head);font-size:18px;margin-bottom:16px;color:var(--marker);}
+.progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
+.nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
+.sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
+.main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
+.main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
+.card{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
+.src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
+.bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
+.objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
+.structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
+.structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
+.task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
+.opt:hover{border-color:var(--sky);}.opt.selected{border-color:var(--forest);background:#E8F0E5;}.opt.selected::before{content:"✓ ";color:var(--correct);}
+.check{background:var(--forest);color:var(--cream);border:none;padding:8px 24px;border-radius:var(--radius-pill);cursor:pointer;font-size:14px;font-family:var(--font-body);}
+.check:hover{opacity:.85;}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;background:#F0EBD8;}.feedback.ok{background:#D4EDD9;color:var(--correct);}.feedback.no{background:#F8D7D5;color:var(--wrong);}.feedback .src{display:block;margin-top:6px;}
+.wrong-box{background:#FFF3F0;border-radius:8px;padding:12px;margin-top:16px;}.wrong-box h4{color:var(--wrong);margin-bottom:8px;}.wrong-box ul{list-style:none;padding-left:0;}.wrong-box li{padding:4px 0;font-size:14px;}
+.report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
+.report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
+.footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+@media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>📋 第5章<br>会话存档与AI能力</h2>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<ul class="nav-list">
+<li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
+</ul>
+<div class="sidebar-footer">微盛管培生学习地图 · 第5章</div>
+</aside>
+<main class="main">
+<h1>会话内容存档与AI能力</h1>
+<p style="color:#666;margin-bottom:24px;">会话内容存档三版本 · 合规机制 · 接口性能 · 哇塞智能AI工作流</p>
+
+<h2 id="sec1">01 学习目标与阅读路径</h2>
+<div class="objective"><span class="num">1</span><div><strong>区分会话存档的三个版本</strong>——办公版、服务版、企业版各自覆盖什么场景。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>解释会话存档的合规机制</strong>——告知→同意→存档的完整流程。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>理解接口性能限制</strong>——5天保存期、1000条/次、4000次/分钟。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>说出AI工作流的核心分析能力</strong>——话题分析、情感分析、客户洞察。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>理解AI工作流的技术栈</strong>——GLM-4-PLUS/FlashX/AIR各负责什么环节。</div></div>
+
+<h2 id="sec2">02 零基础背景包</h2>
+<div class="card"><h3>背景补充 1：合规存档</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">金融、政府等行业有法律法规要求记录员工与客户的沟通内容。企业微信的"会话内容存档"就是为此设计——通过API获取聊天记录，企业自行存储和分析。</p></div>
+<div class="card"><h3>背景补充 2：大模型调用链</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">AI工作流不是用一个模型解决所有问题，而是分步调用不同模型：GLM-4-FlashX（快速分类）→GLM-4-AIR（广告过滤）→GLM-4-PLUS（深度分析）→Embedding（相似度计算）。每步用最适合的模型控制成本和质量。</p></div>
+<div class="card"><h3>背景补充 3：T+1分析</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">T+1 = 今天分析昨天的数据。不是实时分析（实时成本太高），而是隔天批量处理。企微AI工作流的话题分析、情感分析都是T+1模式。</p></div>
+
+<h2 id="sec3">03 原文问题定位</h2>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业如何安全合规地管理员工与客户的沟通内容，并用AI从中提取价值？"</strong></p></div>
+
+<h2 id="sec4">04 原文结构地图</h2>
+<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（存档获取→合规处理→AI分析→洞察输出）</p>
+<div class="structure-map">
+<div class="structure-node cluster"><strong>层1：数据获取（会话存档）</strong></div>
+<div class="structure-node branch">办公版（仅内部）→服务版（内部+外部）→企业版（含VOIP音频）</div>
+<div class="structure-node branch">API拉取→1000条/次→5天保存期→企业自行存储</div>
+<div class="structure-node cluster"><strong>层2：合规机制</strong></div>
+<div class="structure-node branch">员工告知→员工确认</div>
+<div class="structure-node branch">外部联系人→系统消息提示→可选同意/不同意</div>
+<div class="structure-node branch">不同意时→可限制员工提供服务</div>
+<div class="structure-node cluster"><strong>层3：AI分析（哇塞智能AI工作流）</strong></div>
+<div class="structure-node branch">话题分析：广告过滤→话题抽取→话题分组→聚类→热议话题</div>
+<div class="structure-node branch">情感分析：情感分类→情感热词→情感洞察</div>
+<div class="structure-node branch">客户洞察：子意图识别→实时分析→行为预判</div>
+<div class="structure-node cluster"><strong>层4：输出应用</strong></div>
+<div class="structure-node branch">质检规则（超时回复/敏感词）→ 知识库 → 智能问答推荐</div>
+</div>
+
+<h2 id="sec5">05 核心判断与依据</h2>
+<div class="card judgment"><h3>判断1：三个版本独立购买，不支持版本间升级</h3><p><strong>原文依据：</strong><span class="src">原文："3个版本可组合或独立购买，但暂不支持版本间升级"</span></p></div>
+<div class="card judgment"><h3>判断2：外部联系人可以不同意存档</h3><p><strong>原文依据：</strong><span class="src">原文："外部联系人不点击'不同意存档'，则进行正常沟通；可设置限制员工提供服务"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>合规不是强制的——客户有选择权。但企业可以设置"不同意就不服务"的门槛。</p></div>
+<div class="card judgment"><h3>判断3：会话记录在企微侧只保存5天</h3><p><strong>原文依据：</strong><span class="src">原文："会话内容在企业微信侧保存5天，企业需在5天内进行获取"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>企业必须自己搭存储系统，5天内没拉取的数据就没了。</p></div>
+<div class="card judgment"><h3>判断4：AI工作流使用多模型分工</h3><p><strong>原文依据：</strong><span class="src">原文：GLM-4-FlashX（意图分类）、GLM-4-AIR（广告过滤）、GLM-4-PLUS（话题抽取/分组）、Embedding（相似度计算）</span></p></div>
+<div class="card judgment"><h3>判断5：话题分析是T+1批处理，不是实时</h3><p><strong>原文依据：</strong><span class="src">原文："T+1分析，将员工与客户的单聊、外部群聊会话以天维度进行切分"</span></p></div>
+
+<h2 id="sec6">06 关键概念拆解</h2>
+<div class="card"><h3>概念1：会话存档三版本</h3><p><strong>人话解释：</strong>办公版=只管内部（员工之间）；服务版=管内部+外部（员工和客户）；企业版=服务版+电话录音。像监控摄像头的三个等级：只监控办公室→也监控前台→连电话也录。</p></div>
+<div class="card"><h3>概念2：VOIP音频存档</h3><p><strong>人话解释：</strong>VOIP = Voice over IP，就是网络电话。企微里的语音/视频通话属于VOIP。只有企业版能存档这些通话内容。</p></div>
+<div class="card"><h3>概念3：话题分析流水线</h3><p><strong>人话解释：</strong>5步走：①过滤广告（GLM-4-AIR）→②抽取话题（GLM-4-PLUS）→③分组（GLM-4-PLUS）→④聚类（Embedding相似度）→⑤二次分组。输出：哪些话题被讨论最多。</p></div>
+<div class="card"><h3>概念4：智能质检</h3><p><strong>人话解释：</strong>AI自动检查每条聊天——超时多久没回？有没有说敏感词？服务态度好不好？代替人工抽检，100%覆盖。</p></div>
+<div class="card"><h3>概念5：超时回复规则</h3><p><strong>人话解释：</strong>管理员设定"X分钟未回复=超时"，超时后触发提醒或上报。企微管家的实操考核要求配置这个规则。</p></div>
+<div class="card"><h3>概念6：敏感词规则</h3><p><strong>人话解释：</strong>设定一组禁止使用的词语（如"保证收益""最低价"）。员工发送包含敏感词的消息时，系统会拦截或告警。</p></div>
+
+<h2 id="sec7">07 苏格拉底式阅读关卡</h2>
+<div class="task" data-task="q1" data-answer="B" data-ok="正确！三个版本是办公版（内部）、服务版（内部+外部）、企业版（+VOIP）。" data-no="看背景包里对三个版本的描述。" data-src="原文：办公版/服务版/企业版" data-review="回到「06 关键概念拆解」概念1复习">
+<div class="q">1. 会话存档中"服务版"覆盖的范围是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 仅内部员工沟通</button><button class="opt" data-val="B">B. 内部员工+外部联系人的沟通</button><button class="opt" data-val="C">C. 所有沟通+VOIP音频</button><button class="opt" data-val="D">D. 仅外部沟通</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q2" data-answer="C" data-ok="正确！记录保存5天，企业需在5天内通过API拉取。" data-no="5天是硬限制，超过就获取不到了。" data-src="原文：会话内容在企业微信侧保存5天" data-review="回到「05 核心判断」判断3复习">
+<div class="q">2. 会话内容在企业微信服务器上保存多久？</div>
+<div class="opts"><button class="opt" data-val="A">A. 永久保存</button><button class="opt" data-val="B">B. 30天</button><button class="opt" data-val="C">C. 5天</button><button class="opt" data-val="D">D. 1天</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q3" data-answer="B" data-ok="正确！外部联系人可以同意或不同意存档，不同意时企业可限制服务。" data-no="客户有选择权，合规不是强制的。" data-src="原文：外部联系人可以进入说明页面选择不同意存档" data-review="回到「05 核心判断」判断2复习">
+<div class="q">3. 外部联系人（客户微信）对于会话存档有什么权利？</div>
+<div class="opts"><button class="opt" data-val="A">A. 没有权利，企业自动存档</button><button class="opt" data-val="B">B. 可以选择"不同意存档"，企业可设置不同意则限制服务</button><button class="opt" data-val="C">C. 可以查看所有存档内容</button><button class="opt" data-val="D">D. 可以删除已存档的记录</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q4" data-answer="C" data-ok="正确！话题分析是T+1批处理模式，分析前一天的数据。" data-no="实时分析成本太高，话题分析是隔天批量处理。" data-src="原文：T+1分析" data-review="回到「05 核心判断」判断5复习">
+<div class="q">4. 哇塞智能AI工作流的话题分析采用什么处理模式？</div>
+<div class="opts"><button class="opt" data-val="A">A. 实时分析每条消息</button><button class="opt" data-val="B">B. 每周批量分析一次</button><button class="opt" data-val="C">C. T+1隔天批量分析</button><button class="opt" data-val="D">D. 手动触发分析</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q5" data-answer="A,B" data-multi="true" data-ok="正确！超时回复规则和敏感词规则是实操考核要求配置的两个核心质检规则。" data-no="朋友圈审核和打卡记录不属于质检范畴。" data-src="实操考核：配置超时回复规则和敏感词规则" data-review="回到「06 关键概念拆解」概念5、6复习">
+<div class="q">5. 企微管家实操考核要求配置哪两个质检规则？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 超时回复规则</button><button class="opt" data-val="B">B. 敏感词规则</button><button class="opt" data-val="C">C. 朋友圈审核规则</button><button class="opt" data-val="D">D. 打卡迟到规则</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q6" data-answer="B" data-ok="正确！办公版/服务版/企业版独立购买，不支持版本间升级。" data-no="版本之间不能升级，只能独立或组合购买。" data-src="原文：暂不支持版本间升级" data-review="回到「05 核心判断」判断1复习">
+<div class="q">6. 企业已购买了服务版会话存档，现在想升级到企业版，怎么操作？</div>
+<div class="opts"><button class="opt" data-val="A">A. 直接补差价升级</button><button class="opt" data-val="B">B. 不能升级，需独立购买企业版</button><button class="opt" data-val="C">C. 免费自动升级</button><button class="opt" data-val="D">D. 联系客服申请升级</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q7" data-answer="D" data-ok="正确！AI工作流使用GLM-4-FlashX/AIR/PLUS和Embedding多模型分工。" data-no="不是用一个大模型解决所有问题，而是每步用最适合的。" data-src="原文：GLM-4-FlashX/GLM-4-AIR/GLM-4-PLUS/Embedding" data-review="回到「05 核心判断」判断4复习">
+<div class="q">7. 哇塞智能AI工作流的技术架构特点是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 使用单一GPT模型处理所有任务</button><button class="opt" data-val="B">B. 完全依赖人工标注</button><button class="opt" data-val="C">C. 只用规则引擎不用大模型</button><button class="opt" data-val="D">D. 多模型分工（FlashX/AIR/PLUS/Embedding各负责不同环节）</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec8">08 闯关式任务</h2>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对AI工作流的多模型架构理解很清楚。" data-no="每个模型负责不同的环节：FlashX快速分类，AIR过滤广告，PLUS深度分析，Embedding算相似度。" data-src="原文：各步骤模型调用" data-review="回到「02 零基础背景包」背景补充2复习">
+<div class="q">任务：将每个AI模型匹配到它负责的环节。</div>
+<div style="margin:8px 0;">
+<div style="margin-bottom:6px;">GLM-4-FlashX → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
+<div style="margin-bottom:6px;">GLM-4-AIR → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
+<div style="margin-bottom:6px;">GLM-4-PLUS → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
+<div style="margin-bottom:6px;">Embedding → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
+</div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec9">09 误解与边界</h2>
+<div class="card danger"><h3>误解1："会话存档=偷偷监控聊天"</h3><p><strong>原文真正说了什么：</strong>存档是告知制的——员工会看到提示，外部联系人也会收到系统消息。不是偷偷监控。</p></div>
+<div class="card danger"><h3>误解2："AI工作流就是ChatGPT聊天"</h3><p><strong>原文真正说了什么：</strong>AI工作流是数据分析流水线——话题分析、情感分析、客户洞察。不是对话式AI，而是后台批量处理。</p></div>
+<div class="card danger"><h3>误解3："企业版包含服务版功能"</h3><p><strong>原文真正说了什么：</strong>"在服务版基础上，增加VOIP"——功能上是包含的，但购买时不支持版本间升级，只能独立或组合购买。</p></div>
+
+<h2 id="sec10">10 背景知识缺口</h2>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档API的具体调用方式</strong>→ 开发者文档</li><li><strong>AI知识库的调优策略</strong>→ "AI知识库概述与调优策略"课程</li><li><strong>智能质检的评分规则</strong>→ 实操练习</li></ul></div>
+
+<h2 id="sec11">11 复盘与学习报告</h2>
+<div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
+<div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
+<div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
+<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+</main>
+</div>
+<script>
+(function(){
+  "use strict";
+  function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function selectedVals(t){return $all('.opt.selected',t).map(function(o){return o.getAttribute('data-val');}).sort();}
+  function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
+  function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
+  function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
+  document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
+  function init(){updateBar();renderWrong();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>

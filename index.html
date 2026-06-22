@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微盛管培生学习地图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;min-height:100vh;}
+.header{text-align:center;padding:60px 20px 40px;}
+.header h1{font-family:var(--font-display);font-size:42px;color:var(--forest);margin-bottom:8px;}
+.header p{font-size:18px;color:#666;max-width:600px;margin:0 auto;}
+.chapters{max-width:900px;margin:0 auto;padding:0 24px 60px;}
+.chapter-card{display:block;background:var(--paper);border-radius:var(--radius-card);padding:28px;margin-bottom:20px;text-decoration:none;color:var(--ink);transition:.2s;border-left:6px solid var(--sage);}
+.chapter-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(30,58,36,.1);border-left-color:var(--forest);}
+.chapter-num{font-family:var(--font-display);font-size:14px;color:var(--brick);margin-bottom:4px;letter-spacing:2px;}
+.chapter-title{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--forest);margin-bottom:8px;}
+.chapter-desc{font-size:15px;color:#555;line-height:1.6;}
+.chapter-meta{display:flex;gap:16px;margin-top:12px;font-size:13px;color:#888;}
+.chapter-meta span{display:flex;align-items:center;gap:4px;}
+.footer{text-align:center;padding:32px;font-size:13px;color:#888;border-top:1px solid #D4C4A8;}
+.footer a{color:var(--brick);text-decoration:underline;}
+@media(max-width:600px){.header h1{font-size:30px;}.chapter-card{padding:20px;}}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>微盛管培生学习地图</h1>
+<p>基于微盛·企微管家学习资料，使用 Grokko 方法论拆解的交互式理解地图<br>6 章 · 42 道互动题 · 每章含 11 个学习模块</p>
+</div>
+<div class="chapters">
+<a class="chapter-card" href="chapter1.html">
+<div class="chapter-num">第 1 章</div>
+<div class="chapter-title">企业微信产品全景</div>
+<div class="chapter-desc">产品定位、四大连接方向（内部/产业/消费/社会）、特点能力概览、开放能力、安全保障体系。理解企业微信"为什么存在"。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+<a class="chapter-card" href="chapter2.html">
+<div class="chapter-num">第 2 章</div>
+<div class="chapter-title">企业微信内部协作与效率工具</div>
+<div class="chapter-desc">通讯录管理、即时消息、群聊管理、OA（打卡/审批/汇报）、文档/微盘/邮箱/日程/会议、安全管理、智能机器人、应用管理。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+<a class="chapter-card" href="chapter3.html">
+<div class="chapter-num">第 3 章</div>
+<div class="chapter-title">企业微信客户运营与微信互通</div>
+<div class="chapter-desc">获客→服务→运营→管理的完整客户运营链路：联系我、加入群聊、获客助手、客户标签、离职继承、微信客服。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+<a class="chapter-card" href="chapter4.html">
+<div class="chapter-num">第 4 章</div>
+<div class="chapter-title">企微管家产品体系</div>
+<div class="chapter-desc">企微管家如何增强企业微信原生能力：活码vs联系我、群活码vs加入群聊、超级群发、CRM3.0漏斗、智能质检、知识库+智能问答。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+<a class="chapter-card" href="chapter5.html">
+<div class="chapter-num">第 5 章</div>
+<div class="chapter-title">会话内容存档与AI能力</div>
+<div class="chapter-desc">会话存档三版本（办公/服务/企业版）、合规机制、接口性能限制、哇塞智能AI工作流（话题分析/情感分析/客户洞察）、多模型分工。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+<a class="chapter-card" href="chapter6.html">
+<div class="chapter-num">第 6 章</div>
+<div class="chapter-title">销售后端全链路管理</div>
+<div class="chapter-desc">合同报价规则、折扣审批权限体系、合同填写规范（新购/增购/续费）、商机锁定机制、工单管理、全链路闭环原则。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+</a>
+</div>
+<div class="footer">
+由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>
+这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快
+</div>
+</body>
+</html>

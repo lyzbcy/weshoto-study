@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第4章：企微管家产品体系 — 微盛管培生学习地图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--font-mono:"Roboto Mono","JetBrains Mono",monospace;--radius-pill:999px;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;}
+.layout{display:flex;min-height:100vh;}
+.sidebar{width:280px;background:var(--forest);color:var(--cream);position:fixed;height:100vh;overflow-y:auto;padding:24px 20px;flex-shrink:0;z-index:10;}
+.sidebar h2{font-family:var(--font-head);font-size:18px;margin-bottom:16px;color:var(--marker);}
+.progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
+.nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
+.sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
+.main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
+.main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
+.card{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
+.src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
+.bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
+.objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
+.structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
+.structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
+.task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
+.opt:hover{border-color:var(--sky);}.opt.selected{border-color:var(--forest);background:#E8F0E5;}.opt.selected::before{content:"✓ ";color:var(--correct);}
+.check{background:var(--forest);color:var(--cream);border:none;padding:8px 24px;border-radius:var(--radius-pill);cursor:pointer;font-size:14px;font-family:var(--font-body);}
+.check:hover{opacity:.85;}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;background:#F0EBD8;}.feedback.ok{background:#D4EDD9;color:var(--correct);}.feedback.no{background:#F8D7D5;color:var(--wrong);}.feedback .src{display:block;margin-top:6px;}
+.wrong-box{background:#FFF3F0;border-radius:8px;padding:12px;margin-top:16px;}.wrong-box h4{color:var(--wrong);margin-bottom:8px;}.wrong-box ul{list-style:none;padding-left:0;}.wrong-box li{padding:4px 0;font-size:14px;}
+.report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
+.report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
+.footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+@media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>📋 第4章<br>企微管家产品体系</h2>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<ul class="nav-list">
+<li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
+</ul>
+<div class="sidebar-footer">微盛管培生学习地图 · 第4章</div>
+</aside>
+<main class="main">
+<h1>企微管家产品体系</h1>
+<p style="color:#666;margin-bottom:24px;">活码与营销工具 · CRM · 会话存档 · AI功能 · 素材与客户管理 · 数据统计</p>
+
+<h2 id="sec1">01 学习目标与阅读路径</h2>
+<div class="objective"><span class="num">1</span><div><strong>说清企微管家与企业微信原生功能的差异</strong>——企微管家在哪些功能上做了增强。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>解释活码vs联系我的功能差异</strong>——活码增强了哪些自动化运营能力。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>理解CRM3.0的核心数据流</strong>——线索→联系人→企业→商机→订单的流转关系。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>区分群发的四种方式</strong>——群发客户/群发群/群发朋友圈/超级群发。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>说出企微管家AI功能的核心场景</strong>——智能质检、知识库、智能问答。</div></div>
+
+<h2 id="sec2">02 零基础背景包</h2>
+<div class="card"><h3>背景补充 1：SaaS增强层</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">企微管家是基于企业微信API开发的SaaS产品。企业微信是"平台"，企微管家是"插件"。企业微信提供基础能力（加好友、建群、发消息），企微管家在此基础上增加营销自动化、CRM、质检等高级功能。</p></div>
+<div class="card"><h3>背景补充 2：CRM核心概念</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">CRM（Customer Relationship Management）管理：线索（潜在客户）→联系人（具体对接人）→企业（客户公司）→商机（成交机会）→订单（已签约）。这是一个从"可能买"到"已经买"的漏斗。</p></div>
+
+<h2 id="sec3">03 原文问题定位</h2>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业微信原生功能不够用的时候怎么办？"</strong></p><p style="margin-top:8px;">答案是企微管家——它在原生功能上做了"运营增强"。核心差异化在于自动化、精细化、数据化。</p></div>
+
+<h2 id="sec4">04 原文结构地图</h2>
+<p style="margin-bottom:12px;">原文结构类型：<strong>主题簇结构</strong>（以"运营增强"为核心，向外辐射6个功能模块）</p>
+<div class="structure-map">
+<div class="structure-node cluster"><strong>核心：企微管家 = 企业微信的运营增强层</strong></div>
+<div class="structure-node branch"><strong>模块1：活码&任务&营销工具</strong></div>
+<div class="structure-node leaf">活码（多人路由/分时段/时刻码/区域活码）</div>
+<div class="structure-node leaf">群活码（顺序入群/分类入群/区域群码）</div>
+<div class="structure-node leaf">群发工具（群发客户/群发群/朋友圈/超级群发）</div>
+<div class="structure-node branch"><strong>模块2：CRM</strong></div>
+<div class="structure-node leaf">线索→联系人→企业→商机→订单 全流程管理</div>
+<div class="structure-node branch"><strong>模块3：会话存档</strong></div>
+<div class="structure-node leaf">超时回复规则 / 敏感词规则 / 质检</div>
+<div class="structure-node branch"><strong>模块4：AI功能</strong></div>
+<div class="structure-node leaf">智能质检 / 知识库 / 智能问答推荐话术</div>
+<div class="structure-node branch"><strong>模块5：素材&客户管理</strong></div>
+<div class="structure-node leaf">客户收集表→标签同步</div>
+<div class="structure-node branch"><strong>模块6：数据统计</strong></div>
+<div class="structure-node leaf">多维度数据分析</div>
+</div>
+
+<h2 id="sec5">05 核心判断与依据</h2>
+<div class="card judgment"><h3>判断1：活码是联系我的"超级升级版"</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："活码支持多人路由、分时段分配、客户数上限分配、时刻码区分新老客"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。原生"联系我"是固定二维码，活码增加了自动分配、智能分流、容错机制、数据统计。</p></div>
+<div class="card judgment"><h3>判断2：群活码支持"顺序入群"和"分类入群"</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："顺序入群=群满自动创建新群；分类入群=客户自主选择不同群组"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。原生"加入群聊"是固定一个群，群活码可以动态管理多个群。</p></div>
+<div class="card judgment"><h3>判断3：CRM3.0的核心是漏斗管理</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："输出CRM3.0的整体流程逻辑图（包括线索、联系人、企业、商机、订单等）"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。从线索到订单是逐步筛选、逐步转化的过程，每一步都有转化率。</p></div>
+<div class="card judgment"><h3>判断4：群发有四种类型，覆盖不同触达场景</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："群发客户/群发群/群发朋友圈/超级群发"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。群发客户=1对1私发；群发群=批量发群；朋友圈=信息流曝光；超级群发=组合触达。</p></div>
+<div class="card judgment"><h3>判断5：AI功能聚焦服务质检和知识赋能</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："搭建智能质检任务；上传文档至知识库，用智能问答推荐话术回复"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。不是通用AI，而是聚焦"检查服务质量"和"辅助员工回答"两个场景。</p></div>
+
+<h2 id="sec6">06 关键概念拆解</h2>
+<div class="card"><h3>概念1：活码</h3><p><strong>人话解释：</strong>企微管家的"智能二维码"。相比原生"联系我"，活码可以：按排班自动分配员工、设客户上限自动转接、区分新老客不同处理、分时段欢迎语、自动打标签+备注+渠道记录。</p><p style="color:var(--brick);"><strong>不要误解成：</strong>活码不是"活的二维码"（动态二维码），而是一套智能获客路由系统。</p></div>
+<div class="card"><h3>概念2：时刻码</h3><p><strong>人话解释：</strong>活码的一个高级功能。新客扫码→直接加好友；老客扫码→跳转到福利页或显示拦截提示。实现"新客引流、老客复购"的双线分流。</p></div>
+<div class="card"><h3>概念3：超级群发</h3><p><strong>人话解释：</strong>群发客户+群发群+群发朋友圈的组合拳。一次操作，多种渠道同时触达。是原生功能没有的。</p></div>
+<div class="card"><h3>概念4：CRM漏斗</h3><p><strong>人话解释：</strong>线索（可能买的人）→联系人（找到具体对接人）→企业（了解客户公司）→商机（有明确成交机会）→订单（签约了）。每一步都有筛选和流失。</p></div>
+<div class="card"><h3>概念5：智能质检</h3><p><strong>人话解释：</strong>AI自动检查客服聊天记录，发现"超时未回复""敏感词""服务态度差"等问题。代替人工抽检，全覆盖+自动化。</p></div>
+<div class="card"><h3>概念6：知识库+智能问答</h3><p><strong>人话解释：</strong>把产品文档上传到知识库，员工跟客户聊天时，侧边栏会根据客户问题自动推荐话术。AI帮你"找到正确答案"。</p></div>
+
+<h2 id="sec7">07 苏格拉底式阅读关卡</h2>
+<div class="task" data-task="q1" data-answer="B" data-ok="正确！活码支持多人路由、分时段分配、客户上限自动转接，远超原生联系我。" data-no="联系我是固定二维码，活码是智能路由系统。" data-src="实操考核：活码vs联系我功能差异" data-review="回到「06 关键概念拆解」概念1复习">
+<div class="q">1. 企微管家"活码"相比原生"联系我"最大的增强是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 二维码更好看</button><button class="opt" data-val="B">B. 支持多人路由、分时段分配、客户上限自动转接、新老客分流</button><button class="opt" data-val="C">C. 可以不用企业微信</button><button class="opt" data-val="D">D. 添加速度更快</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q2" data-answer="C" data-ok="正确！群活码支持顺序入群（群满自动建新群）和分类入群（客户选择不同群组）。" data-no="原生加入群聊是一个二维码对应一个群，群活码可以动态管理。" data-src="实操考核：群活码vs加入群聊功能差异" data-review="回到「05 核心判断」判断2复习">
+<div class="q">2. 群活码的"顺序入群"和"分类入群"分别解决什么问题？</div>
+<div class="opts"><button class="opt" data-val="A">A. 都是自动建群，没区别</button><button class="opt" data-val="B">B. 顺序=线下用，分类=线上用</button><button class="opt" data-val="C">C. 顺序=群满自动建新群避免流失；分类=客户自主选择不同类型群组</button><button class="opt" data-val="D">D. 顺序是免费的，分类是付费的</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q3" data-answer="B" data-ok="正确！CRM的核心是从线索到订单的漏斗转化过程。" data-no="CRM不是只管联系人，它管理整个销售漏斗。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「06 关键概念拆解」概念4复习">
+<div class="q">3. CRM3.0的核心数据流是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 加好友→聊天→成交</button><button class="opt" data-val="B">B. 线索→联系人→企业→商机→订单</button><button class="opt" data-val="C">C. 潜客→成交客户→复购</button><button class="opt" data-val="D">D. 注册→登录→购买</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q4" data-answer="D" data-ok="正确！超级群发是群发客户+群发群+群发朋友圈的组合触达方式。" data-no="超级群发是企微管家的增强功能，原生没有。" data-src="实操考核：配置群发任务" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">4. "超级群发"与普通群发的区别是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 发送速度更快</button><button class="opt" data-val="B">B. 可以发给更多人</button><button class="opt" data-val="C">C. 只能管理员使用</button><button class="opt" data-val="D">D. 是群发客户+群发群+群发朋友圈的组合触达</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q5" data-answer="A,B,C" data-multi="true" data-ok="正确！智能质检检查服务质量，知识库存储企业知识，智能问答推荐辅助回复。" data-no="自动生成PPT不属于企微管家AI功能范畴。" data-src="实操考核：搭建质检任务+知识库+智能问答" data-review="回到「05 核心判断」判断5复习">
+<div class="q">5. 企微管家的AI功能包含哪些场景？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 智能质检（检查服务质量）</button><button class="opt" data-val="B">B. 知识库（存储企业文档）</button><button class="opt" data-val="C">C. 智能问答推荐话术（辅助回复）</button><button class="opt" data-val="D">D. 自动生成PPT</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q6" data-answer="B" data-ok="正确！时刻码区分新老客：新客直接加好友，老客跳转其他页面或拦截。" data-no="时刻码的核心价值是区分新老客做差异化处理。" data-src="实操考核：时刻码可区分新客与老客" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">6. "时刻码"的核心功能是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 定时更换二维码</button><button class="opt" data-val="B">B. 区分新老客户，新客加好友，老客跳转其他页面</button><button class="opt" data-val="C">C. 按时段显示不同员工</button><button class="opt" data-val="D">D. 限制扫码次数</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+<div class="task" data-task="q7" data-answer="C" data-ok="正确！企微管家是基于企微API开发的SaaS增强层，在原生功能上增加自动化运营能力。" data-no="企微管家不是替代品，是增强插件。" data-src="企微管家产品定位" data-review="回到「02 零基础背景包」背景补充1复习">
+<div class="q">7. 企微管家与企业微信的关系是什么？</div>
+<div class="opts"><button class="opt" data-val="A">A. 竞品关系</button><button class="opt" data-val="B">B. 完全相同的产品</button><button class="opt" data-val="C">C. 企微管家是基于企微API的SaaS增强层，增强原生功能</button><button class="opt" data-val="D">D. 企微管家是企业微信的旧版</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec8">08 闯关式任务</h2>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对企微管家vs原生功能的差异有全面理解。" data-no="仔细看实操考核记录里的对比表格，每个功能的优势点不同。" data-src="实操考核记录" data-review="回到「06 关键概念拆解」复习">
+<div class="q">任务：将企微管家增强功能匹配到对应的原生功能。</div>
+<div style="margin:8px 0;">
+<div style="margin-bottom:6px;">活码 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">微信客服</option><option value="b">联系我</option><option value="c">客户朋友圈</option><option value="d">客户群</option></select></div>
+<div style="margin-bottom:6px;">群活码 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">微信客服</option><option value="b">联系我</option><option value="c">客户朋友圈</option><option value="d">加入群聊</option></select></div>
+<div style="margin-bottom:6px;">超级群发 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">微信客服</option><option value="b">群发客户</option><option value="c">群发客户+群+朋友圈组合</option><option value="d">客户标签</option></select></div>
+</div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec9">09 误解与边界</h2>
+<div class="card danger"><h3>误解1："企微管家=企业微信"</h3><p><strong>原文真正说了什么：</strong>企微管家是基于企微API的增强产品。企业微信是平台，企微管家是插件。没有企业微信就没有企微管家。</p></div>
+<div class="card danger"><h3>误解2："活码只是一个更好的二维码"</h3><p><strong>原文真正说了什么：</strong>活码是一套完整的智能获客路由系统，包含分配逻辑、分流规则、容错机制、数据追踪。不只是"二维码更好看"。</p></div>
+<div class="card danger"><h3>误解3："CRM只是通讯录"</h3><p><strong>原文真正说了什么：</strong>CRM是销售漏斗管理系统，从线索到订单全流程追踪。通讯录只是其中"联系人"这一环。</p></div>
+
+<h2 id="sec10">10 背景知识缺口</h2>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档的具体技术实现</strong>→ 第5章</li><li><strong>CRM与其他系统（ERP/OA）的对接</strong>→ 技术文档</li><li><strong>AI知识库的调优策略</strong>→ 第5章AI工作流</li></ul></div>
+
+<h2 id="sec11">11 复盘与学习报告</h2>
+<div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
+<div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
+<div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
+<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+</main>
+</div>
+<script>
+(function(){
+  "use strict";
+  function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function selectedVals(t){return $all('.opt.selected',t).map(function(o){return o.getAttribute('data-val');}).sort();}
+  function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
+  function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
+  function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
+  document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
+  function init(){updateBar();renderWrong();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>
