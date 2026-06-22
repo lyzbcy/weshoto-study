@@ -15,20 +15,28 @@
 .progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
 .nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
 .sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
-.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:820px;}
 .main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
 .main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
 .main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
+.main h4{font-family:var(--font-head);font-size:15px;margin:14px 0 6px;color:var(--forest);}
 .card{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
 .card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
 .src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
 .bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
 .objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
 .objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:10px;text-align:left;font-size:13px;}
+.cmp-table td{padding:10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:22%;}
 .structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
 .structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
 .structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
-.structure-rel{font-size:12px;color:#888;margin-left:8px;}
 .task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
 .task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
 .opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
@@ -47,7 +55,7 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>📋 第2章<br>内部协作与效率工具</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
 <li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
 </ul>
@@ -55,109 +63,221 @@
 </aside>
 <main class="main">
 <h1>企业微信内部协作与效率工具</h1>
-<p style="color:#666;margin-bottom:24px;">通讯录管理 · 即时消息 · OA办公 · 协作套件 · 安全管理 · 智能机器人 · 应用管理</p>
+<p style="color:#666;margin-bottom:24px;">基于《企业微信产品介绍文档（新）2026-04更新》内部协作章节深度拆解</p>
 
 <h2 id="sec1">01 学习目标与阅读路径</h2>
-<p style="margin-bottom:16px;">本章覆盖企业微信内部协作的完整工具链。学完你应该能做到：</p>
-<div class="objective"><span class="num">1</span><div><strong>说清通讯录管理的权限层级</strong>——超级管理员、分级管理员、管理组的关系和权限边界。</div></div>
-<div class="objective"><span class="num">2</span><div><strong>区分群聊的四种类型</strong>——全员群、部门群、普通内部群、外部群，各自的人数上限和创建方式。</div></div>
-<div class="objective"><span class="num">3</span><div><strong>解释OA核心模块的管理逻辑</strong>——打卡、审批、汇报各解决什么管理需求，数据如何流转。</div></div>
-<div class="objective"><span class="num">4</span><div><strong>理解协作套件的一体化优势</strong>——文档、微盘、邮箱、日程、会议如何互相联动。</div></div>
-<div class="objective"><span class="num">5</span><div><strong>指出智能机器人的能力边界</strong>——能做什么、不能做什么、与第三方应用的关系。</div></div>
+<p style="margin-bottom:16px;">本章讲企业微信"对内"的能力：怎么管人（通讯录）、怎么沟通（消息/群）、怎么办公（OA/文档/会议）、怎么保安全。学完你应该能做到：</p>
+<div class="objective"><span class="num">1</span><div><strong>说清通讯录的权限三档</strong>——隐藏部门/成员、限制查看外部门、限制查看所有人，知道为什么这样设计。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>区分五种群的差异</strong>——外部群500、全员群1万、部门群2000、普通内部群2000、含企微成员的微信外部群200。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>解释或签/会签/依次审批的区别</strong>——报销、合同、请假分别该用哪种，能给真实场景配对。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>区分智能表格和在线表格</strong>——本质是"数据库型表格"vs"协作版Excel"，能说出每列单类型限制的含义。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>指出企业自主加密的边界</strong>——只覆盖内部单聊+15人以下内部群，且会话存档看不到加密消息。</div></div>
+<p style="margin-top:16px;color:#666;">阅读路径：先补OA/审批/智能表格的背景概念 → 理解"一站式内部办公"定位 → 逐个拆解通讯录/群/OA/文档/会议/安全 → 闯关测试 → 复盘。</p>
 
 <h2 id="sec2">02 零基础背景包</h2>
-<div class="card"><h3>背景补充 1：OA系统</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">OA（Office Automation）= 办公自动化系统。传统OA如泛微、致远，解决请假、报销、审批等流程。企业微信把OA能力内置（打卡/审批/汇报），不需要额外购买。</p><p style="font-size:13px;color:#888;margin-top:8px;">为什么需要知道：管培生考试常考"企微OA vs 传统OA"的区别。</p></div>
-<div class="card"><h3>背景补充 2：RBAC权限模型</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">RBAC（Role-Based Access Control）= 基于角色的访问控制。不是直接给"张三"权限，而是创建"管理员角色"，把张三放进去。企微的"管理组"就是这个思路。</p></div>
-<div class="card"><h3>背景补充 3：在线协作工具的三层架构</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">文档协作 = 内容层（写什么）+ 通讯层（聊天/@）+ 流程层（待办/日程）。企业微信把三层融合在一个App里，这是它相对于"独立工具组合"的核心优势。</p></div>
+<div class="card">
+<h3>背景补充 1：OA系统（办公自动化）</h3>
+<p><span class="bg-note">背景补充</span></p>
+<p style="margin-top:8px;">OA = Office Automation。把线下纸质流程（签到表、请假条、报销单）变成线上电子流程。企业微信内置打卡、审批、汇报三大OA模块，不用再单独买钉钉OA或泛微。</p>
+<p class="relevancy">为什么现在需要知道：本章一半内容是OA。理解"OA=流程电子化"，你才能理解为什么审批要分"或签/会签/依次"、为什么打卡要防作弊。</p>
+</div>
+<div class="card">
+<h3>背景补充 2：RBAC（基于角色的权限控制）</h3>
+<p><span class="bg-note">背景补充</span></p>
+<p style="margin-top:8px;">RBAC = Role-Based Access Control。不是"张三能看通讯录"，而是"张三的【角色=部门主管】能看本部门通讯录"。人换了角色，权限自动跟着变。企业微信的通讯录权限、审批权限、文档权限都用这套思路。</p>
+<p class="relevancy">为什么现在需要知道：通讯录"三档可见"、审批"四类权限"、文档"管理员导出限制"全是RBAC的应用。懂这个概念，后面所有权限规则一通百通。</p>
+</div>
+<div class="card">
+<h3>背景补充 3：数据库型表格 vs 电子表格</h3>
+<p><span class="bg-note">背景补充</span></p>
+<p style="margin-top:8px;">普通Excel/在线表格：每格随便填，是文字还是日期都行，灵活但无法自动校验。数据库型表格（如Airtable、企微智能表格）：每列必须先定类型（日期列只能填日期），严格但能自动筛选、关联、触发自动化。这是"在线表格"和"智能表格"的本质区别。</p>
+<p class="relevancy">为什么现在需要知道：本章会讲智能表格的AI字段、200个自动化流程，不理解"每列单类型"就理解不了它为什么能做自动化。</p>
+</div>
+<div class="card">
+<h3>背景补充 4：明水印 vs 暗水印</h3>
+<p><span class="bg-note">背景补充</span></p>
+<p style="margin-top:8px;">明水印 = 屏幕上肉眼可见的工号/姓名半透明文字，震慑截图。暗水印 = 肉眼看不到、但藏在图片像素里的信息，截图后能解析出"谁在什么时候截的图"。企业微信两种都有，暗水印用于事后追责。</p>
+<p class="relevancy">为什么现在需要知道：安全模块会讲"截屏管控+水印"，知道明暗区别才能理解"为什么截了图也能查到人"。</p>
+</div>
 
 <h2 id="sec3">03 原文问题定位</h2>
-<div class="card judgment"><h3>表面在讲什么？</h3><p>企业微信内部协作的各个功能模块：通讯录、即时消息、OA、文档、会议、微盘、邮箱、安全管理等。</p></div>
-<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"一个企业需不需要买多套工具？"</strong>答案是——企业微信试图用一个App覆盖内部协作的所有场景，从沟通到管理到协同。</p></div>
-<div class="card judgment"><h3>只记一个问题</h3><p><strong>"企业微信内部协作的工具矩阵如何构成一个闭环？"</strong></p></div>
+<div class="card judgment"><h3>表面在讲什么？</h3><p>企业微信内部协作的功能清单：通讯录、即时消息、群聊、OA（打卡/审批/汇报）、文档、微盘、邮箱、日程、会议、安全管理、智能机器人、应用管理。</p></div>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业微信能不能一站式替代企业所有内部办公工具？"</strong></p><p style="margin-top:8px;">答案是"基本能"。策略不是自研一切，而是<span class="src">原文："融合腾讯文档、腾讯会议、腾讯企业邮箱"</span>——把全家桶整合进一个入口。</p></div>
+<div class="card judgment"><h3>作者为什么要写这篇？</h3><p>这是给企业IT/行政决策者看的"采购说服文档"。反复强调"你现有的XX工具，企微也能做，不用额外采购"——降低迁移成本是核心卖点。</p></div>
+<div class="card judgment"><h3>只记一个问题</h3><p><strong>"企业微信怎么用一个App把内部办公全包了？"</strong>——答案是"通讯录打底 + 消息/群沟通 + OA流程化 + 文档/会议/邮箱全家桶 + 安全兜底"。</p></div>
 
 <h2 id="sec4">04 原文结构地图</h2>
-<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（以"组织管理"为起点，层层外扩到"协作"和"工具"）</p>
+<p style="margin-bottom:12px;">原文结构类型：<strong>主题簇结构</strong>（以"一站式内部办公"为核心，辐射5个工具簇）</p>
 <div class="structure-map">
-<div class="structure-node cluster"><strong>核心：组织管理基座</strong><span class="structure-rel">原文：通讯录统一管理，企业组织架构清晰</span></div>
-<div class="structure-node branch"><strong>层1：沟通层</strong> — 即时消息、群聊管理、消息分类、全局搜索、智能总结</div>
-<div class="structure-node branch"><strong>层2：管理层（OA）</strong> — 人事助手、打卡、审批、汇报、公告、会议室、视频直播</div>
-<div class="structure-node branch"><strong>层3：协作层</strong> — 日程、会议、文档（在线文档/表格/智能表格）、微盘、邮箱</div>
-<div class="structure-node branch"><strong>层4：安全层</strong> — 账号安全、通讯管理、文件防泄露、水印、设备管理</div>
-<div class="structure-node branch"><strong>层5：扩展层</strong> — 智能机器人、自建应用、第三方应用、小程序</div>
-<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>关系说明：</strong>五层是<strong>递进</strong>关系——先管人（通讯录），再管沟通（消息），再管流程（OA），再管内容（协作），最后管安全（贯穿所有层）。</div>
+<div class="structure-node cluster"><strong>核心：企业微信 = 一站式内部办公平台</strong></div>
+<div class="structure-node branch"><strong>簇1：管人（通讯录）</strong></div>
+<div class="structure-node leaf">通讯录导入（手动/Excel/微信/OCR拍照）、权限三档、禁用vs删除</div>
+<div class="structure-node branch"><strong>簇2：沟通（消息/群）</strong></div>
+<div class="structure-node leaf">5种群类型、撤回规则（24h，不含红包/服务消息）、群消息置顶（最多5条）</div>
+<div class="structure-node branch"><strong>簇3：办公（OA）</strong></div>
+<div class="structure-node leaf">打卡（防作弊四件套）、审批（或签/会签/依次/办理人节点）、汇报</div>
+<div class="structure-node branch"><strong>簇4：效率工具</strong></div>
+<div class="structure-node leaf">文档（联合腾讯文档）、智能表格（数据库型，200个自动化）、微盘、邮箱、会议（联合腾讯会议）</div>
+<div class="structure-node branch"><strong>簇5：安全兜底</strong></div>
+<div class="structure-node leaf">企业自主加密（仅内部单聊+15人以下群）、截屏管控、明暗水印、机器人（混元/DeepSeek，仅内部群）</div>
+<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>节点关系说明：</strong>5个簇是<strong>并列+依赖</strong>——通讯录是底层，消息/群是沟通层，OA/工具是应用层，安全是横切兜底层。不是因果链，而是"从人到工具再到安全"的分层结构。</div>
 </div>
 
 <h2 id="sec5">05 核心判断与依据</h2>
-<div class="card judgment"><h3>判断1：通讯录是整个企业微信的管理基座</h3><p><strong>原文依据：</strong><span class="src">原文："企业通讯录统一管理，企业组织架构清晰明了"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。通讯录决定了谁能登录、谁能看到谁、谁归谁管。所有其他功能（打卡、审批、群聊）都基于通讯录运转。</p><p style="margin-top:8px;"><strong>可能的误读：</strong>通讯录不是"只是个联系人列表"，它是权限系统的核心。</p></div>
-<div class="card judgment"><h3>判断2：全员群和部门群是自动管理的</h3><p><strong>原文依据：</strong><span class="src">原文："员工进入企业微信通讯录后将自动加入全员群/部门群，并根据通讯录变更自动同步人员"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。新员工入职自动进群，离职自动退群，不需要手动管理。全员群上限10000人，部门群上限2000人。</p></div>
-<div class="card judgment"><h3>判断3：企业微信文档融合了腾讯文档的能力</h3><p><strong>原文依据：</strong><span class="src">原文："联合腾讯文档共同打造的企业微信文档"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。支持在线文档、表格、幻灯片、收集表、智能表格。可以@成员、创建待办、插入日程和名片。</p><p style="margin-top:8px;"><strong>为什么重要：</strong>这意味着企业不需要额外买石墨文档或飞书文档。</p></div>
-<div class="card judgment"><h3>判断4：安全管理是分层防御</h3><p><strong>原文依据：</strong><span class="src">原文："提供文件防泄漏、设备管理、水印等多种安全管理功能"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。账号安全→通讯管理→文件防泄露→水印→设备管理→截屏限制→外发管理，从身份到内容到设备，层层设防。</p></div>
-<div class="card judgment"><h3>判断5：智能机器人是连接企业微信与外部系统的桥梁</h3><p><strong>原文依据：</strong><span class="src">原文："支持机器人通过配置权限读取被限制下载/导出的文件"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。机器人可以通过API获取文档内容、接收消息、回复消息，本质上是一个"可编程的企微用户"。</p></div>
+<div class="card judgment">
+<h3>判断1：通讯录是所有权限的底层基础</h3>
+<p><strong>原文依据：</strong><span class="src">原文："管理员可以批量设置成员的通讯录信息，每次最多1000人"</span></p>
+<p style="margin-top:8px;"><strong>类型：</strong>事实。权限三档：隐藏部门/成员、限制查看外部门、限制查看所有人，都支持白名单。</p>
+<p style="margin-top:8px;"><strong>为什么重要：</strong>后面所有功能（谁能进群、谁能审批、谁能看文档）都依赖通讯录组织架构。改通讯录=改权限地基。</p>
+<div class="scene">某集团有子公司A和子公司B，A的普通员工不应看到B的薪资单审批。靠"限制查看外部门"+白名单，A员工只能看到A的同事，从源头隔离。</div>
+<p style="margin-top:8px;"><strong>可能的误读：</strong>"禁用账号"≠"删除账号"。禁用后无法登录但信息资产保留（可恢复），删除则是彻底移除。</p>
+</div>
+<div class="card judgment">
+<h3>判断2：群的类型决定人数上限和行为</h3>
+<p><strong>原文依据：</strong><span class="src">原文：外部群最多500人；全员群上限10000人；部门群最多2000人</span></p>
+<table class="cmp-table">
+<tr><th>群类型</th><th>上限</th><th>关键特性</th></tr>
+<tr><td>全员群</td><td>10000</td><td>新员工自动入群、离职自动退群，可看历史消息</td></tr>
+<tr><td>部门群</td><td>2000</td><td>按最小部门自动创建，群名带"部门"标识</td></tr>
+<tr><td>普通内部群</td><td>2000</td><td>手动创建的内部群</td></tr>
+<tr><td>外部群（企微创建）</td><td>500</td><td>可含微信客户</td></tr>
+<tr><td>含企微成员的微信外部群</td><td>200</td><td>微信用户创建，上限更低</td></tr>
+</table>
+<p style="margin-top:8px;"><strong>为什么重要：</strong>选错群类型会"装不下"或"该自动的人没自动"。1000人公司用普通群要建5个，用全员群1个搞定。</p>
+</div>
+<div class="card judgment">
+<h3>判断3：审批的"或签/会签/依次"解决三种决策场景</h3>
+<p><strong>原文依据：</strong><span class="src">原文："或签（任一同意即可）、会签（全部同意）、依次审批（上级审完轮下级）"</span></p>
+<table class="cmp-table">
+<tr><th>方式</th><th>规则</th><th>典型场景</th></tr>
+<tr><td>或签</td><td>任一审批人同意即通过</td><td>小额报销——三个财务谁在岗谁批</td></tr>
+<tr><td>会签</td><td>所有审批人都同意才通过</td><td>跨部门项目——必须产品+技术+法务全同意</td></tr>
+<tr><td>依次审批</td><td>按顺序，上级先批才轮下级</td><td>请假/合同——直属领导→总监→HR</td></tr>
+</table>
+<p style="margin-top:8px;"><strong>可能的误读：</strong>"办理人节点"≠审批人。办理人是"只需提交办理结果，不需审批"的节点，如财务打款、处理盖章。</p>
+</div>
+<div class="card judgment">
+<h3>判断4：智能表格是"数据库"不是"高级Excel"</h3>
+<p><strong>原文依据：</strong><span class="src">原文："智能表格严格限制了每列只能是一种固定的列类型"</span></p>
+<p style="margin-top:8px;"><strong>类型：</strong>事实。AI字段6类（AI分类/标签匹配/图片理解/AI总结/AI信息提取/自定义生成），自动化流程上限200个。</p>
+<p style="margin-top:8px;"><strong>为什么重要：</strong>客户常以为"智能表格=好看的在线表格"，其实它是低代码数据库。理解这点才能解释它为什么能"自动触发提醒""按列AI填充"。</p>
+</div>
+<div class="card judgment">
+<h3>判断5：企业自主加密有明确覆盖边界</h3>
+<p><strong>原文依据：</strong><span class="src">原文："仅生效于加密成员所在的内部单聊+15人及以下的内部群聊"</span></p>
+<p style="margin-top:8px;"><strong>类型：</strong>事实。加密消息不支持语音转文字/翻译；<strong>会话存档也无法查看被加密消息</strong>。</p>
+<div class="scene">银行客户问"我们全公司聊天都加密了吗？"——正确回答：只有内部单聊和15人以下内部群，外部客户聊天不加密，且加密的那些会话存档也抓不到。</div>
+</div>
 
 <h2 id="sec6">06 关键概念拆解</h2>
-<div class="card"><h3>概念1：分级管理员与管理组</h3><p><strong>人话解释：</strong>超级管理员=CEO的权限，什么都能看都能改。分级管理员=部门经理的权限，只能管自己部门。管理组=权限模板，把一组权限打包，分配给多个管理员。</p><p><span class="src">原文："不同的管理组会对应不同管理范围、通讯录权限、应用权限及设备管理权限"</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>管理组不是"用户组"，而是"权限模板组"。</p></div>
-<div class="card"><h3>概念2：外部群 vs 内部群</h3><p><strong>人话解释：</strong>内部群=全是企业微信成员；外部群=有微信用户或外部联系人。外部群上限500人（企微创建），内部群上限2000人。</p><p><span class="src">原文："企业微信用户创建的外部群人数最多支持500人"</span></p></div>
-<div class="card"><h3>概念3：智能表格 vs 在线表格</h3><p><strong>人话解释：</strong>在线表格=传统Excel的在线版，自由但容易混乱。智能表格=数据库型表格，每列有固定类型（文本/日期/选译等），支持分组、看板视图、甘特图，数据更规范。</p><p style="color:var(--brick);"><strong>不要误解成：</strong>智能表格不是"有AI的表格"，而是"结构化的数据库式表格"。</p></div>
-<div class="card"><h3>概念4：员工服务</h3><p><strong>人话解释：</strong>企业内部的"客服系统"。员工有问题（IT、行政、财务），找员工服务账号，AI先答，答不上来转人工坐席。一个服务账号最多200个坐席。</p><p><span class="src">原文："AI机器人智能回复高频问题 + 人工客服的模式"</span></p></div>
-<div class="card"><h3>概念5：微盘</h3><p><strong>人话解释：</strong>企业版网盘。和腾讯微云类似，但管理权在企业——管理员可以设置空间权限、查看操作日志、控制文件外发。</p></div>
-<div class="card"><h3>概念6：水印功能</h3><p><strong>人话解释：</strong>在聊天窗口、文档、微盘文件上显示"当前用户的名字+工号"的半透明文字。作用是防止截图泄密——截了图也能追踪到是谁截的。</p></div>
+<div class="card">
+<h3>概念1：通讯录权限三档</h3>
+<p><strong>原文术语：</strong>隐藏部门/成员、限制查看外部门、限制查看所有人</p>
+<p><strong>人话解释：</strong>控制"谁能看到谁"。第一档=彻底藏起来；第二档=只能看自己部门；第三档=谁都看不到其他人（最严）。三档都支持白名单。</p>
+<p><strong>与其他概念的关系：</strong>这是RBAC在通讯录上的落地，决定后面所有"谁能进群、谁能审批"的地基。</p>
+<p><span class="src">原文：通讯录查看权限三档，均支持白名单机制</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>"限制查看"≠"完全不能聊"。被限制成员之间仍可单聊，只是通讯录里搜不到对方。</p>
+</div>
+<div class="card">
+<h3>概念2：全员群</h3>
+<p><strong>原文术语：</strong>全员群（上限10000人）</p>
+<p><strong>人话解释：</strong>整个公司在一个群里。新员工自动加入、离职自动退出、能看到历史消息——不用人工拉人踢人。</p>
+<div class="scene">1000人公司以前要在微信建十几个群才能通知全员，现在1个全员群搞定，且HR不用维护"谁该在群里"。</div>
+<p><strong>与其他概念的关系：</strong>和部门群（按最小部门自动建）配套，构成"全公司+各部门"两级群结构。</p>
+<p><span class="src">原文：全员群上限10000人，新员工自动入群、离职自动退群</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>全员群的自动进出是系统行为，不是管理员手动操作。</p>
+</div>
+<div class="card">
+<h3>概念3：或签 vs 会签 vs 依次审批</h3>
+<p><strong>原文术语：</strong>或签 / 会签 / 依次审批</p>
+<p><strong>人话解释：</strong>三个审批人时——或签=任何一个同意就过（快）；会签=三个都同意才过（严）；依次=第一个同意才轮第二个（讲层级）。</p>
+<div class="scene">报销200元用或签，三个财务谁在岗谁批，5分钟搞定。跨部门采购用会签，必须产品+技术+法务全签字。请假3天用依次，直属领导→总监→HR。</div>
+<p><strong>与其他概念的关系：</strong>"办理人节点"是补充——不需要审批、只需要执行（打款/盖章）的环节。</p>
+<p><span class="src">原文：或签/会签/依次审批；办理人节点如财务打款、处理盖章</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>会签不是"少数服从多数"，是"缺一个都不行"。</p>
+</div>
+<div class="card">
+<h3>概念4：智能表格</h3>
+<p><strong>原文术语：</strong>智能表格（每列单类型限制）</p>
+<p><strong>人话解释：</strong>本质是低代码数据库，不是"好看的Excel"。每列必须先定类型（日期/单选/附件/公式），自动校验。正因为类型固定，才能做"AI自动分类""自动触发提醒""关联其他表"。</p>
+<p><strong>与其他概念的关系：</strong>在线表格灵活但无自动化；智能表格严格但能自动化（上限200个流程）。两者并存，按需选。</p>
+<p><span class="src">原文：智能表格每列只能是一种固定类型；自动化流程上限200个</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>智能表格不能替代Excel做自由计算，它是结构化数据管理工具。</p>
+</div>
+<div class="card">
+<h3>概念5：企业自主加密</h3>
+<p><strong>原文术语：</strong>企业自主加密（仅内部单聊+15人以下内部群）</p>
+<p><strong>人话解释：</strong>企业自主持密钥加密聊天内容，腾讯也解不开。但只覆盖内部单聊和15人以下内部群，外部聊天不加密，且加密的消息会话存档抓不到。</p>
+<p><strong>与其他概念的关系：</strong>与会话存档（第5章）直接冲突——开了加密的会话，存档系统看不到。</p>
+<p><span class="src">原文：仅生效于内部单聊+15人及以下内部群；会话存档也无法查看被加密消息</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>"开了加密=全公司聊天都安全"是错的，外部客户沟通根本不在加密范围。</p>
+</div>
+<div class="card">
+<h3>概念6：明水印 vs 暗水印</h3>
+<p><strong>原文术语：</strong>明水印 / 暗水印</p>
+<p><strong>人话解释：</strong>明水印=屏幕上肉眼可见的工号半透明字，震慑；暗水印=藏在图片像素里的隐形信息，截图后能解析出"谁截的、何时截的"，用于事后追责。</p>
+<p><span class="src">原文：暗水印可解析泄密图片追踪泄密人员及时间</span></p>
+<p style="color:var(--brick);"><strong>不要误解成：</strong>暗水印不是"截图自动报警"，而是"拿到截图后才能解析"，是事后追溯不是实时拦截。</p>
+</div>
 
 <h2 id="sec7">07 苏格拉底式阅读关卡</h2>
-<div class="task" data-task="q1" data-answer="C" data-ok="正确！全员群上限10000人，部门群上限2000人，普通内部群上限2000人。" data-no="仔细看原文的群类型说明，不同群的人数上限不同。" data-src="原文：全员群人数上限是10000人，部门群最多2000人" data-review="回到「06 关键概念拆解」概念2复习">
-<div class="q">1. 企业微信的全员群人数上限是多少？</div>
-<div class="opts"><button class="opt" data-val="A">A. 500人</button><button class="opt" data-val="B">B. 2000人</button><button class="opt" data-val="C">C. 10000人</button><button class="opt" data-val="D">D. 无限制</button></div>
+<div class="task" data-task="q1" data-answer="B" data-ok="对！部门群按最小部门自动创建，上限2000人，新员工自动入群，不用手动拉人。" data-no="普通内部群要手动建，部门群是系统按组织架构自动建的。" data-src="原文：部门群按最小部门自动创建，最多2000人" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">1. <strong>场景：</strong>某公司有8个部门，HR希望每个部门有自己的群，新员工自动进自己部门的群。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 手动建8个普通内部群</button><button class="opt" data-val="B">B. 部门群（系统按组织架构自动创建）</button><button class="opt" data-val="C">C. 1个全员群分成8个话题</button><button class="opt" data-val="D">D. 外部群</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q2" data-answer="B" data-ok="正确！管理组是权限模板，把一组权限打包分配给多个管理员，实现分层管理。" data-no="管理组不是用户分组，也不是部门分组，它是权限模板的概念。" data-src="原文：管理组是用来划分管理层级和管理员权限的管理单元" data-review="回到「06 关键概念拆解」概念1复习">
-<div class="q">2. 企业微信的"管理组"本质上是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 把员工分成不同的小组</button><button class="opt" data-val="B">B. 权限模板，把一组权限打包分配给多个管理员</button><button class="opt" data-val="C">C. 部门的另一种叫法</button><button class="opt" data-val="D">D. 聊天群的管理员列表</button></div>
+<div class="task" data-task="q2" data-answer="C" data-ok="对！或签=任一审批人同意即通过，适合小额报销，谁在岗谁批，快。" data-no="会签要全员同意太慢；依次按层级也慢。小额报销要快，用或签。" data-src="原文：或签（任一同意即可）" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">2. <strong>场景：</strong>员工提交200元打车报销单，财务部3个财务。希望"谁在岗谁批，不用等齐"。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 会签（三个都同意才过）</button><button class="opt" data-val="B">B. 依次审批（A→B→C）</button><button class="opt" data-val="C">C. 或签（任一同意即过）</button><button class="opt" data-val="D">D. 办理人节点</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q3" data-answer="B" data-ok="正确！智能表格每列有固定类型，支持分组、看板、甘特图等视图，本质是结构化数据管理。" data-no="智能表格的重点不在于'AI'，而在于'结构化'和'多视图'。" data-src="原文：智能表格严格限制了每列只能是一种固定的列类型" data-review="回到「06 关键概念拆解」概念3复习">
-<div class="q">3. 企业微信的"智能表格"和普通"在线表格"的核心区别是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 智能表格有AI功能，在线表格没有</button><button class="opt" data-val="B">B. 智能表格每列有固定类型，支持分组/看板/甘特图等多视图</button><button class="opt" data-val="C">C. 智能表格只能查看不能编辑</button><button class="opt" data-val="D">D. 智能表格就是Excel的在线版</button></div>
+<div class="task" data-task="q3" data-answer="B" data-ok="对！会签要求所有审批人都同意，跨部门采购必须产品+技术+法务全签字，防止事后扯皮。" data-no="或签任一同意会漏审；依次按层级不按部门。跨部门要'一个都不能少'，用会签。" data-src="原文：会签（全部同意）" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">3. <strong>场景：</strong>跨部门采购合同，必须产品部、技术部、法务部三个部门都点头才能签。希望"缺一个都不行"。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 或签</button><button class="opt" data-val="B">B. 会签</button><button class="opt" data-val="C">C. 依次审批</button><button class="opt" data-val="D">D. 办理人节点</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q4" data-answer="C" data-ok="正确！员工服务采用'AI机器人先答+人工坐席补充'的模式，一个账号最多200个坐席。" data-no="员工服务是内部客服，不是外部客户服务。" data-src="原文：AI机器人智能回复高频问题 + 人工客服的模式" data-review="回到「06 关键概念拆解」概念4复习">
-<div class="q">4. 企业微信的"员工服务"采用了什么服务模式？</div>
-<div class="opts"><button class="opt" data-val="A">A. 纯人工客服</button><button class="opt" data-val="B">B. 纯AI机器人</button><button class="opt" data-val="C">C. AI机器人先答 + 人工坐席补充</button><button class="opt" data-val="D">D. 邮件工单制</button></div>
+<div class="task" data-task="q4" data-answer="C" data-ok="对！依次审批按层级走，直属领导先批才轮总监，最后HR备案，符合请假审批的层级逻辑。" data-no="或签/会签不分层级。请假要讲层级（先直属领导），用依次审批。" data-src="原文：依次审批（上级审完轮下级）" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">4. <strong>场景：</strong>员工请婚假7天，审批流程：直属领导先同意→部门总监→HR备案。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 或签</button><button class="opt" data-val="B">B. 会签</button><button class="opt" data-val="C">C. 依次审批</button><button class="opt" data-val="D">D. 同时审批</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q5" data-answer="A,C,D" data-multi="true" data-ok="正确！安全管理包括账号安全、文件防泄露、水印、设备管理、截屏限制等。" data-no="员工发朋友圈属于客户运营范畴，不属于安全管理。" data-src="原文：提供文件防泄漏、设备管理、水印等多种安全管理功能" data-review="回到「05 核心判断」判断4复习">
-<div class="q">5. 以下哪些属于企业微信的安全管理功能？（多选）</div>
-<div class="opts"><button class="opt" data-val="A">A. 文件防泄漏</button><button class="opt" data-val="B">B. 员工发朋友圈审核</button><button class="opt" data-val="C">C. 水印设置</button><button class="opt" data-val="D">D. 限制成员截屏/录屏</button></div>
+<div class="task" data-task="q5" data-answer="B" data-ok="对！智能表格每列固定类型，是数据库型，能做AI自动分类、自动触发提醒、关联其他表。在线表格无自动化。" data-no="要自动化必须用智能表格（每列单类型）。" data-src="原文：智能表格每列只能是一种固定类型；自动化上限200个" data-review="回到「06 关键概念拆解」概念4复习">
+<div class="q">5. <strong>场景：</strong>客户想要"客户跟进表填了'下次跟进日期'后，到那天自动提醒负责人"。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 在线表格（无自动化）</button><button class="opt" data-val="B">B. 智能表格（可配置自动化触发提醒）</button><button class="opt" data-val="C">C. 微盘Excel文件</button><button class="opt" data-val="D">D. 邮件附件</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q6" data-answer="B" data-ok="正确！新员工自动加入全员群/部门群，离职自动退群，基于通讯录变更自动同步。" data-no="全员群和部门群是'自动管理'的，这是它们和普通群最大的区别。" data-src="原文：员工进入企业微信通讯录后将自动加入全员群/部门群，并根据通讯录变更自动同步人员" data-review="回到「05 核心判断」判断2复习">
-<div class="q">6. 全员群和部门群最大的管理优势是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 人数没有上限</button><button class="opt" data-val="B">B. 基于通讯录自动管理人员进出</button><button class="opt" data-val="C">C. 可以发红包</button><button class="opt" data-val="D">D. 消息可以永久保存</button></div>
+<div class="task" data-task="q6" data-answer="A,C,D" data-multi="true" data-ok="对！管理员24h内可撤回（不含红包/服务消息）、敏感成员可只显示姓名、打卡有四件套防作弊。" data-no="企业自主加密仅覆盖内部单聊+15人以下内部群，不是所有聊天都加密。" data-src="原文：撤回24h内消息；敏感成员白名单；打卡防作弊四件套；加密仅内部单聊+15人以下群" data-review="回到「09 误解与边界」复习">
+<div class="q">6. <strong>场景：</strong>关于企业微信内部协作，以下哪些说法正确？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 管理员可在24h内撤回群成员消息（红包和员工服务消息除外）</button><button class="opt" data-val="B">B. 企业自主加密覆盖所有聊天（含外部客户）</button><button class="opt" data-val="C">C. 敏感成员（如高管）可配置只显示姓名，支持白名单</button><button class="opt" data-val="D">D. 打卡有拍照、人脸识别、防多设备、防虚拟定位四件套</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q7" data-answer="D" data-ok="正确！企业微信文档融合腾讯文档能力，一个App就能覆盖文档/表格/幻灯片/收集表。" data-no="企业微信文档继承了腾讯文档的编辑体验，不需要额外工具。" data-src="原文：联合腾讯文档共同打造的企业微信文档" data-review="回到「05 核心判断」判断3复习">
-<div class="q">7. 企业微信文档、微盘、会议、邮箱、日程的关系是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 都是独立产品，需要分别安装</button><button class="opt" data-val="B">B. 是第三方应用，需要额外付费</button><button class="opt" data-val="C">C. 只有文档内置，其他需要单独开通</button><button class="opt" data-val="D">D. 都是企微内置功能，互相联动，一个App全覆盖</button></div>
+<div class="task" data-task="q7" data-answer="B" data-ok="对！办理人节点是'只需提交办理结果，不需审批'的环节，财务打款、处理盖章正是典型场景。" data-no="或签/会签/依次都是审批节点。打款盖章是执行不是审批，用办理人节点。" data-src="原文：办理人节点如财务打款、处理盖章" data-review="回到「05 核心判断」判断3复习">
+<div class="q">7. <strong>场景：</strong>合同审批走完后，需要财务实际打款。这个"打款"环节在审批里属于？</div>
+<div class="opts"><button class="opt" data-val="A">A. 或签节点</button><button class="opt" data-val="B">B. 办理人节点（提交办理结果，不需审批）</button><button class="opt" data-val="C">C. 会签节点</button><button class="opt" data-val="D">D. 审批节点</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec8">08 闯关式任务</h2>
-<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对群聊类型的理解很到位。" data-no="注意区分：全员群=10000人，部门群=2000人，内部群=2000人，外部群=500人。" data-src="原文：全员群10000人，部门群2000人，外部群500人" data-review="回到「06 关键概念拆解」概念2复习">
-<div class="q">任务：将群类型与对应的人数上限匹配。</div>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你掌握了审批方式与真实场景的对应关系。" data-no="或签=任一同意（快）、会签=全同意（严）、依次=按层级、办理人=执行不打审批。" data-src="原文审批方式定义" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">任务：把审批方式匹配到最合适的业务场景。</div>
 <div style="margin:8px 0;">
-<div style="margin-bottom:6px;">全员群 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">500人</option><option value="b">2000人</option><option value="c">5000人</option><option value="d">10000人</option></select></div>
-<div style="margin-bottom:6px;">部门群 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">500人</option><option value="b">2000人</option><option value="c">5000人</option><option value="d">10000人</option></select></div>
-<div style="margin-bottom:6px;">普通内部群 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">500人</option><option value="b">2000人</option><option value="c">5000人</option><option value="d">10000人</option></select></div>
-<div style="margin-bottom:6px;">外部群 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">500人</option><option value="b">2000人</option><option value="c">5000人</option><option value="d">10000人</option></select></div>
+<div style="margin-bottom:6px;">200元打车报销（谁在岗谁批） → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">或签</option><option value="b">会签</option><option value="c">依次审批</option><option value="d">办理人节点</option></select></div>
+<div style="margin-bottom:6px;">跨部门采购合同（缺一不可） → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">或签</option><option value="b">会签</option><option value="c">依次审批</option><option value="d">办理人节点</option></select></div>
+<div style="margin-bottom:6px;">员工请婚假（直属领导→总监→HR） → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">或签</option><option value="b">会签</option><option value="c">依次审批</option><option value="d">办理人节点</option></select></div>
+<div style="margin-bottom:6px;">合同审批后财务打款 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">或签</option><option value="b">会签</option><option value="c">依次审批</option><option value="d">办理人节点</option></select></div>
 </div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec9">09 误解与边界</h2>
-<div class="card danger"><h3>误解1："审批就是请假审批"</h3><p><strong>原文真正说了什么：</strong>审批是一个通用流程引擎——请假、报销、采购、用印都可以用，企业可以自定义模板和流程。</p><p><strong>如何避免：</strong>把审批理解成"企业内部的流程审批平台"，不只是请假。</p></div>
-<div class="card danger"><h3>误解2："智能表格=AI表格"</h3><p><strong>原文真正说了什么：</strong>智能表格的"智能"在于结构化数据管理（固定列类型、多视图、关联引用），不是AI自动填数据。不过2026更新确实加入了AI字段功能。</p><p><strong>如何避免：</strong>先理解它的数据库属性，再理解AI增强。</p></div>
-<div class="card danger"><h3>误解3："企业微信的会议就是腾讯会议"</h3><p><strong>原文真正说了什么：</strong>企业微信会议是"联合腾讯会议打造"的，体验一致，但它内嵌在企微里，可以直接邀请同事和客户，不需要单独安装腾讯会议App。</p></div>
+<div class="card danger"><h3>误解1："管理员能撤回任何群消息"</h3><p><strong>为什么容易误解：</strong>"管理员撤回"听起来权力很大。</p><p><strong>原文真正说了什么：</strong>群主/管理员可撤回成员<strong>24小时内</strong>消息，且<strong>不支持撤回红包消息和员工服务消息</strong>。</p><p><strong>原文没有说什么：</strong>没说能撤回24h前的消息，没说能撤回红包。</p><p><strong>如何避免：</strong>记住"24小时+排除红包/服务消息"两个限定。</p></div>
+<div class="card danger"><h3>误解2："企业自主加密=全公司聊天都加密"</h3><p><strong>为什么容易误解：</strong>"加密"听起来是全局开关。</p><p><strong>原文真正说了什么：</strong>仅生效于<strong>内部单聊+15人及以下内部群</strong>。加密消息不支持语音转文字/翻译，且<strong>会话存档看不到</strong>。</p><p><strong>原文没有说什么：</strong>没说外部客户聊天加密，没说大群加密。</p><p><strong>如何避免：</strong>回答客户时主动说明边界，并提示与会话存档的冲突。</p></div>
+<div class="card danger"><h3>误解3："智能表格=更好看的在线表格"</h3><p><strong>为什么容易误解：</strong>名字都叫"表格"。</p><p><strong>原文真正说了什么：</strong>智能表格<strong>每列只能一种固定类型</strong>，是数据库型。在线表格自由填写，是协作版Excel。本质不同。</p><p><strong>如何避免：</strong>给客户演示时先说"这是低代码数据库"，而不是"高级Excel"。</p></div>
+<div class="card danger"><h3>误解4："智能机器人能拉进任何群"</h3><p><strong>为什么容易误解：</strong>机器人听起来通用。</p><p><strong>原文真正说了什么：</strong>目前<strong>仅支持内部群添加，互联群、上下游群、外部群暂不支持</strong>。</p><p><strong>如何避免：</strong>给客户做AI机器人方案时，先确认群里有没有外部人——有就不能用。</p></div>
 
 <h2 id="sec10">10 背景知识缺口</h2>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企微管家如何增强OA能力？</strong>→ 第4章</li><li><strong>会话存档与安全管理的关联</strong>→ 第5章</li><li><strong>API如何与审批/打卡打通？</strong>→ 开发者文档</li><li><strong>智能机器人的工作流和插件能力</strong>→ 可在帮助中心深入学习</li></ul></div>
+<div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>腾讯文档/腾讯会议的独立功能</strong>——只需知道"企微整合了它们"。</li><li><strong>微盘IP访问限制购买门槛</strong>——"专业版+500账号"，记住"有门槛"即可。</li><li><strong>邮箱邮件搬家迁移</strong>——技术细节，需要时查文档。</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企业自主加密与会话存档的冲突如何取舍</strong>→ 第5章</li><li><strong>智能表格AI字段6类怎么落地业务</strong>→ 第5章AI能力</li><li><strong>审批"办理人节点"如何串联合同全流程</strong>→ 第6章销售后端（打款/盖章/工单）</li><li><strong>工作台"千人千面"如何按角色配置</strong>→ 应用管理进阶</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>

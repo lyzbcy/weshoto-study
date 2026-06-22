@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-pill:999px;--radius-card:14px;}
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--font-mono:"Roboto Mono","JetBrains Mono",monospace;--radius-pill:999px;--radius-card:14px;}
 *{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;}
 .layout{display:flex;min-height:100vh;}
 .sidebar{width:280px;background:var(--forest);color:var(--cream);position:fixed;height:100vh;overflow-y:auto;padding:24px 20px;flex-shrink:0;z-index:10;}
@@ -15,7 +15,7 @@
 .progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
 .nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
 .sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
-.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:840px;}
 .main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
 .main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
 .main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
@@ -23,8 +23,19 @@
 .card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
 .src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
 .bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
 .objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
 .objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:8px 10px;text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:20%;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 记住这些硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 .structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
 .structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
 .structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
@@ -46,7 +57,7 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>📋 第5章<br>会话存档与AI能力</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
 <li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
 </ul>
@@ -54,112 +65,119 @@
 </aside>
 <main class="main">
 <h1>会话内容存档与AI能力</h1>
-<p style="color:#666;margin-bottom:24px;">会话内容存档三版本 · 合规机制 · 接口性能 · 哇塞智能AI工作流</p>
+<p style="color:#666;margin-bottom:24px;">基于《企业微信【会话内容存档】功能说明》+《哇塞智能AI工作流》深度拆解</p>
 
 <h2 id="sec1">01 学习目标与阅读路径</h2>
-<div class="objective"><span class="num">1</span><div><strong>区分会话存档的三个版本</strong>——办公版、服务版、企业版各自覆盖什么场景。</div></div>
-<div class="objective"><span class="num">2</span><div><strong>解释会话存档的合规机制</strong>——告知→同意→存档的完整流程。</div></div>
-<div class="objective"><span class="num">3</span><div><strong>理解接口性能限制</strong>——5天保存期、1000条/次、4000次/分钟。</div></div>
-<div class="objective"><span class="num">4</span><div><strong>说出AI工作流的核心分析能力</strong>——话题分析、情感分析、客户洞察。</div></div>
-<div class="objective"><span class="num">5</span><div><strong>理解AI工作流的技术栈</strong>——GLM-4-PLUS/FlashX/AIR各负责什么环节。</div></div>
+<p style="margin-bottom:16px;">本章讲企微最硬核的合规与智能化能力：会话存档（聊天留痕）+ 哇塞AI工作流（聊天数据被AI消费）。学完你应该能做到：</p>
+<div class="objective"><span class="num">1</span><div><strong>背出会话存档三版本的区别</strong>——办公版（仅内部）、服务版（+外部）、企业版（+VOIP音频），金融可见3个、其余2个。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>记住会话存档硬限制</strong>——企微侧只存5天、一次拉取1000条、4000次/分钟、暂不支持版本间升级。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>解释密钥模式vs专区模式</strong>——模型不同（GLM vs 混元）、专区无法识别撤回，知道为什么有两套（合规）。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>区分T+1和实时分析</strong>——话题/情感/质检是T+1批量，子意图/信息提取是实时。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>记住13类意图易错点</strong>——"邀约排程必须精确到日期""索要价格单不算发送资料"。</div></div>
+<p style="margin-top:16px;color:#666;">阅读路径：先补合规存档/大模型调用链背景 → 理解"存档是数据源，AI是放大器" → 三版本对比 → 密钥vs专区 → AI触发时机 → 闯关场景题 → 复盘。</p>
 
 <h2 id="sec2">02 零基础背景包</h2>
-<div class="card"><h3>背景补充 1：合规存档</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">金融、政府等行业有法律法规要求记录员工与客户的沟通内容。企业微信的"会话内容存档"就是为此设计——通过API获取聊天记录，企业自行存储和分析。</p></div>
-<div class="card"><h3>背景补充 2：大模型调用链</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">AI工作流不是用一个模型解决所有问题，而是分步调用不同模型：GLM-4-FlashX（快速分类）→GLM-4-AIR（广告过滤）→GLM-4-PLUS（深度分析）→Embedding（相似度计算）。每步用最适合的模型控制成本和质量。</p></div>
-<div class="card"><h3>背景补充 3：T+1分析</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">T+1 = 今天分析昨天的数据。不是实时分析（实时成本太高），而是隔天批量处理。企微AI工作流的话题分析、情感分析都是T+1模式。</p></div>
+<div class="card"><h3>背景补充 1：合规存档</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">金融、政府等监管行业有硬性要求：员工与客户沟通必须留痕备查。传统是录电话、存邮件。但微信聊天记录留不下来（腾讯不存）。会话存档就是解决"微信沟通也要合规留痕"——企业通过API拉取员工聊天自己存储。</p><p class="relevancy">为什么现在需要知道：会话存档是企微进入金融/政府大客户的入场券。理解"合规需求"才能理解为什么宁可麻烦也要存档。</p></div>
+<div class="card"><h3>背景补充 2：大模型调用链</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">大模型（GPT、GLM、混元）不能直接"理解"文字，需要：文本→Embedding（文字转数字向量）→模型计算→输出。Embedding是"把文字变成可计算的数字"，相似内容的向量距离近（余弦相似度高）。这是AI做"话题聚类""语义去重"的基础。</p><p class="relevancy">为什么现在需要知道：哇塞AI工作流"话题聚类用Embedding+余弦相似度0.9阈值"——不懂Embedding就理解不了AI怎么判断"两个话题是同一个"。</p></div>
+<div class="card"><h3>背景补充 3：T+1 vs 实时分析</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">T+1=今天数据明天分析（批量，省算力但滞后）。实时=数据产生当下立刻分析（快但贵）。选哪种取决于业务——事后总结用T+1，销售跟进要实时。</p><p class="relevancy">为什么现在需要知道：哇塞AI里话题/情感/质检用T+1，子意图/信息提取用实时。理解分工才能回答"为什么客户洞察不能立刻出"。</p></div>
+<div class="card"><h3>背景补充 4：数据出境合规</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">中国法律规定某些数据不能传到境外服务器。智谱GLM是国内模型，腾讯混元也是国内的。哇塞AI分"密钥模式"（智谱GLM）和"专区模式"（腾讯混元专区）两套，本质都是满足数据不出特定边界的要求。</p><p class="relevancy">为什么现在需要知道：客户问"为什么AI有两套模型"，答案是合规——不同客户合规边界不同，所以要两种部署模式。</p></div>
 
 <h2 id="sec3">03 原文问题定位</h2>
-<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业如何安全合规地管理员工与客户的沟通内容，并用AI从中提取价值？"</strong></p></div>
+<div class="card judgment"><h3>表面在讲什么？</h3><p>企业微信会话内容存档（三版本、接口、同意机制）+ 哇塞智能AI工作流（话题/情感/客户洞察/质检等分析模块）。</p></div>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业怎么把员工聊天数据变成可管理、可分析、可赋能的资产？"</strong></p><p style="margin-top:8px;">答案分两层：<span class="src">原文：会话存档是"数据源"（合规留痕），哇塞AI是"价值放大器"（数据变洞察）</span>。没有存档就没有AI分析的原料。</p></div>
+<div class="card judgment"><h3>作者为什么要写这篇？</h3><p>存档文档给合规/IT决策者看"合规方案"。AI工作流给运营/销售看"数据价值变现方案"。两者都在说服"聊天数据值得存、值得分析"。</p></div>
+<div class="card judgment"><h3>只记一个问题</h3><p><strong>"会话存档+AI怎么把聊天记录变成企业资产？"</strong>——存档负责合规留痕（5天拉取窗口），AI负责从留痕数据提炼话题/情感/意向/质检洞察。</p></div>
 
 <h2 id="sec4">04 原文结构地图</h2>
-<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（存档获取→合规处理→AI分析→洞察输出）</p>
+<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（数据从产生→存档→分析→应用）</p>
 <div class="structure-map">
-<div class="structure-node cluster"><strong>层1：数据获取（会话存档）</strong></div>
-<div class="structure-node branch">办公版（仅内部）→服务版（内部+外部）→企业版（含VOIP音频）</div>
-<div class="structure-node branch">API拉取→1000条/次→5天保存期→企业自行存储</div>
-<div class="structure-node cluster"><strong>层2：合规机制</strong></div>
-<div class="structure-node branch">员工告知→员工确认</div>
-<div class="structure-node branch">外部联系人→系统消息提示→可选同意/不同意</div>
-<div class="structure-node branch">不同意时→可限制员工提供服务</div>
-<div class="structure-node cluster"><strong>层3：AI分析（哇塞智能AI工作流）</strong></div>
-<div class="structure-node branch">话题分析：广告过滤→话题抽取→话题分组→聚类→热议话题</div>
-<div class="structure-node branch">情感分析：情感分类→情感热词→情感洞察</div>
-<div class="structure-node branch">客户洞察：子意图识别→实时分析→行为预判</div>
-<div class="structure-node cluster"><strong>层4：输出应用</strong></div>
-<div class="structure-node branch">质检规则（超时回复/敏感词）→ 知识库 → 智能问答推荐</div>
+<div class="structure-node cluster"><strong>核心：聊天数据 → 合规存档 → AI分析 → 业务赋能</strong></div>
+<div class="structure-node branch"><strong>层1：数据产生（会话存档）</strong></div>
+<div class="structure-node leaf">三版本（办公/服务/企业）、5天保存窗口、API拉取（1000条/次、4000次/分）、同意机制</div>
+<div class="structure-node branch"><strong>层2：AI分析（哇塞工作流）</strong></div>
+<div class="structure-node leaf">T+1批量：话题洞察、情感洞察、员工质检、汇报总结</div>
+<div class="structure-node leaf">实时：子意图识别、智能信息提取</div>
+<div class="structure-node leaf">条件触发：意向产品、购买异议、智能投诉、日程识别</div>
+<div class="structure-node branch"><strong>层3：业务应用</strong></div>
+<div class="structure-node leaf">合规审计、服务量化、过程管理、智能辅助、客户洞察、话术提取</div>
+<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>节点关系说明：</strong>三层是<strong>因果递进</strong>——没存档（层1）就没数据，没AI分析（层2）数据是死的，没业务应用（层3）分析就没价值。每层依赖前一层。</div>
 </div>
 
 <h2 id="sec5">05 核心判断与依据</h2>
-<div class="card judgment"><h3>判断1：三个版本独立购买，不支持版本间升级</h3><p><strong>原文依据：</strong><span class="src">原文："3个版本可组合或独立购买，但暂不支持版本间升级"</span></p></div>
-<div class="card judgment"><h3>判断2：外部联系人可以不同意存档</h3><p><strong>原文依据：</strong><span class="src">原文："外部联系人不点击'不同意存档'，则进行正常沟通；可设置限制员工提供服务"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>合规不是强制的——客户有选择权。但企业可以设置"不同意就不服务"的门槛。</p></div>
-<div class="card judgment"><h3>判断3：会话记录在企微侧只保存5天</h3><p><strong>原文依据：</strong><span class="src">原文："会话内容在企业微信侧保存5天，企业需在5天内进行获取"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>企业必须自己搭存储系统，5天内没拉取的数据就没了。</p></div>
-<div class="card judgment"><h3>判断4：AI工作流使用多模型分工</h3><p><strong>原文依据：</strong><span class="src">原文：GLM-4-FlashX（意图分类）、GLM-4-AIR（广告过滤）、GLM-4-PLUS（话题抽取/分组）、Embedding（相似度计算）</span></p></div>
-<div class="card judgment"><h3>判断5：话题分析是T+1批处理，不是实时</h3><p><strong>原文依据：</strong><span class="src">原文："T+1分析，将员工与客户的单聊、外部群聊会话以天维度进行切分"</span></p></div>
+<div class="card judgment"><h3>判断1：会话存档三版本覆盖不同合规范围</h3><p><strong>原文依据：</strong><span class="src">原文：办公版（仅内部）、服务版（+内外）、企业版（+VOIP音频）</span></p><table class="cmp-table"><tr><th>版本</th><th>覆盖范围</th><th>典型客户</th></tr><tr><td>办公版</td><td>仅内部员工之间</td><td>只关心内部合规</td></tr><tr><td>服务版</td><td>内部+员工与外部</td><td>要存客户沟通</td></tr><tr><td>企业版</td><td>服务版+VOIP音频</td><td>连语音也要存</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>金融可见3个，其余只见2个（办公版需联系BD）。3版本可组合或独立买，但<strong>暂不支持版本间升级</strong>。30天试用期免费体验3版本。</p></div>
+<div class="card judgment"><h3>判断2：5天保存窗口是拉取期限不是留存期</h3><p><strong>原文依据：</strong><span class="src">原文：企微侧只保存5天，超期无法获取；一次拉取1000条；4000次/分钟</span></p><div class="hardnum"><ul><li>企微侧保存：<b>5天</b>（超期丢失，必须自己拉取）</li><li>单次拉取：<b>1000条</b></li><li>调用频率：<b>4000次/分钟</b></li><li>版本升级：<b>不支持</b>（要升需重买）</li><li>试用期：<b>30天</b>免费体验3版本</li><li>员工企微版本：需 <b>2.8.9+</b></li></ul></div><div class="scene">银行做合规审计：员工昨天的聊天，企业必须在5天内通过API拉取存到自己服务器，否则第6天就没了。这不是"企微帮你存5天"，是"5天内你必须自己捞走"。</div></div>
+<div class="card judgment"><h3>判断3：同意机制决定能不能存</h3><p><strong>原文依据：</strong><span class="src">原文：外部联系人加好友后自动推存档提示；删好友再加会重新推送；2025年9月起后台可选"无需单独同意/需主动同意强提醒"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。外部联系人不主动点"不同意"即视为正常沟通并存档；只有主动点不同意才阻断。</p><p style="margin-top:8px;"><strong>可能的误读：</strong>群聊存档触发与<strong>群主是否存档员工</strong>有关。群主是存档员工→进群即推；群主非存档员工→群里有人发消息后才触发。</p></div>
+<div class="card judgment"><h3>判断4：密钥模式vs专区模式是合规分流</h3><p><strong>原文依据：</strong><span class="src">原文（AI工作流）：密钥模式用智谱GLM+智谱Embedding；专区模式用混元T1/Hunyuan+智谱Embedding</span></p><table class="cmp-table"><tr><th>维度</th><th>密钥模式</th><th>专区模式</th></tr><tr><td>大模型</td><td>智谱GLM-4系列</td><td>腾讯混元T1/Hunyuan</td></tr><tr><td>撤回识别</td><td>能识别（过滤）</td><td>无法识别（仍分析）</td></tr><tr><td>数据边界</td><td>客户自持密钥</td><td>腾讯专区</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>专区模式<strong>无法识别撤回</strong>是关键差异——已撤回的消息专区仍会分析，密钥模式会过滤。给客户做方案要说明这个取舍。</p></div>
+<div class="card judgment"><h3>判断5：AI分析按"是否实时"分三类触发</h3><p><strong>原文依据：</strong><span class="src">原文（AI工作流）：话题/情感/质检/汇报=T+1；子意图/信息提取=实时；意向/异议/投诉/日程=条件触发</span></p><table class="cmp-table"><tr><th>触发</th><th>模块</th><th>为什么</th></tr><tr><td>T+1批量</td><td>话题、情感、员工质检、汇报</td><td>要全天数据才能总结</td></tr><tr><td>实时</td><td>子意图、信息提取</td><td>销售跟进立刻用</td></tr><tr><td>条件触发</td><td>意向、异议、投诉、日程</td><td>按需调用省成本</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>客户问"为什么客户洞察第二天才出"——话题分析是T+1批量。理解触发逻辑才能管理客户预期。</p></div>
 
 <h2 id="sec6">06 关键概念拆解</h2>
-<div class="card"><h3>概念1：会话存档三版本</h3><p><strong>人话解释：</strong>办公版=只管内部（员工之间）；服务版=管内部+外部（员工和客户）；企业版=服务版+电话录音。像监控摄像头的三个等级：只监控办公室→也监控前台→连电话也录。</p></div>
-<div class="card"><h3>概念2：VOIP音频存档</h3><p><strong>人话解释：</strong>VOIP = Voice over IP，就是网络电话。企微里的语音/视频通话属于VOIP。只有企业版能存档这些通话内容。</p></div>
-<div class="card"><h3>概念3：话题分析流水线</h3><p><strong>人话解释：</strong>5步走：①过滤广告（GLM-4-AIR）→②抽取话题（GLM-4-PLUS）→③分组（GLM-4-PLUS）→④聚类（Embedding相似度）→⑤二次分组。输出：哪些话题被讨论最多。</p></div>
-<div class="card"><h3>概念4：智能质检</h3><p><strong>人话解释：</strong>AI自动检查每条聊天——超时多久没回？有没有说敏感词？服务态度好不好？代替人工抽检，100%覆盖。</p></div>
-<div class="card"><h3>概念5：超时回复规则</h3><p><strong>人话解释：</strong>管理员设定"X分钟未回复=超时"，超时后触发提醒或上报。企微管家的实操考核要求配置这个规则。</p></div>
-<div class="card"><h3>概念6：敏感词规则</h3><p><strong>人话解释：</strong>设定一组禁止使用的词语（如"保证收益""最低价"）。员工发送包含敏感词的消息时，系统会拦截或告警。</p></div>
+<div class="card"><h3>概念1：会话存档三版本</h3><p><strong>原文术语：</strong>办公版 / 服务版 / 企业版</p><p><strong>人话解释：</strong>差别在"存什么范围的聊天"。办公版只存内部；服务版加员工与外部客户；企业版再加VOIP语音。金融能见3个，其他只见2个（办公版要联系BD）。</p><div class="scene">银行合规要求"所有客户沟通留痕"→买服务版或企业版。只关心内部合规的小公司→办公版够用。买服务版后想升企业版不行（不支持升级），要重买。</div><p><strong>与其他概念的关系：</strong>三版本决定数据源范围，范围决定后续AI分析能覆盖什么。</p><p><span class="src">原文：办公版（仅内部）、服务版（+内外）、企业版（+VOIP）；暂不支持版本间升级</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>"企业版=给大企业"是错的，版本区别在存档范围不在企业规模。</p></div>
+<div class="card"><h3>概念2：5天保存窗口</h3><p><strong>原文术语：</strong>会话内容在企微侧只保存5天</p><p><strong>人话解释：</strong>企微不是永久帮你存聊天，只在企微服务器存5天。企业必须5天内通过API拉取到自己服务器，否则第6天数据没了。这是"拉取期限"不是"留存期"。</p><div class="scene">某公司周一发生关键客户对话，IT必须周二前跑API拉取。如果IT周三才想起来，可能已过期拉不到。存档客户的IT必须配稳定的定时拉取任务。</div><p><span class="src">原文：企微侧只保存5天，超期无法获取</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>"企微帮你存5天"是错的——是"5天内你必须自己捞走"，不是"企微托管5天"。</p></div>
+<div class="card"><h3>概念3：密钥模式vs专区模式</h3><p><strong>原文术语：</strong>密钥模式（智谱GLM）/ 专区模式（腾讯混元专区）</p><p><strong>人话解释：</strong>哇塞AI的两套部署模式。密钥模式：客户用自己智谱API密钥，数据走智谱。专区模式：数据在腾讯专区用混元。两套并存是为满足不同客户合规边界。</p><p><strong>关键差异：</strong>专区模式<strong>无法识别已撤回</strong>（仍分析），密钥模式能过滤。选型时这是硬取舍。</p><p><span class="src">原文：密钥用GLM；专区用混元；专区无法识别撤回</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>不是"密钥更好"，是合规边界不同——有些客户数据只能留腾讯专区，就必须用专区（接受撤回识别不了）。</p></div>
+<div class="card"><h3>概念4：T+1分析</h3><p><strong>原文术语：</strong>T+1（今天数据明天分析）</p><p><strong>人话解释：</strong>批量分析模式。话题、情感、质检、汇报都用T+1——等一天数据齐了，第二天统一跑AI。省算力但滞后。</p><p><strong>与其他概念的关系：</strong>T+1对应"事后总结"；实时对应"销售跟进"；条件触发对应"按需调用"。</p><p><span class="src">原文：话题/情感/质检/汇报按T+1</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>T+1不是"慢"，是"批量更准"——话题聚类要看全天对话才能归纳，单条判断不了。</p></div>
+<div class="card"><h3>概念5：13类子意图</h3><p><strong>原文术语：</strong>子意图识别（13类）</p><p><strong>人话解释：</strong>AI把客户每句话分类到13个意图之一：询问需求/预算/介绍价格/发资料/线下交流/在线会议/演示/试用/产品信息/邀约排程/引导加微/原文提取/会话小结。</p><div class="hardnum"><ul><li><b>邀约排程</b>必须精确到具体日期，"过两天""十一之后"不算</li><li>客户索要<b>价格单</b>不算"发送产品资料"，算"介绍价格"</li><li><b>引导加微</b>与客户是否同意无关，只要确认手机号/微信能联系到</li></ul></div><p><span class="src">原文（AI工作流）：13类子意图定义</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>"过两天聊"不算邀约排程——业务方常抱怨"为什么没识别出排程"，答案是没精确到日期。</p></div>
+<div class="card"><h3>概念6：情感判断的中性范围</h3><p><strong>原文术语：</strong>情感（正向/负向/中性）</p><p><strong>人话解释：</strong>AI判断客户情感。"感谢""辛苦了"=中性（不是正向）；一般反问质疑=中性（不是负向）；只有强烈赞扬才正向，强烈愤怒才负向。中性范围很大。</p><p><span class="src">原文：感谢/辛苦=中性；一般质疑=中性；只有强烈赞扬/愤怒才算正/负</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>中性≠没情绪。客户说"谢谢"是中性不是正向，很多人会误判。</p></div>
 
 <h2 id="sec7">07 苏格拉底式阅读关卡</h2>
-<div class="task" data-task="q1" data-answer="B" data-ok="正确！三个版本是办公版（内部）、服务版（内部+外部）、企业版（+VOIP）。" data-no="看背景包里对三个版本的描述。" data-src="原文：办公版/服务版/企业版" data-review="回到「06 关键概念拆解」概念1复习">
-<div class="q">1. 会话存档中"服务版"覆盖的范围是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 仅内部员工沟通</button><button class="opt" data-val="B">B. 内部员工+外部联系人的沟通</button><button class="opt" data-val="C">C. 所有沟通+VOIP音频</button><button class="opt" data-val="D">D. 仅外部沟通</button></div>
+<div class="task" data-task="q1" data-answer="B" data-ok="对！服务版覆盖内部+员工与外部客户，银行要存客户沟通买服务版。" data-no="办公版只存内部；企业版还加VOIP但银行不一定需要语音。" data-src="原文：服务版（内部+员工与外部）" data-review="回到「06 关键概念拆解」概念1复习">
+<div class="q">1. <strong>场景：</strong>银行要做合规审计，需留存所有员工与客户聊天记录。该买哪个版本？</div>
+<div class="opts"><button class="opt" data-val="A">A. 办公版（仅内部）</button><button class="opt" data-val="B">B. 服务版（内部+内外客户）</button><button class="opt" data-val="C">C. 不用买，企微免费存</button><button class="opt" data-val="D">D. 企业版（必须含VOIP）</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q2" data-answer="C" data-ok="正确！记录保存5天，企业需在5天内通过API拉取。" data-no="5天是硬限制，超过就获取不到了。" data-src="原文：会话内容在企业微信侧保存5天" data-review="回到「05 核心判断」判断3复习">
-<div class="q">2. 会话内容在企业微信服务器上保存多久？</div>
-<div class="opts"><button class="opt" data-val="A">A. 永久保存</button><button class="opt" data-val="B">B. 30天</button><button class="opt" data-val="C">C. 5天</button><button class="opt" data-val="D">D. 1天</button></div>
+<div class="task" data-task="q2" data-answer="C" data-ok="对！企微侧只存5天，超期无法获取，企业必须5天内自己拉取存储。" data-no="5天是拉取窗口不是留存期；不是永久。" data-src="原文：企微侧只保存5天，超期无法获取" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">2. <strong>场景：</strong>客户问"会话存档聊天记录企微帮我们存多久"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 永久保存</button><button class="opt" data-val="B">B. 30天</button><button class="opt" data-val="C">C. 企微侧只存5天，企业必须5天内自己拉取，否则丢失</button><button class="opt" data-val="D">D. 1年</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q3" data-answer="B" data-ok="正确！外部联系人可以同意或不同意存档，不同意时企业可限制服务。" data-no="客户有选择权，合规不是强制的。" data-src="原文：外部联系人可以进入说明页面选择不同意存档" data-review="回到「05 核心判断」判断2复习">
-<div class="q">3. 外部联系人（客户微信）对于会话存档有什么权利？</div>
-<div class="opts"><button class="opt" data-val="A">A. 没有权利，企业自动存档</button><button class="opt" data-val="B">B. 可以选择"不同意存档"，企业可设置不同意则限制服务</button><button class="opt" data-val="C">C. 可以查看所有存档内容</button><button class="opt" data-val="D">D. 可以删除已存档的记录</button></div>
+<div class="task" data-task="q3" data-answer="A" data-ok="对！专区模式用混元，但无法识别已撤回（仍分析），这是关键取舍。" data-no="密钥模式才能识别撤回；专区识别不了。" data-src="原文：专区模式无法识别撤回" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">3. <strong>场景：</strong>客户数据必须留腾讯专区，且很在意"已撤回消息不应被分析"。关于专区模式？</div>
+<div class="opts"><button class="opt" data-val="A">A. 专区用混元但无法识别撤回（已撤回仍分析），需接受取舍</button><button class="opt" data-val="B">B. 专区能识别撤回</button><button class="opt" data-val="C">C. 专区用智谱GLM</button><button class="opt" data-val="D">D. 专区不能做AI</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q4" data-answer="C" data-ok="正确！话题分析是T+1批处理模式，分析前一天的数据。" data-no="实时分析成本太高，话题分析是隔天批量处理。" data-src="原文：T+1分析" data-review="回到「05 核心判断」判断5复习">
-<div class="q">4. 哇塞智能AI工作流的话题分析采用什么处理模式？</div>
-<div class="opts"><button class="opt" data-val="A">A. 实时分析每条消息</button><button class="opt" data-val="B">B. 每周批量分析一次</button><button class="opt" data-val="C">C. T+1隔天批量分析</button><button class="opt" data-val="D">D. 手动触发分析</button></div>
+<div class="task" data-task="q4" data-answer="B" data-ok="对！邀约排程必须精确到具体日期，'过两天''十一之后'不算。" data-no="时间必须精确到具体日期，模糊时间不算。" data-src="原文（AI工作流）：邀约排程须精确到具体日期" data-review="回到「06 关键概念拆解」概念5复习">
+<div class="q">4. <strong>场景：</strong>客户对销售说"我们过两天聊聊"。AI会识别为"邀约排程"吗？</div>
+<div class="opts"><button class="opt" data-val="A">A. 会，因为提到见面</button><button class="opt" data-val="B">B. 不会，邀约排程必须精确到具体日期，"过两天"不算</button><button class="opt" data-val="C">C. 会，因为是邀约</button><button class="opt" data-val="D">D. 看AI心情</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q5" data-answer="A,B" data-multi="true" data-ok="正确！超时回复规则和敏感词规则是实操考核要求配置的两个核心质检规则。" data-no="朋友圈审核和打卡记录不属于质检范畴。" data-src="实操考核：配置超时回复规则和敏感词规则" data-review="回到「06 关键概念拆解」概念5、6复习">
-<div class="q">5. 企微管家实操考核要求配置哪两个质检规则？（多选）</div>
-<div class="opts"><button class="opt" data-val="A">A. 超时回复规则</button><button class="opt" data-val="B">B. 敏感词规则</button><button class="opt" data-val="C">C. 朋友圈审核规则</button><button class="opt" data-val="D">D. 打卡迟到规则</button></div>
+<div class="task" data-task="q5" data-answer="A,B,D" data-multi="true" data-ok="对！话题/情感/质检都是T+1批量，子意图是实时。" data-no="子意图是实时的，不是T+1。" data-src="原文（AI工作流）：T+1=话题/情感/质检；实时=子意图" data-review="回到「05 核心判断」判断5复习">
+<div class="q">5. <strong>场景：</strong>以下哪些AI分析是T+1批量？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 话题洞察</button><button class="opt" data-val="B">B. 情感洞察</button><button class="opt" data-val="C">C. 子意图识别</button><button class="opt" data-val="D">D. 员工质检</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q6" data-answer="B" data-ok="正确！办公版/服务版/企业版独立购买，不支持版本间升级。" data-no="版本之间不能升级，只能独立或组合购买。" data-src="原文：暂不支持版本间升级" data-review="回到「05 核心判断」判断1复习">
-<div class="q">6. 企业已购买了服务版会话存档，现在想升级到企业版，怎么操作？</div>
-<div class="opts"><button class="opt" data-val="A">A. 直接补差价升级</button><button class="opt" data-val="B">B. 不能升级，需独立购买企业版</button><button class="opt" data-val="C">C. 免费自动升级</button><button class="opt" data-val="D">D. 联系客服申请升级</button></div>
+<div class="task" data-task="q6" data-answer="B" data-ok="对！'感谢''辛苦了'是中性不是正向，只有强烈赞扬才算正向。中性范围很大。" data-no="感谢是中性不是正向，这是常见误解。" data-src="原文：感谢/辛苦=中性；只有强烈赞扬才算正向" data-review="回到「06 关键概念拆解」概念6复习">
+<div class="q">6. <strong>场景：</strong>客户说"谢谢你，辛苦了"。AI情感判断归为？</div>
+<div class="opts"><button class="opt" data-val="A">A. 正向</button><button class="opt" data-val="B">B. 中性（感谢/辛苦是中性不是正向）</button><button class="opt" data-val="C">C. 负向</button><button class="opt" data-val="D">D. 无法判断</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q7" data-answer="D" data-ok="正确！AI工作流使用GLM-4-FlashX/AIR/PLUS和Embedding多模型分工。" data-no="不是用一个大模型解决所有问题，而是每步用最适合的。" data-src="原文：GLM-4-FlashX/GLM-4-AIR/GLM-4-PLUS/Embedding" data-review="回到「05 核心判断」判断4复习">
-<div class="q">7. 哇塞智能AI工作流的技术架构特点是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 使用单一GPT模型处理所有任务</button><button class="opt" data-val="B">B. 完全依赖人工标注</button><button class="opt" data-val="C">C. 只用规则引擎不用大模型</button><button class="opt" data-val="D">D. 多模型分工（FlashX/AIR/PLUS/Embedding各负责不同环节）</button></div>
+<div class="task" data-task="q7" data-answer="C" data-ok="对！索要价格单算'介绍价格'不算'发送产品资料'，这是13类意图易错点。" data-no="价格单属于价格范畴不是资料范畴。" data-src="原文（AI工作流）：索要价格单不算发送产品资料" data-review="回到「06 关键概念拆解」概念5复习">
+<div class="q">7. <strong>场景：</strong>客户说"把报价单发我"。AI识别为哪个子意图？</div>
+<div class="opts"><button class="opt" data-val="A">A. 发送产品资料</button><button class="opt" data-val="B">B. 询问需求痛点</button><button class="opt" data-val="C">C. 介绍价格（索要价格单算价格不算资料）</button><button class="opt" data-val="D">D. 产品演示</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec8">08 闯关式任务</h2>
-<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对AI工作流的多模型架构理解很清楚。" data-no="每个模型负责不同的环节：FlashX快速分类，AIR过滤广告，PLUS深度分析，Embedding算相似度。" data-src="原文：各步骤模型调用" data-review="回到「02 零基础背景包」背景补充2复习">
-<div class="q">任务：将每个AI模型匹配到它负责的环节。</div>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你掌握了版本、模式、触发时机的对应关系。" data-no="办公=仅内部；服务=+外部；企业=+VOIP。密钥=GLM能识撤回；专区=混元不能。" data-src="原文会话存档+AI工作流" data-review="回到「05 核心判断」复习">
+<div class="q">任务：把会话存档版本和AI模式匹配到正确特征。</div>
 <div style="margin:8px 0;">
-<div style="margin-bottom:6px;">GLM-4-FlashX → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
-<div style="margin-bottom:6px;">GLM-4-AIR → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
-<div style="margin-bottom:6px;">GLM-4-PLUS → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
-<div style="margin-bottom:6px;">Embedding → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">意图大类识别（快速分类）</option><option value="b">广告过滤</option><option value="c">话题抽取与分组</option><option value="d">相似度计算聚类</option></select></div>
+<div style="margin-bottom:6px;">办公版 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">仅内部员工之间</option><option value="b">内部+外部客户</option><option value="c">+VOIP音频</option></select></div>
+<div style="margin-bottom:6px;">服务版 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">仅内部员工之间</option><option value="b">内部+外部客户</option><option value="c">+VOIP音频</option></select></div>
+<div style="margin-bottom:6px;">企业版 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">仅内部员工之间</option><option value="b">内部+外部客户</option><option value="c">+VOIP音频</option></select></div>
+<div style="margin-bottom:6px;">密钥模式（AI） → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">混元无法识别撤回</option><option value="b">不能做AI</option><option value="c">数据留腾讯专区</option><option value="d">智谱GLM能识别撤回</option></select></div>
+<div style="margin-bottom:6px;">专区模式（AI） → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">混元无法识别撤回</option><option value="b">智谱GLM能识别撤回</option><option value="c">不能做AI</option><option value="d">永久免费</option></select></div>
 </div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec9">09 误解与边界</h2>
-<div class="card danger"><h3>误解1："会话存档=偷偷监控聊天"</h3><p><strong>原文真正说了什么：</strong>存档是告知制的——员工会看到提示，外部联系人也会收到系统消息。不是偷偷监控。</p></div>
-<div class="card danger"><h3>误解2："AI工作流就是ChatGPT聊天"</h3><p><strong>原文真正说了什么：</strong>AI工作流是数据分析流水线——话题分析、情感分析、客户洞察。不是对话式AI，而是后台批量处理。</p></div>
-<div class="card danger"><h3>误解3："企业版包含服务版功能"</h3><p><strong>原文真正说了什么：</strong>"在服务版基础上，增加VOIP"——功能上是包含的，但购买时不支持版本间升级，只能独立或组合购买。</p></div>
+<div class="card danger"><h3>误解1："会话存档=企微永久帮你存聊天"</h3><p><strong>为什么容易误解：</strong>"存档"听起来像永久保存。</p><p><strong>原文真正说了什么：</strong>企微侧只存<strong>5天</strong>，企业必须5天内通过API拉取到自己服务器，否则丢失。这是"拉取窗口"不是"留存期"。</p><p><strong>如何避免：</strong>给客户讲时说"5天拉取窗口"，不要说"帮你存5天"。</p></div>
+<div class="card danger"><h3>误解2："专区模式=更好的AI"</h3><p><strong>为什么容易误解：</strong>以为专区是高级版。</p><p><strong>原文真正说了什么：</strong>专区模式用混元，但<strong>无法识别撤回</strong>。密钥模式用GLM且能过滤撤回。两者是合规分流不是优劣。</p><p><strong>如何避免：</strong>根据客户合规边界选，不是按"哪个更高级"。</p></div>
+<div class="card danger"><h3>误解3："客户说谢谢=正向情感"</h3><p><strong>为什么容易误解：</strong>直觉上"谢谢"是正面。</p><p><strong>原文真正说了什么：</strong>"感谢""辛苦了"是<strong>中性</strong>，不是正向。只有强烈赞扬才算正向，强烈愤怒才算负向。</p><p><strong>如何避免：</strong>情感判断很严格，别用人的直觉套AI的判断。</p></div>
+<div class="card danger"><h3>误解4："投诉和抱怨一样"</h3><p><strong>为什么容易误解：</strong>都是负面表达。</p><p><strong>原文真正说了什么：</strong>智能投诉要求<strong>强烈</strong>负面情绪，AI会区分强烈程度。一般抱怨不算投诉。</p><p><strong>如何避免：</strong>给客户看投诉数据时说明"只统计强烈投诉，一般抱怨在异议点里"。</p></div>
+<div class="card danger"><h3>误解5："买了服务版以后能升级企业版"</h3><p><strong>为什么容易误解：</strong>SaaS通常支持升级。</p><p><strong>原文真正说了什么：</strong>暂<strong>不支持版本间升级</strong>，买服务版后想升企业版要重买。</p><p><strong>如何避免：</strong>给客户报价时一开始就确认版本需求，别先买低版再想升。</p></div>
 
 <h2 id="sec10">10 背景知识缺口</h2>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档API的具体调用方式</strong>→ 开发者文档</li><li><strong>AI知识库的调优策略</strong>→ "AI知识库概述与调优策略"课程</li><li><strong>智能质检的评分规则</strong>→ 实操练习</li></ul></div>
+<div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>Embedding余弦相似度的数学原理</strong>——记住"0.9阈值=很相似"即可。</li><li><strong>VOIP音频留存的技术实现</strong>——属于开发者集成细节。</li><li><strong>声纹验证安全细节</strong>——"每次操作前声纹验证、30分钟有效"记住结论即可。</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档与企业自主加密的冲突</strong>→ 第2章（加密消息存档看不到）</li><li><strong>智能质检与人工质检的ROI对比</strong>→ 运营进阶</li><li><strong>13类意图如何配置自定义</strong>→ AI工作流进阶文档</li><li><strong>存档数据如何与CRM打通</strong>→ 第4章+本章结合</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
