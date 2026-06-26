@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第7章：考试通关实战手册 — 微盛管培生学习地图</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--correct:#2F7D46;--wrong:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--font-mono:"Roboto Mono","JetBrains Mono",monospace;--radius-pill:999px;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;}
+.layout{display:flex;min-height:100vh;}
+.sidebar{width:280px;background:var(--forest);color:var(--cream);position:fixed;height:100vh;overflow-y:auto;padding:24px 20px;flex-shrink:0;z-index:10;}
+.sidebar h2{font-family:var(--font-head);font-size:18px;margin-bottom:16px;color:var(--marker);}
+.progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
+.nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
+.sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:860px;}
+.main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
+.main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
+.main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
+.main h4{font-family:var(--font-head);font-size:15px;margin:14px 0 6px;color:var(--forest);}
+.card{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}.card.script{border-left:4px solid var(--accent,#6366f1);background:#EEF2FF;}
+.src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:8px 10px;text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:22%;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 必背硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
+.script-box{background:#EEF2FF;border:2px solid #6366f1;border-radius:10px;padding:16px 20px;margin:12px 0;}
+.script-box::before{content:"🗣️ 答辩话术";display:block;font-weight:700;color:#4338CA;font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.qa-box{background:#FFF3F0;border-left:4px solid var(--brick);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.qa-box .q{font-weight:700;color:var(--brick);margin-bottom:4px;}
+.qa-box .a{color:var(--ink);}
+.cheat{background:#E8F5E9;border:2px solid var(--correct);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.cheat::before{content:"⚡ 速记口诀";display:block;font-weight:700;color:var(--correct);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
+.task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
+.opt:hover{border-color:var(--sky);}.opt.selected{border-color:var(--forest);background:#E8F0E5;}.opt.selected::before{content:"✓ ";color:var(--correct);}
+.check{background:var(--forest);color:var(--cream);border:none;padding:8px 24px;border-radius:var(--radius-pill);cursor:pointer;font-size:14px;font-family:var(--font-body);}
+.check:hover{opacity:.85;}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:8px;font-size:14px;background:#F0EBD8;min-height:44px;overflow:hidden;}.feedback::after{content:'';display:block;clear:both;}.feedback.ok{background:#D4EDD9;color:var(--correct);}.feedback.no{background:#F8D7D5;color:var(--wrong);}.feedback .src{display:block;margin-top:6px;}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}
+.wrong-box{background:#FFF3F0;border-radius:8px;padding:12px;margin-top:16px;}.wrong-box h4{color:var(--wrong);margin-bottom:8px;}.wrong-box ul{list-style:none;padding-left:0;}.wrong-box li{padding:4px 0;font-size:14px;}
+.report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
+.report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
+.footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
+@media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+<h2>🎯 第7章<br>考试通关实战手册</h2>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
+<ul class="nav-list">
+<li><a href="#sec1">01 考试形式拆解</a></li><li><a href="#sec2">02 8模块演示话术</a></li><li><a href="#sec3">03 考官追问应对</a></li><li><a href="#sec4">04 实操考核口述</a></li><li><a href="#sec5">05 答辩周旋技巧</a></li><li><a href="#sec6">06 考前必背速记</a></li><li><a href="#sec7">07 通关模拟关卡</a></li><li><a href="#sec8">08 考前一晚清单</a></li>
+</ul>
+<div class="sidebar-footer">微盛管培生学习地图 · 第7章</div>
+</aside>
+<main class="main">
+<h1>🎯 考试通关实战手册</h1>
+<p style="color:#666;margin-bottom:24px;">这不是知识学习，是<strong>考试武器库</strong>——只讲"考官怎么问、你怎么答、怎么赢"。</p>
+
+<h2 id="sec1">01 考试形式拆解</h2>
+
+<div class="card judgment">
+<h3>考试到底怎么考？</h3>
+<p>根据言秋老师（两年前考过）的经验：<strong>"根据客户业务场景介绍功能，然后考官出题答辩"</strong>。</p>
+<p style="margin-top:8px;">这不是闭卷笔试，是<strong>现场答辩通关</strong>。考官扮演客户或直接出题，你要现场介绍功能+回答追问。</p>
+</div>
+
+<div class="card fact">
+<h3>考试三环节（推测）</h3>
+<table class="cmp-table">
+<tr><th>环节</th><th>形式</th><th>你要做什么</th></tr>
+<tr><td>① 功能介绍</td><td>考官给客户场景，你现场演示/介绍企微管家怎么解决</td><td>像给客户做产品演示，突出管家优势</td></tr>
+<tr><td>② 追问答辩</td><td>考官就你介绍的功能追问差异、原理、边界</td><td>准确回答，不慌不乱</td></tr>
+<tr><td>③ 实操/画图</td><td>可能让你口述配置步骤或画CRM流程图</td><td>能说出关键步骤</td></tr>
+</table>
+</div>
+
+<div class="cheat">
+<p><strong>核心心法：你不是在"答题"，你是在"做一场产品演示+客户答疑"。</strong>考官想看到的是：你能不能像客户成功/销售一样，把产品讲清楚、把客户问题接住。</p>
+</div>
+
+<h2 id="sec2">02 8模块演示话术（背下来直接用）</h2>
+<p>考官大概率从8个功能模块里挑场景让你介绍。下面每个模块给你一套<strong>可直接背诵的演示话术</strong>——客户场景+功能介绍+管家优势，三段式。</p>
+
+<h3>模块1：对外联系（联系我/加入群聊）</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"某零售门店想让到店客户扫码加导购微信，怎么做？"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用企业微信的「联系我」功能。创建一个多人二维码，最多支持100名成员，客户扫码后自动分配给导购。如果想要更精细的运营——比如按排班分配、设客户上限自动转接、区分新老客、分时段欢迎语——那就用企微管家的「活码」，它是联系我的7维超级升级版。</p>
+<p style="margin-top:8px;"><strong>管家优势点：</strong>活码多了多人路由+分时段+时刻码（新老客分流）+自动打标签+多维度数据统计+备用员工容错。原生联系我都没有这些。</p>
+</div>
+
+<h3>模块2：内部OA（审批/打卡）</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"公司报销流程怎么配？"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用企业微信审批。关键是选对审批方式：日常小额报销用<strong>或签</strong>（任一审批人同意即过，谁在岗谁批，快）；跨部门采购用<strong>会签</strong>（所有审批人都同意才过，缺一不可）；请假/合同用<strong>依次审批</strong>（直属领导→总监→HR，讲层级）。合同审批完要财务打款，用<strong>办理人节点</strong>——只需提交办理结果不需审批。</p>
+<p style="margin-top:8px;"><strong>易被追问：</strong>"办理人节点和审批节点有什么区别？"→ 办理人是执行不打审批，审批节点要同意才过。</p>
+</div>
+
+<h3>模块3：管理和配置（通讯录/权限）</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"子公司A的员工不应该看到子公司B的通讯录，怎么隔离？"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用通讯录权限三档。第一档「隐藏部门/成员」把B彻底藏起来；第二档「限制查看外部门」让A只能看自己部门；第三档「限制查看所有人」最严格。三档都支持白名单例外。这是RBAC（基于角色的权限控制）的落地——权限跟着角色走不跟着人走。</p>
+</div>
+
+<h3>模块4：活码&任务&营销工具</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"连锁餐饮50家门店，希望客户扫码后按定位进最近的门店群，新客老客差异化处理。"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用企微管家的<strong>区域群活码+时刻码</strong>组合。区域群活码按GPS定位自动分配到最近门店群（原生加入群聊做不到）；时刻码区分新老客——新客直接进群，老客跳转到福利页做复购。如果群满了，群活码还能自动建新群（顺序入群）或让客户选不同群（分类入群），还有备用员工承接防止流失。</p>
+<p style="margin-top:8px;"><strong>必背7维差异：</strong>活码vs联系我=多人路由/时刻码新老客/分时段欢迎语/自动打标签/多维统计/自定义样式/备用员工。这7维是考试必考。</p>
+</div>
+
+<h3>模块5：CRM</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"画出你们的CRM从获客到成交的流程。"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>CRM3.0的核心是一条漏斗：<strong>线索→联系人→企业→商机→订单</strong>。线索是可能买的人（留过资）；联系人是找到具体对接人；企业是了解客户公司评估购买力；商机是有明确成交机会；订单是签约了。每一步都在筛选，越往后人越少价值越高。CRM管的是这条漏斗的转化率，不只是通讯录。</p>
+<p style="margin-top:8px;"><strong>易被追问：</strong>"CRM和通讯录什么区别？"→ CRM管销售过程（漏斗转化），通讯录只是其中"联系人"一环。</p>
+</div>
+
+<h3>模块6：会话存档</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"银行要做合规审计，需要留存所有员工和客户的聊天记录。"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用会话存档。<strong>服务版</strong>覆盖内部+员工与外部客户沟通，银行买这个。注意三个硬限制：企微侧只存5天（企业必须5天内自己拉取存储，否则丢失）；一次拉取上限1000条；调用频率4000次/分钟。版本间不支持升级，买服务版后想升企业版要重买。</p>
+<p style="margin-top:8px;"><strong>管家增强：</strong>企微管家在存档基础上做超时回复规则（X分钟未回复触发提醒）和敏感词规则（辱骂/飞单/竞品拦截告警），还能搭智能质检任务，AI全覆盖检查服务质量。</p>
+</div>
+
+<h3>模块7：AI功能</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"你们的AI能做什么？"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>企微管家AI聚焦两个企业场景：一是<strong>智能质检</strong>——AI自动检查所有客服聊天，发现超时未回复、敏感词、服务态度差，代替人工抽检，100%全覆盖；二是<strong>知识库+智能问答</strong>——把产品文档上传知识库，员工跟客户聊天时侧边栏根据客户问题自动推荐话术，新人不用翻手册也能专业回复。</p>
+<p style="margin-top:8px;"><strong>易被追问：</strong>"和ChatGPT有什么区别？"→ 不是通用聊天AI，是聚焦"检查服务质量"和"辅助员工回答"两个企业场景的专用AI。</p>
+</div>
+
+<h3>模块8：素材&客户管理&数据统计</h3>
+<div class="script-box">
+<p><strong>场景：</strong>"怎么把客户的反馈自动打标签？"</p>
+<p style="margin-top:8px;"><strong>话术：</strong>用客户收集表。创建一个收集表（比如"满意度调查"），客户填写后，内容自动同步到客户标签。这样后续可以按标签精准群发——比如给"不满意"的客户发优惠券挽回，给"高意向"的客户发新品推荐。</p>
+</div>
+
+<h2 id="sec3">03 考官追问应对大全</h2>
+<p>考官一定追问。下面是<strong>最高频的追问+标准回答</strong>，背下来考场直接用。</p>
+
+<div class="qa-box">
+<p class="q">Q1："这个功能企业微信原生不就有吗，为什么要买企微管家？"</p>
+<p class="a">A：原生给基础能力，管家做自动化、精细化、数据化增强。比如联系我原生就是一个固定二维码；管家活码加了多人路由、分时段分配、新老客分流、自动打标签、数据统计、备用员工容错——7个维度都是原生没有的。管家是增强插件，没有企业微信就没有管家。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q2："活码和联系我到底什么区别？"</p>
+<p class="a">A：7个维度。①多人路由+分时段分配（联系我是固定码）②时刻码区分新老客（联系我无识别）③分时段个性化欢迎语（联系我是固定内容）④自动打标签+备注+渠道记录（联系我需手动）⑤多维度数据统计（联系我只有扫码总数）⑥自定义样式+短链（联系我固定）⑦备用员工容错（联系我无）。一句话：联系我是"加好友入口"，活码是"智能获客路由系统"。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q3："群活码和加入群聊什么区别？"</p>
+<p class="a">A：加入群聊是企微原生（绑5群、满200自建、永不过期）；群活码是管家增强（顺序入群+分类入群+区域活码按定位分配+备用员工+自动打标签+时刻群码区分新老客）。核心差异：原生管"一个码对一群"，管家管"一个码对多群+智能分配+容错"。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q4："会话存档能存多久？"</p>
+<p class="a">A：企微侧只存5天，企业必须5天内通过API拉取到自己服务器，否则丢失。这是"拉取窗口"不是"留存期"。一次拉取上限1000条，频率4000次/分钟。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q5："朋友圈一天能发几条？"</p>
+<p class="a">A：每天每客户最多3条，<strong>企业和员工共用3次</strong>——不是各3条。企业发2条，员工只能发1条。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q6："离职销售的客户怎么办？"</p>
+<p class="a">A：用离职继承。客户24小时后自动切换给接替员工，无感转接。每90天内客户/客户群最多被转接2次。这是企业微信相对个人微信最大的私域优势——客户归企业不归个人。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q7："CRM和通讯录什么区别？"</p>
+<p class="a">A：CRM管销售漏斗（线索→联系人→企业→商机→订单），管的是转化过程；通讯录只是CRM里"联系人"这一环。CRM不是通讯录。</p>
+</div>
+
+<div class="qa-box">
+<p class="q">Q8："企微管家和企业微信是什么关系？"</p>
+<p class="a">A：企微管家是基于企业微信API开发的SaaS增强插件。企业微信是平台，企微管家是插件。没有企业微信就没有企微管家。管家不是替代品，是增强层。</p>
+</div>
+
+<h2 id="sec4">04 7道实操考核题口述答案</h2>
+<p>实操考核的7道题，考官可能让你口述配置步骤。下面是每道题的<strong>口述标准答案</strong>。</p>
+
+<div class="card fact">
+<h4>实操1：配置"联系我"二维码 + "加入群聊"</h4>
+<p><strong>联系我：</strong>管理后台→客户联系→联系我→选择员工或部门→设置欢迎语和备用承接→生成二维码投放。</p>
+<p><strong>加入群聊：</strong>管理后台→客户群→加入群聊→选择载体（二维码/立牌/小程序按钮）→绑定客户群（最多5个）→群满200人自动建新群→生成投放。</p>
+</div>
+
+<div class="card fact">
+<h4>实操2：列出活码vs联系我的功能差异点</h4>
+<p><strong>7个维度：</strong>多人路由+分时段 / 时刻码新老客 / 分时段个性化欢迎语 / 自动打标签+备注+渠道 / 多维度数据统计 / 自定义样式+短链 / 备用员工容错。每个维度联系我都没有。</p>
+</div>
+
+<div class="card fact">
+<h4>实操3：列出群活码vs加入群聊的功能差异点</h4>
+<p><strong>7个维度：</strong>顺序入群+分类入群 / 群满自动建新群（原生是满200自建但无分类）/ 备用员工承接 / 多维度数据统计 / 入群自动打标签+关联群发 / 时刻群码区分新老客 / 区域活码按定位分配。</p>
+</div>
+
+<div class="card fact">
+<h4>实操4：配置群发任务（4种）</h4>
+<p><strong>群发客户：</strong>客户联系→群发助手→新建群发→选客户→编辑内容（附件最多9个）→发送（每次最多2000客户，企业和员工共用每日1条）。</p>
+<p><strong>群发群：</strong>群发助手→新建群发→选客户群→编辑内容→发送。</p>
+<p><strong>群发朋友圈：</strong>客户朋友圈→发表→编辑内容→选择可见客户（每天每客户最多3条，企业员工共用3次）。</p>
+<p><strong>超级群发：</strong>以上三种的组合触达，一次操作多渠道同时触达（管家独有，原生没有）。</p>
+</div>
+
+<div class="card fact">
+<h4>实操5：输出CRM3.0整体流程逻辑图</h4>
+<p><strong>漏斗五层：</strong>线索（可能买的人）→联系人（找到具体对接人）→企业（了解客户公司）→商机（有明确成交机会）→订单（签约了）。每步都有筛选和转化率。</p>
+</div>
+
+<div class="card fact">
+<h4>实操6：配置超时回复规则 + 敏感词规则</h4>
+<p><strong>超时回复：</strong>企微管家→会话存档→质检规则→新建超时规则→设阈值（如30分钟未回复）→选适用员工→触发提醒/上报。</p>
+<p><strong>敏感词：</strong>企微管家→会话存档→敏感词规则→新建→添加词库（辱骂/飞单/竞品/违规承诺）→设置处理方式（拦截/告警）。</p>
+</div>
+
+<div class="card fact">
+<h4>实操7：搭建智能质检任务 + 知识库智能问答</h4>
+<p><strong>智能质检：</strong>企微管家→AI功能→智能质检→新建质检任务→选质检范围（员工/时间）→配置质检维度（超时/敏感词/态度）→启动自动检查。</p>
+<p><strong>知识库：</strong>企微管家→AI功能→知识库→上传文档（pdf/doc/docx/xlsx，单文件60M内）→员工聊天时侧边栏自动推荐话术。</p>
+</div>
+
+<h2 id="sec5">05 答辩周旋技巧（"主持人的周旋"）</h2>
+<p>备考计划里言秋说"得会主持人的周旋"。这不是让你当主持人，是让你<strong>掌握答辩的主动权</strong>。</p>
+
+<div class="card script">
+<h3>技巧1：考官问的没复习到→往你熟悉的引</h3>
+<p>考官问了一个你没准备的细节，不要慌，不要硬编。用这句话接：</p>
+<div class="script-box">
+"这个细节我回头确认一下。不过这个功能在实际运营中更多是配合XX一起用的，我重点给您讲下XX怎么用——"</div>
+<p>然后顺势把话题引到你熟悉的功能上。考官要看的是你<strong>会不会做产品介绍</strong>，不是你背不背得下每个参数。</p>
+</div>
+
+<div class="card script">
+<h3>技巧2：考官追问差异→用"7维对比"一锤定音</h3>
+<p>任何"XX和YY有什么区别"的问题，都用<strong>结构化对比</strong>回答，不要零散说。模板：</p>
+<div class="script-box">
+"我从X个维度来对比。维度1……维度2……维度3……。一句话总结：XX是（定位），YY是（定位）。"</div>
+<p>比如活码vs联系我：7维对比+一句话总结"联系我是加好友入口，活码是智能获客路由系统"。</p>
+</div>
+
+<div class="card script">
+<h3>技巧3：考官质疑"原生就够用"→亮出管家差异化</h3>
+<p>这是最高频的挑战。标准应对：</p>
+<div class="script-box">
+"原生确实提供了基础能力。但企业规模化运营时会遇到三个痛点：①人工操作多易出错②数据分散看不全③没有容错机制。企微管家就是解决这三个问题的——自动化（活码自动分配）、数据化（多维统计）、容错化（备用员工）。原生是'能用'，管家是'好用且管用'。"</div>
+</div>
+
+<div class="card script">
+<h3>技巧4：不确定的别说死</h3>
+<p>考官问"这个上限是多少"你不记得，宁可说"具体数值我确认下，大概在XX范围"，不要编一个错的数字。编错了比说"不确定"扣分多得多。</p>
+</div>
+
+<h2 id="sec6">06 考前必背速记卡</h2>
+<p>以下内容<strong>进考场前必须背到脱口而出</strong>。</p>
+
+<div class="hardnum">
+<ul>
+<li>活码vs联系我：<b>7维</b>（多人路由/时刻码/欢迎语/自动标签/统计/样式/备用）</li>
+<li>群活码vs加入群聊：<b>7维</b>（顺序分类入群/备用/统计/自动标签/时刻群码/区域活码）</li>
+<li>CRM漏斗：<b>线索→联系人→企业→商机→订单</b></li>
+<li>群发4种：<b>群发客户/群/朋友圈/超级群发</b></li>
+<li>客户群上限：<b>500人</b>；全员群<b>1万</b>；部门群<b>2千</b></li>
+<li>朋友圈：<b>每天3条共用</b>（不是各3条）</li>
+<li>群发客户：每次<b>2000个</b>，附件<b>9个</b>，每日<b>1条共用</b></li>
+<li>离职继承：<b>24h自动</b>，<b>90天2次</b>上限</li>
+<li>会话存档：企微存<b>5天</b>，拉取<b>1000条/次</b>，<b>4000次/分</b>，<b>不支持版本升级</b></li>
+<li>会话存档3版本：办公（内部）/服务（+外部）/企业（+VOIP）</li>
+<li>审批3种：或签（快）/会签（严）/依次（层级），办理人节点=执行不打审批</li>
+<li>企微加密：仅<b>内部单聊+15人以下群</b>，会话存档看不到</li>
+<li>折扣权限：标品<b>6折</b>/商业化<b>85折</b></li>
+<li>企微管家定位：<b>企微API的SaaS增强插件</b>，没企微就没管家</li>
+</ul>
+</div>
+
+<div class="cheat">
+<p><strong>一句话记住管家价值：</strong>原生给基础能力，管家做自动化、精细化、数据化增强——这三化就是答案。</p>
+<p><strong>一句话记住考试核心：</strong>你不是在答题，你是在做一场产品演示+客户答疑，考官想看的是你像客户成功一样把产品讲清楚。</p>
+</div>
+
+<h2 id="sec7">07 通关模拟关卡</h2>
+<p>下面8道题模拟考官出题方式，<strong>考前务必全做完</strong>。</p>
+
+<div class="task" data-task="q1" data-answer="B" data-ok="连锁餐饮多门店按定位入群=区域群活码，这是原生做不到的。" data-no="联系我是1对1不是群；加入群聊无定位分配。" data-src="实操考核：区域活码按GPS定位分配门店群" data-review="回到「02 8模块演示话术」模块4复习">
+<div class="q">1. <strong>场景：</strong>考官问"连锁餐饮50家门店，客户扫码后按定位自动进最近门店群"，你应该介绍什么功能？</div>
+<div class="opts"><button class="opt" data-val="A">A. 联系我（1对1加好友）</button><button class="opt" data-val="B">B. 区域群活码（按GPS定位分配门店群，管家增强）</button><button class="opt" data-val="C">C. 加入群聊（原生，无定位）</button><button class="opt" data-val="D">D. 客户朋友圈</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q2" data-answer="C" data-ok="对！原生是'能用'，管家是'好用且管用'——自动化+数据化+容错化。" data-no="管家不是替代原生，是在原生基础上的增强。" data-src="企微管家产品定位" data-review="回到「03 考官追问应对」Q1复习">
+<div class="q">2. <strong>场景：</strong>考官质疑"联系我企业微信原生不就有吗，为什么要买管家"。你怎么回应？</div>
+<div class="opts"><button class="opt" data-val="A">A. 管家更便宜</button><button class="opt" data-val="B">B. 管家完全替代原生</button><button class="opt" data-val="C">C. 原生给基础能力，管家做自动化/精细化/数据化增强（活码7维都是原生没有的）</button><button class="opt" data-val="D">D. 不回答，转移话题</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q3" data-answer="A" data-ok="对！会话存档企微侧只存5天，必须5天内自己拉取，否则丢失。" data-no="5天是拉取窗口不是留存期，更不是永久。" data-src="原文：企微侧只保存5天，超期无法获取" data-review="回到「06 考前必背速记卡」复习">
+<div class="q">3. <strong>场景：</strong>考官问"会话存档的聊天记录企微帮我们存多久"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 企微侧只存5天，企业必须5天内自己拉取，否则丢失</button><button class="opt" data-val="B">B. 永久保存</button><button class="opt" data-val="C">C. 30天</button><button class="opt" data-val="D">D. 1年</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q4" data-answer="B" data-ok="对！每天每客户最多3条，企业和员工共用3次。" data-no="不是各3条，是总共3条共用。" data-src="原文：每天每客户最多3条，企业和员工共用3次" data-review="回到「06 考前必背速记卡」复习">
+<div class="q">4. <strong>场景：</strong>考官问"企业官号发了2条朋友圈，员工还能发几条"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 还能发3条（独立额度）</button><button class="opt" data-val="B">B. 只能发1条（企业和员工共用3次，已用2次）</button><button class="opt" data-val="C">C. 不能发了</button><button class="opt" data-val="D">D. 还能发2条</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q5" data-answer="C" data-ok="对！CRM管的是线索→联系人→企业→商机→订单的销售漏斗，通讯录只是其中一环。" data-no="CRM不是通讯录，它管的是销售转化过程。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「02 8模块演示话术」模块5复习">
+<div class="q">5. <strong>场景：</strong>考官说"你画一下CRM的流程"。你画的应该是？</div>
+<div class="opts"><button class="opt" data-val="A">A. 通讯录列表</button><button class="opt" data-val="B">B. 加好友→聊天→成交</button><button class="opt" data-val="C">C. 线索→联系人→企业→商机→订单 漏斗</button><button class="opt" data-val="D">D. 注册→登录→购买</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q6" data-answer="A,B,C,D" data-multi="true" data-ok="全对！这7维是考试必考，要脱口而出。" data-no="7维都要记住：多人路由/时刻码/欢迎语/自动标签/统计/样式/备用。" data-src="实操考核：活码vs联系我功能差异" data-review="回到「03 考官追问应对」Q2复习">
+<div class="q">6. <strong>场景：</strong>考官问"活码比联系我多了什么"（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 多人路由+分时段分配+客户上限自动转接</button><button class="opt" data-val="B">B. 时刻码区分新老客</button><button class="opt" data-val="C">C. 自动打标签+多维度数据统计</button><button class="opt" data-val="D">D. 备用员工容错+自定义样式</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<div class="task" data-task="q7" data-answer="B" data-ok="对！离职继承24h自动切换，客户无感，90天2次上限。" data-no="继承是24h自动不是立刻；90天2次是上限。" data-src="原文：客户24h后自动切换；每90天内最多2次" data-review="回到「03 考官追问应对」Q6复习">
+<div class="q">7. <strong>场景：</strong>考官问"销售离职了他名下300个客户怎么办"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 客户自动删除</button><button class="opt" data-val="B">B. 离职继承24h自动切换给接替员工，无感转接，90天2次上限</button><button class="opt" data-val="C">C. 客户变无主状态</button><button class="opt" data-val="D">D. 需客户重新扫码</button></div>
+<button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
+</div>
+
+<h2 id="sec8">08 考前一晚清单</h2>
+<div class="card danger">
+<h3>考前一晚必做（按顺序）</h3>
+<ol style="margin-left:20px;line-height:2.2;">
+<li><strong>背「06 考前必背速记卡」</strong>——所有硬数字和差异对比脱口而出</li>
+<li><strong>过一遍「02 8模块演示话术」</strong>——每个模块能说出客户场景+功能介绍+管家优势</li>
+<li><strong>过一遍「03 考官追问应对」8个Q&A</strong>——尤其Q1（原生vs管家）和Q2（活码vs联系我7维）</li>
+<li><strong>记住「05 答辩周旋技巧」4个技巧</strong>——尤其"没复习到就往熟悉的引"</li>
+<li><strong>做完「07 通关模拟关卡」8道题</strong>——全对才算过关</li>
+<li>早睡。明天考的是表达不是熬夜。</li>
+</ol>
+</div>
+
+<div class="cheat">
+<p style="font-size:16px;"><strong>最后一句：你不是在"考试"，你是在"做一场产品演示"。</strong>考官扮演客户，你像客户成功一样把产品讲清楚、把问题接住。自信、结构化、有场景。稳稳通过。</p>
+</div>
+
+<div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
+<div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
+<div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
+<div class="footer">由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+</main>
+</div>
+<link rel="stylesheet" href="promo.css">
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
+<script src="promo.js"></script>
+<script>
+(function(){
+  "use strict";
+  function $all(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+  function selectedVals(t){return $all('.opt.selected',t).map(function(o){return o.getAttribute('data-val');}).sort();}
+  function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
+  function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
+  function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'<img class="fb-emoji" src="img/sticker/ok.png" alt="">':'<img class="fb-emoji" src="img/sticker/no.png" alt="">')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
+  document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
+  function init(){updateBar();renderWrong();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+</body>
+</html>
