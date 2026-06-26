@@ -78,6 +78,17 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 #copyReport{background:var(--sky);color:var(--ink);}
 .footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}
 .footer a{color:var(--brick);text-decoration:underline;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:10px;text-align:left;font-size:13px;}
+.cmp-table td{padding:10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:22%;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 记住这些硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 /* 移动端 */
 @media(max-width:768px){
   .sidebar{position:relative;width:100%;height:auto;}
@@ -91,7 +102,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
   <h2>📋 第1章<br>企业微信产品全景</h2>
   <div class="progress-wrap">
     <div class="progress-bar"><div class="progress-fill" id="barFill"></div></div>
-    <div class="progress-num">进度：<span id="barNum">0 / 7</span></div>
+    <div class="progress-num">进度：<span id="barNum">0 / 8</span></div>
   </div>
   <ul class="nav-list">
     <li><a href="#sec1">01 学习目标</a></li>
@@ -215,6 +226,14 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 <p style="margin-top:8px;"><strong>为什么重要：</strong>这是企业微信与钉钉/飞书最大的区别。钉钉做内部管理很强，但无法直接触达微信用户的12亿月活。</p>
 <p style="margin-top:8px;"><strong>可能的误读：</strong>"连接微信"不等于"微信的企业版"。企业微信是独立产品，只是与微信互通。</p>
 </div>
+<table class="cmp-table">
+<tr><th>维度</th><th>企业微信</th><th>钉钉</th><th>飞书</th></tr>
+<tr><td>连接微信</td><td>原生（直连12亿微信用户，加客户好友/朋友圈/客服）</td><td>需第三方中转，无原生互通</td><td>需第三方中转，无原生互通</td></tr>
+<tr><td>内部协作</td><td>融合腾讯文档/会议/邮箱，一站式</td><td>自研OA/文档/会议，体系成熟</td><td>文档/会议为强项，协作体验最佳</td></tr>
+<tr><td>上下游</td><td>上下游空间（跨企业通讯录+权限+共享应用）</td><td>有跨企业组织方案，偏管理</td><td>有跨组织协作，偏文档协同</td></tr>
+<tr><td>开放生态</td><td>开放API/SDK+服务商生态（微盛等可建产品）</td><td>开放平台+应用市场，生态较丰富</td><td>开放平台+飞书应用，生态在成长</td></tr>
+<tr><td>安全认证</td><td>国内首家SOC2 Type2 + ISO27001</td><td>多项安全认证齐全</td><td>多项安全认证齐全</td></tr>
+</table>
 
 <div class="card judgment">
 <h3>判断2：上下游解决的是跨企业协同问题</h3>
@@ -238,6 +257,13 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 <p style="margin-top:8px;"><strong>为什么重要：</strong>金融、政府等客户有合规硬要求，没有这些认证连投标资格都没有。</p>
 <p style="margin-top:8px;"><strong>可能的误读：</strong>"通过认证"不等于"绝对安全"，认证只是基线保障，企业仍需配置自己的安全策略。</p>
 </div>
+<div class="hardnum"><ul>
+<li>安全认证：国内首家通过 <b>SOC2 Type 2</b> 审计的企业办公产品，另有 ISO27001 等多项认证</li>
+<li>连接规模：原生连接 <b>12亿</b> 微信月活用户</li>
+<li>通讯录批量设置：管理员每次最多 <b>1000人</b></li>
+<li>全员群上限：<b>10000人</b>（新员工自动入群/离职自动退群）</li>
+<li>四大连接方向：连接内部 / 产业互联网 / 消费互联网 / 社会价值网络</li>
+</ul></div>
 
 <div class="card judgment">
 <h3>判断5：开放能力让企业微信从"产品"变成"平台"</h3>
@@ -303,7 +329,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 <p style="margin-bottom:16px;">以下题目测试你对本章核心内容的理解。每题选择后点击"检查"查看反馈。</p>
 
 <div class="task" data-task="q1" data-answer="B" data-ok="正确！企业微信的核心差异化就是连接微信生态，这是钉钉和飞书不具备的。" data-no="想想企业微信和钉钉最大的不同是什么。提示：看看那个'连接'的四个方向。" data-src="原文：企业微信做企业专属连接器，连接消费互联网，打通微信生态" data-review="回到「05 核心判断」判断1复习">
-  <div class="q">1. 企业微信与钉钉/飞书最大的差异化优势是什么？</div>
+  <div class="q">1. <strong>场景：</strong>客户质疑"钉钉、飞书也能加外部联系人，企业微信凭什么更贵"，你要怎么点出企微独有的核心优势？</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 界面更好看</button>
     <button class="opt" data-val="B">B. 连接微信生态，直接触达微信用户</button>
@@ -315,7 +341,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q2" data-answer="C" data-ok="正确！'连接消费互联网，打通微信生态'就是连接微信的核心描述。" data-no="原文明确说了四个连接方向，其中'打通微信生态'对应的就是连接微信。" data-src="原文：连接消费互联网，打通微信生态，提升服务、实现增长" data-review="回到「04 原文结构地图」复习四个连接方向">
-  <div class="q">2. 文档说企业微信"连接消费互联网"，这具体指什么？</div>
+  <div class="q">2. <strong>场景：</strong>客户听到"连接消费互联网"后问"是不是能连淘宝、抖音做电商带货"，你要澄清它真正指的是什么。</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 连接淘宝等电商平台</button>
     <button class="opt" data-val="B">B. 连接抖音快手等短视频平台</button>
@@ -327,7 +353,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q3" data-answer="B" data-ok="正确！上下游是跨企业协作（B2B），内外协作是工具融合（腾讯文档/会议/邮箱）。" data-no="注意区分：上下游解决的是'和别的企业合作'，内外协作解决的是'一个App集成多种工具'。" data-src="原文：上下游=统一管理供应商、经销商；内外协作=融合腾讯文档、腾讯会议、腾讯企业邮箱" data-review="回到「06 关键概念拆解」概念2复习">
-  <div class="q">3. "上下游"和"内外协作"分别解决什么问题？（匹配题思路：选出正确描述）</div>
+  <div class="q">3. <strong>场景：</strong>客户说"我们既要跟供应商经销商沟通，又想让员工在一个App里写文档、开会、收邮件"，这两个需求企微分别用什么能力解决？</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 都是解决跨企业沟通问题</button>
     <button class="opt" data-val="B">B. 上下游=跨企业协同；内外协作=工具融合（文档/会议/邮箱）</button>
@@ -339,7 +365,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q4" data-answer="A" data-ok="正确！SOC2 Type 2 是持续性审计，比 Type 1 的'制度设计审计'更严格。" data-no="SOC2 有两个等级，Type 1 审计制度设计，Type 2 审计实际执行。仔细看背景包里的说明。" data-src="原文：国内首家通过SOC2Type2审计的企业办公产品" data-review="回到「02 零基础背景包」背景补充4复习">
-  <div class="q">4. SOC2 Type 2 比 SOC2 Type 1 更难获得，因为 Type 2 审计的是什么？</div>
+  <div class="q">4. <strong>场景：</strong>金融客户投标时要求提供SOC2审计报告，你要解释企微拿到的SOC2 Type 2比Type 1"多审了什么"，才能证明含金量。</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 在一段时间内是否真正按安全制度执行</button>
     <button class="opt" data-val="B">B. 公司的安全制度文件写得完不完整</button>
@@ -351,7 +377,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q5" data-answer="B,C,D" data-multi="true" data-ok="正确！连接微信包含客户联系（加好友）、客户群（拉群）、微信客服（临时咨询）等能力。" data-no="客户朋友圈是连接微信的能力之一，但'企业内部审批'属于效率办公，不属于连接微信范畴。" data-src="原文：连接微信=客户联系、客户群、客户朋友圈、视频号、小程序、微信客服" data-review="回到「04 原文结构地图」分支3复习">
-  <div class="q">5. 以下哪些属于企业微信"连接微信"的能力？（多选）</div>
+  <div class="q">5. <strong>场景：</strong>客户要盘点"能用来直接触达微信客户的能力清单"，以下哪些算"连接微信"的范畴？（多选）</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 企业内部审批流程</button>
     <button class="opt" data-val="B">B. 客户联系（添加客户微信好友）</button>
@@ -363,7 +389,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q6" data-answer="A" data-ok="正确！原文明确说'企业可查看并管理成员添加的微信客户，对离职成员的客户再分配'。" data-no="这是企业微信连接微信的核心管理能力——企业拥有客户关系，不是员工个人拥有。" data-src="原文：企业可查看并管理成员添加的微信客户，对离职成员的客户再分配" data-review="回到「05 核心判断」判断1复习">
-  <div class="q">6. 如果一个销售用企业微信加了客户，然后离职了，客户怎么办？</div>
+  <div class="q">6. <strong>场景：</strong>销售老王用企业微信加了300个客户，下周要跳槽去竞品。老板问"这些客户会不会跟着跑了"，企微怎么兜底？</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 企业可以把离职员工的客户分配给其他员工继续服务</button>
     <button class="opt" data-val="B">B. 客户自动被删除</button>
@@ -375,7 +401,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 </div>
 
 <div class="task" data-task="q7" data-answer="D" data-ok="正确！企业微信通过API/SDK/第三方应用/服务商生态，让其他公司（如微盛）可以在企微上构建产品。" data-no="没有开放能力，企业微信就只是一个办公工具；有了它，才成为'平台'。" data-src="原文：提供各类应用和小程序的接口，满足企业的多样化定制需求" data-review="回到「05 核心判断」判断5复习">
-  <div class="q">7. 企业微信的开放能力为什么重要？</div>
+  <div class="q">7. <strong>场景：</strong>客户问"我们有自己的OA和ERP，企业微信能不能对接？像微盛这种第三方公司又是怎么在企微上做产品的"，你在解释开放能力时最该强调哪一点？</div>
   <div class="opts">
     <button class="opt" data-val="A">A. 因为开放能力可以让用户免费使用</button>
     <button class="opt" data-val="B">B. 因为没有开放能力就无法连接微信</button>
