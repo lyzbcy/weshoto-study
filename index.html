@@ -39,11 +39,13 @@
 .chapter-meta span{display:flex;align-items:center;gap:4px;}
 .footer{text-align:center;padding:32px;font-size:13px;color:#888;border-top:1px solid #D4C4A8;}
 .footer a{color:var(--brick);text-decoration:underline;}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
 @media(max-width:600px){.header h1{font-size:30px;}.chapter-card{padding:20px;}}
 </style>
 </head>
 <body>
 <div class="header">
+<img src="img/sticker/mascot.png" alt="捞鱼吉祥物" style="width:96px;height:96px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(3px 3px 0 rgba(30,58,36,.2))">
 <h1>微盛管培生学习地图</h1>
 <p>基于微盛·企微管家学习资料，使用 Grokko 方法论拆解的交互式理解地图<br>6 章 · 48 道互动题 · 每章含 11 个学习模块 · 业务场景故事 + 对比表 + 硬数字卡片</p>
 <div class="search-wrap">
@@ -650,5 +652,7 @@ document.getElementById('searchInput').addEventListener('keydown',function(e){
   if(e.key==='Enter'){renderResults(this.value);}
 });
 </script>
+<link rel="stylesheet" href="promo.css">
+<script src="promo.js"></script>
 </body>
 </html>

@@ -90,6 +90,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
 .hardnum::before{content:"📌 记住这些硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
 .hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 /* 移动端 */
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
 @media(max-width:768px){
   .sidebar{position:relative;width:100%;height:auto;}
   .main{margin-left:0;padding:20px;}
@@ -566,7 +567,7 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
     }
     var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');
     var src=t.getAttribute('data-src');
-    setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));
+    setFb(t,ok?'ok':'no',(ok?'<img class="fb-emoji" src="img/sticker/ok.png" alt="">':'<img class="fb-emoji" src="img/sticker/no.png" alt="">')+body+(src?('<span class="src">'+src+'</span>'):''));
     t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');
     updateBar();renderWrong();
   }
@@ -596,5 +597,8 @@ select.match{padding:6px 10px;border:2px solid #D4C4A8;border-radius:6px;font-si
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+<link rel="stylesheet" href="promo.css">
+<script src="promo.js"></script>
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go","09":"no","10":"sleep","11":"final"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 </body>
 </html>
