@@ -35,6 +35,21 @@
 .hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 .script-box{background:#EEF2FF;border:2px solid #6366f1;border-radius:10px;padding:16px 20px;margin:12px 0;}
 .script-box::before{content:"🗣️ 答辩话术";display:block;font-weight:700;color:#4338CA;font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.path-box{background:#E8F5E9;border-left:4px solid var(--correct);border-radius:8px;padding:12px 16px;margin:10px 0;font-family:var(--font-mono);font-size:14px;color:#1b4d2e;}
+.path-box::before{content:"🖱️ 点击路径（企微管家后台 platform.wshoto.com）";display:block;font-family:var(--font-body);font-weight:700;color:var(--correct);font-size:13px;margin-bottom:6px;letter-spacing:1px;}
+.path-box .native{display:block;background:#FFF8E1;border-left:3px solid #B58900;border-radius:6px;padding:6px 10px;margin-top:8px;font-family:var(--font-mono);font-size:13px;color:#6b4e00;}
+.path-box .native::before{content:"🔵 原生后台路径（work.weixin.qq.com）→ ";display:inline;font-family:var(--font-body);font-weight:700;color:#B58900;font-size:12px;}
+.tag-verified{display:inline-block;background:var(--correct);color:#fff;font-size:11px;padding:1px 7px;border-radius:999px;margin-left:6px;font-weight:700;font-family:var(--font-body);}
+.tag-infer{display:inline-block;background:#3B82F6;color:#fff;font-size:11px;padding:1px 7px;border-radius:999px;margin-left:6px;font-weight:700;font-family:var(--font-body);}
+.tag-todo{display:inline-block;background:#B58900;color:#fff;font-size:11px;padding:1px 7px;border-radius:999px;margin-left:6px;font-weight:700;font-family:var(--font-body);}
+.judge-box{background:#FFF3F0;border:2px solid var(--brick);border-radius:10px;padding:16px 20px;margin:12px 0;}
+.judge-box h3{color:var(--brick);margin-top:0;}
+.judge-box .verdict{display:inline-block;background:var(--brick);color:#fff;font-size:12px;padding:2px 10px;border-radius:999px;font-weight:700;}
+.menu-tree{background:var(--cream);border:1px dashed var(--sage);border-radius:8px;padding:14px 18px;margin:10px 0;font-size:13px;line-height:1.9;}
+.menu-tree b{color:var(--forest);}
+.menu-tree .l1{display:block;font-weight:700;color:var(--brick);font-size:15px;margin:8px 0 2px;}
+.menu-tree .l2{padding-left:18px;color:#444;}
+.menu-tree .l3{padding-left:36px;color:#666;font-size:12.5px;}
 .qa-box{background:#FFF3F0;border-left:4px solid var(--brick);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
 .qa-box .q{font-weight:700;color:var(--brick);margin-bottom:4px;}
 .qa-box .a{color:var(--ink);}
@@ -62,7 +77,7 @@
 <h2>🎯 第7章<br>考试通关实战手册</h2>
 <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
-<li><a href="#sec1">01 考试形式拆解</a></li><li><a href="#sec2">02 8模块演示话术</a></li><li><a href="#sec3">03 考官追问应对</a></li><li><a href="#sec4">04 实操考核口述</a></li><li><a href="#sec5">05 答辩周旋技巧</a></li><li><a href="#sec6">06 考前必背速记</a></li><li><a href="#sec7">07 通关模拟关卡</a></li><li><a href="#sec8">08 考前一晚清单</a></li>
+<li><a href="#sec1">01 考试形式拆解</a></li><li><a href="#sec2">02 8模块演示话术</a></li><li><a href="#sec3">03 考官追问应对</a></li><li><a href="#sec4">04 实操考核口述</a></li><li><a href="#sec5">05 答辩周旋技巧</a></li><li><a href="#sec6">06 考前必背速记</a></li><li><a href="#sec7">07 通关模拟关卡</a></li><li><a href="#sec9">08 平台实操手册 ⭐</a></li><li><a href="#sec8">09 考前一晚清单</a></li>
 </ul>
 <div class="sidebar-footer">微盛管培生学习地图 · 第7章</div>
 </aside>
@@ -194,46 +209,65 @@
 
 <h2 id="sec4">04 7道实操考核题口述答案</h2>
 <p>实操考核的7道题，考官可能让你口述配置步骤。下面是每道题的<strong>口述标准答案</strong>。</p>
+<div class="cheat"><p><strong>⚠️ 防翻车核心：</strong>这7道题里有的是企微<strong>原生</strong>功能（在 work.weixin.qq.com 配），有的是企微<strong>管家</strong>功能（在 platform.wshoto.com 配）。口述时一定要先说"这是在XX后台配置"——说错后台是考场大忌。下面每个答案都标了两套路径，完整菜单树见 <a href="#sec9">08 平台实操手册</a>。</p></div>
 
 <div class="card fact">
-<h4>实操1：配置"联系我"二维码 + "加入群聊"</h4>
-<p><strong>联系我：</strong>管理后台→客户联系→联系我→选择员工或部门→设置欢迎语和备用承接→生成二维码投放。</p>
-<p><strong>加入群聊：</strong>管理后台→客户群→加入群聊→选择载体（二维码/立牌/小程序按钮）→绑定客户群（最多5个）→群满200人自动建新群→生成投放。</p>
+<h4>实操1：配置"联系我"二维码 + "加入群聊"<span class="tag-verified">原生</span></h4>
+<p><strong>联系我：</strong>这是企微<strong>原生</strong>功能。</p>
+<div class="path-box"><span class="native">企微管理后台 → 客户与上下游 → 客户联系 → 联系我 → 选择"单人/多人/批量单人" → 选择员工或部门 → 设置欢迎语 → 生成二维码投放</span></div>
+<p><strong>加入群聊：</strong>同样是企微<strong>原生</strong>功能。</p>
+<div class="path-box"><span class="native">企微管理后台 → 客户与上下游 → 客户群 → 加入群聊 → 选择载体（二维码/立牌/小程序按钮）→ 绑定客户群（最多5个）→ 群满200人自动建新群 → 生成投放</span></div>
+<p style="color:var(--brick);margin-top:8px;"><strong>考官追问"管家怎么做"：</strong>对应管家的「员工活码」（platform→客户营销→加客户→员工活码）和「客户群活码」（客户营销→加群→客户群活码），详见 <a href="#sec9">08 平台实操手册</a>。</p>
 </div>
 
 <div class="card fact">
-<h4>实操2：列出活码vs联系我的功能差异点</h4>
-<p><strong>7个维度：</strong>多人路由+分时段 / 时刻码新老客 / 分时段个性化欢迎语 / 自动打标签+备注+渠道 / 多维度数据统计 / 自定义样式+短链 / 备用员工容错。每个维度联系我都没有。</p>
+<h4>实操2：列出活码vs联系我的功能差异点<span class="tag-verified">管家vs原生</span></h4>
+<p><strong>口述（7个维度）：</strong>①多人路由+分时段分配（联系我是固定码）②时刻码区分新老客（联系我无识别）③分时段个性化欢迎语（联系我固定内容）④自动打标签+备注+渠道记录（联系我需手动）⑤多维度数据统计（联系我只有扫码总数）⑥自定义样式+短链（联系我固定）⑦备用员工容错（联系我无）。</p>
+<p style="margin-top:8px;"><strong>操作位置：</strong>活码在 platform → 客户营销 → 加客户 → <strong>员工活码</strong>；联系我在企微原生后台。详见 <a href="#sec9">08 平台实操手册·客户营销</a>。</p>
 </div>
 
 <div class="card fact">
-<h4>实操3：列出群活码vs加入群聊的功能差异点</h4>
-<p><strong>7个维度：</strong>顺序入群+分类入群 / 群满自动建新群（原生是满200自建但无分类）/ 备用员工承接 / 多维度数据统计 / 入群自动打标签+关联群发 / 时刻群码区分新老客 / 区域活码按定位分配。</p>
+<h4>实操3：列出群活码vs加入群聊的功能差异点<span class="tag-verified">管家vs原生</span></h4>
+<p><strong>口述（7个维度）：</strong>①顺序入群+分类入群（加入群聊只能一码一群）②群满自动建新群（原生满200自建但无分类）③备用员工承接（原生无）④多维度数据统计（原生仅入群总数）⑤入群自动打标签+关联群发（原生无）⑥时刻群码区分新老客（原生无）⑦区域活码按定位分配（原生无）。</p>
+<p style="margin-top:8px;"><strong>操作位置：</strong>群活码在 platform → 客户营销 → 加群 → <strong>客户群活码</strong>；加入群聊在企微原生后台。详见 <a href="#sec9">08 平台实操手册·客户营销</a>。</p>
 </div>
 
 <div class="card fact">
-<h4>实操4：配置群发任务（4种）</h4>
-<p><strong>群发客户：</strong>客户联系→群发助手→新建群发→选客户→编辑内容（附件最多9个）→发送（每次最多2000客户，企业和员工共用每日1条）。</p>
-<p><strong>群发群：</strong>群发助手→新建群发→选客户群→编辑内容→发送。</p>
-<p><strong>群发朋友圈：</strong>客户朋友圈→发表→编辑内容→选择可见客户（每天每客户最多3条，企业员工共用3次）。</p>
-<p><strong>超级群发：</strong>以上三种的组合触达，一次操作多渠道同时触达（管家独有，原生没有）。</p>
+<h4>实操4：配置群发任务（4种）<span class="tag-verified">管家</span></h4>
+<p>这4种群发都在企微管家后台配。</p>
+<div class="path-box">platform → 客户营销 → 营销转化 → <b>群发工具</b>（四个Tab：群发客户 / 群发客户群 / 群发朋友圈 / 超级群发）→ 选对应Tab → 新建任务 → 选目标客户/群 → 编辑内容 → 设置发送规则/时间 → 下发</div>
+<p style="margin-top:8px;"><strong>4种区别：</strong></p>
+<ul style="margin-left:20px;">
+<li><strong>群发客户：</strong>1对1私发。每次最多2000客户，企业和员工共用每日1条。直链：<code>platform.wshoto.com/customer-marketing/customer/send-customer/index</code></li>
+<li><strong>群发客户群：</strong>批量发群。有日/周/月限制，群主最多发2000群。</li>
+<li><strong>群发朋友圈：</strong>信息流曝光。每天每客户最多3条，企业员工共用3次。</li>
+<li><strong>超级群发：</strong>以上三种组合触达，不限次数。管家独有，原生没有。</li>
+</ul>
+<p style="color:var(--brick);margin-top:6px;"><strong>管家 vs 原生：</strong>企微原生群发/朋友圈<b>不支持定时发送</b>，管家都支持定时；管家选素材还多了素材中心+商品和活动，筛选客户比原生多（可加添加时间、剔除标签/性别/年龄/关键词）。</p>
 </div>
 
 <div class="card fact">
-<h4>实操5：输出CRM3.0整体流程逻辑图</h4>
-<p><strong>漏斗五层：</strong>线索（可能买的人）→联系人（找到具体对接人）→企业（了解客户公司）→商机（有明确成交机会）→订单（签约了）。每步都有筛选和转化率。</p>
+<h4>实操5：输出CRM3.0整体流程逻辑图<span class="tag-verified">管家</span></h4>
+<p><strong>口述漏斗五层：</strong>线索（可能买的人，留过资）→ 联系人（找到具体对接人）→ 企业（了解客户公司评估购买力）→ 商机（有明确成交机会）→ 订单（签约了）。每步都有筛选和转化率。</p>
+<div class="path-box">CRM各对象在 platform → 客户管理 → <b>销售管理</b>下：<br>企业 / 联系人 / 公海 / 商机 / 代客订单（注意：菜单里无独立"线索"对象）<br><br>商机阶段配置：客户管理 → 销售管理设置 → <b>商机设置</b>（进行中阶段最多10个，赢单=订单成交/输单=短期无法成交）</div>
+<p style="color:var(--brick);margin-top:6px;"><strong>易错点：</strong>平台菜单"销售管理"下只有企业/联系人/公海/商机/代客订单，<b>没有"线索"</b>（线索在线索管理模块）。商机转赢单后会自动生成代客订单，不用重写。</p>
 </div>
 
 <div class="card fact">
-<h4>实操6：配置超时回复规则 + 敏感词规则</h4>
-<p><strong>超时回复：</strong>企微管家→会话存档→质检规则→新建超时规则→设阈值（如30分钟未回复）→选适用员工→触发提醒/上报。</p>
-<p><strong>敏感词：</strong>企微管家→会话存档→敏感词规则→新建→添加词库（辱骂/飞单/竞品/违规承诺）→设置处理方式（拦截/告警）。</p>
+<h4>实操6：配置超时回复规则 + 敏感词规则<span class="tag-verified">管家</span></h4>
+<p>这俩都在企微管家<strong>会话存档</strong>模块（需先开通会话存档）。</p>
+<div class="path-box">platform → 会话存档 → <b>服务质量</b> → 回复超时记录（统计页）/ 规则在超时回复规则配置<br>可设工作日/休息日/项目不同规则，可设机器人和白名单（发表情包等不需回复的归为机器人）</div>
+<div class="path-box">platform → 会话存档 → <b>内容审计</b> → 敏感词预警 → 自定义敏感词（支持批量导入）或选行业敏感词库（金融/IT/教育等）→ 设置处理方式（拦截/告警）<br><br>同模块还有：敏感行为预警（如发名片、发带二维码图片）、敏感内容拦截、员工白名单（高级领导/财务不展示）</div>
+<p style="color:var(--brick);margin-top:6px;"><strong>实测提示：</strong>体验账号的会话存档→敏感词管理页可能提示"无权限"，需超管权限。口述时说明"需要会话存档权限和超级管理员角色"。</p>
 </div>
 
 <div class="card fact">
-<h4>实操7：搭建智能质检任务 + 知识库智能问答</h4>
-<p><strong>智能质检：</strong>企微管家→AI功能→智能质检→新建质检任务→选质检范围（员工/时间）→配置质检维度（超时/敏感词/态度）→启动自动检查。</p>
-<p><strong>知识库：</strong>企微管家→AI功能→知识库→上传文档（pdf/doc/docx/xlsx，单文件60M内）→员工聊天时侧边栏自动推荐话术。</p>
+<h4>实操7：搭建智能质检任务 + 知识库智能问答<span class="tag-verified">管家</span></h4>
+<p><strong>智能质检任务：</strong></p>
+<div class="path-box">platform → 会话存档 → <b>会话智能</b> → AI服务质检 → <b>质检任务</b> → 新建质检任务 → 选质检范围（员工/时间）→ 配置质检维度（超时/敏感词/态度）→ 启动自动检查</div>
+<p><strong>知识库 + 智能问答：</strong></p>
+<div class="path-box">platform → 客户营销 → <b>AI智能体</b> → AI知识库 → 上传文档（文件知识/问答知识）→ 配置智能问答设置（查询答案顺序）<br><br>员工侧使用：企微聊天侧边栏 → 与客户沟通时 → <b>智能问答推荐话术</b>自动弹出 → 一键发送</div>
+<p style="color:var(--brick);margin-top:6px;"><strong>注意位置：</strong>AI在管家后台分两处——客户营销下的"AI智能体"（AI聊天/分析智能体、AI知识库）和会话存档下的"会话智能"（话题洞察、AI合规审查、AI服务质检）。别记串。</p>
 </div>
 
 <h2 id="sec5">05 答辩周旋技巧（"主持人的周旋"）</h2>
@@ -339,10 +373,222 @@
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<h2 id="sec8">08 考前一晚清单</h2>
+<h2 id="sec9">08 平台实操手册 · platform.wshoto.com 全菜单</h2>
+<p>考试可能现场让你操作。<strong>这一节是"现场不翻车"的保命手册</strong>——7个一级菜单逐个展开，每个重点功能都给点击路径。来源：你亲自进后台实测的路径<span class="tag-verified">已实测</span> + 平台功能脑图<span class="tag-infer">菜单树</span>；无原文的功能标<span class="tag-todo">待确认</span>。</p>
+
+<div class="judge-box">
+<h3>🔴 先分清两套后台（说错=考场大忌）</h3>
+<table class="cmp-table">
+<tr><th>维度</th><th>🟢 企微管家后台</th><th>🔵 企微管理后台</th></tr>
+<tr><td>网址</td><td><code>platform.wshoto.com</code>（扫码登录）</td><td><code>work.weixin.qq.com</code></td></tr>
+<tr><td>是谁的</td><td>微盛（企微管家）的产品</td><td>企业微信官方原生</td></tr>
+<tr><td>配什么</td><td>管家独有/增强：活码、群活码、SOP标准化营销、超级群发、智能质检、知识库、CRM商机、客户标签增强、会话存档规则</td><td>原生功能：联系我、加入群聊、朋友圈、审批、打卡、通讯录权限、会话存档开启入口</td></tr>
+</table>
+<p style="margin-top:10px;"><strong>一句判别口诀：</strong>「这功能企微App里能直接做吗？<b>能→原生后台</b>（work.weixin.qq.com）；<b>不能→管家后台</b>（platform.wshoto.com）。」</p>
+<p style="margin-top:6px;color:var(--brick);"><strong>权限排查三步（客户报"功能不可用"时）：</strong>①先查企微管理后台→我的企业→权限管理→外部沟通，确认员工/部门有无权限（九成问题在这）→②再查对应原生接口是否开通（如会话存档要在企微开通会话内容存档）→③最后查企微管家的功能配置和角色权限。</p>
+</div>
+
+<div class="hardnum">
+<p><b>platform.wshoto.com 七大一级菜单</b>（按学习顺序）：</p>
+<ul>
+<li><b>① 首页</b> — 数据看板 + 快捷入口</li>
+<li><b>② 我的企业</b> — 通讯录/门店/权限/系统管理</li>
+<li><b>③ 客户营销</b> — 获客拉新/营销转化/微信客服（功能最多，40+子项）</li>
+<li><b>④ 客户管理</b> — 客户&群管理/线索/销售管理(CRM)</li>
+<li><b>⑤ 内容中心</b> — 素材/内容营销/统计</li>
+<li><b>⑥ 商城中心</b> — 店铺/商品/订单/营销活动</li>
+<li><b>⑦ 会话存档</b> — 检索/审计/质检/AI智能</li>
+</ul>
+<p style="font-size:12px;color:#888;margin-top:6px;">注：体验账号新登录时首页是数据看板，左侧7菜单堆叠，无引导。客户营销展开后子项就有40+，别被吓到。</p>
+</div>
+
+<h3>① 首页</h3>
+<div class="menu-tree">
+<span class="l1">首页</span>
+<span class="l2"><b>数据</b>：新增客户数 / 活动新增客户 / 聊天客户数 / 流失客户数</span>
+<span class="l2"><b>快捷入口</b>：员工活码、员工群活码、线索、商机、代客订单、海报素材、客户标签、群发朋友圈、群发客户群、客户欢迎语</span>
+</div>
+<p style="font-size:13px;color:#666;">首页主要是数据看板，快捷键直达高频功能。考试一般不在这里考操作。</p>
+
+<h3>② 我的企业（权限/通讯录/系统配置的根）</h3>
+<div class="menu-tree">
+<span class="l1">我的企业</span>
+<span class="l2"><b>企业管理</b>：通讯录（设管理员和使用权限：通用、会话存档）/ 门店管理（门店列表最多5万 + 门店活码）/ 企业钱包（余额+红包明细）/ 上下游（上下游指南、组织管理、运营数据）</span>
+<span class="l2"><b>员工管理</b>：员工积分 / 积分商城 / 员工统计 / 使用分析 / 审批管理（模板管理、我的审批）</span>
+<span class="l2"><b>应用管理</b>：三方商城接入 / 企微自建应用 / API接入 / 企微快捷入口 / 内部群聊机器人（汇报、超时回复、智能问答）</span>
+<span class="l2"><b>功能管理</b>：功能设置（给企业开通哪些功能）/ 自定义字段（给线索/客户/商机/订单加字段；体验版标准版没有）</span>
+<span class="l2"><b>系统管理</b>：版本管理 / 权限管理 / 配置管理（<b>会话存档的配置参数在这里</b>）/ 操作日志</span>
+</div>
+<div class="path-box">通讯录权限配置：platform → 我的企业 → 企业管理 → <b>通讯录</b> → 设置管理员和使用权限（分"通用"和"会话存档"两类）<span class="tag-infer">菜单树</span></div>
+<div class="path-box">会话存档参数配置：platform → 我的企业 → 系统管理 → <b>配置管理</b><span class="tag-verified">已实测</span></div>
+<p style="font-size:13px;color:var(--brick);"><strong>易考点：</strong>会话存档参数在「我的企业→系统管理→配置管理」，<b>不在会话存档菜单里</b>。考官问"会话存档参数在哪配"别答错。另：上下游是管家独有（企微不支持实时共享客户标签/素材）。</p>
+
+<h3>③ 客户营销（功能最多，考试重点）</h3>
+<div class="menu-tree">
+<span class="l1">客户营销</span>
+<span class="l2"><b>获客拉新</b></span>
+<span class="l3">加客户：员工活码 / 获客链接 / 识客码 / 客户欢迎语（部门+个人+模板）</span>
+<span class="l3">加群：客户群活码 / 识客群码 / 区域活码 / 新客自动拉群 / 老客标签建群 / 一键拉群 / 客户群欢迎语 / 拉群任务</span>
+<span class="l3">社交裂变：任务裂变 / 群裂变 / 红包裂变（管家独有，原生不支持）</span>
+<span class="l2"><b>营销转化</b></span>
+<span class="l3">营销任务：标准化营销(SOP)</span>
+<span class="l3">群发工具：群发客户 / 群发客户群 / 群发朋友圈 / 超级群发</span>
+<span class="l3">上下游群发：群发朋友圈（发给合作企业）</span>
+<span class="l3">跟进任务：跟进客户 / 跟进客户群</span>
+<span class="l3">聊天工具：客户待办 / 客户画像 / 聊天素材 / 营销工具 / 商品库 / 会话记录 / 员工知识工作台</span>
+<span class="l3">营销工具：红包活动 / 社群答题 / 社群打卡 / 抽奖 / 员工推广码</span>
+<span class="l3">积分权益：积分规则 / 积分管理 / 积分统计</span>
+<span class="l2"><b>微信客服</b>（不需加好友，不依赖会话存档）</span>
+<span class="l3">接待管理：渠道管理 / 客服账号 / 自助导航</span>
+<span class="l3">客服工具：升级服务 / 红包活码 / 聊天素材 / 访客详情 / 排队池</span>
+<span class="l3">客服统计：实时看板（每分钟更新）/ 数据总览 / 员工统计 / 会话记录</span>
+</div>
+
+<div class="card fact" style="margin-top:10px;">
+<h4>重点功能A：员工活码（活码 vs 联系我 7维升级）<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户营销 → 获客拉新 → 加客户 → <b>员工活码</b>（看左侧"活码分组"下拉）→ 创建活码 → 选单个/多个员工 → 设分时段分配（按排班）/ 客户数上限分配（超限自动转备用员工）→ 设欢迎语（分时段+插昵称+选素材）→ 自动打标签+备注+渠道 → 生成（图案不变，后台智能分配）</div>
+<p style="font-size:13px;color:var(--brick);"><strong>口述防错：</strong>活码的二维码图案<strong>不变</strong>，变的是背后的分配逻辑——别说成"动态二维码（图案会变）"。多选活码后可"批量操作"批量下载/管理。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能B：客户群活码（群活码 vs 加入群聊 7维升级）<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户营销 → 获客拉新 → 加群 → <b>客户群活码</b> → 创建 → 选入群模式：顺序入群（关联初始群，满员自动建新群）/ 分类入群（多群供客户选）→ 设备用员工（群满/解散/群主异常自动承接）→ 入群自动打标签+关联群发 → 生成</div>
+<p style="font-size:13px;color:#666;"><strong>数值：</strong>原生一个活码关联5个群，管家关联<b>200个</b>。区域活码按GPS定位分最近门店群（连锁多门店用）。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能C：群发四件套<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户营销 → 营销转化 → <b>群发工具</b> → 四个Tab：群发客户 / 群发客户群 / 群发朋友圈 / 超级群发<br>直链（群发客户）：platform.wshoto.com/customer-marketing/customer/send-customer/index</div>
+<p style="font-size:13px;color:var(--brick);"><strong>移动端：</strong>员工侧在"营销台-群发工具"。催办未执行员工：群发任务列表→未执行员工→催办。<strong>管家 vs 原生：</strong>原生群发/朋友圈不支持定时，管家都支持定时。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能D：标准化营销（SOP任务）<span class="tag-infer">菜单树</span></h4>
+<div class="path-box">platform → 客户营销 → 营销转化 → 营销任务 → <b>标准化营销</b> → 建立规则：加客户后发什么、第1天发什么第2天发什么 → 配标准营销话术<br>e.g. 群发客户打完标签后，选几小时后自动发消息</div>
+<p style="font-size:13px;color:var(--brick);">这是管家独有（原生不支持）。场景：给30万和5万的客户推送不同优惠，预热+分时段触达。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能E：聊天工具栏配置（客户待办）<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户营销 → 营销转化 → 聊天工具 → <b>客户待办</b> → 复制链接 → 到企微后台【客户与上下游-聊天工具-聊天工具栏管理】粘贴配置</div>
+<p style="font-size:13px;color:var(--brick);"><strong>关键：</strong>聊天工具栏是"从管家复制到企微"（管家配置→企微生效）。管家聊天栏含：客户待办/客户画像/聊天素材/营销工具/商品库/会话记录/员工知识工作台；企微原生只有商品库/会话记录/分组管理/管理员&个人素材（<b>不含</b>营销工具、聊天素材、组合素材、客户待办）。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能F：微信客服<span class="tag-infer">菜单树</span></h4>
+<div class="path-box">platform → 客户营销 → <b>微信客服</b> → 接待管理（渠道管理/客服账号/自助导航）/ 客服工具（升级服务/红包活码/聊天素材/访客详情/排队池）/ 客服统计（实时看板每分钟更新）</div>
+<p style="font-size:13px;color:var(--brick);">微信客服<b>不需加好友、不依赖会话存档</b>。一个客服账号可创建多渠道（公众号/视频号/小程序/客户单聊群聊）。管家比原生多了：接待组管理、满意度评价、超时提醒、排队提示语、自助导航。需配置客服工具栏。</p>
+</div>
+
+<h3>④ 客户管理（含CRM）</h3>
+<div class="menu-tree">
+<span class="l1">客户管理</span>
+<span class="l2"><b>客户管理</b>：客户列表（每天同步一次）/ 客户标签（企业标签+业务标签+自动标签+上下游标签）/ 在职继承（90天2次）/ 离职继承（无次数限制）/ 流失客户（流失风控）</span>
+<span class="l2"><b>客户群管理</b>：客户群列表 / 客户群标签（企微无群标签概念）/ 客户群统计（群聊/群客户/明细，活跃率&消息总数依赖会话存档）</span>
+<span class="l2"><b>线索管理</b>：广告管家（连微信/百度/抖音/快手/头条自动同步线索）/ 智能外呼（CRM模块+单独付费）/ 销售线索（线索+线索池+设置）/ 微信线索</span>
+<span class="l2"><b>销售管理（CRM核心）</b>：客户归属（团队负责/协作）/ 公海 / 跟进 / <b>商机</b> / 代客订单 / 销售管理设置（公海/商机/订单设置）</span>
+</div>
+<p style="font-size:13px;color:#888;">注意：企微原生只支持【汇报】，不支持模式切换/智能外呼/线索/线索池/公海/商机/代客订单——这些全是管家CRM独有。</p>
+
+<div class="card fact">
+<h4>重点功能G：CRM商机<span class="tag-verified">已实测</span></h4>
+<div class="path-box">商机列表：platform → 客户管理 → 销售管理 → <b>商机</b>（实测可见791条商机，停留时间如"111天1小时"）<br>商机阶段配置：客户管理 → 销售管理设置 → <b>商机设置</b>（进行中阶段最多10个，流转顺序自定义，赢单/输单）</div>
+<p style="font-size:13px;color:var(--brick);"><strong>易错：</strong>平台"销售管理"菜单下<b>只有企业/联系人/公海/商机/代客订单，没有"线索"</b>（线索在线索管理）。商机转赢单后自动生成代客订单，不用重写。开通销售管理模式后，锁定模式下<b>一个客户只有一个负责人防撞单</b>，可加协作人共享信息。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能H：客户标签<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户管理 → 客户洞察 → <b>客户标签</b>（企业标签：全企业可见，与企微同步；业务标签：业务线互不可见，已被企微下架仅老租户用；自动标签：触发规则自动打）</div>
+<p style="font-size:13px;color:var(--brick);"><strong>管家增强：</strong>管家支持通过活码/抽奖自动打标签、客户去重、批量打/删标签、预打标签、自动标签、群聊标签、给群成员打标签、流失用户提醒。PC和移动端都可批量打标签（移动端还不支持批量移除）。以<b>7天</b>界定新增和流失客户。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能I：离职/在职继承<span class="tag-infer">菜单树</span></h4>
+<div class="path-box">platform → 客户管理 → 客户管理 → <b>在职继承</b>（90天只能转2次）/ <b>离职继承</b>（无次数限制）/ 分配记录<br>管家分级管理员也可分配（在职+离职都可），支持全选和批量分配</div>
+<p style="font-size:13px;color:#666;"><strong>原生 vs 管家：</strong>离职继承原生客户24小时后自动切换，每90天最多转2次。管家优势是分级管理员也能操作+批量。</p>
+</div>
+
+<h3>⑤ 内容中心（素材）</h3>
+<div class="menu-tree">
+<span class="l1">内容中心</span>
+<span class="l2"><b>通用素材</b>：海报（热门/企业/个人）/ <b>轨迹素材</b>（文章·网页·视频·文件·收集表，可留痕）/ 普通素材（文本·图片·小程序）</span>
+<span class="l2"><b>内容营销</b>：组合素材 / 产品库 / 智能名片 / 微店 / 客服咨询</span>
+<span class="l2"><b>内容统计</b>：通用素材（发送/访问/员工数）/ 组合素材（发送/访问/访问时长）</span>
+<span class="l2"><b>上下游素材</b>：共享合集（与合作企业实时共享，管家独有）</span>
+<span class="l2"><b>素材流量</b>：默认1TB免费，超出240元/1TB（内测）</span>
+<span class="l2"><b>内容AI助手</b>：丰富话术库+内容营销方案（内测）</span>
+</div>
+
+<div class="card fact">
+<h4>重点功能J：收集表→自动打标签<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 内容中心 → 通用素材 → 轨迹素材 → <b>收集表</b> → 创建（如"满意度调查""报名资料"）→ 设字段（姓名/手机号等）→ 勾选"收集到的提交记录将自动同步至客户信息"（标签+同步信息）→ 客户填写后内容自动同步到客户画像/标签</div>
+<p style="font-size:13px;color:var(--brick);"><strong>管家 vs 原生：</strong>企微素材只支持文本/图文/语音/视频/文件+收集表；管家还多了<b>小程序</b>、免费海报模板，收集表支持自动打标签或自动流转线索池，轨迹素材能看客户查看次数和时长。轨迹素材和普通素材区别：<b>点进去能跳转+留痕留轨迹</b>。</p>
+</div>
+<div class="path-box">素材传播数据查看：platform → 内容中心 → 素材 → <b>素材传播数据</b><span class="tag-verified">已实测</span></div>
+
+<h3>⑥ 商城中心<span class="tag-todo">待确认</span></h3>
+<div class="menu-tree">
+<span class="l1">商城中心</span>
+<span class="l2"><b>店铺管理</b>：店铺首页（运营指南/小程序管理/支付配置）/ 店铺装修</span>
+<span class="l2"><b>商品管理</b>：商品列表 / 商品分类（一级酒类→二级红酒）/ 商品素材（图片·视频）</span>
+<span class="l2"><b>订单管理</b>：订单列表（待付款/待发货/待核销/已发货/已完成/已关闭）/ 售后订单（退货退款）</span>
+<span class="l2"><b>营销中心</b>：秒杀（通用/营销秒杀）/ 拼团 / 优惠券（立减券·折扣券）</span>
+<span class="l2"><b>分销管理</b>：分销配置 / 分销商品 / 推广员管理 / 分销数据（统计/订单/佣金明细）</span>
+<span class="l2"><b>商城设置</b>：店铺设置 / 订单设置</span>
+</div>
+<div class="path-box">创建商品：platform → 商城中心 → 商品管理 → <b>商品列表</b> → 添加商品 → 下单购买/员工一键转发<span class="tag-todo">待确认（入口路径据菜单树，具体配置步骤学习资料无原文，考前建议现场点一遍）</span></div>
+<p style="font-size:13px;color:#888;"><strong>原生 vs 管家：</strong>企微只支持管理员绑定小程序（且不能卖商品、不能做数据监测），商城卖货是管家独有。</p>
+
+<h3>⑦ 会话存档（功能最多，顶一个小产品）</h3>
+<p style="color:var(--brick);"><strong>前提：</strong>会话存档需先在企微管理后台【安全与管理→管理工具→会话内容存档】开启（提供确认函+配置参数），再把参数配到管家「我的企业→系统管理→配置管理」。即"企微开门给钥匙→管家用钥匙看"。<b>配置会话存档和聊天工具栏方向相反</b>：聊天工具栏是管家→企微，会话存档是企微→管家。</p>
+<div class="menu-tree">
+<span class="l1">会话存档</span>
+<span class="l2"><b>内容检索</b>：员工检索 / 客户检索 / 全局检索 / 离职人员检索（查看前任与客户聊天）</span>
+<span class="l2"><b>内容审计</b>：AI投诉预警 / 敏感词预警（自定义+行业词库）/ 敏感行为预警（发名片/发带二维码图）/ 敏感内容拦截 / 员工白名单</span>
+<span class="l2"><b>服务质量</b>：回复超时记录（实时监控，工作日/休息日/项目分规则）</span>
+<span class="l2"><b>会话洞察</b>：热词分析（预设多行业热词模板）/ 情感分析（正负面）</span>
+<span class="l2"><b>智能辅助</b>：客户洞察（AI聊天侧边栏）/ 智能问答（AI知识库回答客户+员工知识工作台回答员工）</span>
+<span class="l2"><b>统计分析</b>：单聊统计 / 存档及会话统计</span>
+<span class="l2"><b>会话工具</b>：配置到聊天工具栏</span>
+</div>
+<div class="card fact" style="margin-top:10px;">
+<p style="color:var(--brick);"><strong>注意：</strong>管家把AI分放在两处，别记串——</p>
+<ul style="margin-left:20px;">
+<li><b>客户营销 → AI智能体</b>（3项）：AI聊天智能体、AI分析智能体、<b>AI知识库</b></li>
+<li><b>会话存档 → 会话智能</b>（3项）：话题洞察、AI合规审查、<b>AI服务质检</b></li>
+</ul>
+</div>
+
+<div class="card fact">
+<h4>重点功能K：敏感词规则 + 超时回复规则<span class="tag-verified">已实测</span></h4>
+<div class="path-box">超时回复：platform → 会话存档 → <b>服务质量</b> → 回复超时记录（统计页），规则在超时回复规则配置（可设机器人+白名单）<br>敏感词：platform → 会话存档 → <b>内容审计</b> → 敏感词预警 → 自定义（批量导入）或行业词库（金融/IT/教育）→ 拦截/告警</div>
+<p style="font-size:13px;color:var(--brick);"><strong>实测提示：</strong>体验账号会话存档→敏感词管理页可能提示"无权限"，需超管。会话检索：会话存档→会话检索→全局检索。</p>
+</div>
+
+<div class="card fact">
+<h4>重点功能L：智能质检任务<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 会话存档 → 会话智能 → <b>AI服务质检</b> → 质检任务 → 新建 → 选质检范围（员工/时间）→ 配置质检维度（超时/敏感词/态度）→ 启动</div>
+</div>
+
+<div class="card fact">
+<h4>重点功能M：知识库 + 智能问答<span class="tag-verified">已实测</span></h4>
+<div class="path-box">platform → 客户营销 → <b>AI智能体</b> → AI知识库 → 上传（文件知识/问答知识/未知问题运营）→ 智能问答设置（查询答案顺序）<br>员工用：企微侧边栏 → 与客户沟通 → AI推荐话术自动弹出 → 一键发送</div>
+</div>
+
+<div class="cheat">
+<p><strong>⭐ 现场演示黄金3步（背下来）：</strong></p>
+<ol style="margin-left:20px;line-height:2;">
+<li><strong>先报后台：</strong>"这个功能在企微管家后台（platform.wshoto.com）/企微原生后台配置"——一句话定锚，防止考官以为你不懂两套系统。</li>
+<li><strong>再说路径：</strong>"客户营销→获客拉新→加客户→员工活码"——报出菜单层级，体现你熟。</li>
+<li><strong>最后讲差异化：</strong>"管家比原生多了XX（7维里挑2-3个）"——这是加分项，证明你不只会操作还懂价值。</li>
+</ol>
+</div>
+
+<h2 id="sec8">09 考前一晚清单</h2>
 <div class="card danger">
 <h3>考前一晚必做（按顺序）</h3>
 <ol style="margin-left:20px;line-height:2.2;">
+<li><strong>过一遍「08 平台实操手册」</strong>——7菜单路径+重点功能逐步骤，确保现场能报出"在XX后台→XX菜单配置"</li>
 <li><strong>背「06 考前必背速记卡」</strong>——所有硬数字和差异对比脱口而出</li>
 <li><strong>过一遍「02 8模块演示话术」</strong>——每个模块能说出客户场景+功能介绍+管家优势</li>
 <li><strong>过一遍「03 考官追问应对」8个Q&A</strong>——尤其Q1（原生vs管家）和Q2（活码vs联系我7维）</li>
@@ -363,7 +609,7 @@
 </main>
 </div>
 <link rel="stylesheet" href="promo.css">
-<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"sprint","09":"go"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 <script src="promo.js"></script>
 <script>
 (function(){
