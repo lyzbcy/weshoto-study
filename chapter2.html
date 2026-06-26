@@ -48,6 +48,9 @@
 .report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
 .report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
 .footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 记住这些硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 @media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
 </style>
 </head>
@@ -145,6 +148,7 @@
 </table>
 <p style="margin-top:8px;"><strong>为什么重要：</strong>选错群类型会"装不下"或"该自动的人没自动"。1000人公司用普通群要建5个，用全员群1个搞定。</p>
 </div>
+<div class="hardnum"><ul><li>全员群上限：<b>10000人</b>（新员工自动入群/离职自动退群）</li><li>部门群/普通内部群：<b>2000人</b></li><li>外部群（企微创建）：<b>500人</b>；含企微成员的微信外部群：<b>200人</b></li><li>管理员撤回：<b>24小时内</b>（不含红包/员工服务消息）</li><li>群消息置顶：最多 <b>5条</b></li><li>企业自主加密：仅<b>内部单聊+15人及以下内部群</b>（会话存档看不到）</li><li>智能表格自动化流程：上限 <b>200个</b></li></ul></div>
 <div class="card judgment">
 <h3>判断3：审批的"或签/会签/依次"解决三种决策场景</h3>
 <p><strong>原文依据：</strong><span class="src">原文："或签（任一同意即可）、会签（全部同意）、依次审批（上级审完轮下级）"</span></p>
@@ -277,7 +281,7 @@
 
 <h2 id="sec10">10 背景知识缺口</h2>
 <div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>腾讯文档/腾讯会议的独立功能</strong>——只需知道"企微整合了它们"。</li><li><strong>微盘IP访问限制购买门槛</strong>——"专业版+500账号"，记住"有门槛"即可。</li><li><strong>邮箱邮件搬家迁移</strong>——技术细节，需要时查文档。</li></ul></div>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企业自主加密与会话存档的冲突如何取舍</strong>→ 第5章</li><li><strong>智能表格AI字段6类怎么落地业务</strong>→ 第5章AI能力</li><li><strong>审批"办理人节点"如何串联合同全流程</strong>→ 第6章销售后端（打款/盖章/工单）</li><li><strong>工作台"千人千面"如何按角色配置</strong>→ 应用管理进阶</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企业自主加密与会话存档的冲突如何取舍</strong>→ 第5章</li><li><strong>智能表格AI字段6类怎么落地业务</strong>→ 本章「06 关键概念」概念4 复习（AI字段属于智能表格自身能力，非会话存档/AI工作流）</li><li><strong>审批"办理人节点"如何串联合同全流程</strong>→ 第6章销售后端（打款/盖章/工单）</li><li><strong>工作台"千人千面"如何按角色配置</strong>→ 应用管理进阶</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>

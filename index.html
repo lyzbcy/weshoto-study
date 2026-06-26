@@ -9,9 +9,26 @@
 <style>
 :root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-card:14px;}
 *{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;min-height:100vh;}
-.header{text-align:center;padding:60px 20px 40px;}
+.header{text-align:center;padding:60px 20px 24px;}
 .header h1{font-family:var(--font-display);font-size:42px;color:var(--forest);margin-bottom:8px;}
 .header p{font-size:18px;color:#666;max-width:600px;margin:0 auto;}
+/* 搜索区 */
+.search-wrap{max-width:680px;margin:24px auto 0;position:relative;}
+.search-box{display:flex;gap:0;max-width:680px;margin:0 auto;}
+.search-box input{flex:1;padding:14px 18px;font-size:16px;border:2px solid var(--sage);border-radius:999px 0 0 999px;background:var(--paper);color:var(--ink);font-family:var(--font-body);outline:none;}
+.search-box input:focus{border-color:var(--forest);}
+.search-box button{padding:0 24px;border:none;border-radius:0 999px 0 999px;background:var(--forest);color:var(--cream);font-size:15px;cursor:pointer;font-family:var(--font-body);}
+.search-box button:hover{opacity:.88;}
+.search-hint{text-align:center;font-size:13px;color:#999;margin-top:8px;}
+.search-results{max-width:760px;margin:16px auto 0;padding:0 24px;}
+.result-item{display:block;background:var(--paper);border-radius:10px;padding:14px 18px;margin-bottom:10px;text-decoration:none;color:var(--ink);transition:.15s;border-left:4px solid var(--sky);}
+.result-item:hover{transform:translateX(4px);box-shadow:0 2px 10px rgba(30,58,36,.1);border-left-color:var(--forest);}
+.result-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-right:8px;font-weight:600;vertical-align:middle;}
+.result-tag.ch1{background:#E8F0E5;color:#2F7D46;}.result-tag.ch2{background:#E8EEF5;color:#2563EB;}.result-tag.ch3{background:#FFF3E0;color:#D97706;}.result-tag.ch4{background:#FCE7F3;color:#BE185D;}.result-tag.ch5{background:#EDE9FE;color:#7C3AED;}.result-tag.ch6{background:#FEE2E2;color:#B91C1C;}
+.result-type{font-size:11px;color:#999;margin-left:6px;}
+.result-title{font-weight:600;font-size:15px;}
+.result-context{font-size:13px;color:#777;margin-top:2px;}
+.result-empty{text-align:center;color:#999;padding:30px;font-size:14px;}
 .chapters{max-width:900px;margin:0 auto;padding:0 24px 60px;}
 .chapter-card{display:block;background:var(--paper);border-radius:var(--radius-card);padding:28px;margin-bottom:20px;text-decoration:none;color:var(--ink);transition:.2s;border-left:6px solid var(--sage);}
 .chapter-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(30,58,36,.1);border-left-color:var(--forest);}
@@ -28,14 +45,22 @@
 <body>
 <div class="header">
 <h1>微盛管培生学习地图</h1>
-<p>基于微盛·企微管家学习资料，使用 Grokko 方法论拆解的交互式理解地图<br>6 章 · 48 道场景互动题 · 每章含 11 个学习模块 · 业务场景故事 + 对比表 + 硬数字卡片</p>
+<p>基于微盛·企微管家学习资料，使用 Grokko 方法论拆解的交互式理解地图<br>6 章 · 48 道互动题 · 每章含 11 个学习模块 · 业务场景故事 + 对比表 + 硬数字卡片</p>
+<div class="search-wrap">
+<div class="search-box">
+<input id="searchInput" type="text" placeholder="搜索关键词，如：活码、会话存档、CRM、折扣、离职继承…" autocomplete="off">
+<button id="searchBtn">🔍 搜索</button>
 </div>
-<div class="chapters">
+<div class="search-hint">在6章学习地图中搜索任意关键词，点击结果直达对应章节位置</div>
+</div>
+</div>
+<div class="search-results" id="searchResults"></div>
+<div class="chapters" id="chaptersList">
 <a class="chapter-card" href="chapter1.html">
 <div class="chapter-num">第 1 章</div>
 <div class="chapter-title">企业微信产品全景</div>
 <div class="chapter-desc">产品定位、四大连接方向（内部/产业/消费/社会）、特点能力概览、开放能力、安全保障体系。理解企业微信"为什么存在"。</div>
-<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 7道题</span></div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道题</span></div>
 </a>
 <a class="chapter-card" href="chapter2.html">
 <div class="chapter-num">第 2 章</div>
@@ -72,5 +97,558 @@
 由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>
 这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快
 </div>
+<script>
+// 搜索索引（从各章节标题/概念/判断提取）
+var SEARCH_INDEX = [
+  {
+    "ch": 1,
+    "file": "chapter1.html",
+    "title": "企业微信产品全景",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：企业微信的核心差异化是\"连接微信\"",
+      "判断2：上下游解决的是跨企业协同问题",
+      "判断3：内外协作靠的是\"融合腾讯全家桶\"",
+      "判断4：安全认证是企业微信进入大客户市场的入场券",
+      "判断5：开放能力让企业微信从\"产品\"变成\"平台\"",
+      "概念1：连接微信",
+      "概念2：上下游",
+      "概念3：微信客服",
+      "概念4：客户朋友圈",
+      "概念5：开放能力（API）",
+      "概念6：SOC2 Type 2",
+      "误解1：\"企业微信就是微信的企业版\"",
+      "误解2：\"上下游就是拉个企业微信群\"",
+      "误解3：\"有了安全认证就不会出安全问题\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  },
+  {
+    "ch": 2,
+    "file": "chapter2.html",
+    "title": "内部协作与效率工具",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：通讯录是所有权限的底层基础",
+      "判断2：群的类型决定人数上限和行为",
+      "判断3：审批的\"或签/会签/依次\"解决三种决策场景",
+      "判断4：智能表格是\"数据库\"不是\"高级Excel\"",
+      "判断5：企业自主加密有明确覆盖边界",
+      "概念1：通讯录权限三档",
+      "概念2：全员群",
+      "概念3：或签 vs 会签 vs 依次审批",
+      "概念4：智能表格",
+      "概念5：企业自主加密",
+      "概念6：明水印 vs 暗水印",
+      "误解1：\"管理员能撤回任何群消息\"",
+      "误解2：\"企业自主加密=全公司聊天都加密\"",
+      "误解3：\"智能表格=更好看的在线表格\"",
+      "误解4：\"智能机器人能拉进任何群\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  },
+  {
+    "ch": 3,
+    "file": "chapter3.html",
+    "title": "客户运营与微信互通",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：获客四件套各有适用场景",
+      "判断2：群发和朋友圈有严格频次共用规则",
+      "判断3：离职继承让客户资产无感转接",
+      "判断4：客户标签分企业级和个人级",
+      "判断5：微信客服是大流量咨询入口",
+      "概念1：加入群聊（原生）vs 群活码（管家）",
+      "概念2：在职继承 vs 离职继承",
+      "概念3：企业标签 vs 个人标签",
+      "概念4：朋友圈（每天3条共用）",
+      "概念5：微信客服",
+      "概念6：unionid打通",
+      "误解1：\"朋友圈每天3条=企业3条+员工3条\"",
+      "误解2：\"群发每日1条=企业1条+个人1条\"",
+      "误解3：\"所有外部群都计入统计\"",
+      "误解4：\"加入群聊=群活码\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  },
+  {
+    "ch": 4,
+    "file": "chapter4.html",
+    "title": "企微管家产品体系",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：活码是联系我的\"7维超级升级版\"",
+      "判断2：群活码是加入群聊的\"7维超级升级版\"",
+      "判断3：CRM3.0的核心是漏斗管理",
+      "判断4：超级群发是原生没有的组合触达",
+      "判断5：AI功能聚焦质检+知识赋能",
+      "概念1：活码",
+      "概念2：时刻码",
+      "概念3：区域活码（群）",
+      "概念4：CRM漏斗",
+      "概念5：智能质检",
+      "概念6：知识库+智能问答",
+      "误解1：\"企微管家=企业微信\"",
+      "误解2：\"活码就是动态二维码（图案会变）\"",
+      "误解3：\"CRM只是通讯录\"",
+      "误解4：\"时刻码按时间区分\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  },
+  {
+    "ch": 5,
+    "file": "chapter5.html",
+    "title": "会话存档与AI能力",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：会话存档三版本覆盖不同合规范围",
+      "判断2：5天保存窗口是拉取期限不是留存期",
+      "判断3：同意机制决定能不能存",
+      "判断4：密钥模式vs专区模式是合规分流",
+      "判断5：AI分析按\"是否实时\"分三类触发",
+      "概念1：会话存档三版本",
+      "概念2：5天保存窗口",
+      "概念3：密钥模式vs专区模式",
+      "概念4：T+1分析",
+      "概念5：13类子意图",
+      "概念6：情感判断的中性范围",
+      "误解1：\"会话存档=企微永久帮你存聊天\"",
+      "误解2：\"专区模式=更好的AI\"",
+      "误解3：\"客户说谢谢=正向情感\"",
+      "误解4：\"投诉和抱怨一样\"",
+      "误解5：\"买了服务版以后能升级企业版\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  },
+  {
+    "ch": 6,
+    "file": "chapter6.html",
+    "title": "销售后端全链路",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：折扣审批按产品类型分级",
+      "判断2：100%成本产品是红线",
+      "判断3：比价≠招标，流程完全不同",
+      "判断4：0元赠送也要录工单",
+      "判断5：合同状态自动驱动工单",
+      "概念1：商机锁定",
+      "概念2：刊例价与折扣",
+      "概念3：企微私有化的\"3工单\"",
+      "概念4：合同状态机",
+      "概念5：100%成本红线",
+      "概念6：体验单转正",
+      "误解1：\"比价就是招标的一种\"",
+      "误解2：\"赠送=0元=不录工单\"",
+      "误解3：\"审核通过的工单可以自己改\"",
+      "误解4：\"代理商直接打款能开专票\"",
+      "误解5：\"折扣只算售卖价÷标准价\"",
+      "现在可以先不补",
+      "后续值得追问"
+    ]
+  }
+];
+
+// 搜索关键词扩展（同义词/别名）
+var SYNONYMS = {
+  '活码': ['活码','智能二维码','时刻码','区域活码','群活码'],
+  '联系我': ['联系我','加好友','二维码'],
+  'crm': ['CRM','漏斗','线索','商机','订单','联系人'],
+  '会话存档': ['会话存档','存档','留痕','合规','5天','拉取'],
+  '离职': ['离职','继承','转接','客户资产'],
+  '折扣': ['折扣','6折','85折','审批','刊例价'],
+  '成本': ['成本','100%','红线','赠送'],
+  '审批': ['审批','或签','会签','依次','办理人','OA'],
+  '群': ['群','全员群','部门群','客户群','500人','2000人'],
+  '朋友圈': ['朋友圈','3条','共用'],
+  '群发': ['群发','2000','超级群发'],
+  '存档版本': ['办公版','服务版','企业版','VOIP'],
+  'ai': ['AI','智能质检','知识库','智能问答','混元','智谱','GLM'],
+  '合同': ['合同','工单','收款','开票','闭环'],
+  '标签': ['标签','企业标签','个人标签'],
+  '安全': ['安全','加密','SOC2','水印','截屏']
+};
+
+function escapeReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+
+function search(kw){
+  if(!kw||!kw.trim()) return [];
+  kw=kw.trim().toLowerCase();
+  // 同义词扩展
+  var kws=[kw];
+  for(var k in SYNONYMS){
+    if(kw.indexOf(k.toLowerCase())>=0||k.toLowerCase().indexOf(kw)>=0){
+      kws=kws.concat(SYNONYMS[k].map(function(s){return s.toLowerCase();}));
+    }
+  }
+  // 去重
+  kws=kws.filter(function(v,i,self){return self.indexOf(v)===i;});
+  var results=[];
+  SEARCH_INDEX.forEach(function(ch){
+    var chTag='ch'+ch.ch;
+    var chLabel='第'+ch.ch+'章';
+    // 搜章节标题
+    ch.sections.forEach(function(sec){
+      var text=(sec.title||'').toLowerCase();
+      var hit=kws.some(function(k){return text.indexOf(k)>=0;});
+      if(hit){
+        results.push({ch:ch.ch,file:ch.file,anchor:sec.id,title:sec.title,type:'章节',chTag:chTag,chLabel:chLabel,context:ch.title});
+      }
+    });
+    // 搜概念/判断
+    ch.concepts.forEach(function(con){
+      var text=(con||'').toLowerCase();
+      var hit=kws.some(function(k){return text.indexOf(k)>=0;});
+      if(hit){
+        // 概念多在 sec5/sec6，简单归类
+        var anchor = con.indexOf('判断')>=0?'sec5':'sec6';
+        var type = con.indexOf('判断')>=0?'核心判断':(con.indexOf('概念')>=0?'关键概念':(con.indexOf('误解')>=0?'误解边界':'知识点'));
+        results.push({ch:ch.ch,file:ch.file,anchor:anchor,title:con,type:type,chTag:chTag,chLabel:chLabel,context:ch.title});
+      }
+    });
+    // 搜章节大标题（整章匹配）
+    var chTitle=ch.title.toLowerCase();
+    if(kws.some(function(k){return chTitle.indexOf(k)>=0;})){
+      results.push({ch:ch.ch,file:ch.file,anchor:'sec1',title:ch.title,type:'整章',chTag:chTag,chLabel:chLabel,context:'进入第'+ch.ch+'章学习'});
+    }
+  });
+  // 去重（同章节同标题只留一条）
+  var seen={};var dedup=[];
+  results.forEach(function(r){var key=r.ch+'|'+r.title+'|'+r.anchor;if(!seen[key]){seen[key]=1;dedup.push(r);}});
+  return dedup;
+}
+
+function renderResults(kw){
+  var box=document.getElementById('searchResults');
+  var list=document.getElementById('chaptersList');
+  if(!kw||!kw.trim()){
+    box.innerHTML='';
+    list.style.display='';
+    return;
+  }
+  list.style.display='none';
+  var results=search(kw);
+  if(!results.length){
+    box.innerHTML='<div class="result-empty">没有找到包含"'+kw+'"的内容，试试其他关键词，如：活码、CRM、会话存档、折扣</div>';
+    return;
+  }
+  box.innerHTML='<div style="font-size:13px;color:#888;margin-bottom:8px;">找到 '+results.length+' 条结果（点击直达）：</div>';
+  results.forEach(function(r){
+    var a=document.createElement('a');
+    a.className='result-item';
+    a.href=r.file+'#'+r.anchor;
+    a.innerHTML='<span class="result-tag '+r.chTag+'">'+r.chLabel+'</span><span class="result-type">'+r.type+'</span><div class="result-title">'+r.title+'</div><div class="result-context">'+r.context+'</div>';
+    box.appendChild(a);
+  });
+}
+
+document.getElementById('searchBtn').addEventListener('click',function(){
+  renderResults(document.getElementById('searchInput').value);
+});
+document.getElementById('searchInput').addEventListener('input',function(){
+  renderResults(this.value);
+});
+document.getElementById('searchInput').addEventListener('keydown',function(e){
+  if(e.key==='Enter'){renderResults(this.value);}
+});
+</script>
 </body>
 </html>
