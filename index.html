@@ -47,13 +47,13 @@
 <div class="header">
 <img src="img/sticker/mascot.png" alt="捞鱼吉祥物" style="width:96px;height:96px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(3px 3px 0 rgba(30,58,36,.2))">
 <h1>微盛管培生学习地图</h1>
-<p>基于微盛·企微管家学习资料，拆解的交互式理解地图<br>6 章 · 48 道互动题 · 每章含 11 个学习模块 · 业务场景故事 + 对比表 + 硬数字卡片</p>
+<p>基于微盛·企微管家学习资料，拆解的交互式理解地图<br><span id="siteStats">加载中…</span> · 业务场景故事 + 对比表 + 硬数字卡片</p>
 <div class="search-wrap">
 <div class="search-box">
 <input id="searchInput" type="text" placeholder="搜索关键词，如：活码、会话存档、CRM、折扣、离职继承…" autocomplete="off">
 <button id="searchBtn">🔍 搜索</button>
 </div>
-<div class="search-hint">在6章学习地图中搜索任意关键词，点击结果直达对应章节位置</div>
+<div class="search-hint" id="searchHint">在学习地图中搜索任意关键词，点击结果直达对应章节位置</div>
 </div>
 </div>
 <div class="search-results" id="searchResults"></div>
@@ -213,6 +213,19 @@ document.getElementById('searchInput').addEventListener('input',function(){
 document.getElementById('searchInput').addEventListener('keydown',function(e){
   if(e.key==='Enter'){renderResults(this.value);}
 });
+
+// === 首页统计：从 SEARCH_INDEX 动态计算，绝不写死 ===
+// 写死会导致"加了章/题但统计没更新"的错误信息。这里一律从数据算。
+(function(){
+  var chCount = SEARCH_INDEX.length;
+  var moduleCount = SEARCH_INDEX.reduce(function(s,ch){return s+(ch.sections?ch.sections.length:0);},0);
+  // 交互题在各 chapter*.html 里，index 页静态读不到。这里只展示能从数据算准的数（章/模块），
+  // 题数交给各章页内的进度条显示，避免在首页维护第二份易错的题数。
+  var el = document.getElementById('siteStats');
+  if(el) el.textContent = chCount + ' 章 · ' + moduleCount + ' 个学习模块';
+  var hint = document.getElementById('searchHint');
+  if(hint) hint.textContent = '在 ' + chCount + ' 章学习地图中搜索任意关键词，点击结果直达对应章节位置';
+})();
 </script>
 <link rel="stylesheet" href="promo.css">
 <script src="promo.js"></script>
