@@ -34,7 +34,7 @@
 .hardnum::before{content:"📌 必背硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
 .hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
 .script-box{background:#EEF2FF;border:2px solid #6366f1;border-radius:10px;padding:16px 20px;margin:12px 0;}
-.script-box::before{content:"🗣️ 答辩话术";display:block;font-weight:700;color:#4338CA;font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.script-box::before{content:"🗣️ 演示话术";display:block;font-weight:700;color:#4338CA;font-size:13px;margin-bottom:8px;letter-spacing:1px;}
 .path-box{background:#E8F5E9;border-left:4px solid var(--correct);border-radius:8px;padding:12px 16px;margin:10px 0;font-family:var(--font-mono);font-size:14px;color:#1b4d2e;}
 .path-box::before{content:"🖱️ 点击路径（企微管家后台 platform.wshoto.com）";display:block;font-family:var(--font-body);font-weight:700;color:var(--correct);font-size:13px;margin-bottom:6px;letter-spacing:1px;}
 .path-box .native{display:block;background:#FFF8E1;border-left:3px solid #B58900;border-radius:6px;padding:6px 10px;margin-top:8px;font-family:var(--font-mono);font-size:13px;color:#6b4e00;}
@@ -75,233 +75,341 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>🎯 第7章<br>考试通关实战手册</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 27</span></div></div>
 <ul class="nav-list">
-<li><a href="#sec1">01 考试形式拆解</a></li><li><a href="#sec2">02 8模块演示话术</a></li><li><a href="#sec3">03 考官追问应对</a></li><li><a href="#sec4">04 实操考核口述</a></li><li><a href="#sec5">05 答辩周旋技巧</a></li><li><a href="#sec6">06 考前必背速记</a></li><li><a href="#sec7">07 通关模拟关卡</a></li><li><a href="#sec9">08 平台实操手册 ⭐</a></li><li><a href="#sec10">09 笔试专项题库 ✏️</a></li><li><a href="#sec8">10 考前一晚清单</a></li>
+<li><a href="#sec1">01 考试总览（考核公告）</a></li><li><a href="#sec2">02 笔试怎么考</a></li><li><a href="#sec3">03 通关怎么考（5场景抽1）</a></li><li><a href="#sec4">04 五场景实操演示手册</a></li><li><a href="#sec9">05 平台实操手册 ⭐</a></li><li><a href="#sec10">06 笔试专项题库（20题）✏️</a></li><li><a href="#sec6">07 考前必背速记卡</a></li><li><a href="#sec7">08 通关模拟关卡</a></li><li><a href="#sec11">09 结果应用与补考</a></li><li><a href="#sec8">10 考前一晚清单</a></li>
 </ul>
 <div class="sidebar-footer">微盛管培生学习地图 · 第7章</div>
 </aside>
 <main class="main">
 <h1>🎯 考试通关实战手册</h1>
-<p style="color:#666;margin-bottom:24px;">这不是知识学习，是<strong>考试武器库</strong>——只讲"考官怎么问、你怎么答、怎么赢"。</p>
+<p style="color:#666;margin-bottom:24px;">这不是知识学习，是<strong>考试武器库</strong>——考核规则怎么定、5场景怎么演示、笔试怎么答、怎么稳过。</p>
 
-<h2 id="sec1">01 考试形式拆解</h2>
+<h2 id="sec1">01 考试总览（考核公告）</h2>
+
+<div class="card danger" style="border:2px solid var(--brick);background:#FFF3F0;">
+<h3 style="color:var(--brick);margin-top:0;">🔴 2026管培生考核公告</h3>
+<table class="cmp-table">
+<tr><th>项目</th><th>内容</th></tr>
+<tr><td>考试时间</td><td><b>2026年6月30日</b></td></tr>
+<tr><td>考试地点</td><td><b>无锡办公室</b></td></tr>
+<tr><td>考试范围</td><td>公司基础产品知识（培训课程 + 定期答疑腾讯会议录屏）</td></tr>
+<tr><td>考核构成</td><td><b>两部分</b>：①笔试（选择/判断/简答，100分）②实操演示通关（100分）</td></tr>
+<tr><td>计分规则</td><td><b>笔试、通关各占 50%</b>，最终得分 = 单项得分 × 权重之和</td></tr>
+<tr><td>及格线</td><td><b>≥ 70 分</b> 视为通过</td></tr>
+</table>
+</div>
 
 <div class="card judgment">
-<h3>考试到底怎么考？</h3>
-<p><strong>笔试 + 答辩通关</strong>（总分100，及格80，日期6.29-6.30）。这是备考计划里明确写的。</p>
-<p style="margin-top:8px;">言秋老师（两年前考过）补充答辩环节：<strong>"根据客户业务场景介绍功能，然后考官出题答辩"</strong>。所以是<strong>两段式</strong>：先笔试考产品知识（硬数字/原生vs管家/功能差异），再答辩（场景介绍+追问）。</p>
+<h3>两段式考核流程</h3>
+<p>第一部分<strong>笔试</strong>（会议室集中、线上考试系统、1小时内）：选择题、判断题由系统自动判分；<strong>简答题由考官根据答案关键词评分</strong>。笔试完成后，按指引到另一会议室参与第二部分<strong>实操演示通关</strong>。</p>
+<p style="margin-top:10px;"><strong>通关形式：</strong>考官从 <b>5 个实操场景中现场随机抽 1 个</b>，你进行产品功能演示，由 <b>2 个考官打分取平均分</b>（满分100）。</p>
 </div>
 
 <div class="card fact">
-<h3>考试环节与对应准备</h3>
+<h3>备考优先级（按得分占比）</h3>
 <table class="cmp-table">
-<tr><th>环节</th><th>形式</th><th>你要做什么</th><th>对应章节</th></tr>
-<tr><td>① 笔试</td><td>产品知识客观题：硬数字、原生vs管家归属、功能差异、对错判断</td><td>背硬数字、判功能归属、记7维差异、识别陷阱说法</td><td><a href="#sec10">09 笔试专项题库</a> + <a href="#sec6">06 速记卡</a></td></tr>
-<tr><td>② 功能介绍</td><td>考官给客户场景，你现场演示/介绍企微管家怎么解决</td><td>像给客户做产品演示，突出管家优势</td><td><a href="#sec2">02 演示话术</a> + <a href="#sec9">08 平台实操</a></td></tr>
-<tr><td>③ 追问答辩</td><td>考官就你介绍的功能追问差异、原理、边界</td><td>准确回答，不慌不乱</td><td><a href="#sec3">03 追问应对</a> + <a href="#sec5">05 周旋技巧</a></td></tr>
+<tr><th>环节</th><th>占比</th><th>怎么拿分</th><th>对应章节</th></tr>
+<tr><td>① 笔试</td><td><b>50%</b></td><td>选择/判断题背硬数字+判功能归属+记7维差异+识别陷阱；<b>简答题按关键词组织答案</b></td><td><a href="#sec2">02 笔试</a> + <a href="#sec10">06 题库</a> + <a href="#sec6">07 速记卡</a></td></tr>
+<tr><td>② 实操通关</td><td><b>50%</b></td><td>5个场景每个都要练到能盲操作，演示时突出管家差异化优势</td><td><a href="#sec3">03 通关规则</a> + <a href="#sec4">04 五场景手册</a> + <a href="#sec9">05 平台实操</a></td></tr>
 </table>
 </div>
 
 <div class="cheat">
-<p><strong>核心心法：你不是在"答题"，你是在"做一场产品演示+客户答疑"。</strong>考官想看到的是：你能不能像客户成功/销售一样，把产品讲清楚、把客户问题接住。</p>
+<p><strong>核心心法：笔试考"记得准"，通关考"演得像客户成功"。</strong>两块各占一半，<b>都不能瘸腿</b>——通关没练熟，笔试满分也救不回来；反之亦然。</p>
 </div>
 
-<h2 id="sec2">02 8模块演示话术（背下来直接用）</h2>
-<p>考官大概率从8个功能模块里挑场景让你介绍。下面每个模块给你一套<strong>可直接背诵的演示话术</strong>——客户场景+功能介绍+管家优势，三段式。</p>
-
-<h3>模块1：对外联系（联系我/加入群聊）</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"某零售门店想让到店客户扫码加导购微信，怎么做？"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用企业微信的「联系我」功能。创建一个多人二维码，最多支持100名成员，客户扫码后自动分配给导购。如果想要更精细的运营——比如按排班分配、设客户上限自动转接、区分新老客、分时段欢迎语——那就用企微管家的「活码」，它是联系我的7维超级升级版。</p>
-<p style="margin-top:8px;"><strong>管家优势点：</strong>活码多了多人路由+分时段+时刻码（新老客分流）+自动打标签+多维度数据统计+备用员工容错。原生联系我都没有这些。</p>
-</div>
-
-<h3>模块2：内部OA（审批/打卡）</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"公司报销流程怎么配？"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用企业微信审批。关键是选对审批方式：日常小额报销用<strong>或签</strong>（任一审批人同意即过，谁在岗谁批，快）；跨部门采购用<strong>会签</strong>（所有审批人都同意才过，缺一不可）；请假/合同用<strong>依次审批</strong>（直属领导→总监→HR，讲层级）。合同审批完要财务打款，用<strong>办理人节点</strong>——只需提交办理结果不需审批。</p>
-<p style="margin-top:8px;"><strong>易被追问：</strong>"办理人节点和审批节点有什么区别？"→ 办理人是执行不打审批，审批节点要同意才过。</p>
-</div>
-
-<h3>模块3：管理和配置（通讯录/权限）</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"子公司A的员工不应该看到子公司B的通讯录，怎么隔离？"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用通讯录权限三档。第一档「隐藏部门/成员」把B彻底藏起来；第二档「限制查看外部门」让A只能看自己部门；第三档「限制查看所有人」最严格。三档都支持白名单例外。这是RBAC（基于角色的权限控制）的落地——权限跟着角色走不跟着人走。</p>
-</div>
-
-<h3>模块4：活码&任务&营销工具</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"连锁餐饮50家门店，希望客户扫码后按定位进最近的门店群，新客老客差异化处理。"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用企微管家的<strong>区域群活码+时刻码</strong>组合。区域群活码按GPS定位自动分配到最近门店群（原生加入群聊做不到）；时刻码区分新老客——新客直接进群，老客跳转到福利页做复购。如果群满了，群活码还能自动建新群（顺序入群）或让客户选不同群（分类入群），还有备用员工承接防止流失。</p>
-<p style="margin-top:8px;"><strong>必背7维差异：</strong>活码vs联系我=多人路由/时刻码新老客/分时段欢迎语/自动打标签/多维统计/自定义样式/备用员工。这7维是考试必考。</p>
-</div>
-
-<h3>模块5：CRM</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"画出你们的CRM从获客到成交的流程。"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>CRM3.0的核心是一条漏斗：<strong>线索→联系人→企业→商机→订单</strong>。线索是可能买的人（留过资）；联系人是找到具体对接人；企业是了解客户公司评估购买力；商机是有明确成交机会；订单是签约了。每一步都在筛选，越往后人越少价值越高。CRM管的是这条漏斗的转化率，不只是通讯录。</p>
-<p style="margin-top:8px;"><strong>易被追问：</strong>"CRM和通讯录什么区别？"→ CRM管销售过程（漏斗转化），通讯录只是其中"联系人"一环。</p>
-</div>
-
-<h3>模块6：会话存档</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"银行要做合规审计，需要留存所有员工和客户的聊天记录。"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用会话存档。<strong>服务版</strong>覆盖内部+员工与外部客户沟通，银行买这个。注意三个硬限制：企微侧只存5天（企业必须5天内自己拉取存储，否则丢失）；一次拉取上限1000条；调用频率4000次/分钟。版本间不支持升级，买服务版后想升企业版要重买。</p>
-<p style="margin-top:8px;"><strong>管家增强：</strong>企微管家在存档基础上做超时回复规则（X分钟未回复触发提醒）和敏感词规则（辱骂/飞单/竞品拦截告警），还能搭智能质检任务，AI全覆盖检查服务质量。</p>
-</div>
-
-<h3>模块7：AI功能</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"你们的AI能做什么？"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>企微管家AI聚焦两个企业场景：一是<strong>智能质检</strong>——AI自动检查所有客服聊天，发现超时未回复、敏感词、服务态度差，代替人工抽检，100%全覆盖；二是<strong>知识库+智能问答</strong>——把产品文档上传知识库，员工跟客户聊天时侧边栏根据客户问题自动推荐话术，新人不用翻手册也能专业回复。</p>
-<p style="margin-top:8px;"><strong>易被追问：</strong>"和ChatGPT有什么区别？"→ 不是通用聊天AI，是聚焦"检查服务质量"和"辅助员工回答"两个企业场景的专用AI。</p>
-</div>
-
-<h3>模块8：素材&客户管理&数据统计</h3>
-<div class="script-box">
-<p><strong>场景：</strong>"怎么把客户的反馈自动打标签？"</p>
-<p style="margin-top:8px;"><strong>话术：</strong>用客户收集表。创建一个收集表（比如"满意度调查"），客户填写后，内容自动同步到客户标签。这样后续可以按标签精准群发——比如给"不满意"的客户发优惠券挽回，给"高意向"的客户发新品推荐。</p>
-</div>
-
-<h2 id="sec3">03 考官追问应对大全</h2>
-<p>考官一定追问。下面是<strong>最高频的追问+标准回答</strong>，背下来考场直接用。</p>
-
-<div class="qa-box">
-<p class="q">Q1："这个功能企业微信原生不就有吗，为什么要买企微管家？"</p>
-<p class="a">A：原生给基础能力，管家做自动化、精细化、数据化增强。比如联系我原生就是一个固定二维码；管家活码加了多人路由、分时段分配、新老客分流、自动打标签、数据统计、备用员工容错——7个维度都是原生没有的。管家是增强插件，没有企业微信就没有管家。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q2："活码和联系我到底什么区别？"</p>
-<p class="a">A：7个维度。①多人路由+分时段分配（联系我是固定码）②时刻码区分新老客（联系我无识别）③分时段个性化欢迎语（联系我是固定内容）④自动打标签+备注+渠道记录（联系我需手动）⑤多维度数据统计（联系我只有扫码总数）⑥自定义样式+短链（联系我固定）⑦备用员工容错（联系我无）。一句话：联系我是"加好友入口"，活码是"智能获客路由系统"。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q3："群活码和加入群聊什么区别？"</p>
-<p class="a">A：加入群聊是企微原生（绑5群、满200自建、永不过期）；群活码是管家增强（顺序入群+分类入群+区域活码按定位分配+备用员工+自动打标签+时刻群码区分新老客）。核心差异：原生管"一个码对一群"，管家管"一个码对多群+智能分配+容错"。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q4："会话存档能存多久？"</p>
-<p class="a">A：企微侧只存5天，企业必须5天内通过API拉取到自己服务器，否则丢失。这是"拉取窗口"不是"留存期"。一次拉取上限1000条，频率4000次/分钟。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q5："朋友圈一天能发几条？"</p>
-<p class="a">A：每天每客户最多3条，<strong>企业和员工共用3次</strong>——不是各3条。企业发2条，员工只能发1条。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q6："离职销售的客户怎么办？"</p>
-<p class="a">A：用离职继承。客户24小时后自动切换给接替员工，无感转接。每90天内客户/客户群最多被转接2次。这是企业微信相对个人微信最大的私域优势——客户归企业不归个人。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q7："CRM和通讯录什么区别？"</p>
-<p class="a">A：CRM管销售漏斗（线索→联系人→企业→商机→订单），管的是转化过程；通讯录只是CRM里"联系人"这一环。CRM不是通讯录。</p>
-</div>
-
-<div class="qa-box">
-<p class="q">Q8："企微管家和企业微信是什么关系？"</p>
-<p class="a">A：企微管家是基于企业微信API开发的SaaS增强插件。企业微信是平台，企微管家是插件。没有企业微信就没有企微管家。管家不是替代品，是增强层。</p>
-</div>
-
-<h2 id="sec4">04 7道实操考核题口述答案</h2>
-<p>实操考核的7道题，考官可能让你口述配置步骤。下面是每道题的<strong>口述标准答案</strong>。</p>
-<div class="cheat"><p><strong>⚠️ 防翻车核心：</strong>这7道题里有的是企微<strong>原生</strong>功能（在 work.weixin.qq.com 配），有的是企微<strong>管家</strong>功能（在 platform.wshoto.com 配）。口述时一定要先说"这是在XX后台配置"——说错后台是考场大忌。下面每个答案都标了两套路径，完整菜单树见 <a href="#sec9">08 平台实操手册</a>。</p></div>
+<h2 id="sec2">02 笔试怎么考</h2>
+<p>笔试在会议室集中进行，用<strong>线上考试系统</strong>，限时 <strong>1 小时内</strong>。题型有三类，评分方式不同：</p>
 
 <div class="card fact">
-<h4>实操1：配置"联系我"二维码 + "加入群聊"<span class="tag-verified">原生</span></h4>
-<p><strong>联系我：</strong>这是企微<strong>原生</strong>功能。</p>
-<div class="path-box"><span class="native">企微管理后台 → 客户与上下游 → 客户联系 → 联系我 → 选择"单人/多人/批量单人" → 选择员工或部门 → 设置欢迎语 → 生成二维码投放</span></div>
-<p><strong>加入群聊：</strong>同样是企微<strong>原生</strong>功能。</p>
-<div class="path-box"><span class="native">企微管理后台 → 客户与上下游 → 客户群 → 加入群聊 → 选择载体（二维码/立牌/小程序按钮）→ 绑定客户群（最多5个）→ 群满200人自动建新群 → 生成投放</span></div>
-<p style="color:var(--brick);margin-top:8px;"><strong>考官追问"管家怎么做"：</strong>对应管家的「员工活码」（platform→客户营销→加客户→员工活码）和「客户群活码」（客户营销→加群→客户群活码），详见 <a href="#sec9">08 平台实操手册</a>。</p>
+<table class="cmp-table">
+<tr><th>题型</th><th>评分方式</th><th>怎么准备</th></tr>
+<tr><td>选择题</td><td>系统<b>自动判分</b></td><td>背硬数字、判原生vs管家归属、记7维差异。见 <a href="#sec10">06 笔试题库</a>。</td></tr>
+<tr><td>判断题</td><td>系统<b>自动判分</b></td><td>专治错误说法：认准"动态二维码/永久保存/CRM=通讯录/时刻码按时间/管家替代企微"5个陷阱词，全是❌。</td></tr>
+<tr><td>简答题</td><td><b>考官按答案关键词评分</b></td><td>答题要踩中关键词，分点作答、结构化输出。见下方简答策略。</td></tr>
+</table>
 </div>
 
-<div class="card fact">
-<h4>实操2：列出活码vs联系我的功能差异点<span class="tag-verified">管家vs原生</span></h4>
-<p><strong>口述（7个维度）：</strong>①多人路由+分时段分配（联系我是固定码）②时刻码区分新老客（联系我无识别）③分时段个性化欢迎语（联系我固定内容）④自动打标签+备注+渠道记录（联系我需手动）⑤多维度数据统计（联系我只有扫码总数）⑥自定义样式+短链（联系我固定）⑦备用员工容错（联系我无）。</p>
-<p style="margin-top:8px;"><strong>操作位置：</strong>活码在 platform → 客户营销 → 加客户 → <strong>员工活码</strong>；联系我在企微原生后台。详见 <a href="#sec9">08 平台实操手册·客户营销</a>。</p>
-</div>
-
-<div class="card fact">
-<h4>实操3：列出群活码vs加入群聊的功能差异点<span class="tag-verified">管家vs原生</span></h4>
-<p><strong>口述（7个维度）：</strong>①顺序入群+分类入群（加入群聊只能一码一群）②群满自动建新群（原生满200自建但无分类）③备用员工承接（原生无）④多维度数据统计（原生仅入群总数）⑤入群自动打标签+关联群发（原生无）⑥时刻群码区分新老客（原生无）⑦区域活码按定位分配（原生无）。</p>
-<p style="margin-top:8px;"><strong>操作位置：</strong>群活码在 platform → 客户营销 → 加群 → <strong>客户群活码</strong>；加入群聊在企微原生后台。详见 <a href="#sec9">08 平台实操手册·客户营销</a>。</p>
-</div>
-
-<div class="card fact">
-<h4>实操4：配置群发任务（4种）<span class="tag-verified">管家</span></h4>
-<p>这4种群发都在企微管家后台配。</p>
-<div class="path-box">platform → 客户营销 → 营销转化 → <b>群发工具</b>（四个Tab：群发客户 / 群发客户群 / 群发朋友圈 / 超级群发）→ 选对应Tab → 新建任务 → 选目标客户/群 → 编辑内容 → 设置发送规则/时间 → 下发</div>
-<p style="margin-top:8px;"><strong>4种区别：</strong></p>
-<ul style="margin-left:20px;">
-<li><strong>群发客户：</strong>1对1私发。每次最多2000客户，企业和员工共用每日1条。直链：<code>platform.wshoto.com/customer-marketing/customer/send-customer/index</code></li>
-<li><strong>群发客户群：</strong>批量发群。有日/周/月限制，群主最多发2000群。</li>
-<li><strong>群发朋友圈：</strong>信息流曝光。每天每客户最多3条，企业员工共用3次。</li>
-<li><strong>超级群发：</strong>以上三种组合触达，不限次数。管家独有，原生没有。</li>
+<div class="judge-box">
+<h3>简答题得分策略（关键词评分制）</h3>
+<p>简答题不是主观发挥，是<strong>把关键词"砸"到卷面上</strong>。考官拿着关键词清单打分，缺一个关键词扣一分。</p>
+<ul style="margin-left:20px;line-height:2;">
+<li><b>分点作答：</b>用"①②③"或"第一/第二"，让考官一眼数到关键词数量。</li>
+<li><b>先定位再展开：</b>先说"这是在XX后台（原生/管家）配置"，再说路径，最后讲差异化——和通关演示一个套路。</li>
+<li><b>必砸关键词清单：</b>活码7维（多人路由/时刻码/欢迎语/自动标签/统计/样式/备用）、CRM漏斗（线索→联系人→企业→商机→订单）、会话存档5天拉取窗口、朋友圈3条共用、离职继承24h-90天2次。</li>
+<li><b>不确定的用范围，别编：</b>"具体数值我确认，大概在XX范围"比编一个错数字扣分少。</li>
 </ul>
-<p style="color:var(--brick);margin-top:6px;"><strong>管家 vs 原生：</strong>企微原生群发/朋友圈<b>不支持定时发送</b>，管家都支持定时；管家选素材还多了素材中心+商品和活动，筛选客户比原生多（可加添加时间、剔除标签/性别/年龄/关键词）。</p>
+</div>
+
+<h2 id="sec3">03 通关怎么考（5场景现场抽1个）</h2>
+
+<div class="card danger" style="border:2px solid var(--brick);background:#FFF3F0;">
+<h3 style="color:var(--brick);margin-top:0;">通关规则（官方）</h3>
+<ul style="margin-left:20px;line-height:2;">
+<li><b>抽取方式：</b>考官从下面 5 个实操场景中<b>现场随机抽 1 个</b>。</li>
+<li><b>演示要求：</b>你针对抽中的场景，进行相关功能的<b>产品实操演示</b>。</li>
+<li><b>打分方式：</b>由 <b>2 个考官打分，得分为两人平均分</b>（满分100）。</li>
+<li><b>占最终成绩 50%</b>，与笔试各占一半。</li>
+</ul>
+<p style="margin-top:8px;color:var(--brick);"><strong>策略铁律：每个场景都必须练到能盲操作，不能押宝。</strong>因为你不知道会抽到哪个。</p>
 </div>
 
 <div class="card fact">
-<h4>实操5：输出CRM3.0整体流程逻辑图<span class="tag-verified">管家</span></h4>
-<p><strong>口述漏斗五层：</strong>线索（可能买的人，留过资）→ 联系人（找到具体对接人）→ 企业（了解客户公司评估购买力）→ 商机（有明确成交机会）→ 订单（签约了）。每步都有筛选和转化率。</p>
-<div class="path-box">CRM各对象在 platform → 客户管理 → <b>销售管理</b>下：<br>企业 / 联系人 / 公海 / 商机 / 代客订单（注意：菜单里无独立"线索"对象）<br><br>商机阶段配置：客户管理 → 销售管理设置 → <b>商机设置</b>（进行中阶段最多10个，赢单=订单成交/输单=短期无法成交）</div>
-<p style="color:var(--brick);margin-top:6px;"><strong>易错点：</strong>平台菜单"销售管理"下只有企业/联系人/公海/商机/代客订单，<b>没有"线索"</b>（线索在线索管理模块）。商机转赢单后会自动生成代客订单，不用重写。</p>
+<h3>5 个实操场景功能组合（官方原题，逐字照抄）</h3>
+<table class="cmp-table">
+<tr><th>场景</th><th>功能组合</th></tr>
+<tr><td><b>演示一</b></td><td>区域活码（关联员工活码）+ 客户群发 + 轨迹素材 + 客户画像 + AI智能回复</td></tr>
+<tr><td><b>演示二</b></td><td>区域活码（关联群活码）+ 群裂变 + 群群发 + 超级群发 + AI话题洞察</td></tr>
+<tr><td><b>演示三</b></td><td>识客码 + 微信客服 + 标准化营销 + 好友裂变 + 群发朋友圈 + AI朋友圈广场</td></tr>
+<tr><td><b>演示四</b></td><td>员工活码短链 + 收集表 + 客户画像 + 标准化营销 + 敏感词预警 + AI分析智能体</td></tr>
+<tr><td><b>演示五</b></td><td>超级活码 + 跟进任务 + 抽奖 + 标准化营销 + 超时回复 + AI客户洞察</td></tr>
+</table>
+<p style="margin-top:8px;font-size:13px;color:#888;">通用账号：企微管家<b>体验账号后台（管理端）</b>操作；通用入口：企微管家后台 → 左侧菜单。完整菜单路径见 <a href="#sec9">05 平台实操手册</a>。</p>
 </div>
 
-<div class="card fact">
-<h4>实操6：配置超时回复规则 + 敏感词规则<span class="tag-verified">管家</span></h4>
-<p>这俩都在企微管家<strong>会话存档</strong>模块（需先开通会话存档）。</p>
-<div class="path-box">platform → 会话存档 → <b>服务质量</b> → 回复超时记录（统计页）/ 规则在超时回复规则配置<br>可设工作日/休息日/项目不同规则，可设机器人和白名单（发表情包等不需回复的归为机器人）</div>
-<div class="path-box">platform → 会话存档 → <b>内容审计</b> → 敏感词预警 → 自定义敏感词（支持批量导入）或选行业敏感词库（金融/IT/教育等）→ 设置处理方式（拦截/告警）<br><br>同模块还有：敏感行为预警（如发名片、发带二维码图片）、敏感内容拦截、员工白名单（高级领导/财务不展示）</div>
-<p style="color:var(--brick);margin-top:6px;"><strong>实测提示：</strong>体验账号的会话存档→敏感词管理页可能提示"无权限"，需超管权限。口述时说明"需要会话存档权限和超级管理员角色"。</p>
+<div class="cheat">
+<p><strong>考前30秒通用开场框架（不管抽到哪个场景都用）：</strong></p>
+<p style="margin-style:8px;">"考官好，我演示的场景是【场景X】。我会按<strong>获客 → 互动 → 转化 → 管理 → AI赋能</strong>的运营全流程，依次演示这几个功能，并在每个环节说明企微管家相比企业微信原生的差异化优势。"</p>
+<p style="margin-top:6px;"><strong>操作三铁律：</strong>①<b>边做边讲</b>（每点一个按钮说一句"我现在配置的是XX，作用是YY"）②<b>每个功能都讲差异化</b>（考官要听"管家比原生强在哪"，不是"我会点按钮"）③<b>配置完要展示效果</b>（配完活码说明"客户扫码后会XX"，形成闭环）。</p>
 </div>
 
-<div class="card fact">
-<h4>实操7：搭建智能质检任务 + 知识库智能问答<span class="tag-verified">管家</span></h4>
-<p><strong>智能质检任务：</strong></p>
-<div class="path-box">platform → 会话存档 → <b>会话智能</b> → AI服务质检 → <b>质检任务</b> → 新建质检任务 → 选质检范围（员工/时间）→ 配置质检维度（超时/敏感词/态度）→ 启动自动检查</div>
-<p><strong>知识库 + 智能问答：</strong></p>
-<div class="path-box">platform → 客户营销 → <b>AI智能体</b> → AI知识库 → 上传文档（文件知识/问答知识）→ 配置智能问答设置（查询答案顺序）<br><br>员工侧使用：企微聊天侧边栏 → 与客户沟通时 → <b>智能问答推荐话术</b>自动弹出 → 一键发送</div>
-<p style="color:var(--brick);margin-top:6px;"><strong>注意位置：</strong>AI在管家后台分两处——客户营销下的"AI智能体"（AI聊天/分析智能体、AI知识库）和会话存档下的"会话智能"（话题洞察、AI合规审查、AI服务质检）。别记串。</p>
+<p style="margin-top:16px;">下面是 <strong>5 个场景的完整实操演示手册</strong>——每个功能给出 <b>①操作路径 ②演示话术 ③管家优势（加分项）④易错点</b>。务必每个场景都练熟。</p>
+
+<h2 id="sec4">04 五场景实操演示手册</h2>
+
+<h3>🎯 场景一：区域活码（关联员工活码）+ 客户群发 + 轨迹素材 + 客户画像 + AI智能回复</h3>
+<p><strong>运营主线：</strong>线下门店按地理位置引流 → 加好友 → 群发触达 → 素材追踪意向 → 画像分析 → AI辅助回复</p>
+
+<h4>1️⃣ 区域活码（关联员工活码）</h4>
+<div class="path-box">platform → <b>我的企业 → 门店管理</b> → 新建门店（填门店名、地址、经纬度）→ 保存<br>platform → <b>客户营销 → 获客拉新 → 区域活码</b> → 新建 → 关联类型选 <b>员工活码</b> → 选择门店 → 关联使用员工 → 设每日添加上限 → 生成二维码/短链</div>
+<div class="script-box"><p>"区域活码基于 <b>LBS 地理位置</b>，客户扫码时系统自动识别位置，分配到最近的门店员工。我这里先建门店，再建区域活码并关联员工活码。注意区域活码<b>必须先创建门店</b>，这是前置条件。"</p></div>
+<p><strong>管家优势（加分项）：</strong>原生"联系我"是固定二维码，<b>无地理位置识别、无添加上限、无自动分配</b>；管家区域活码支持 <b>LBS定位分流、多人活码设添加上限、分时段欢迎语、新老客识别（时刻码）</b>。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌忘记先建门店就建区域活码（会失败）；❌混淆"关联员工活码"（场景一）vs"关联群活码"（场景二）。</p>
+
+<h4>2️⃣ 客户群发</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 群发工具 → 群发客户</b> → 新建任务 → 选接收对象（按标签/按员工/按客户列表）→ 编辑内容（文本+图片+链接，可从素材库选）→ 设发送时间（立即/定时）→ 下发 → 员工企微侧边栏收到任务 → 确认发送</div>
+<div class="script-box"><p>"客户群发是<b>员工代发</b>模式：管理员后台建任务，员工在企微侧边栏确认后发出，避免骚扰、保护客户体验。注意企微原生群发规则限制：<b>每天1条、每周7条、每月按当月天数条</b>。"</p></div>
+<p><strong>管家优势：</strong>原生群发助手每次手动选人，管家支持<b>按标签批量筛选、标准化营销任务自动触发</b>。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌把"客户群发"和"群发客户群""超级群发"搞混（见 <a href="#cmp-groupsend">群发对比表</a>）。</p>
+
+<h4>3️⃣ 轨迹素材</h4>
+<div class="path-box">platform → <b>内容中心 → 通用素材 → 轨迹素材</b> → 上传素材（文件≤20个、视频≤100M）→ 员工发送给客户 → 客户浏览 → 员工企微侧边栏<b>收到浏览提醒</b></div>
+<div class="script-box"><p>"轨迹素材是<b>带行为追踪的素材</b>。客户浏览后员工会实时收到提醒，能在客户意向最高点及时跟进。注意：<b>文件和视频</b>浏览才触发提醒，普通海报/文本不触发。"</p></div>
+<p><strong>管家优势：</strong>这是<b>管家独有能力</b>，原生企微无素材行为追踪。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌以为所有素材都触发提醒（只有文件/视频）。</p>
+
+<h4>4️⃣ 客户画像</h4>
+<div class="path-box">platform → <b>客户管理 → 客户列表</b> → 点击某客户 → 查看画像（基础信息 / 标签 / 轨迹 / 消费 / 跟进记录）</div>
+<div class="script-box"><p>"客户画像整合了<b>行为数据、消费数据、第三方数据</b>三大维度。默认看3个月轨迹，最长可查6个月。我还能看到客户当前处于哪个阶段。"</p></div>
+<p><strong>管家优势：</strong>原生只有基础信息，管家画像<b>多维度+轨迹+阶段管理</b>，标签可同步到企微。客户阶段顺序：<b>新客户→开口→意向→有需求→高价值→商务谈判</b>。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌把客户阶段顺序记错。</p>
+
+<h4>5️⃣ AI智能回复</h4>
+<div class="path-box">platform → <b>客户营销 → AI智能体 → AI知识库</b> → 配置知识库（上传产品文档/FAQ）→ 员工企微<b>聊天侧边栏</b> → 智能问答 → 输入客户问题 → AI生成推荐话术 → 一键发送</div>
+<div class="script-box"><p>"智能问答基于<b>企业知识库</b>生成专业回复，在聊天侧边栏直接调用。员工不用背话术，AI实时推荐，还能用多模型（DeepSeek等）对比输出。智能问答入口有三处：<b>侧边栏、员工知识工作台、内部群机器人</b>。"</p></div>
+<p><strong>管家优势：</strong>完全管家独有，原生无AI能力。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌忘记智能问答的三个入口。</p>
+
+<hr style="border:none;border-top:1px dashed var(--sage);margin:24px 0;">
+
+<h3>🎯 场景二：区域活码（关联群活码）+ 群裂变 + 群群发 + 超级群发 + AI话题洞察</h3>
+<p><strong>运营主线：</strong>线下LBS引流入群 → 裂变扩群 → 群内批量触达 → 管理员强制触达 → AI分析群聊话题</p>
+
+<h4>1️⃣ 区域活码（关联群活码）</h4>
+<div class="path-box">先建门店（同场景一）→ platform → <b>客户营销 → 获客拉新 → 区域活码</b> → 关联类型选 <b>群活码</b> → 选择客户群活码 → 群满后自动建新群 → 保存</div>
+<div class="script-box"><p>"区别于场景一关联员工，这里关联群活码。客户扫码按LBS进最近的门店群。群活码支持<b>顺序入群</b>（群满自动建新群）和<b>分类入群</b>（多场景选择），原生'加入群聊'一个码只对应一个群、满员即失效。"</p></div>
+<p><strong>管家优势：</strong>原生"加入群聊"<b>无自动建群、无备用员工、无入群打标签</b>；管家群活码全有，还支持<b>时刻群码识别新老客</b>。原生一个活码绑5个群，管家关联<b>200个</b>。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌区域活码创建前<b>必须先建门店</b>。</p>
+
+<h4>2️⃣ 群裂变</h4>
+<div class="path-box">platform → <b>客户营销 → 获客拉新 → 社交裂变 → 群裂变</b> → 新建活动 → 配置（邀请N人得奖励、活动时间、防刷）→ 发布 → 客户群内分享海报 → 好友扫码进群 → 自动计任务 → 达标发奖</div>
+<div class="script-box"><p>"群裂变利用客户社交关系链扩群。管家三大裂变：<b>任务裂变、群裂变、红包裂变</b>（没有直播裂变）。客户完成邀请任务后自动发奖。"</p></div>
+<p><strong>管家优势：</strong>原生无任何裂变能力。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌以为有"直播裂变"（只有任务/群/红包三种）。</p>
+
+<h4>3️⃣ 群群发（群发客户群）</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 群发工具 → 群发客户群</b> → 选目标群 → 编辑内容 → 下发 → 群主在企微确认发送</div>
+<div class="script-box"><p>"群群发针对<b>客户群</b>，由群主确认后发出。标准化营销任务的触发类型有三种：<b>群发客户、群发客户群、跟进客户</b>。"</p></div>
+
+<h4>4️⃣ 超级群发</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 群发工具 → 超级群发</b> → 新建任务 → 选群 + <b>可指定群成员</b>执行 → 编辑内容 → 下发</div>
+<div class="script-box"><p>"超级群发是管家的<b>增强版群发</b>，关键能力是<b>管理员可以指定具体群成员来执行任务</b>，做到精准到人。普通群发做不到指定成员。"</p></div>
+<p><strong>管家优势：</strong><b>指定群成员执行</b>是超级群发核心差异点，管家独有、原生没有。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌说不清超级群发和普通群发的区别（答：超级群发可<b>指定群成员</b>执行）。</p>
+
+<h4>5️⃣ AI话题洞察</h4>
+<div class="path-box">platform → <b>会话存档 → 会话智能 → 话题洞察</b> → 开启/查看分析（话题趋势、热词、客户情感正/负/中）</div>
+<div class="script-box"><p>"话题洞察<b>T+1自动分析</b>每天的聊天内容，生成话题分布、热词排行和情感趋势。比如发现客户最近都在讨论价格（负向情感多），运营就能针对性优化。它<b>自动分析话题与情感</b>，输出词云和趋势报告。"</p></div>
+<p><strong>管家优势：</strong>原生无此能力。分析维度：产品价格、库存供货、产品咨询、客户评价、问题投诉等。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌把话题洞察和智能质检搞混（话题洞察看<b>话题和情感</b>，质检看<b>员工服务规范</b>）。</p>
+
+<hr style="border:none;border-top:1px dashed var(--sage);margin:24px 0;">
+
+<h3>🎯 场景三：识客码 + 微信客服 + 标准化营销 + 好友裂变 + 群发朋友圈 + AI朋友圈广场</h3>
+<p><strong>运营主线：</strong>渠道识别客户来源 → 临时咨询 → 自动化营销触达 → 裂变拉新 → 朋友圈触达 → AI批量生产朋友圈内容</p>
+
+<h4>1️⃣ 识客码</h4>
+<div class="path-box">platform → <b>客户营销 → 获客拉新 → 加客户 → 识客码</b> → 新建 → 配置（渠道标签、欢迎语、跳转页面）→ 生成二维码</div>
+<div class="script-box"><p>"识客码用于<b>渠道来源追踪</b>，不同渠道生成不同码，客户扫码自动打渠道标签，方便后续按渠道分析ROI。区别于区域活码（按地理位置），识客码按<b>渠道</b>分流。"</p></div>
+
+<h4>2️⃣ 微信客服</h4>
+<div class="path-box">platform → <b>客户营销 → 微信客服</b> → 接待管理 → 新建客服账号 → 配欢迎语、接待规则 → 客户在微信点击客服入口 → 临时咨询（无需加好友）</div>
+<div class="script-box"><p>"微信客服提供<b>临时咨询</b>，客户不用加好友就能沟通，降低服务门槛。它是企微拉新的四大产品能力之一（广告管家、活码工具、裂变工具、微信客服）。<b>不需加好友、不依赖会话存档</b>。"</p></div>
+
+<h4>3️⃣ 标准化营销（SOP）</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 营销任务 → 标准化营销</b> → 新建 → 选触发类型（群发客户/群发客户群/跟进客户）→ 配置触发条件 → 下发</div>
+<div class="script-box"><p>"标准化营销是<b>自动化营销引擎</b>，按条件自动触发任务，减少人工重复操作。三大触发类型：群发客户、群发客户群、跟进客户。这是管家独有，原生不支持。"</p></div>
+
+<h4>4️⃣ 好友裂变</h4>
+<div class="path-box">platform → <b>客户营销 → 获客拉新 → 社交裂变 → 任务裂变</b> → 新建 → 配置（邀请任务、奖励、规则）→ 发布</div>
+<div class="script-box"><p>"好友裂变通过<b>老带新</b>扩好友，客户完成任务自动发奖。"</p></div>
+
+<h4>5️⃣ 群发朋友圈</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 群发工具 → 群发朋友圈</b> → 编辑内容 → 选可见客户 → 下发 → 员工确认发布到客户朋友圈</div>
+<div class="script-box"><p>"群发朋友圈让管理员统一下发朋友圈内容，员工确认后发布，保证内容规范统一。每天每客户最多3条，企业和员工<b>共用3次</b>。"</p></div>
+
+<h4>6️⃣ AI朋友圈广场</h4>
+<div class="path-box">platform / 侧边栏 → <b>AI功能 → 朋友圈广场</b> → AI生成朋友圈文案 → 选择 → 发布</div>
+<div class="script-box"><p>"AI朋友圈广场帮员工<b>批量生成朋友圈内容</b>，解决'不知道发什么'的问题，提升朋友圈活跃度。"</p></div>
+<p><strong>管家优势：</strong>全链路AI赋能，原生无。</p>
+
+<hr style="border:none;border-top:1px dashed var(--sage);margin:24px 0;">
+
+<h3>🎯 场景四：员工活码短链 + 收集表 + 客户画像 + 标准化营销 + 敏感词预警 + AI分析智能体</h3>
+<p><strong>运营主线：</strong>短链全渠道获客 → 表单收集线索 → 画像补全 → 自动化跟进 → 风控防飞单 → AI分析决策</p>
+
+<h4>1️⃣ 员工活码短链</h4>
+<div class="path-box">platform → <b>客户营销 → 获客拉新 → 加客户 → 员工活码</b> → 新建多人活码 → 配置员工、欢迎语 → <b>生成短链</b>（用于短信/邮件等非微信渠道）</div>
+<div class="script-box"><p>"员工活码除二维码外还能<b>生成短链</b>，用于短信、邮件等非微信渠道获客，并统计各渠道引流数据。原生'联系我'只能微信扫码，无短链能力。"</p></div>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌只有<b>多人活码</b>才能设添加上限，单人不行。</p>
+
+<h4>2️⃣ 收集表</h4>
+<div class="path-box">platform → <b>内容中心 → 通用素材 → 轨迹素材 → 收集表</b> → 新建 → 配置字段（姓名/手机/需求等）→ 勾选"<b>收集到的提交记录将自动同步至客户信息</b>"（标签+同步信息）→ 发布 → 客户填写 → 数据回收自动入画像/标签</div>
+<div class="script-box"><p>"收集表用于<b>线索收集</b>，关键字段可<b>自动同步为客户标签</b>，省去手动打标。这是实操考核原题：'创建收集表，并将填写内容同步到标签'。"</p></div>
+
+<h4>3️⃣ 客户画像</h4>
+<p>（同场景一第4步：多维度画像 + 阶段管理，展示行为/消费/第三方数据。）</p>
+
+<h4>4️⃣ 标准化营销</h4>
+<p>（同场景三第3步：按条件自动触发群发/跟进任务。）</p>
+
+<h4>5️⃣ 敏感词预警</h4>
+<div class="path-box">platform → <b>会话存档 → 内容审计 → 敏感词预警</b> → 新建规则 → 配置敏感词列表（自定义批量导入 / 行业词库金融IT教育）、触发动作（提醒/拦截）→ 保存</div>
+<div class="script-box"><p>"敏感词预警基于<b>会话存档</b>，员工一旦在聊天中发送敏感词（如'飞单''加微信'），系统自动预警拦截，防止飞单和违规。"</p></div>
+<p><strong>管家优势：</strong>原生license只能看接口不能直接查内容，管家提供<b>敏感词、超时回复、离职检索</b>等管理能力。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌敏感词预警<b>依赖会话存档</b>，必须先开通会话存档（企微原生【安全与管理→管理工具→会话内容存档】开启，参数配到管家「我的企业→系统管理→配置管理」）。</p>
+
+<h4>6️⃣ AI分析智能体</h4>
+<div class="path-box">platform → <b>客户营销 → AI智能体 → AI分析智能体</b> → 上传文件或输入问题 → AI分析输出（可选两个模型对比）</div>
+<div class="script-box"><p>"AI分析智能体支持<b>多模型对比</b>，可同时选两个模型输出答案对比，支持文件/截图/多模态输入。管家的Agent应用包括：话题洞察、客户洞察、智能跟进、智能转化分析等。"</p></div>
+
+<hr style="border:none;border-top:1px dashed var(--sage);margin:24px 0;">
+
+<h3>🎯 场景五：超级活码 + 跟进任务 + 抽奖 + 标准化营销 + 超时回复 + AI客户洞察</h3>
+<p><strong>运营主线：</strong>活码全渠道获客 → 任务驱动跟进 → 抽奖活跃 → 自动化触达 → 服务时效监控 → AI深度洞察客户</p>
+
+<h4>1️⃣ 超级活码</h4>
+<div class="path-box">platform → <b>客户营销 → 获客拉新 → 超级活码</b>（聚合多种活码能力）→ 新建 → 配置引流规则、关联活码类型 → 生成</div>
+<div class="script-box"><p>"超级活码是<b>活码的聚合升级</b>，整合员工活码、群活码、区域活码等能力，一个入口满足多种引流场景。"</p></div>
+
+<h4>2️⃣ 跟进任务</h4>
+<div class="path-box">platform → <b>客户管理 → 标准化营销 / 跟进任务</b> → 新建 → 指定员工、客户、跟进时间、跟进内容 → 下发 → 员工企微收到任务提醒 → 执行跟进 → 记录结果</div>
+<div class="script-box"><p>"跟进任务把销售动作<b>任务化、可追踪</b>。跟进功能覆盖<b>企业、联系人、客户、客户群、商机</b>全生命周期，协作团队成员都能创建。"</p></div>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌以为跟进只针对客户（实际覆盖5类对象）。</p>
+
+<h4>3️⃣ 抽奖</h4>
+<div class="path-box">platform → <b>客户营销 → 营销转化 → 营销工具 → 抽奖</b> → 新建 → 选类型（<b>通用抽奖 / 获客抽奖</b>）→ 配置奖品、概率、规则 → 可设<b>人工审核</b> → 发布</div>
+<div class="script-box"><p>"抽奖有<b>通用抽奖和获客抽奖</b>两种类型。晒单/抽奖支持<b>人工审核</b>，防作弊防违规。"</p></div>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌记不住抽奖类型（答：通用/获客两种）。</p>
+
+<h4>4️⃣ 标准化营销</h4>
+<p>（同场景三第3步。）</p>
+
+<h4>5️⃣ 超时回复</h4>
+<div class="path-box">platform → <b>会话存档 → 服务质量 → 超时回复规则</b> → 新建 → 配置（触发时间<b>最低5分钟</b>、提醒对象、提醒方式）→ 保存</div>
+<div class="script-box"><p>"超时回复监控服务时效，员工超过设定时间未回复客户就触发提醒。<b>最低触发时间是5分钟</b>。这保证客户咨询不被遗漏，提升响应效率。"</p></div>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌超时回复最低触发时间记错（答：<b>5分钟</b>）。</p>
+
+<h4>6️⃣ AI客户洞察</h4>
+<div class="path-box">platform → <b>会话存档 → 会话智能 → 客户洞察</b> → 开启 → 查看某客户：AI自动提取的意向产品、需求痛点、购买顾虑、跟进建议</div>
+<div class="script-box"><p>"客户洞察<b>实时分析</b>客户会话，自动提取意向产品、购买异议点、需求痛点，并生成跟进建议。四大亮点：<b>信息不遗漏、了解客户更轻松、边聊边管理、提升转化效率</b>——把对客户的'懂'转化为销售的'准'。"</p></div>
+<p><strong>管家优势：</strong>这是<b>通关高光项</b>，体现AI直接赋能销售转化。</p>
+<p style="color:var(--brick);"><strong>易错点：</strong>❌客户洞察和话题洞察搞混（客户洞察看<b>单个客户</b>，话题洞察看<b>群聊趋势</b>）。</p>
+
+<hr style="border:none;border-top:2px solid var(--forest);margin:28px 0;">
+
+<h3>📊 必背对比表一：四种群发（场景一二三都要用）<span id="cmp-groupsend"></span></h3>
+<table class="cmp-table">
+<tr><th>类型</th><th>对象</th><th>执行人</th><th>特点</th></tr>
+<tr><td>群发客户</td><td>单个客户</td><td>员工确认发</td><td>按标签筛选，精细触达；每次≤2000，每日共用1条</td></tr>
+<tr><td>群发客户群</td><td>客户群</td><td>群主确认发</td><td>群维度触达</td></tr>
+<tr><td>群发朋友圈</td><td>客户朋友圈</td><td>员工确认发</td><td>内容统一规范；每天3条共用</td></tr>
+<tr><td>超级群发</td><td>客户/群</td><td><b>可指定群成员</b>执行</td><td>精准到人，强制触达；管家独有</td></tr>
+</table>
+<p style="font-size:13px;color:#888;"><strong>原生群发规则：</strong>每天1条、每周7条、每月按当月天数条（三个同时生效）。</p>
+
+<h3>📊 必背对比表二：活码家族（场景一二四五都要用）</h3>
+<table class="cmp-table">
+<tr><th>活码类型</th><th>分流依据</th><th>核心能力</th></tr>
+<tr><td>员工活码</td><td>按员工</td><td>多人活码设上限、短链、分时段欢迎语</td></tr>
+<tr><td>群活码</td><td>按群</td><td>顺序入群(群满建新群)、分类入群、备用员工</td></tr>
+<tr><td>区域活码</td><td><b>LBS地理位置</b></td><td>按门店路由、<b>必须先建门店</b></td></tr>
+<tr><td>识客码</td><td>按渠道</td><td>渠道标签追踪、ROI分析</td></tr>
+<tr><td>超级活码</td><td>聚合</td><td>整合多种活码能力</td></tr>
+</table>
+<p style="font-size:13px;color:#888;"><strong>vs 原生"联系我"/"加入群聊"：</strong>原生是固定二维码，无自动分配/分时段/上限/短链/新老客识别/备用员工，管家全有。</p>
+
+<h3>📊 必背对比表三：AI功能家族（5场景都涉及AI）</h3>
+<table class="cmp-table">
+<tr><th>AI功能</th><th>看什么</th><th>实时/T+1</th><th>所在菜单</th></tr>
+<tr><td>智能问答</td><td>基于知识库生成话术</td><td>实时（侧边栏）</td><td>客户营销→AI智能体</td></tr>
+<tr><td>话题洞察</td><td>群聊话题趋势+情感</td><td>T+1</td><td>会话存档→会话智能</td></tr>
+<tr><td>客户洞察</td><td>单客户意向/异议/痛点+跟进建议</td><td>实时</td><td>会话存档→会话智能</td></tr>
+<tr><td>AI服务质检</td><td>员工服务规范（AI+规则全量检测）</td><td>每日批量</td><td>会话存档→会话智能</td></tr>
+<tr><td>AI分析智能体</td><td>多模型对比+文件/多模态分析</td><td>实时</td><td>客户营销→AI智能体</td></tr>
+<tr><td>朋友圈广场</td><td>批量生成朋友圈文案</td><td>实时</td><td>AI功能</td></tr>
+</table>
+<p style="font-size:13px;color:#888;"><strong>注意：</strong>管家把AI分两处——<b>客户营销→AI智能体</b>（AI聊天/分析智能体、AI知识库）和<b>会话存档→会话智能</b>（话题洞察、AI合规审查、AI服务质检）。别记串。</p>
+
+<h3>⚡ 5个场景一图速记</h3>
+<div class="cheat">
+<p><b>场景一（门店引流1v1）：</b>区域活码→员工活码→客户群发→轨迹素材→客户画像→AI智能回复</p>
+<p><b>场景二（门店引流入群）：</b>区域活码→群活码→群裂变→群群发→超级群发→AI话题洞察</p>
+<p><b>场景三（渠道获客+裂变）：</b>识客码→微信客服→标准化营销→好友裂变→群发朋友圈→AI朋友圈广场</p>
+<p><b>场景四（线索+风控）：</b>员工活码短链→收集表→客户画像→标准化营销→敏感词预警→AI分析智能体</p>
+<p><b>场景五（任务驱动）：</b>超级活码→跟进任务→抽奖→标准化营销→超时回复→AI客户洞察</p>
 </div>
 
-<h2 id="sec5">05 答辩周旋技巧（"主持人的周旋"）</h2>
-<p>备考计划里言秋说"得会主持人的周旋"。这不是让你当主持人，是让你<strong>掌握答辩的主动权</strong>。</p>
+<h3>🗣️ 现场演示技巧（"主持人的周旋"）</h3>
+<div class="card script">
+<h4>技巧1：考官问的没复习到 → 往你熟悉的引</h4>
+<p>考官问了一个你没准备的细节，不要慌，不要硬编：</p>
+<div class="script-box">"这个细节我回头确认一下。不过这个功能在实际运营中更多是配合XX一起用的，我重点给您讲下XX怎么用——"</div>
+<p>然后顺势引到你熟悉的功能上。考官要看的是你<b>会不会做产品介绍</b>，不是你背不背得下每个参数。</p>
+</div>
 
 <div class="card script">
-<h3>技巧1：考官问的没复习到→往你熟悉的引</h3>
-<p>考官问了一个你没准备的细节，不要慌，不要硬编。用这句话接：</p>
-<div class="script-box">
-"这个细节我回头确认一下。不过这个功能在实际运营中更多是配合XX一起用的，我重点给您讲下XX怎么用——"</div>
-<p>然后顺势把话题引到你熟悉的功能上。考官要看的是你<strong>会不会做产品介绍</strong>，不是你背不背得下每个参数。</p>
+<h4>技巧2：考官追问差异 → 用"7维对比"一锤定音</h4>
+<p>任何"XX和YY有什么区别"的问题，都用<b>结构化对比</b>回答：</p>
+<div class="script-box">"我从X个维度来对比。维度1……维度2……维度3……。一句话总结：XX是（定位），YY是（定位）。"</div>
+<p>比如活码vs联系我：7维对比 + 一句话总结"联系我是加好友入口，活码是智能获客路由系统"。</p>
 </div>
 
 <div class="card script">
-<h3>技巧2：考官追问差异→用"7维对比"一锤定音</h3>
-<p>任何"XX和YY有什么区别"的问题，都用<strong>结构化对比</strong>回答，不要零散说。模板：</p>
-<div class="script-box">
-"我从X个维度来对比。维度1……维度2……维度3……。一句话总结：XX是（定位），YY是（定位）。"</div>
-<p>比如活码vs联系我：7维对比+一句话总结"联系我是加好友入口，活码是智能获客路由系统"。</p>
+<h4>技巧3：考官质疑"原生就够用" → 亮出管家差异化</h4>
+<p>这是最高频的挑战，标准应对：</p>
+<div class="script-box">"原生确实提供了基础能力。但企业规模化运营时会遇到三个痛点：①人工操作多易出错 ②数据分散看不全 ③没有容错机制。企微管家就是解决这三个问题的——自动化（活码自动分配）、数据化（多维统计）、容错化（备用员工）。原生是'能用'，管家是'好用且管用'。"</div>
 </div>
 
 <div class="card script">
-<h3>技巧3：考官质疑"原生就够用"→亮出管家差异化</h3>
-<p>这是最高频的挑战。标准应对：</p>
-<div class="script-box">
-"原生确实提供了基础能力。但企业规模化运营时会遇到三个痛点：①人工操作多易出错②数据分散看不全③没有容错机制。企微管家就是解决这三个问题的——自动化（活码自动分配）、数据化（多维统计）、容错化（备用员工）。原生是'能用'，管家是'好用且管用'。"</div>
-</div>
-
-<div class="card script">
-<h3>技巧4：不确定的别说死</h3>
+<h4>技巧4：不确定的别说死</h4>
 <p>考官问"这个上限是多少"你不记得，宁可说"具体数值我确认下，大概在XX范围"，不要编一个错的数字。编错了比说"不确定"扣分多得多。</p>
 </div>
 
-<h2 id="sec6">06 考前必背速记卡</h2>
+<p style="margin-top:16px;">现场操作的完整菜单路径与"演示黄金3步"，见 <a href="#sec9">05 平台实操手册</a>。</p>
+
+<h2 id="sec6">07 考前必背速记卡</h2>
 <p>以下内容<strong>进考场前必须背到脱口而出</strong>。</p>
 
 <div class="hardnum">
@@ -328,52 +436,77 @@
 <p><strong>一句话记住考试核心：</strong>你不是在答题，你是在做一场产品演示+客户答疑，考官想看的是你像客户成功一样把产品讲清楚。</p>
 </div>
 
-<h2 id="sec7">07 通关模拟关卡</h2>
+<h2 id="sec7">08 通关模拟关卡</h2>
 <p>下面7道题模拟考官出题方式，<strong>考前务必全做完</strong>（笔试客观题见 <a href="#sec10">09 笔试专项题库</a>）。</p>
 
-<div class="task" data-task="q1" data-answer="B" data-ok="连锁餐饮多门店按定位入群=区域群活码，这是原生做不到的。" data-no="联系我是1对1不是群；加入群聊无定位分配。" data-src="实操考核：区域活码按GPS定位分配门店群" data-review="回到「02 8模块演示话术」模块4复习">
+<div class="task" data-task="q1" data-answer="B" data-ok="连锁餐饮多门店按定位入群=区域群活码，这是原生做不到的。" data-no="联系我是1对1不是群；加入群聊无定位分配。" data-src="实操考核：区域活码按GPS定位分配门店群" data-review="回到「04 五场景手册·场景一/二」复习（区域活码）">
 <div class="q">1. <strong>场景：</strong>考官问"连锁餐饮50家门店，客户扫码后按定位自动进最近门店群"，你应该介绍什么功能？</div>
 <div class="opts"><button class="opt" data-val="A">A. 联系我（1对1加好友）</button><button class="opt" data-val="B">B. 区域群活码（按GPS定位分配门店群，管家增强）</button><button class="opt" data-val="C">C. 加入群聊（原生，无定位）</button><button class="opt" data-val="D">D. 客户朋友圈</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q2" data-answer="C" data-ok="对！原生是'能用'，管家是'好用且管用'——自动化+数据化+容错化。" data-no="管家不是替代原生，是在原生基础上的增强。" data-src="企微管家产品定位" data-review="回到「03 考官追问应对」Q1复习">
+<div class="task" data-task="q2" data-answer="C" data-ok="对！原生是'能用'，管家是'好用且管用'——自动化+数据化+容错化。" data-no="管家不是替代原生，是在原生基础上的增强。" data-src="企微管家产品定位" data-review="回到「04 五场景手册·现场演示技巧」复习">
 <div class="q">2. <strong>场景：</strong>考官质疑"联系我企业微信原生不就有吗，为什么要买管家"。你怎么回应？</div>
 <div class="opts"><button class="opt" data-val="A">A. 管家更便宜</button><button class="opt" data-val="B">B. 管家完全替代原生</button><button class="opt" data-val="C">C. 原生给基础能力，管家做自动化/精细化/数据化增强（活码7维都是原生没有的）</button><button class="opt" data-val="D">D. 不回答，转移话题</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q3" data-answer="A" data-ok="对！会话存档企微侧只存5天，必须5天内自己拉取，否则丢失。" data-no="5天是拉取窗口不是留存期，更不是永久。" data-src="原文：企微侧只保存5天，超期无法获取" data-review="回到「06 考前必背速记卡」复习">
+<div class="task" data-task="q3" data-answer="A" data-ok="对！会话存档企微侧只存5天，必须5天内自己拉取，否则丢失。" data-no="5天是拉取窗口不是留存期，更不是永久。" data-src="原文：企微侧只保存5天，超期无法获取" data-review="回到「07 考前必背速记卡」复习">
 <div class="q">3. <strong>场景：</strong>考官问"会话存档的聊天记录企微帮我们存多久"。正确回答？</div>
 <div class="opts"><button class="opt" data-val="A">A. 企微侧只存5天，企业必须5天内自己拉取，否则丢失</button><button class="opt" data-val="B">B. 永久保存</button><button class="opt" data-val="C">C. 30天</button><button class="opt" data-val="D">D. 1年</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q4" data-answer="B" data-ok="对！每天每客户最多3条，企业和员工共用3次。" data-no="不是各3条，是总共3条共用。" data-src="原文：每天每客户最多3条，企业和员工共用3次" data-review="回到「06 考前必背速记卡」复习">
+<div class="task" data-task="q4" data-answer="B" data-ok="对！每天每客户最多3条，企业和员工共用3次。" data-no="不是各3条，是总共3条共用。" data-src="原文：每天每客户最多3条，企业和员工共用3次" data-review="回到「07 考前必背速记卡」复习">
 <div class="q">4. <strong>场景：</strong>考官问"企业官号发了2条朋友圈，员工还能发几条"。正确回答？</div>
 <div class="opts"><button class="opt" data-val="A">A. 还能发3条（独立额度）</button><button class="opt" data-val="B">B. 只能发1条（企业和员工共用3次，已用2次）</button><button class="opt" data-val="C">C. 不能发了</button><button class="opt" data-val="D">D. 还能发2条</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q5" data-answer="C" data-ok="对！CRM管的是线索→联系人→企业→商机→订单的销售漏斗，通讯录只是其中一环。" data-no="CRM不是通讯录，它管的是销售转化过程。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「02 8模块演示话术」模块5复习">
+<div class="task" data-task="q5" data-answer="C" data-ok="对！CRM管的是线索→联系人→企业→商机→订单的销售漏斗，通讯录只是其中一环。" data-no="CRM不是通讯录，它管的是销售转化过程。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「04 五场景手册」复习（CRM）">
 <div class="q">5. <strong>场景：</strong>考官说"你画一下CRM的流程"。你画的应该是？</div>
 <div class="opts"><button class="opt" data-val="A">A. 通讯录列表</button><button class="opt" data-val="B">B. 加好友→聊天→成交</button><button class="opt" data-val="C">C. 线索→联系人→企业→商机→订单 漏斗</button><button class="opt" data-val="D">D. 注册→登录→购买</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q6" data-answer="A,B,C,D" data-multi="true" data-ok="全对！这7维是考试必考，要脱口而出。" data-no="7维都要记住：多人路由/时刻码/欢迎语/自动标签/统计/样式/备用。" data-src="实操考核：活码vs联系我功能差异" data-review="回到「03 考官追问应对」Q2复习">
+<div class="task" data-task="q6" data-answer="A,B,C,D" data-multi="true" data-ok="全对！这7维是考试必考，要脱口而出。" data-no="7维都要记住：多人路由/时刻码/欢迎语/自动标签/统计/样式/备用。" data-src="实操考核：活码vs联系我功能差异" data-review="回到「04 五场景手册·现场演示技巧」复习（活码7维）">
 <div class="q">6. <strong>场景：</strong>考官问"活码比联系我多了什么"（多选）</div>
 <div class="opts"><button class="opt" data-val="A">A. 多人路由+分时段分配+客户上限自动转接</button><button class="opt" data-val="B">B. 时刻码区分新老客</button><button class="opt" data-val="C">C. 自动打标签+多维度数据统计</button><button class="opt" data-val="D">D. 备用员工容错+自定义样式</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<div class="task" data-task="q7" data-answer="B" data-ok="对！离职继承24h自动切换，客户无感，90天2次上限。" data-no="继承是24h自动不是立刻；90天2次是上限。" data-src="原文：客户24h后自动切换；每90天内最多2次" data-review="回到「03 考官追问应对」Q6复习">
+<div class="task" data-task="q7" data-answer="B" data-ok="对！离职继承24h自动切换，客户无感，90天2次上限。" data-no="继承是24h自动不是立刻；90天2次是上限。" data-src="原文：客户24h后自动切换；每90天内最多2次" data-review="回到「07 考前必背速记卡」复习（离职继承）">
 <div class="q">7. <strong>场景：</strong>考官问"销售离职了他名下300个客户怎么办"。正确回答？</div>
 <div class="opts"><button class="opt" data-val="A">A. 客户自动删除</button><button class="opt" data-val="B">B. 离职继承24h自动切换给接替员工，无感转接，90天2次上限</button><button class="opt" data-val="C">C. 客户变无主状态</button><button class="opt" data-val="D">D. 需客户重新扫码</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
-<h2 id="sec9">08 平台实操手册 · platform.wshoto.com 全菜单</h2>
+<h2 id="sec11">09 结果应用与补考机制</h2>
+
+<div class="card danger" style="border:2px solid var(--brick);background:#FFF3F0;">
+<h3 style="color:var(--brick);margin-top:0;">成绩如何应用（官方规则）</h3>
+<table class="cmp-table">
+<tr><th>得分</th><th>结果</th></tr>
+<tr><td><b>≥ 70 分</b></td><td>视为通过第一阶段考核，继续试用期 / 实习生可转正</td></tr>
+<tr><td><b>＜ 70 分</b></td><td>可申请<b>第二次考核</b>。若第二次仍 ＜ 70 分，结合业务部门意见综合评估：</td></tr>
+<tr><td>　评估不合格</td><td>按不符合试用期录用条件解除劳动关系；或按不符合实习生转正条件处理，<b>所约定 offer 失效、撤销</b></td></tr>
+</table>
+</div>
+
+<div class="card judgment">
+<h3>备考启示</h3>
+<ul style="margin-left:20px;line-height:2;">
+<li><b>两块都不能瘸腿：</b>笔试和通关各占 50%，偏科任何一边都可能拉低总分踩到 70 分线以下。</li>
+<li><b>有补考机会但有代价：</b>第一次没过可以申请第二次，但第二次再不过会进入"综合评估"，存在 offer 失效风险。目标是一次过。</li>
+<li><b>得分=单项×权重：</b>不要只盯着某一块满分，要算加权后的总分。比如笔试 80 × 50% + 通关 60 × 50% = 70（刚好及格，危险）。</li>
+</ul>
+</div>
+
+<div class="cheat">
+<p><strong>稳过策略：</strong>把目标定在 <b>笔试 ≥ 85、通关 ≥ 80</b>，加权后 82.5，留出安全余量。笔试靠 <a href="#sec10">06 题库</a>+<a href="#sec6">07 速记卡</a>刷到全对，通关靠 <a href="#sec4">04 五场景手册</a>每个场景都练熟。</p>
+</div>
+
+<h2 id="sec9">05 平台实操手册 · platform.wshoto.com 全菜单</h2>
 <p>考试可能现场让你操作。<strong>这一节是"现场不翻车"的保命手册</strong>——7个一级菜单逐个展开，每个重点功能都给点击路径。来源：你亲自进后台实测的路径<span class="tag-verified">已实测</span> + 平台功能脑图<span class="tag-infer">菜单树</span>；无原文的功能标<span class="tag-todo">待确认</span>。</p>
 
 <div class="judge-box">
@@ -584,8 +717,8 @@
 </ol>
 </div>
 
-<h2 id="sec10">10 笔试专项题库（20题·自动判分）</h2>
-<p>企微管家考试 = <strong>笔试 + 答辩通关</strong>（总分100，及格80）。答辩用前面的话术，<strong>笔试考的是产品知识硬数字、原生vs管家归属、功能差异</strong>——正是备考计划强调的"背诵考点"。下面20题覆盖6章核心考点，<strong>全对笔试才稳</strong>。答错会自动进错题回流区。</p>
+<h2 id="sec10">06 笔试专项题库（20题·自动判分）</h2>
+<p>考核 = <strong>笔试 + 实操通关</strong>（各占 50%，及格 70）。笔试考的是<strong>产品知识硬数字、原生vs管家归属、功能差异</strong>，题型含选择题/判断题（系统判分）+简答题（考官按关键词评分）。下面20题覆盖6章核心考点的客观题部分，<strong>全对笔试才稳</strong>。答错会自动进错题回流区。</p>
 
 <div class="hardnum"><p><b>笔试最爱考的5类题（按出现概率）：</b></p>
 <ul style="margin-left:20px;">
@@ -598,19 +731,19 @@
 
 <h3>第一组：硬数字（单选，必背）</h3>
 
-<div class="task" data-task="笔试1" data-answer="B" data-ok="对！企微侧只存5天，5天内必须自己拉取，否则丢失。这是拉取窗口不是留存期。" data-no="不是永久/30天/1年。5天是拉取窗口，企业必须自己存。" data-src="会话存档：企微侧保存5天" data-review="回「06 考前必背速记卡」">
+<div class="task" data-task="笔试1" data-answer="B" data-ok="对！企微侧只存5天，5天内必须自己拉取，否则丢失。这是拉取窗口不是留存期。" data-no="不是永久/30天/1年。5天是拉取窗口，企业必须自己存。" data-src="会话存档：企微侧保存5天" data-review="回「07 考前必背速记卡」">
 <div class="q">1. 会话存档的聊天记录，企微侧保存多久？</div>
 <div class="opts"><button class="opt" data-val="A">A. 永久保存</button><button class="opt" data-val="B">B. 5天（企业必须5天内自己拉取）</button><button class="opt" data-val="C">C. 30天</button><button class="opt" data-val="D">D. 1年</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试2" data-answer="C" data-ok="对！每天每客户最多3条，企业和员工共用3次（不是各3条）。" data-no="不是各3条。企业和员工共用一个3次额度。" data-src="朋友圈：每天每客户3条，共用" data-review="回「06 考前必背速记卡」">
+<div class="task" data-task="笔试2" data-answer="C" data-ok="对！每天每客户最多3条，企业和员工共用3次（不是各3条）。" data-no="不是各3条。企业和员工共用一个3次额度。" data-src="朋友圈：每天每客户3条，共用" data-review="回「07 考前必背速记卡」">
 <div class="q">2. 客户朋友圈每天每客户最多几条？企业和员工额度怎么算？</div>
 <div class="opts"><button class="opt" data-val="A">A. 企业3条+员工3条（独立）</button><button class="opt" data-val="B">B. 企业1条+员工1条</button><button class="opt" data-val="C">C. 每天每客户最多3条，企业和员工共用3次</button><button class="opt" data-val="D">D. 不限次数</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试3" data-answer="A" data-ok="对！群发客户每次最多2000客户，企业和员工共用每日1条。" data-no="2000是单次群发上限；每日是企业和员工共用1条。" data-src="群发：单次2000，每日共用1条" data-review="回「06 考前必背速记卡」">
+<div class="task" data-task="笔试3" data-answer="A" data-ok="对！群发客户每次最多2000客户，企业和员工共用每日1条。" data-no="2000是单次群发上限；每日是企业和员工共用1条。" data-src="群发：单次2000，每日共用1条" data-review="回「07 考前必背速记卡」">
 <div class="q">3. "群发客户"单次最多发给多少客户？每日频次？</div>
 <div class="opts"><button class="opt" data-val="A">A. 单次最多2000客户，每日企业和员工共用1条</button><button class="opt" data-val="B">B. 单次最多500客户，不限频次</button><button class="opt" data-val="C">C. 单次最多2000客户，企业员工各1条</button><button class="opt" data-val="D">D. 单次10000客户，每日3条</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -622,7 +755,7 @@
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试5" data-answer="B" data-ok="对！客户群满200人后，企业微信可自动创建新群（顺序入群）。" data-no="是200人。原生加入群聊绑5个群，管家群活码关联200个。" data-src="客户群满200人自动建新群" data-review="回「06 考前必背速记卡」">
+<div class="task" data-task="笔试5" data-answer="B" data-ok="对！客户群满200人后，企业微信可自动创建新群（顺序入群）。" data-no="是200人。原生加入群聊绑5个群，管家群活码关联200个。" data-src="客户群满200人自动建新群" data-review="回「07 考前必背速记卡」">
 <div class="q">5. 客户群达到多少人后，系统可自动创建新群继续承接？</div>
 <div class="opts"><button class="opt" data-val="A">A. 100人</button><button class="opt" data-val="B">B. 200人</button><button class="opt" data-val="C">C. 500人</button><button class="opt" data-val="D">D. 1000人</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -630,19 +763,19 @@
 
 <h3>第二组：原生 vs 管家归属（单选，判别口诀）</h3>
 
-<div class="task" data-task="笔试6" data-answer="B" data-ok="对！联系我是企微原生功能，在work.weixin.qq.com配；活码是管家增强。" data-no="联系我是原生的。判别口诀：企微App里能直接做→原生。" data-src="联系我=原生，活码=管家增强" data-review="回「08 平台实操手册」两套后台判别">
+<div class="task" data-task="笔试6" data-answer="B" data-ok="对！联系我是企微原生功能，在work.weixin.qq.com配；活码是管家增强。" data-no="联系我是原生的。判别口诀：企微App里能直接做→原生。" data-src="联系我=原生，活码=管家增强" data-review="回「05 平台实操手册」两套后台判别">
 <div class="q">6. "联系我"二维码这个功能，属于哪个系统？</div>
 <div class="opts"><button class="opt" data-val="A">A. 企微管家独有（platform）</button><button class="opt" data-val="B">B. 企业微信原生（work.weixin.qq.com），管家有增强版"活码"</button><button class="opt" data-val="C">C. 微信公众号功能</button><button class="opt" data-val="D">D. 第三方插件</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试7" data-answer="A" data-ok="对！超级群发是管家独有，一次操作多渠道组合触达，原生没有。" data-no="超级群发/标准化营销SOP/智能质检/知识库都是管家独有，企微App里做不了。" data-src="超级群发/标准化营销=管家独有" data-review="回「08 平台实操手册」">
+<div class="task" data-task="笔试7" data-answer="A" data-ok="对！超级群发是管家独有，一次操作多渠道组合触达，原生没有。" data-no="超级群发/标准化营销SOP/智能质检/知识库都是管家独有，企微App里做不了。" data-src="超级群发/标准化营销=管家独有" data-review="回「05 平台实操手册」">
 <div class="q">7. 以下哪个是企微管家独有、企业微信原生没有的功能？</div>
 <div class="opts"><button class="opt" data-val="A">A. 超级群发（多渠道组合触达）</button><button class="opt" data-val="B">B. 朋友圈</button><button class="opt" data-val="C">C. 审批</button><button class="opt" data-val="D">D. 打卡</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试8" data-answer="C" data-ok="对！会话存档在企微原生后台开启（提供确认函+配置参数），管家拿参数做规则/AI。" data-no="会话存档开启入口在企微原生【安全与管理→管理工具→会话内容存档】。" data-src="会话存档：企微开门给钥匙，管家用钥匙" data-review="回「08 平台实操手册」会话存档前提">
+<div class="task" data-task="笔试8" data-answer="C" data-ok="对！会话存档在企微原生后台开启（提供确认函+配置参数），管家拿参数做规则/AI。" data-no="会话存档开启入口在企微原生【安全与管理→管理工具→会话内容存档】。" data-src="会话存档：企微开门给钥匙，管家用钥匙" data-review="回「05 平台实操手册」会话存档前提">
 <div class="q">8. 会话内容存档功能，开启入口在哪个后台？</div>
 <div class="opts"><button class="opt" data-val="A">A. 只在企微管家 platform</button><button class="opt" data-val="B">B. 只在企业微信原生</button><button class="opt" data-val="C">C. 企微原生后台开启（给参数），管家拿参数配置规则和AI</button><button class="opt" data-val="D">D. 腾讯客服开通</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -650,7 +783,7 @@
 
 <h3>第三组：7维差异（多选，必考）</h3>
 
-<div class="task" data-task="笔试9" data-answer="A,B,C,D" data-multi="true" data-ok="全对！活码7维：多人路由/时刻码新老客/分时段欢迎语/自动标签/多维统计/自定义样式/备用员工。" data-no="活码的7维增强全选。这是笔试+答辩必考。" data-src="活码vs联系我7维对比" data-review="回「03 考官追问」Q2">
+<div class="task" data-task="笔试9" data-answer="A,B,C,D" data-multi="true" data-ok="全对！活码7维：多人路由/时刻码新老客/分时段欢迎语/自动标签/多维统计/自定义样式/备用员工。" data-no="活码的7维增强全选。这是笔试+通关必考。" data-src="活码vs联系我7维对比" data-review="回「03 考官追问」Q2">
 <div class="q">9. 企微管家"员工活码"比原生"联系我"多了哪些能力？（多选）</div>
 <div class="opts"><button class="opt" data-val="A">A. 多人路由+分时段分配+客户上限自动转接</button><button class="opt" data-val="B">B. 时刻码区分新老客 + 分时段个性化欢迎语</button><button class="opt" data-val="C">C. 自动打标签+备注+渠道记录 + 多维数据统计</button><button class="opt" data-val="D">D. 自定义样式/短链 + 备用员工容错</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -664,19 +797,19 @@
 
 <h3>第四组：判断对错（单选，陷阱题）</h3>
 
-<div class="task" data-task="笔试11" data-answer="B" data-ok="对！活码图案不变，变的是背后的分配逻辑。它是智能路由系统不是动态码。" data-no="错。活码图案不变，变的是后台分配逻辑。'动态二维码'是错误说法。" data-src="活码≠动态二维码（图案不变）" data-review="回「04 实操口述」实操2 或 chapter4误解2">
+<div class="task" data-task="笔试11" data-answer="B" data-ok="对！活码图案不变，变的是背后的分配逻辑。它是智能路由系统不是动态码。" data-no="错。活码图案不变，变的是后台分配逻辑。'动态二维码'是错误说法。" data-src="活码≠动态二维码（图案不变）" data-review="回「05 平台实操手册·员工活码」复习 或 chapter4误解2">
 <div class="q">11. "活码就是动态二维码，二维码图案会自动变化。" 这句话对吗？</div>
 <div class="opts"><button class="opt" data-val="A">A. 对，活码图案会动</button><button class="opt" data-val="B">B. 错，活码图案不变，变的是背后分配逻辑（码不变后台智能分配）</button><button class="opt" data-val="C">C. 对，每扫一次换一张</button><button class="opt" data-val="D">D. 对，按时段换图案</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试12" data-answer="B" data-ok="对！会话存档企微只存5天，是企业自己拉取存储，不是永久。" data-no="错。企微不永久帮你存，5天内必须自己拉取。" data-src="会话存档≠永久保存" data-review="回「06 考前必背速记卡」">
+<div class="task" data-task="笔试12" data-answer="B" data-ok="对！会话存档企微只存5天，是企业自己拉取存储，不是永久。" data-no="错。企微不永久帮你存，5天内必须自己拉取。" data-src="会话存档≠永久保存" data-review="回「07 考前必背速记卡」">
 <div class="q">12. "买了会话存档，企业微信会永久帮我们保存所有聊天记录。" 对吗？</div>
 <div class="opts"><button class="opt" data-val="A">A. 对，永久保存</button><button class="opt" data-val="B">B. 错，企微侧只存5天，企业必须5天内自己拉取存储，否则丢失</button><button class="opt" data-val="C">C. 对，但要付费</button><button class="opt" data-val="D">D. 对，存1年</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试13" data-answer="B" data-ok="对！CRM管销售漏斗转化，通讯录只是其中'联系人'一环。" data-no="错。CRM是漏斗管理系统（线索→联系人→企业→商机→订单），不是通讯录。" data-src="CRM≠通讯录" data-review="回「04 实操口述」实操5 或 chapter4误解3">
+<div class="task" data-task="笔试13" data-answer="B" data-ok="对！CRM管销售漏斗转化，通讯录只是其中'联系人'一环。" data-no="错。CRM是漏斗管理系统（线索→联系人→企业→商机→订单），不是通讯录。" data-src="CRM≠通讯录" data-review="回「04 五场景手册」复习（CRM） 或 chapter4误解3">
 <div class="q">13. "CRM就是企业通讯录，用来存客户联系方式的。" 对吗？</div>
 <div class="opts"><button class="opt" data-val="A">A. 对，CRM=通讯录</button><button class="opt" data-val="B">B. 错，CRM管销售漏斗转化（线索→联系人→企业→商机→订单），通讯录只是其中一环</button><button class="opt" data-val="C">C. 对，存联系人用的</button><button class="opt" data-val="D">D. 部分对，CRM含通讯录</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -696,7 +829,7 @@
 
 <h3>第五组：功能定位与场景（单选）</h3>
 
-<div class="task" data-task="笔试16" data-answer="C" data-ok="对！区域活码按GPS定位自动分配到最近门店群，原生做不到。" data-no="区域活码=按定位分配门店群；联系我是1对1；加入群聊无定位。" data-src="区域活码：按GPS定位分门店群" data-review="回「07 通关模拟」q1">
+<div class="task" data-task="笔试16" data-answer="C" data-ok="对！区域活码按GPS定位自动分配到最近门店群，原生做不到。" data-no="区域活码=按定位分配门店群；联系我是1对1；加入群聊无定位。" data-src="区域活码：按GPS定位分门店群" data-review="回「08 通关模拟关卡」q1复习">
 <div class="q">16. 连锁餐饮50家门店，希望客户扫码后自动进最近的门店群。用哪个功能？</div>
 <div class="opts"><button class="opt" data-val="A">A. 联系我</button><button class="opt" data-val="B">B. 加入群聊（原生）</button><button class="opt" data-val="C">C. 区域群活码（按GPS定位分配，管家独有）</button><button class="opt" data-val="D">D. 客户朋友圈</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -720,7 +853,7 @@
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
 </div>
 
-<div class="task" data-task="笔试20" data-answer="B" data-ok="对！标准化营销SOP=加客户后自动按规则推送（第1天发什么、第2天发什么），管家独有。" data-no="SOP=加好友后按规则自动分时段推送标准化话术，管家独有，原生不支持。" data-src="标准化营销SOP=加好友后自动分时段推送" data-review="回「08 平台实操手册」重点功能D">
+<div class="task" data-task="笔试20" data-answer="B" data-ok="对！标准化营销SOP=加客户后自动按规则推送（第1天发什么、第2天发什么），管家独有。" data-no="SOP=加好友后按规则自动分时段推送标准化话术，管家独有，原生不支持。" data-src="标准化营销SOP=加好友后自动分时段推送" data-review="回「05 平台实操手册」重点功能D">
 <div class="q">20. 客户加好友后，希望"第一天发欢迎、第三天推活动、第七天发优惠券"自动执行，用哪个功能？</div>
 <div class="opts"><button class="opt" data-val="A">A. 群发客户（手动每次发）</button><button class="opt" data-val="B">B. 标准化营销SOP（加好友后按规则自动分时段推送，管家独有）</button><button class="opt" data-val="C">C. 客户朋友圈</button><button class="opt" data-val="D">D. 客户欢迎语</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查。</div>
@@ -734,14 +867,14 @@
 <div class="card danger">
 <h3>考前一晚必做（按顺序）</h3>
 <ol style="margin-left:20px;line-height:2.2;">
-<li><strong>刷「09 笔试专项题库」20题</strong>——笔试占大头，硬数字/归属/7维/判断全对才算稳，错题回流区清零</li>
-<li><strong>过一遍「08 平台实操手册」</strong>——7菜单路径+重点功能逐步骤，确保现场能报出"在XX后台→XX菜单配置"</li>
-<li><strong>背「06 考前必背速记卡」</strong>——所有硬数字和差异对比脱口而出</li>
-<li><strong>过一遍「02 8模块演示话术」</strong>——每个模块能说出客户场景+功能介绍+管家优势</li>
-<li><strong>过一遍「03 考官追问应对」8个Q&A</strong>——尤其Q1（原生vs管家）和Q2（活码vs联系我7维）</li>
-<li><strong>记住「05 答辩周旋技巧」4个技巧</strong>——尤其"没复习到就往熟悉的引"</li>
-<li><strong>做完「07 通关模拟关卡」7道题</strong>——全对才算过关</li>
-<li>早睡。明天考的是表达不是熬夜。</li>
+<li><strong>练熟「04 五场景实操手册」5个场景</strong>——通关占 50%，每个场景都要能盲操作（你不知道会抽哪个）。每个功能都能报出"后台→菜单路径"并讲管家差异化</li>
+<li><strong>刷「06 笔试专项题库」20题</strong>——笔试占 50%，硬数字/归属/7维/判断全对才算稳，错题回流区清零。简答题另按"踩关键词"策略准备</li>
+<li><strong>过一遍「05 平台实操手册」</strong>——7菜单路径+13个重点功能逐步骤，确保现场能报出"在XX后台→XX菜单配置"</li>
+<li><strong>背「07 考前必背速记卡」</strong>——所有硬数字和差异对比（群发四件套/活码家族/AI家族）脱口而出</li>
+<li><strong>记住「04 现场演示技巧」4招 + 黄金3步</strong>——尤其"没复习到就往熟悉的引""追问差异用7维对比一锤定音"</li>
+<li><strong>做完「08 通关模拟关卡」7道题</strong>——全对才算过关</li>
+<li><strong>确认「09 结果应用」计分逻辑</strong>——笔试、通关各占50%，目标加权≥75，留安全余量</li>
+<li>早睡。明天考的是表达和熟练度，不是熬夜。</li>
 </ol>
 </div>
 
