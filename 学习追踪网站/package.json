@@ -1,0 +1,9 @@
+{
+  "name": "study-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "急速备考学习追踪网站",
+  "scripts": {
+    "preview:local": "node local-preview-server.js"
+  }
+}

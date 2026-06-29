@@ -1,0 +1,324 @@
+{
+  "meta": {
+    "version": 1,
+    "lastUpdated": "2026-06-29T03:33:17.627Z",
+    "description": "急速备考学习进度追踪数据。前端读取展示，POST /api/save 写回。"
+  },
+  "masteryLevels": [
+    {
+      "level": 0,
+      "label": "未学习",
+      "color": "#94a3b8",
+      "weight": 0
+    },
+    {
+      "level": 1,
+      "label": "初步了解",
+      "color": "#f87171",
+      "weight": 0.25
+    },
+    {
+      "level": 2,
+      "label": "基本熟悉",
+      "color": "#fbbf24",
+      "weight": 0.5
+    },
+    {
+      "level": 3,
+      "label": "较好掌握",
+      "color": "#4ade80",
+      "weight": 0.75
+    },
+    {
+      "level": 4,
+      "label": "精通熟练",
+      "color": "#3b82f6",
+      "weight": 1
+    }
+  ],
+  "exams": {
+    "wecom": {
+      "name": "企微管家 & 企业微信考试",
+      "subtitle": "笔试 + 答辩通关",
+      "examDate": "2026-06-29",
+      "examEndDate": "2026-06-30",
+      "totalScore": 100,
+      "passScore": 80,
+      "categories": [
+        {
+          "id": "qywx",
+          "name": "企业微信原生能力",
+          "weight": 40,
+          "modules": [
+            {
+              "id": "qywx_pos",
+              "name": "产品认知与定位",
+              "week": 1,
+              "isExamModule": false,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "qywx_contact",
+              "name": "对外联系",
+              "week": 1,
+              "isExamModule": true,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "qywx_oa",
+              "name": "内部OA",
+              "week": 1,
+              "isExamModule": true,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "qywx_admin",
+              "name": "管理和配置",
+              "week": 1,
+              "isExamModule": true,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "qywx_collab",
+              "name": "上下游与内外协作",
+              "week": 2,
+              "isExamModule": false,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "qywx_keyfeature",
+              "name": "重点功能(文档/会议/邮箱/AI/安全/微盘)",
+              "week": 2,
+              "isExamModule": false,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "qywx_open",
+              "name": "开放能力(了解即可)",
+              "week": 2,
+              "isExamModule": false,
+              "doc": "主资料/企业微信产品介绍文档（新）.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            }
+          ]
+        },
+        {
+          "id": "wsgj",
+          "name": "企微管家功能模块",
+          "weight": 60,
+          "modules": [
+            {
+              "id": "wsgj_intro",
+              "name": "入门与产品认知",
+              "week": 1,
+              "isExamModule": false,
+              "doc": "后备资料/后备资料-学习地图表格.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "wsgj_home",
+              "name": "首页 & 我的企业",
+              "week": 1,
+              "isExamModule": false,
+              "doc": "后备资料/后备资料-学习地图表格.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "wsgj_marketing",
+              "name": "客户营销(活码&营销工具)",
+              "week": 1,
+              "isExamModule": true,
+              "doc": "后备资料/后备资料-学习地图表格.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "wsgj_material",
+              "name": "素材&客户管理&数据统计",
+              "week": 1,
+              "isExamModule": true,
+              "doc": "后备资料/后备资料-学习地图表格.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "wsgj_crm",
+              "name": "客户管理 CRM",
+              "week": 2,
+              "isExamModule": true,
+              "doc": "后备资料/后备资料-学习地图表格.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "wsgj_chat",
+              "name": "会话存档",
+              "week": 2,
+              "isExamModule": true,
+              "doc": "主资料/企业微信【会话内容存档】功能说明.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            },
+            {
+              "id": "wsgj_ai",
+              "name": "AI 功能",
+              "week": 2,
+              "isExamModule": true,
+              "doc": "后备资料/哇塞智能AI工作流.md",
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": "",
+              "quizRecord": {}
+            }
+          ]
+        }
+      ]
+    },
+    "os": {
+      "name": "操作系统考试",
+      "subtitle": "笔试",
+      "examDate": "2026-06-26",
+      "totalScore": 100,
+      "passScore": 60,
+      "categories": [
+        {
+          "id": "os_main",
+          "name": "操作系统复习提纲",
+          "weight": 100,
+          "modules": [
+            {
+              "id": "os_overview",
+              "name": "一、操作系统概述",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 15,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "os_process",
+              "name": "二、进程管理",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 25,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "os_memory",
+              "name": "三、内存管理",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 20,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "os_file",
+              "name": "四、文件管理",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 20,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "os_io",
+              "name": "五、输入输出(I/O)管理",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 15,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            },
+            {
+              "id": "os_exercises",
+              "name": "综合习题(PV操作等)",
+              "isExamModule": true,
+              "doc": "E:\\学委\\作业\\大三下\\操作系统\\江南大学操作系统复习提纲.md",
+              "weight": 5,
+              "mastery": 0,
+              "minutesToday": 0,
+              "note": "",
+              "lastStudied": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "dailyLog": {
+    "2026-06-18": {
+      "wecom": {
+        "minutes": 0,
+        "note": ""
+      },
+      "os": {
+        "minutes": 0,
+        "note": ""
+      }
+    }
+  }
+}
