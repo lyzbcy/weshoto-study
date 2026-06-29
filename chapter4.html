@@ -15,7 +15,7 @@
 .progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
 .nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
 .sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
-.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:860px;}
 .main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
 .main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
 .main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
@@ -23,8 +23,16 @@
 .card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
 .src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
 .bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
 .objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
 .objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:8px 10px;text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:18%;}
 .structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
 .structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
 .structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
@@ -39,6 +47,7 @@
 .report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
 .report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
 .footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
 @media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
 </style>
 </head>
@@ -46,7 +55,7 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>📋 第4章<br>企微管家产品体系</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
 <li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
 </ul>
@@ -54,118 +63,127 @@
 </aside>
 <main class="main">
 <h1>企微管家产品体系</h1>
-<p style="color:#666;margin-bottom:24px;">活码与营销工具 · CRM · 会话存档 · AI功能 · 素材与客户管理 · 数据统计</p>
+<p style="color:#666;margin-bottom:24px;">基于《泽恩-产品功能实操考核记录》活码/群活码7维对比 + CRM/会话存档/AI/素材模块深度拆解</p>
 
 <h2 id="sec1">01 学习目标与阅读路径</h2>
-<div class="objective"><span class="num">1</span><div><strong>说清企微管家与企业微信原生功能的差异</strong>——企微管家在哪些功能上做了增强。</div></div>
-<div class="objective"><span class="num">2</span><div><strong>解释活码vs联系我的功能差异</strong>——活码增强了哪些自动化运营能力。</div></div>
-<div class="objective"><span class="num">3</span><div><strong>理解CRM3.0的核心数据流</strong>——线索→联系人→企业→商机→订单的流转关系。</div></div>
-<div class="objective"><span class="num">4</span><div><strong>区分群发的四种方式</strong>——群发客户/群发群/群发朋友圈/超级群发。</div></div>
-<div class="objective"><span class="num">5</span><div><strong>说出企微管家AI功能的核心场景</strong>——智能质检、知识库、智能问答。</div></div>
+<p style="margin-bottom:16px;">本章是考试核心——企微管家如何增强企业微信原生能力。学完你应该能做到：</p>
+<div class="objective"><span class="num">1</span><div><strong>背出活码vs联系我的7维差异</strong>——多人路由/时刻码/分时段欢迎语/自动打标签/数据统计/自定义样式/备用员工，每维都能说清。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>背出群活码vs加入群聊的7维差异</strong>——顺序入群/分类入群/备用员工/数据统计/自动打标签/时刻群码/区域活码。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>画出CRM3.0漏斗</strong>——线索→联系人→企业→商机→订单，能说清每步筛选什么。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>区分群发四种方式</strong>——群发客户/群发群/群发朋友圈/超级群发，知道各自触达场景。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>说出企微管家AI的3个场景</strong>——智能质检、知识库、智能问答推荐话术，能给真实业务配对。</div></div>
+<p style="margin-top:16px;color:#666;">阅读路径：先补SaaS增强层/CRM背景 → 理解"企微管家=原生功能的运营增强" → 重点拆活码/群活码7维对比 → CRM漏斗 → AI场景 → 闯关场景题 → 复盘。</p>
 
 <h2 id="sec2">02 零基础背景包</h2>
-<div class="card"><h3>背景补充 1：SaaS增强层</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">企微管家是基于企业微信API开发的SaaS产品。企业微信是"平台"，企微管家是"插件"。企业微信提供基础能力（加好友、建群、发消息），企微管家在此基础上增加营销自动化、CRM、质检等高级功能。</p></div>
-<div class="card"><h3>背景补充 2：CRM核心概念</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">CRM（Customer Relationship Management）管理：线索（潜在客户）→联系人（具体对接人）→企业（客户公司）→商机（成交机会）→订单（已签约）。这是一个从"可能买"到"已经买"的漏斗。</p></div>
+<div class="card"><h3>背景补充 1：SaaS增强层</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SaaS（Software as a Service）= 软件即服务，按订阅付费的云端软件。企业微信是"平台"，企微管家是"插件型SaaS"——基于企业微信API开发，在原生功能上增加营销自动化、CRM、质检等高级能力。没有企业微信就没有企微管家。</p><p class="relevancy">为什么现在需要知道：本章所有功能（活码、CRM、智能质检）都是企微管家在企微原生上的增强。理解这层关系，才能回答"为什么有了联系我还要活码"。</p></div>
+<div class="card"><h3>背景补充 2：CRM与销售漏斗</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">CRM（Customer Relationship Management）= 客户关系管理。销售漏斗：线索（可能买的人）→联系人（找到具体对接人）→企业（了解客户公司）→商机（有明确成交机会）→订单（签约了）。每一步都在筛选，越往后人越少、价值越高。</p><p class="relevancy">为什么现在需要知道：本章CRM3.0的核心就是这条漏斗。理解漏斗，才能理解"为什么CRM不只是通讯录"。</p></div>
+<div class="card"><h3>背景补充 3：营销自动化</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">手动运营：员工一个个加好友、发消息、打标签，效率低且易漏。营销自动化：配置规则后系统自动执行——活码自动分配、群发自动触达、标签自动打。企微管家做的就是营销自动化。</p><p class="relevancy">为什么现在需要知道：活码的"分时段分配""客户上限自动转接""自动打标签"全是营销自动化。理解这个概念，才能理解企微管家相对原生功能的本质优势。</p></div>
+<div class="card"><h3>背景补充 4：智能质检</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">传统质检：主管人工抽检客服聊天，覆盖率低（可能只抽1%）、滞后（事后才查）。智能质检：AI自动检查所有聊天记录，发现超时未回复、敏感词、服务态度差——全覆盖、实时、自动化。</p><p class="relevancy">为什么现在需要知道：本章AI功能里"智能质检"是核心场景。理解它替代人工抽检的价值，才能给客户讲清ROI。</p></div>
 
 <h2 id="sec3">03 原文问题定位</h2>
-<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业微信原生功能不够用的时候怎么办？"</strong></p><p style="margin-top:8px;">答案是企微管家——它在原生功能上做了"运营增强"。核心差异化在于自动化、精细化、数据化。</p></div>
+<div class="card judgment"><h3>表面在讲什么？</h3><p>企微管家的功能模块：活码&营销工具、CRM、会话存档、AI功能、素材&客户管理&数据统计。</p></div>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业微信原生功能不够用的时候怎么办？"</strong></p><p style="margin-top:8px;">答案是企微管家——在原生功能上做"运营增强"。核心差异化在于<span class="src">原文（实操考核）："微盛活码在客户分流、精准营销、数据管理、容错能力等方面提供了远超原生'联系我'功能的自动化、精细化运营能力"</span>。</p></div>
+<div class="card judgment"><h3>作者为什么要写这篇？</h3><p>实操考核记录是管培生学习产物，本质是"企微管家vs原生功能"的对比证明——通过逐维对比说服自己（和考官）企微管家的价值。</p></div>
+<div class="card judgment"><h3>只记一个问题</h3><p><strong>"企微管家在哪些维度上增强了原生功能？"</strong>——答案：自动化（活码自动分配）、精细化（时刻码区分新老客）、数据化（多维度统计）、容错化（备用员工）。</p></div>
 
 <h2 id="sec4">04 原文结构地图</h2>
-<p style="margin-bottom:12px;">原文结构类型：<strong>主题簇结构</strong>（以"运营增强"为核心，向外辐射6个功能模块）</p>
+<p style="margin-bottom:12px;">原文结构类型：<strong>主题簇结构</strong>（以"运营增强"为核心，辐射6个模块）</p>
 <div class="structure-map">
 <div class="structure-node cluster"><strong>核心：企微管家 = 企业微信的运营增强层</strong></div>
 <div class="structure-node branch"><strong>模块1：活码&任务&营销工具</strong></div>
-<div class="structure-node leaf">活码（多人路由/分时段/时刻码/区域活码）</div>
-<div class="structure-node leaf">群活码（顺序入群/分类入群/区域群码）</div>
-<div class="structure-node leaf">群发工具（群发客户/群发群/朋友圈/超级群发）</div>
+<div class="structure-node leaf">活码（7维增强）、群活码（7维增强）、群发四件套（客户/群/朋友圈/超级群发）</div>
 <div class="structure-node branch"><strong>模块2：CRM</strong></div>
-<div class="structure-node leaf">线索→联系人→企业→商机→订单 全流程管理</div>
+<div class="structure-node leaf">线索→联系人→企业→商机→订单 漏斗管理</div>
 <div class="structure-node branch"><strong>模块3：会话存档</strong></div>
-<div class="structure-node leaf">超时回复规则 / 敏感词规则 / 质检</div>
+<div class="structure-node leaf">超时回复规则、敏感词规则、质检（详见第5章）</div>
 <div class="structure-node branch"><strong>模块4：AI功能</strong></div>
-<div class="structure-node leaf">智能质检 / 知识库 / 智能问答推荐话术</div>
+<div class="structure-node leaf">智能质检、知识库、智能问答推荐话术</div>
 <div class="structure-node branch"><strong>模块5：素材&客户管理</strong></div>
-<div class="structure-node leaf">客户收集表→标签同步</div>
+<div class="structure-node leaf">客户收集表→标签同步、素材中心</div>
 <div class="structure-node branch"><strong>模块6：数据统计</strong></div>
 <div class="structure-node leaf">多维度数据分析</div>
+<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>节点关系说明：</strong>6个模块是<strong>并列</strong>关系，都以"增强原生功能"为共同目标。其中活码/群活码增强获客，CRM增强销售，会话存档/AI增强服务管理，素材/数据增强运营——覆盖获客到复购全链路。</div>
 </div>
 
 <h2 id="sec5">05 核心判断与依据</h2>
-<div class="card judgment"><h3>判断1：活码是联系我的"超级升级版"</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："活码支持多人路由、分时段分配、客户数上限分配、时刻码区分新老客"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。原生"联系我"是固定二维码，活码增加了自动分配、智能分流、容错机制、数据统计。</p></div>
-<div class="card judgment"><h3>判断2：群活码支持"顺序入群"和"分类入群"</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："顺序入群=群满自动创建新群；分类入群=客户自主选择不同群组"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。原生"加入群聊"是固定一个群，群活码可以动态管理多个群。</p></div>
-<div class="card judgment"><h3>判断3：CRM3.0的核心是漏斗管理</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："输出CRM3.0的整体流程逻辑图（包括线索、联系人、企业、商机、订单等）"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。从线索到订单是逐步筛选、逐步转化的过程，每一步都有转化率。</p></div>
-<div class="card judgment"><h3>判断4：群发有四种类型，覆盖不同触达场景</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："群发客户/群发群/群发朋友圈/超级群发"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。群发客户=1对1私发；群发群=批量发群；朋友圈=信息流曝光；超级群发=组合触达。</p></div>
-<div class="card judgment"><h3>判断5：AI功能聚焦服务质检和知识赋能</h3><p><strong>原文依据：</strong><span class="src">实操考核记录："搭建智能质检任务；上传文档至知识库，用智能问答推荐话术回复"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。不是通用AI，而是聚焦"检查服务质量"和"辅助员工回答"两个场景。</p></div>
+<div class="card judgment"><h3>判断1：活码是联系我的"7维超级升级版"</h3><p><strong>原文依据：</strong><span class="src">实操考核："活码支持多人活码/分时段分配/客户数上限分配/时刻码区分新老客/分时段欢迎语/自动打标签/多维度数据统计/自定义样式/备用员工"</span></p><table class="cmp-table"><tr><th>维度</th><th>活码（管家）</th><th>联系我（原生）</th></tr><tr><td>多人路由</td><td>支持，分时段+客户上限自动转接</td><td>固定员工码，无自动分配</td></tr><tr><td>新老客识别</td><td>时刻码：新客加好友/老客跳转福利页</td><td>无识别，统一加好友流程</td></tr><tr><td>欢迎语</td><td>分时段+个性化（插昵称/选素材）</td><td>固定内容，无个性化</td></tr><tr><td>自动打标签</td><td>自动标签+备注+渠道记录</td><td>无，需员工手动</td></tr><tr><td>数据统计</td><td>按员工/客户/日期多维分析</td><td>仅扫码总数，无细化</td></tr><tr><td>二维码样式</td><td>自定义边框/头像/短链</td><td>固定样式，无短链</td></tr><tr><td>备用员工</td><td>主码失效自动转备用</td><td>无，失效即流失</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>这7维对比是考试必考，也是企微管家核心卖点。每维都解决一个原生功能的痛点。</p></div>
+<div class="card judgment"><h3>判断2：群活码是加入群聊的"7维超级升级版"</h3><p><strong>原文依据：</strong><span class="src">实操考核："群活码支持顺序入群/分类入群/备用员工/多维度统计/入群自动打标签/时刻群码区分新老客/区域活码"</span></p><table class="cmp-table"><tr><th>维度</th><th>群活码（管家）</th><th>加入群聊（原生）</th></tr><tr><td>入群模式</td><td>顺序（满自建）+分类（客户选）</td><td>固定一码对一群</td></tr><tr><td>群满处理</td><td>顺序自动建新群/分类多群</td><td>群满即失效</td></tr><tr><td>备用员工</td><td>群满/解散/群主异常自动承接</td><td>无，客户流失</td></tr><tr><td>数据统计</td><td>按群/日期/客户多维分析</td><td>仅入群总数</td></tr><tr><td>自动打标签</td><td>入群自动标签+关联群发</td><td>无，需手动</td></tr><tr><td>新老客识别</td><td>时刻群码：新客入群/老客跳转</td><td>无识别</td></tr><tr><td>区域分配</td><td>区域活码按定位分门店群</td><td>无定位分配</td></tr></table><div class="scene">连锁餐饮50家门店，客户扫码后按GPS定位自动进最近的门店群——这就是"区域活码"，原生加入群聊做不到。</div></div>
+<div class="card judgment"><h3>判断3：CRM3.0的核心是漏斗管理</h3><p><strong>原文依据：</strong><span class="src">实操考核："输出CRM3.0的整体流程逻辑图（线索、联系人、企业、商机、订单等）"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。从线索到订单是逐步筛选、转化的过程，每步都有转化率。CRM管的是这条漏斗，不只是"联系人列表"。</p><table class="cmp-table"><tr><th>漏斗层</th><th>含义</th><th>筛选动作</th></tr><tr><td>线索</td><td>可能买的人（留过资）</td><td>判断是否有效</td></tr><tr><td>联系人</td><td>找到具体对接人</td><td>确认决策权</td></tr><tr><td>企业</td><td>了解客户公司</td><td>评估购买力</td></tr><tr><td>商机</td><td>有明确成交机会</td><td>推进签约</td></tr><tr><td>订单</td><td>已签约</td><td>交付+续费</td></tr></table></div>
+<div class="card judgment"><h3>判断4：超级群发是原生没有的组合触达</h3><p><strong>原文依据：</strong><span class="src">实操考核："配置群发（群发客户/群发群/群发朋友圈/超级群发）任务"</span></p><table class="cmp-table"><tr><th>群发方式</th><th>触达</th><th>场景</th></tr><tr><td>群发客户</td><td>1对1私发</td><td>个性化深沟通</td></tr><tr><td>群发群</td><td>批量发群</td><td>社群促活</td></tr><tr><td>群发朋友圈</td><td>信息流曝光</td><td>品牌宣传</td></tr><tr><td>超级群发</td><td>以上三种组合</td><td>大促全渠道触达</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>超级群发是企微管家独有的，一次操作多渠道同时触达，原生没有。</p></div>
+<div class="card judgment"><h3>判断5：AI功能聚焦质检+知识赋能</h3><p><strong>原文依据：</strong><span class="src">实操考核："搭建智能质检任务；上传文档至知识库，用智能问答推荐话术回复"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。不是通用AI，而是聚焦"检查服务质量"（智能质检）和"辅助员工回答"（知识库+智能问答）两个企业场景。</p></div>
 
 <h2 id="sec6">06 关键概念拆解</h2>
-<div class="card"><h3>概念1：活码</h3><p><strong>人话解释：</strong>企微管家的"智能二维码"。相比原生"联系我"，活码可以：按排班自动分配员工、设客户上限自动转接、区分新老客不同处理、分时段欢迎语、自动打标签+备注+渠道记录。</p><p style="color:var(--brick);"><strong>不要误解成：</strong>活码不是"活的二维码"（动态二维码），而是一套智能获客路由系统。</p></div>
-<div class="card"><h3>概念2：时刻码</h3><p><strong>人话解释：</strong>活码的一个高级功能。新客扫码→直接加好友；老客扫码→跳转到福利页或显示拦截提示。实现"新客引流、老客复购"的双线分流。</p></div>
-<div class="card"><h3>概念3：超级群发</h3><p><strong>人话解释：</strong>群发客户+群发群+群发朋友圈的组合拳。一次操作，多种渠道同时触达。是原生功能没有的。</p></div>
-<div class="card"><h3>概念4：CRM漏斗</h3><p><strong>人话解释：</strong>线索（可能买的人）→联系人（找到具体对接人）→企业（了解客户公司）→商机（有明确成交机会）→订单（签约了）。每一步都有筛选和流失。</p></div>
-<div class="card"><h3>概念5：智能质检</h3><p><strong>人话解释：</strong>AI自动检查客服聊天记录，发现"超时未回复""敏感词""服务态度差"等问题。代替人工抽检，全覆盖+自动化。</p></div>
-<div class="card"><h3>概念6：知识库+智能问答</h3><p><strong>人话解释：</strong>把产品文档上传到知识库，员工跟客户聊天时，侧边栏会根据客户问题自动推荐话术。AI帮你"找到正确答案"。</p></div>
+<div class="card"><h3>概念1：活码</h3><p><strong>原文术语：</strong>活码（多人路由/分时段/时刻码）</p><p><strong>人话解释：</strong>企微管家的"智能二维码"。相比原生联系我，活码可以：按排班自动分配员工、设客户上限自动转接、区分新老客不同处理、分时段欢迎语、自动打标签+备注+渠道记录、多维度数据统计、备用员工容错。</p><div class="scene">奶茶店用时刻码：新客扫码直接加店长好友领新人券；老客扫码跳转到"会员日8折"福利页。一个二维码实现新客引流+老客复购双线分流。</div><p><strong>与其他概念的关系：</strong>活码增强原生"联系我"，群活码增强原生"加入群聊"。两者是企微管家获客模块的核心。</p><p><span class="src">实操考核：活码7维增强对比表</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>活码不是"动态二维码"（图案会变的码），而是智能获客路由系统——码不变，背后的分配逻辑会变。</p></div>
+<div class="card"><h3>概念2：时刻码</h3><p><strong>原文术语：</strong>时刻码（区分新老客）</p><p><strong>人话解释：</strong>活码的高级功能。新客扫码→直接加好友；老客扫码→跳转福利页或显示拦截提示。实现"新客引流、老客复购"双线分流。</p><div class="scene">连锁健身房：新客扫码加会籍顾问（引流）；已购会员扫码跳转"私教课预约"页（复购）。同一张海报的二维码，不同人扫出不同结果。</div><p><span class="src">实操考核：时刻码可区分新客与老客</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>"时刻"不是按时间，而是按"客户身份"（新老）区分，靠的是系统对客户的历史识别。</p></div>
+<div class="card"><h3>概念3：区域活码（群）</h3><p><strong>原文术语：</strong>区域活码（按定位分配群）</p><p><strong>人话解释：</strong>群活码的高级功能。客户扫码时系统获取GPS定位，自动分配到最近的门店群或地区群。非常适合线下多门店场景。</p><div class="scene">连锁餐饮50家店，客户在北京三里屯扫码→自动进"三里屯店群"；在上海南京路扫码→进"南京路店群"。原生加入群聊做不到按定位分配。</div><p><span class="src">实操考核：区域活码可根据扫码地理位置自动分配至最近的门店群</span></p></div>
+<div class="card"><h3>概念4：CRM漏斗</h3><p><strong>原文术语：</strong>线索→联系人→企业→商机→订单</p><p><strong>人话解释：</strong>从"可能买"到"已经买"的筛选漏斗。线索（留过电话）→联系人（找到决策人）→企业（评估购买力）→商机（有成交机会）→订单（签约）。每步都有筛选和流失。</p><div class="scene">100个线索→筛选出30个有效联系人→其中10家是目标企业→3个进入商机→最终1个签约。CRM管的就是这条漏斗的每一步转化率。</div><p><strong>与其他概念的关系：</strong>CRM漏斗承接获客（活码）来的线索，输出订单给财务（第6章合同/收款）。</p><p><span class="src">实操考核：输出CRM3.0整体流程逻辑图</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>CRM不是通讯录，它管的是销售过程（漏斗转化），通讯录只是其中"联系人"一环。</p></div>
+<div class="card"><h3>概念5：智能质检</h3><p><strong>原文术语：</strong>智能质检（AI检查服务）</p><p><strong>人话解释：</strong>AI自动检查客服聊天记录，发现"超时未回复""敏感词""服务态度差"等问题。代替人工抽检，全覆盖+自动化。</p><div class="scene">某公司每天10000条客户对话，主管人工抽检只能看100条（1%）。智能质检全部10000条都查，还能实时预警"这个客户等了30分钟没回复"。</div><p><span class="src">实操考核：搭建智能质检任务</span></p></div>
+<div class="card"><h3>概念6：知识库+智能问答</h3><p><strong>原文术语：</strong>知识库 / 智能问答推荐话术</p><p><strong>人话解释：</strong>把产品文档上传到知识库，员工跟客户聊天时，侧边栏根据客户问题自动推荐话术。AI帮你"找到正确答案"，不用翻文档。</p><div class="scene">新人销售不懂产品细节，客户问"你们的会话存档能存多久"。侧边栏立刻弹出推荐话术"企微侧保存5天，企业需自行拉取存储"，一键发送。不用问老员工也不用翻手册。</div><p><span class="src">实操考核：上传文档至知识库，用智能问答推荐话术回复</span></p></div>
 
 <h2 id="sec7">07 苏格拉底式阅读关卡</h2>
-<div class="task" data-task="q1" data-answer="B" data-ok="正确！活码支持多人路由、分时段分配、客户上限自动转接，远超原生联系我。" data-no="联系我是固定二维码，活码是智能路由系统。" data-src="实操考核：活码vs联系我功能差异" data-review="回到「06 关键概念拆解」概念1复习">
-<div class="q">1. 企微管家"活码"相比原生"联系我"最大的增强是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 二维码更好看</button><button class="opt" data-val="B">B. 支持多人路由、分时段分配、客户上限自动转接、新老客分流</button><button class="opt" data-val="C">C. 可以不用企业微信</button><button class="opt" data-val="D">D. 添加速度更快</button></div>
+<div class="task" data-task="q1" data-answer="B" data-ok="对！区域群活码按GPS定位自动分配到最近门店群，这是原生加入群聊做不到的。" data-no="联系我是1对1不是群；加入群聊无定位分配；朋友圈是曝光不是入群。" data-src="实操考核：区域活码可根据扫码地理位置自动分配至最近的门店群" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">1. <strong>场景：</strong>连锁餐饮50家门店，希望客户扫码后按GPS定位自动进最近的门店群。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 联系我</button><button class="opt" data-val="B">B. 区域群活码（按定位分配门店群）</button><button class="opt" data-val="C">C. 加入群聊（原生，无定位）</button><button class="opt" data-val="D">D. 客户朋友圈</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q2" data-answer="C" data-ok="正确！群活码支持顺序入群（群满自动建新群）和分类入群（客户选择不同群组）。" data-no="原生加入群聊是一个二维码对应一个群，群活码可以动态管理。" data-src="实操考核：群活码vs加入群聊功能差异" data-review="回到「05 核心判断」判断2复习">
-<div class="q">2. 群活码的"顺序入群"和"分类入群"分别解决什么问题？</div>
-<div class="opts"><button class="opt" data-val="A">A. 都是自动建群，没区别</button><button class="opt" data-val="B">B. 顺序=线下用，分类=线上用</button><button class="opt" data-val="C">C. 顺序=群满自动建新群避免流失；分类=客户自主选择不同类型群组</button><button class="opt" data-val="D">D. 顺序是免费的，分类是付费的</button></div>
+<div class="task" data-task="q2" data-answer="B" data-ok="对！时刻码区分新老客：新客加好友，老客跳转福利页，实现引流+复购双线分流。" data-no="联系我不分新老客统一加好友；区域活码按定位不按身份；朋友圈是曝光。" data-src="实操考核：时刻码可区分新客与老客" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">2. <strong>场景：</strong>奶茶店想让"新客扫码领新人券加好友，老客扫码跳转会员日8折页"。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 联系我（统一加好友）</button><button class="opt" data-val="B">B. 活码+时刻码（区分新老客差异化处理）</button><button class="opt" data-val="C">C. 区域群活码（按定位）</button><button class="opt" data-val="D">D. 客户朋友圈</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q3" data-answer="B" data-ok="正确！CRM的核心是从线索到订单的漏斗转化过程。" data-no="CRM不是只管联系人，它管理整个销售漏斗。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「06 关键概念拆解」概念4复习">
-<div class="q">3. CRM3.0的核心数据流是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 加好友→聊天→成交</button><button class="opt" data-val="B">B. 线索→联系人→企业→商机→订单</button><button class="opt" data-val="C">C. 潜客→成交客户→复购</button><button class="opt" data-val="D">D. 注册→登录→购买</button></div>
+<div class="task" data-task="q3" data-answer="B" data-ok="对！CRM核心是从线索到订单的漏斗转化：线索→联系人→企业→商机→订单。" data-no="CRM不是只管联系人，它管整个销售漏斗。" data-src="实操考核：输出CRM3.0整体流程逻辑图" data-review="回到「06 关键概念拆解」概念4复习">
+<div class="q">3. <strong>场景：</strong>客户问"企微管家CRM管什么"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 只管联系人通讯录</button><button class="opt" data-val="B">B. 管线索→联系人→企业→商机→订单的销售漏斗全流程</button><button class="opt" data-val="C">C. 只管发消息</button><button class="opt" data-val="D">D. 只管合同</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q4" data-answer="D" data-ok="正确！超级群发是群发客户+群发群+群发朋友圈的组合触达方式。" data-no="超级群发是企微管家的增强功能，原生没有。" data-src="实操考核：配置群发任务" data-review="回到「06 关键概念拆解」概念3复习">
-<div class="q">4. "超级群发"与普通群发的区别是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 发送速度更快</button><button class="opt" data-val="B">B. 可以发给更多人</button><button class="opt" data-val="C">C. 只能管理员使用</button><button class="opt" data-val="D">D. 是群发客户+群发群+群发朋友圈的组合触达</button></div>
+<div class="task" data-task="q4" data-answer="D" data-ok="对！超级群发是群发客户+群发群+群发朋友圈的组合触达，原生没有。" data-no="超级群发是管家独有的组合触达，不是单一渠道。" data-src="实操考核：配置群发任务（客户/群/朋友圈/超级群发）" data-review="回到「05 核心判断」判断4复习">
+<div class="q">4. <strong>场景：</strong>双11大促，品牌希望一次操作同时1对1私发客户+批量发群+朋友圈曝光。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 群发客户（只1对1）</button><button class="opt" data-val="B">B. 群发群（只发群）</button><button class="opt" data-val="C">C. 群发朋友圈（只曝光）</button><button class="opt" data-val="D">D. 超级群发（三者组合触达）</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q5" data-answer="A,B,C" data-multi="true" data-ok="正确！智能质检检查服务质量，知识库存储企业知识，智能问答推荐辅助回复。" data-no="自动生成PPT不属于企微管家AI功能范畴。" data-src="实操考核：搭建质检任务+知识库+智能问答" data-review="回到「05 核心判断」判断5复习">
-<div class="q">5. 企微管家的AI功能包含哪些场景？（多选）</div>
+<div class="task" data-task="q5" data-answer="A,B,C" data-multi="true" data-ok="对！智能质检检查服务质量，知识库存储企业文档，智能问答推荐辅助回复。" data-no="自动生成PPT不属于企微管家AI功能。" data-src="实操考核：搭建质检任务+知识库+智能问答" data-review="回到「05 核心判断」判断5复习">
+<div class="q">5. <strong>场景：</strong>企微管家AI功能包含哪些？（多选）</div>
 <div class="opts"><button class="opt" data-val="A">A. 智能质检（检查服务质量）</button><button class="opt" data-val="B">B. 知识库（存储企业文档）</button><button class="opt" data-val="C">C. 智能问答推荐话术（辅助回复）</button><button class="opt" data-val="D">D. 自动生成PPT</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q6" data-answer="B" data-ok="正确！时刻码区分新老客：新客直接加好友，老客跳转其他页面或拦截。" data-no="时刻码的核心价值是区分新老客做差异化处理。" data-src="实操考核：时刻码可区分新客与老客" data-review="回到「06 关键概念拆解」概念2复习">
-<div class="q">6. "时刻码"的核心功能是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 定时更换二维码</button><button class="opt" data-val="B">B. 区分新老客户，新客加好友，老客跳转其他页面</button><button class="opt" data-val="C">C. 按时段显示不同员工</button><button class="opt" data-val="D">D. 限制扫码次数</button></div>
+<div class="task" data-task="q6" data-answer="A,B,C,D" data-multi="true" data-ok="全对！活码7维增强：多人路由/时刻码新老客/分时段欢迎语/自动打标签/多维统计/自定义样式/备用员工。" data-no="7维都要记住，这是考试核心考点。" data-src="实操考核：活码vs联系我7维对比" data-review="回到「05 核心判断」判断1复习">
+<div class="q">6. <strong>场景：</strong>活码相比原生联系我的增强包括哪些？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 多人路由+分时段分配+客户上限自动转接</button><button class="opt" data-val="B">B. 时刻码区分新老客</button><button class="opt" data-val="C">C. 自动打标签+备注+渠道记录</button><button class="opt" data-val="D">D. 备用员工容错+多维度数据统计</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q7" data-answer="C" data-ok="正确！企微管家是基于企微API开发的SaaS增强层，在原生功能上增加自动化运营能力。" data-no="企微管家不是替代品，是增强插件。" data-src="企微管家产品定位" data-review="回到「02 零基础背景包」背景补充1复习">
-<div class="q">7. 企微管家与企业微信的关系是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 竞品关系</button><button class="opt" data-val="B">B. 完全相同的产品</button><button class="opt" data-val="C">C. 企微管家是基于企微API的SaaS增强层，增强原生功能</button><button class="opt" data-val="D">D. 企微管家是企业微信的旧版</button></div>
+<div class="task" data-task="q7" data-answer="C" data-ok="对！企微管家是企微API开发的SaaS增强层，没有企业微信就没有企微管家。" data-no="企微管家不是替代品也不是竞品，是依赖企微的增强插件。" data-src="企微管家产品定位" data-review="回到「02 零基础背景包」背景1复习">
+<div class="q">7. <strong>场景：</strong>客户问"我们能只用企微管家不用企业微信吗"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 可以，企微管家是独立产品</button><button class="opt" data-val="B">B. 可以，两者是竞品选一个</button><button class="opt" data-val="C">C. 不行，企微管家是基于企微API的增强插件，没企微就没管家</button><button class="opt" data-val="D">D. 只有大企业才能两个都用</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec8">08 闯关式任务</h2>
-<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对企微管家vs原生功能的差异有全面理解。" data-no="仔细看实操考核记录里的对比表格，每个功能的优势点不同。" data-src="实操考核记录" data-review="回到「06 关键概念拆解」复习">
-<div class="q">任务：将企微管家增强功能匹配到对应的原生功能。</div>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你掌握了企微管家增强功能与原生功能的对应关系。" data-no="活码增强联系我，群活码增强加入群聊，超级群发是组合触达，时刻码区分新老客。" data-src="实操考核记录对比表" data-review="回到「05 核心判断」复习">
+<div class="q">任务：把企微管家增强功能匹配到对应的原生功能/场景。</div>
 <div style="margin:8px 0;">
 <div style="margin-bottom:6px;">活码 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">微信客服</option><option value="b">联系我</option><option value="c">客户朋友圈</option><option value="d">客户群</option></select></div>
 <div style="margin-bottom:6px;">群活码 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">微信客服</option><option value="b">联系我</option><option value="c">客户朋友圈</option><option value="d">加入群聊</option></select></div>
 <div style="margin-bottom:6px;">超级群发 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">微信客服</option><option value="b">群发客户</option><option value="c">群发客户+群+朋友圈组合</option><option value="d">客户标签</option></select></div>
+<div style="margin-bottom:6px;">时刻码 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">区分新老客差异化处理</option><option value="b">按定位分配</option><option value="c">按排班分配</option><option value="d">按金额分配</option></select></div>
 </div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec9">09 误解与边界</h2>
-<div class="card danger"><h3>误解1："企微管家=企业微信"</h3><p><strong>原文真正说了什么：</strong>企微管家是基于企微API的增强产品。企业微信是平台，企微管家是插件。没有企业微信就没有企微管家。</p></div>
-<div class="card danger"><h3>误解2："活码只是一个更好的二维码"</h3><p><strong>原文真正说了什么：</strong>活码是一套完整的智能获客路由系统，包含分配逻辑、分流规则、容错机制、数据追踪。不只是"二维码更好看"。</p></div>
-<div class="card danger"><h3>误解3："CRM只是通讯录"</h3><p><strong>原文真正说了什么：</strong>CRM是销售漏斗管理系统，从线索到订单全流程追踪。通讯录只是其中"联系人"这一环。</p></div>
+<div class="card danger"><h3>误解1："企微管家=企业微信"</h3><p><strong>为什么容易误解：</strong>名字都带"企微"。</p><p><strong>原文真正说了什么：</strong>企微管家是基于企微API的增强SaaS。企业微信是平台，企微管家是插件。没有企业微信就没有企微管家。</p><p><strong>如何避免：</strong>回答客户时先说"管家是增强插件，必须先有企业微信"。</p></div>
+<div class="card danger"><h3>误解2："活码就是动态二维码（图案会变）"</h3><p><strong>为什么容易误解：</strong>"活"字让人以为图案会动。</p><p><strong>原文真正说了什么：</strong>活码的二维码图案不变，变的是<strong>背后的分配逻辑</strong>——同一张码，不同时间/不同人扫，分配到不同员工。它是智能获客路由系统。</p><p><strong>如何避免：</strong>给客户演示时说"码不变，后台智能分配"，而不是"动态二维码"。</p></div>
+<div class="card danger"><h3>误解3："CRM只是通讯录"</h3><p><strong>为什么容易误解：</strong>CRM里有联系人，以为就是通讯录。</p><p><strong>原文真正说了什么：</strong>CRM是销售漏斗管理系统，从线索到订单全流程追踪。通讯录只是其中"联系人"这一环。</p><p><strong>如何避免：</strong>强调"漏斗"概念——线索→联系人→企业→商机→订单，每步都在筛选。</p></div>
+<div class="card danger"><h3>误解4："时刻码按时间区分"</h3><p><strong>为什么容易误解：</strong>"时刻"字面像时间。</p><p><strong>原文真正说了什么：</strong>时刻码按<strong>客户身份（新老）</strong>区分，不按时间。新客加好友，老客跳转，靠系统对客户历史的识别。</p><p><strong>如何避免：</strong>记成"身份码"而非"时间码"。</p></div>
 
 <h2 id="sec10">10 背景知识缺口</h2>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档的具体技术实现</strong>→ 第5章</li><li><strong>CRM与其他系统（ERP/OA）的对接</strong>→ 技术文档</li><li><strong>AI知识库的调优策略</strong>→ 第5章AI工作流</li></ul></div>
+<div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>CRM与其他系统（ERP/OA）的对接</strong>——属于技术集成，记住"能对接"即可。</li><li><strong>数据统计的具体指标定义</strong>——"活跃度""转化率"的计算口径属于运营进阶。</li><li><strong>素材中心的内容审核流程</strong>——属于内容运营细节。</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>会话存档的具体技术实现</strong>→ 第5章</li><li><strong>AI知识库的调优策略</strong>→ 第5章AI工作流</li><li><strong>活码与获客助手（原生）如何配合</strong>→ 第3章+本章结合</li><li><strong>CRM订单如何流转到合同/工单</strong>→ 第6章销售后端</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
 <div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
 <div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
-<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+<div class="footer">由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
 </main>
 </div>
 <script>
@@ -176,12 +194,15 @@
   function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
   function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
   function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
-  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'<img class="fb-emoji" src="img/sticker/ok.png" alt="">':'<img class="fb-emoji" src="img/sticker/no.png" alt="">')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
   function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
   document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
   function init(){updateBar();renderWrong();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+<link rel="stylesheet" href="promo.css">
+<script src="promo.js"></script>
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go","09":"no","10":"sleep","11":"final"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 </body>
 </html>

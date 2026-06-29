@@ -15,7 +15,7 @@
 .progress-wrap{margin-bottom:20px;}.progress-bar{background:rgba(255,255,255,.15);height:8px;border-radius:var(--radius-pill);overflow:hidden;}.progress-fill{background:var(--sage);height:100%;width:0%;transition:width .3s;}.progress-num{font-size:13px;margin-top:4px;opacity:.8;}
 .nav-list{list-style:none;}.nav-list li{margin-bottom:6px;}.nav-list a{display:block;padding:8px 12px;border-radius:8px;font-size:14px;opacity:.8;transition:.15s;text-decoration:none;color:var(--cream);}.nav-list a:hover{background:rgba(255,255,255,.1);opacity:1;}
 .sidebar-footer{margin-top:auto;padding-top:20px;font-size:12px;opacity:.5;}
-.main{margin-left:280px;flex:1;padding:40px 48px;max-width:780px;}
+.main{margin-left:280px;flex:1;padding:40px 48px;max-width:820px;}
 .main h1{font-family:var(--font-display);font-size:32px;margin-bottom:8px;color:var(--forest);}
 .main h2{font-family:var(--font-head);font-size:22px;margin:32px 0 12px;color:var(--forest);border-bottom:2px solid var(--sage);padding-bottom:6px;}
 .main h3{font-family:var(--font-head);font-size:17px;margin:20px 0 8px;color:var(--forest);}
@@ -23,12 +23,19 @@
 .card.fact{border-left:4px solid var(--sky);}.card.judgment{border-left:4px solid var(--marker);}.card.inference{border-left:4px solid var(--sage);}.card.danger{border-left:4px solid var(--brick);}
 .src{display:inline-block;background:var(--marker);color:var(--ink);padding:2px 8px;border-radius:4px;font-size:13px;margin-top:8px;}
 .bg-note{background:#E8E4D4;border-radius:6px;padding:4px 8px;font-size:13px;color:#555;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
 .objective{background:var(--paper);border-radius:var(--radius-card);padding:16px 20px;margin-bottom:12px;display:flex;gap:12px;align-items:flex-start;}
 .objective .num{background:var(--forest);color:var(--cream);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:10px;text-align:left;font-size:13px;}
+.cmp-table td{padding:10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:26%;}
 .structure-map{background:var(--paper);border-radius:var(--radius-card);padding:24px;}
 .structure-node{padding:12px 16px;border-radius:8px;margin-bottom:8px;border:2px solid transparent;}
 .structure-node.cluster{background:#E8F0E5;border-color:var(--sage);}.structure-node.branch{background:#E8EEF5;border-color:var(--sky);margin-left:20px;}.structure-node.leaf{background:#F5EDE5;border-color:#D4C4A8;margin-left:40px;}
-.structure-rel{font-size:12px;color:#888;margin-left:8px;}
 .task{background:var(--paper);border-radius:var(--radius-card);padding:20px;margin-bottom:16px;}
 .task .q{font-weight:600;margin-bottom:12px;}.opts{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
 .opt{padding:10px 16px;border:2px solid #D4C4A8;background:var(--cream);border-radius:8px;cursor:pointer;font-size:15px;text-align:left;transition:.15s;font-family:var(--font-body);}
@@ -40,6 +47,10 @@
 .report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
 .report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
 .footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 记住这些硬数字";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
 @media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
 </style>
 </head>
@@ -47,7 +58,7 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>📋 第3章<br>客户运营与微信互通</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
 <li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
 </ul>
@@ -55,124 +66,124 @@
 </aside>
 <main class="main">
 <h1>企业微信客户运营与微信互通</h1>
-<p style="color:#666;margin-bottom:24px;">微信互通 · 客户联系 · 客户群 · 客户运营 · 微信客服 · 上下游协作</p>
+<p style="color:#666;margin-bottom:24px;">基于《企业微信产品介绍文档（新）2026-04更新》客户运营章节深度拆解</p>
 
 <h2 id="sec1">01 学习目标与阅读路径</h2>
-<div class="objective"><span class="num">1</span><div><strong>说清"连接微信"的完整客户服务链路</strong>——从首次接触到持续服务的全流程。</div></div>
-<div class="objective"><span class="num">2</span><div><strong>区分客户联系、客户群、客户朋友圈的功能差异</strong>——各自适合什么服务场景。</div></div>
-<div class="objective"><span class="num">3</span><div><strong>解释"联系我"和"加入群聊"的机制差异</strong>——一个加好友，一个拉群，各有限制条件。</div></div>
-<div class="objective"><span class="num">4</span><div><strong>理解客户标签和客户画像的管理逻辑</strong>——企业标签 vs 个人标签，如何分层管理。</div></div>
-<div class="objective"><span class="num">5</span><div><strong>说出微信客服的完整服务流程</strong>——从接入到升级为专属服务的链路。</div></div>
+<p style="margin-bottom:16px;">本章讲企业微信"对外"的核心——怎么加客户、怎么管客户、怎么批量触达、怎么防客户跟着离职员工跑了。学完你应该能做到：</p>
+<div class="objective"><span class="num">1</span><div><strong>说清获客四件套的区别</strong>——联系我、加入群聊、获客助手、工卡码，知道每个工具解决什么获客场景。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>区分"加入群聊"（原生）和"群活码"（管家）</strong>——前者永不过期绑5群满200自建，后者是企微管家的增强封装。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>记住群发和朋友圈的硬规则</strong>——群发客户每次2000个、朋友圈每天3条（企业员工共用）、群发每日1条（共用）。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>解释离职继承的机制</strong>——24小时自动切换、90天内最多2次、群满则随机踢人。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>区分企业标签和个人标签</strong>——企业标签管理员配、个人标签员工自打，两者用途不同。</div></div>
+<p style="margin-top:16px;color:#666;">阅读路径：先补私域/unionid背景 → 理解"获客→服务→运营→管理"链路 → 拆解各工具硬规则 → 闯关场景题 → 复盘。</p>
 
 <h2 id="sec2">02 零基础背景包</h2>
-<div class="card"><h3>背景补充 1：私域流量</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">私域流量 = 企业可以反复触达、不用付费的用户群。比如微信公众号粉丝、企业微信客户群。与"公域流量"（抖音推荐流、百度搜索结果）相对。企业微信做客户运营的核心价值就是帮助企业积累私域流量。</p></div>
-<div class="card"><h3>背景补充 2：UnionID</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">微信UnionID = 同一个微信用户在不同微信产品（公众号、小程序、企业微信）中的唯一身份标识。通过UnionID，企业可以把"客户在公众号的行为"和"客户在企微的聊天记录"关联起来，形成完整画像。</p></div>
-<div class="card"><h3>背景补充 3：SCRM触点</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">触点 = 企业与客户接触的每一个点。企微的触点包括：单聊、群聊、朋友圈、视频号、小程序、微信客服。每个触点都是服务机会，也是数据采集点。</p></div>
+<div class="card"><h3>背景补充 1：私域流量</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">公域流量=平台控制的流量（淘宝搜索、抖音推荐），要花钱买且越来越贵。私域流量=企业自己能免费、反复触达的客户（微信好友、客户群）。企业微信做的就是私域——把客户攒在自己手里。</p><p class="relevancy">为什么现在需要知道：本章所有功能（加客户、建群、群发）都是私域运营动作。不懂"私域"就理解不了"为什么要这么费力加微信好友"。</p></div>
+<div class="card"><h3>背景补充 2：UnionID（跨应用身份打通）</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">同一个微信用户，在公众号、小程序、企业微信里有不同OpenID（各应用内部ID）。绑定微信开放平台后，这些OpenID对应同一个UnionID——企业就能识别"这是同一个人"。这是跨渠道识别客户的技术基础。</p><p class="relevancy">为什么现在需要知道：客户加了企微、又关注公众号、又用小程序，企业要知道这是同一个人才能统一服务。unionid是"客户画像打通"的钥匙。</p></div>
+<div class="card"><h3>背景补充 3：SCRM触点</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SCRM触点=企业和客户接触的每一个点。企微的触点：单聊、群聊、朋友圈、视频号、小程序、微信客服。单聊深服务、群聊做活跃、朋友圈做曝光、客服做咨询。</p><p class="relevancy">为什么现在需要知道：本章会讲"获客→服务→运营→管理"链路，每个环节对应不同触点。理解触点分工才能给客户配方案。</p></div>
+<div class="card"><h3>背景补充 4：客户继承</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">销售离职带走客户是私域最大风险——客户加的是销售个人微信，销售一走客户就断了。企业微信的"继承"机制把客户资产归属企业而非个人，员工离职后客户可无感转接给其他员工。</p><p class="relevancy">为什么现在需要知道：在职/离职继承是考试高频考点，也是企业微信相对个人微信最大的私域优势。</p></div>
 
 <h2 id="sec3">03 原文问题定位</h2>
-<div class="card judgment"><h3>表面在讲什么？</h3><p>企业微信与微信互通的各种功能：加客户好友、建客户群、发客户朋友圈、微信客服等。</p></div>
-<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业如何通过微信生态管理客户关系，实现可持续增长？"</strong></p><p style="margin-top:8px;">这不是功能列表，而是一套"获客→服务→运营→管理"的完整方法论。</p></div>
-<div class="card judgment"><h3>只记一个问题</h3><p><strong>"企业微信客户运营的完整链路是什么，每个环节用什么功能实现？"</strong></p></div>
+<div class="card judgment"><h3>表面在讲什么？</h3><p>企业微信连接微信的能力：加客户、客户群、朋友圈、视频号、小程序、微信客服、上下游、对外收款。</p></div>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"企业怎么把微信的12亿用户变成自己的私域客户？"</strong></p><p style="margin-top:8px;">答案是"获客→服务→运营→管理"完整链路：<span class="src">原文："添加客户的微信，在单聊、群聊、朋友圈、视频号中向客户提供持续的服务"</span>。</p></div>
+<div class="card judgment"><h3>作者为什么要写这篇？</h3><p>这是给销售/运营决策者看的"私域获客说服文档"。重点强调"客户资产归企业不归个人""一个App覆盖获客到复购全链路"——直击私域运营痛点。</p></div>
+<div class="card judgment"><h3>只记一个问题</h3><p><strong>"企业微信怎么把陌生人变成持续服务的客户？"</strong>——答案是"联系我/群聊/获客助手获客 → 标签/群发/朋友圈运营 → 离职继承保资产"。</p></div>
 
 <h2 id="sec4">04 原文结构地图</h2>
-<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（获客→服务→管理→继承的完整链路）</p>
+<p style="margin-bottom:12px;">原文结构类型：<strong>流程链结构</strong>（客户从"陌生人"到"持续被服务的客户"的完整链路）</p>
 <div class="structure-map">
-<div class="structure-node cluster"><strong>阶段1：获客（引流添加）</strong></div>
-<div class="structure-node branch">面对面扫码 / 手机号搜索 / 微信好友添加</div>
-<div class="structure-node branch">「联系我」二维码（最多100人路由）/ 工卡（最多1000客户）</div>
-<div class="structure-node branch">「加入群聊」二维码（支持群满200人自动建新群）</div>
-<div class="structure-node branch">获客助手（获客链接，最多100人路由，支持回调）</div>
-<div class="structure-node cluster"><strong>阶段2：服务（沟通互动）</strong></div>
-<div class="structure-node branch">单聊（文本/语音/视频/文件/小程序/视频号）</div>
-<div class="structure-node branch">客户群（500人/欢迎语/侧边栏/快捷回复/自动回复）</div>
-<div class="structure-node branch">客户朋友圈（活动/产品/专业知识）</div>
-<div class="structure-node cluster"><strong>阶段3：运营（精细化）</strong></div>
-<div class="structure-node branch">客户标签（企业标签+个人标签）</div>
-<div class="structure-node branch">快捷回复 + 聊天工具栏</div>
-<div class="structure-node branch">商品图册 + 企业名片</div>
-<div class="structure-node cluster"><strong>阶段4：管理（企业管控）</strong></div>
-<div class="structure-node branch">客户分配（离职继承+在职继承）</div>
-<div class="structure-node branch">客户群管理（数据统计/群发/朋友圈群发）</div>
-<div class="structure-node branch">UnionID关联 + 自定义客户详情</div>
+<div class="structure-node cluster"><strong>核心：获客→服务→运营→管理 完整链路</strong></div>
+<div class="structure-node branch"><strong>环节1：获客（把陌生人变客户）</strong></div>
+<div class="structure-node leaf">联系我（多人码100成员）、加入群聊（永不过期绑5群满200自建）、获客助手（单链接100成员）、工卡码（1000客户）</div>
+<div class="structure-node branch"><strong>环节2：服务（单点深度服务）</strong></div>
+<div class="structure-node leaf">单聊（文件10G）、微信客服（5000账号、2000接待、200并接）、视频号挂加好友气泡</div>
+<div class="structure-node branch"><strong>环节3：运营（批量触达促活）</strong></div>
+<div class="structure-node leaf">客户群（500人）、群发助手（每日1条共用、2000客户、9附件）、朋友圈（每天3条共用）、自动回复（@小助理）</div>
+<div class="structure-node branch"><strong>环节4：管理（资产归属+风控）</strong></div>
+<div class="structure-node leaf">离职/在职继承（24h自动、90天2次）、客户标签（企业/个人）、防骚扰（4类规则）、群统计（每晚12点更新）</div>
+<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>节点关系说明：</strong>四个环节是<strong>因果递进</strong>——先获客才有服务对象，服务好才好运营触达，运营积累的资产必须管理（防流失/防风控）。这是一条真正的业务链。</div>
 </div>
 
 <h2 id="sec5">05 核心判断与依据</h2>
-<div class="card judgment"><h3>判断1：客户资产属于企业，不属于员工个人</h3><p><strong>原文依据：</strong><span class="src">原文："企业可查看并管理成员添加的微信客户，对离职成员的客户及客户群再分配"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。<strong>为什么重要：</strong>这是企业微信SCRM的核心价值——客户关系不会因为员工离职而流失。</p></div>
-<div class="card judgment"><h3>判断2：「联系我」和「加入群聊」是两种不同的获客入口</h3><p><strong>原文依据：</strong><span class="src">原文："联系我"二维码最多100名成员；"加入群聊"支持群满200人自动建新群</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。联系我=1对1加好友，加入群聊=1对多进群。</p></div>
-<div class="card judgment"><h3>判断3：获客助手是高级的获客链接</h3><p><strong>原文依据：</strong><span class="src">原文："获客助手的核心能力是获客链接，可将获客链接配置在微信内/外的获客场景"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。支持多人路由（最多100人）、回调通知、state参数追踪来源。这是企微5.0新能力。</p></div>
-<div class="card judgment"><h3>判断4：微信客服是"轻量入口"，可以升级为"深度服务"</h3><p><strong>原文依据：</strong><span class="src">原文："可在微信内、外各个场景接入微信客服，还能邀请微信用户添加企业微信，升级为专属服务"</span></p><p style="margin-top:8px;"><strong>类型：</strong>推论。客服=临时咨询（不用加好友），客户联系=专属服务（已加好友），两者形成转化漏斗。</p></div>
-<div class="card judgment"><h3>判断5：上下游是B2B协作空间，不是客户运营工具</h3><p><strong>原文依据：</strong><span class="src">原文："统一管理供应商、经销商等业务伙伴的联系人"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>不要把上下游和客户群混淆——上下游是平等的B2B关系，客户群是B2C服务关系。</p></div>
+<div class="card judgment"><h3>判断1：获客四件套各有适用场景</h3><p><strong>原文依据：</strong><span class="src">原文：联系我多人码100成员；加入群聊永不过期绑5群满200自建；获客助手单链接100成员；工卡码1000客户</span></p><table class="cmp-table"><tr><th>工具</th><th>能力</th><th>场景</th></tr><tr><td>联系我</td><td>多人二维码，最多100成员</td><td>门店/展会多人接待</td></tr><tr><td>加入群聊</td><td>永不过期、绑5群、满200自建新群</td><td>社群运营</td></tr><tr><td>获客助手</td><td>单链接100成员平均分，支持state参数</td><td>广告投放跨渠道</td></tr><tr><td>工卡码</td><td>上限1000客户</td><td>大型活动批量加</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>给客户做获客方案时，选错工具会导致"加不上"或"分配不均"。</p></div>
+<div class="card judgment"><h3>判断2：群发和朋友圈有严格频次共用规则</h3><p><strong>原文依据：</strong><span class="src">原文：群发客户每次最多2000个；朋友圈每天每客户最多3条（企业和员工共用3次）；群发每日1条（共用）</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>"共用"是关键——不是企业3条+员工3条=6条，而是总共3条。客户常误解这点导致触达不足。</p><div class="scene">店庆发朋友圈，企业官号发了2条，员工就只能再发1条（共用3次）。规划内容要统筹，不能各发各的。</div></div>
+<div class="hardnum"><ul><li>群发客户：每次最多 <b>2000个</b>（超出分次），附件最多 <b>9个</b></li><li>群发频次：企业和员工<b>共用</b>（每日1条/每周7条/每月=当月天数条）</li><li>客户朋友圈：每天每客户最多 <b>3条</b>（企业和员工<b>共用3次</b>，不是各3条）</li><li>客户群：上限 <b>500人</b>（企微创建）</li><li>离职/在职继承：客户 <b>24小时</b>后自动切换；每 <b>90天</b>内最多 <b>2次</b></li><li>微信客服：最多 <b>5000</b>账号 / 接待人员 <b>2000</b> / 同时接待 <b>200</b> / 连续<b>2次</b>未命中转人工</li></ul></div>
+<div class="card judgment"><h3>判断3：离职继承让客户资产无感转接</h3><p><strong>原文依据：</strong><span class="src">原文：客户24小时后自动切换服务人员；每90天内客户/客户群最多被转接2次；群满则随机踢出一名群成员</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>这是企业微信相对个人微信最大的私域优势——客户归企业不归个人，销售离职客户不流失。</p><p style="margin-top:8px;"><strong>可能的误读：</strong>"90天2次"是上限不是默认。群继承时若群满会随机踢人（优先踢企微用户），这是硬规则。</p></div>
+<div class="card judgment"><h3>判断4：客户标签分企业级和个人级</h3><p><strong>原文依据：</strong><span class="src">原文：企业标签（管理员/规则负责人配）和个人标签（员工自打）</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>企业标签是统一运营基础（按标签群发），个人标签是员工个性化服务。两者不混淆。</p></div>
+<div class="card judgment"><h3>判断5：微信客服是大流量咨询入口</h3><p><strong>原文依据：</strong><span class="src">原文：最多创建5000个客服账号；接待人员最多2000人；一个接待人员同时最多200个咨询；连续2次未命中转人工</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。接待规则三档：轮流/空闲/优先分配给上次接待人。可接入公众号/小程序/视频号/网页/APP全场景。</p><p style="margin-top:8px;"><strong>为什么重要：</strong>微信客服是把"临时咨询"升级为"长期客户"的枢纽，接待人员发"加专员/加群"名片即可升级。</p></div>
 
 <h2 id="sec6">06 关键概念拆解</h2>
-<div class="card"><h3>概念1：客户联系</h3><p><strong>人话解释：</strong>企业员工用自己的企业微信加客户微信为好友。加了之后，企业可以看到和管理这个客户关系。</p><p><span class="src">原文："添加客户的微信为好友，通过单聊或群聊为客户提供服务"</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>不是"偷偷加客户"，客户会看到明确的"企业身份"提示。</p></div>
-<div class="card"><h3>概念2：「联系我」</h3><p><strong>人话解释：</strong>生成一个二维码或小程序按钮，客户扫码后自动添加指定员工为好友。支持"多人路由"——扫码后分配给多个员工中的一个。</p><p><span class="src">原文："一个多人二维码目前最多支持100名成员"</span></p></div>
-<div class="card"><h3>概念3：客户标签</h3><p><strong>人话解释：</strong>给客户打标记（如"VIP""高意向""已购"）。企业标签=管理员统一设置，全员可见；个人标签=员工自己创建，仅自己可见。标签用于分层运营和精准群发。</p></div>
-<div class="card"><h3>概念4：离职继承</h3><p><strong>人话解释：</strong>员工离职后，他名下的客户和客户群可以一键转给其他员工。客户不需要重新加好友（但需要客户确认）。</p><p><span class="src">原文："对离职成员的客户及客户群再分配，也可将在职成员的客户分配给其他成员"</span></p></div>
-<div class="card"><h3>概念5：微信客服</h3><p><strong>人话解释：</strong>在微信内外（公众号、小程序、视频号、外部网页）嵌入客服入口。客户点击就能跟企业聊天，不需要加好友。聊完可以引导加好友"升级"为专属服务。</p><p><span class="src">原文："可在微信内、外各个场景接入微信客服"</span></p></div>
-<div class="card"><h3>概念6：获客助手</h3><p><strong>人话解释：</strong>企微5.0的高级获客工具。生成一个链接，放在网页/App/短信里，客户点击就能一键添加好友。支持100人路由、state参数追踪来源、回调通知。</p><p><span class="src">原文："获客助手的核心能力是获客链接"</span></p></div>
+<div class="card"><h3>概念1：加入群聊（原生）vs 群活码（管家）</h3><p><strong>原文术语：</strong>加入群聊 / 群活码</p><p><strong>人话解释：</strong>两者都让客户扫码入群，但本质不同。加入群聊是企微<strong>原生功能</strong>：二维码永不过期、绑5群、群满200自建。群活码是<strong>企微管家增强</strong>：支持顺序入群、分类入群、区域活码、备用员工、自动打标签。</p><table class="cmp-table"><tr><th>维度</th><th>加入群聊（原生）</th><th>群活码（管家）</th></tr><tr><td>来源</td><td>企业微信自带</td><td>企微管家增强</td></tr><tr><td>二维码有效期</td><td>永不过期</td><td>永不过期</td></tr><tr><td>绑定群数</td><td>5个</td><td>多个（顺序/分类）</td></tr><tr><td>群满处理</td><td>满200自建新群</td><td>顺序自动建/分类选择</td></tr><tr><td>容错</td><td>无备用</td><td>有备用员工承接</td></tr></table><p><span class="src">原文：加入群聊永不过期、支持绑定5个客户群、群满200人自动建新群</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>两者不是替代关系，群活码是在加入群聊基础上的增强，需企微管家。</p></div>
+<div class="card"><h3>概念2：在职继承 vs 离职继承</h3><p><strong>原文术语：</strong>在职继承 / 离职继承</p><p><strong>人话解释：</strong>在职继承=员工调岗/休假，客户转给同事；离职继承=员工走了，客户自动归接替人。两者都是<strong>24小时自动切换、无感转接</strong>。</p><div class="scene">销售小王休产假，她名下300个客户用在职继承转给小李。客户无感，还是企微好友，只是换了服务人。90天内最多转2次，防止反复骚扰。</div><p><strong>与其他概念的关系：</strong>继承是"管理"环节核心，配合客户标签（按标签批量分配）和群统计（看转接效果）使用。</p><p><span class="src">原文：客户24小时后自动切换；每90天内最多被转接2次</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>继承不是"立刻生效"，有24小时缓冲期给客户确认。</p></div>
+<div class="card"><h3>概念3：企业标签 vs 个人标签</h3><p><strong>原文术语：</strong>企业标签 / 个人标签</p><p><strong>人话解释：</strong>企业标签=管理员统一定义（如"VIP""高意向"），全公司可见，用于统一群发筛选。个人标签=员工自己打（如"爱聊足球""周末不回"），仅该员工可见，用于个性化服务。</p><p><span class="src">原文：企业标签（管理员/规则负责人配）和个人标签（员工自打）</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>个人标签属于员工个人服务记录，员工离职后不自动转移。</p></div>
+<div class="card"><h3>概念4：朋友圈（每天3条共用）</h3><p><strong>原文术语：</strong>客户朋友圈（每天每客户最多3条，企业和员工共用3次）</p><p><strong>人话解释：</strong>企业官号和员工都能发朋友圈，但<strong>总共3条</strong>额度。企业发2条，员工只能发1条。</p><div class="scene">店庆日：企业官号发"全场5折"+"新品发布"2条，每个员工当天只能再发1条。要提前规划谁发什么。</div><p><span class="src">原文：每天每客户最多3条，企业和员工共用3次</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>不是企业3条+员工3条，是总共3条。</p></div>
+<div class="card"><h3>概念5：微信客服</h3><p><strong>原文术语：</strong>微信客服（5000账号、2000接待、200并接）</p><p><strong>人话解释：</strong>企业对外咨询服务，客户在微信里就能问，不用加好友。AI先答高频问题，答不了转人工。可接入公众号/小程序/视频号/网页/APP全场景。</p><p><span class="src">原文：最多5000客服账号；接待人员最多2000人；同时最多200个咨询；连续2次未命中转人工</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>微信客服不是"加了好友才能问"，它是独立咨询入口，不加好友也能咨询。</p></div>
+<div class="card"><h3>概念6：unionid打通</h3><p><strong>原文术语：</strong>UnionID（绑定微信开放平台后跨应用同一身份）</p><p><strong>人话解释：</strong>客户在公众号、小程序、企微里的ID不同，绑定开放平台后对应同一unionid，企业就知道"这是同一个人"。</p><p><span class="src">原文：绑定微信开放平台后，客户微信可与公众号/小程序会员关联</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>不绑定开放平台就无法打通，这是技术前提不是自动生效。</p></div>
 
 <h2 id="sec7">07 苏格拉底式阅读关卡</h2>
-<div class="task" data-task="q1" data-answer="B" data-ok="正确！企业可以管理客户关系，包括离职继承，这是SCRM的核心价值。" data-no="企业微信的核心差异就是客户资产属于企业，不是个人。" data-src="原文：企业可查看并管理成员添加的微信客户，对离职成员的客户再分配" data-review="回到「05 核心判断」判断1复习">
-<div class="q">1. 企业微信客户运营与个人微信加客户最大的区别是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 可以发更多消息</button><button class="opt" data-val="B">B. 客户资产属于企业，可以管理、分配、继承</button><button class="opt" data-val="C">C. 可以免费使用</button><button class="opt" data-val="D">D. 人数没有上限</button></div>
+<div class="task" data-task="q1" data-answer="B" data-ok="对！群发客户每次最多2000个，超出分次提交。附件最多9个。" data-no="500是客户群人数上限不是群发数；朋友圈是3条。" data-src="原文：客户群一次最多群发2000个；附件最多9个" data-review="回到「05 核心判断」判断2复习">
+<div class="q">1. <strong>场景：</strong>店庆要给5000客户群发优惠券，一次发不完。企业微信群发客户一次最多发多少？</div>
+<div class="opts"><button class="opt" data-val="A">A. 500个</button><button class="opt" data-val="B">B. 2000个（超出分次）</button><button class="opt" data-val="C">C. 5000个</button><button class="opt" data-val="D">D. 无限制</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q2" data-answer="C" data-ok="正确！「联系我」是1对1加好友入口，「加入群聊」是1对多进群入口。" data-no="注意区分：联系我=加好友（单人服务），加入群聊=进群（群服务）。" data-src="原文：联系我=扫码添加成员；加入群聊=扫码进入客户群" data-review="回到「06 关键概念拆解」概念2复习">
-<div class="q">2. 「联系我」和「加入群聊」的核心区别是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 没有区别，都是加好友</button><button class="opt" data-val="B">B. 联系我是付费功能，加入群聊是免费的</button><button class="opt" data-val="C">C. 联系我加好友1对1服务，加入群聊进群1对多服务</button><button class="opt" data-val="D">D. 联系我只能线上用，加入群聊只能线下用</button></div>
+<div class="task" data-task="q2" data-answer="C" data-ok="对！朋友圈每天每客户最多3条，企业和员工共用3次。企业发2条，员工只能发1条。" data-no="不是各3条，是总共3条共用。" data-src="原文：每天每客户最多3条，企业和员工共用3次" data-review="回到「06 关键概念拆解」概念4复习">
+<div class="q">2. <strong>场景：</strong>店庆日企业官号已发2条朋友圈。每个员工当天还能发几条？</div>
+<div class="opts"><button class="opt" data-val="A">A. 3条（独立额度）</button><button class="opt" data-val="B">B. 2条</button><button class="opt" data-val="C">C. 1条（共用3次已用2次）</button><button class="opt" data-val="D">D. 不能发了</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q3" data-answer="B" data-ok="正确！「加入群聊」支持群满200人后自动建新群，并自动编号。" data-no="这是加入群聊的一个独特功能优势。" data-src="原文：支持群满200人自动建新群" data-review="回到「04 原文结构地图」阶段1复习">
-<div class="q">3. 「加入群聊」二维码的一个独特功能是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 二维码每天自动更换</button><button class="opt" data-val="B">B. 群满200人后自动创建新群并编号</button><button class="opt" data-val="C">C. 可以无限添加群</button><button class="opt" data-val="D">D. 客户无需确认直接进群</button></div>
+<div class="task" data-task="q3" data-answer="B" data-ok="对！离职继承24小时后自动切换服务人员，客户无感，90天内最多2次。" data-no="继承是24小时自动切换不是立刻；90天2次是上限防骚扰。" data-src="原文：客户24小时后自动成为接替成员联系人；每90天内最多2次" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">3. <strong>场景：</strong>销售小王离职，名下300客户转给小李。客户那边多长时间切换？</div>
+<div class="opts"><button class="opt" data-val="A">A. 立刻切换</button><button class="opt" data-val="B">B. 24小时后自动切换（无感）</button><button class="opt" data-val="C">C. 客户手动确认才切换</button><button class="opt" data-val="D">D. 永远不切换</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q4" data-answer="C" data-ok="正确！企业标签由管理员统一配置，全员可用；个人标签由员工自己创建，仅自己可见。" data-no="两层标签体系支持企业标准化管理+员工个性化运营。" data-src="原文：企业标签由管理员配置；个人标签由员工使用" data-review="回到「06 关键概念拆解」概念3复习">
-<div class="q">4. 客户标签中"企业标签"和"个人标签"的区别是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 企业标签是VIP客户用的，个人标签是普通客户用的</button><button class="opt" data-val="B">B. 企业标签收费，个人标签免费</button><button class="opt" data-val="C">C. 企业标签管理员统一设置全员可见，个人标签员工自建仅自己可见</button><button class="opt" data-val="D">D. 没有区别</button></div>
+<div class="task" data-task="q4" data-answer="C" data-ok="对！获客助手单链接最多100名成员平均分配，支持state参数区分渠道，适合广告投放。" data-no="联系我多人码100成员但无state；加入群聊是社群；朋友圈是曝光不是获客。" data-src="原文：获客助手单链接100成员平均分配；支持state参数区分渠道" data-review="回到「05 核心判断」判断1复习">
+<div class="q">4. <strong>场景：</strong>某品牌投放广告，希望不同渠道（抖音/小红书/百度）来客区分来源，且自动分配给100个销售。应该用？</div>
+<div class="opts"><button class="opt" data-val="A">A. 联系我（100成员但无state）</button><button class="opt" data-val="B">B. 加入群聊（社群不是1对1）</button><button class="opt" data-val="C">C. 获客助手（100成员平均分+state参数）</button><button class="opt" data-val="D">D. 朋友圈</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q5" data-answer="A,B,C" data-multi="true" data-ok="正确！微信客服可接入公众号、小程序、视频号、外部网页等多场景。" data-no="内部审批是企业内部管理功能，不属于微信客服范畴。" data-src="原文：可在微信内、外各个场景接入微信客服" data-review="回到「06 关键概念拆解」概念5复习">
-<div class="q">5. 微信客服可以接入哪些场景？（多选）</div>
-<div class="opts"><button class="opt" data-val="A">A. 微信公众号</button><button class="opt" data-val="B">B. 小程序</button><button class="opt" data-val="C">C. 视频号</button><button class="opt" data-val="D">D. 企业内部审批</button></div>
+<div class="task" data-task="q5" data-answer="A,C" data-multi="true" data-ok="对！企业标签管理员配全公司可见用于统一群发，个人标签员工自打仅个人可见用于个性化服务。" data-no="个人标签不是全公司可见；企业标签不是员工随便改。" data-src="原文：企业标签（管理员配）和个人标签（员工自打）" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">5. <strong>场景：</strong>关于客户标签，以下哪些正确？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 企业标签由管理员统一配置，全公司可见，用于按标签群发</button><button class="opt" data-val="B">B. 个人标签全公司都能看到</button><button class="opt" data-val="C">C. 个人标签由员工自打，仅该员工可见，用于个性化服务</button><button class="opt" data-val="D">D. 企业标签员工可随意修改</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q6" data-answer="B" data-ok="正确！获客助手支持最多100名成员路由分配。" data-no="获客助手的单链接支持100人路由，与联系我一致。" data-src="原文：每个链接可配置最多100名成员" data-review="回到「06 关键概念拆解」概念6复习">
-<div class="q">6. 获客助手的单个获客链接最多可以配置多少名成员？</div>
-<div class="opts"><button class="opt" data-val="A">A. 10名</button><button class="opt" data-val="B">B. 100名</button><button class="opt" data-val="C">C. 500名</button><button class="opt" data-val="D">D. 1000名</button></div>
+<div class="task" data-task="q6" data-answer="B" data-ok="对！加入群聊是企微原生（永不过期、绑5群、满200自建）；群活码是管家增强（顺序/分类/区域/备用）。" data-no="两者来源不同：加入群聊原生，群活码管家增强。" data-src="原文：加入群聊（原生）vs 群活码（管家增强）" data-review="回到「06 关键概念拆解」概念1复习">
+<div class="q">6. <strong>场景：</strong>客户问"加入群聊和群活码有什么区别"。正确回答？</div>
+<div class="opts"><button class="opt" data-val="A">A. 完全一样，名字不同</button><button class="opt" data-val="B">B. 加入群聊是原生（绑5群满200自建），群活码是管家增强（顺序/分类/区域/备用）</button><button class="opt" data-val="C">C. 加入群聊付费，群活码免费</button><button class="opt" data-val="D">D. 群活码是加入群聊旧版</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q7" data-answer="B" data-ok="正确！离职继承可以把离职员工的客户和群分配给其他员工继续服务。" data-no="企业微信的客户资产管理确保客户关系不会因员工离职而流失。" data-src="原文：对离职成员的客户及客户群再分配" data-review="回到「06 关键概念拆解」概念4复习">
-<div class="q">7. 如果一个销售离职了，他名下的企业微信客户怎么处理？</div>
-<div class="opts"><button class="opt" data-val="A">A. 客户自动删除</button><button class="opt" data-val="B">B. 企业可以分配给其他员工继续服务</button><button class="opt" data-val="C">C. 客户变成无主状态</button><button class="opt" data-val="D">D. 需要客户重新扫码添加</button></div>
+<div class="task" data-task="q7" data-answer="C" data-ok="对！微信客服连续2次未命中知识库自动转人工，平衡效率和体验。" data-no="1次太激进易误转，3次以上体验差。2次是平衡点。" data-src="原文：连续2次未命中接入人工" data-review="回到「05 核心判断」判断5复习">
+<div class="q">7. <strong>场景：</strong>客户在微信客服咨询，AI连续几次没匹配到知识库答案才转人工？</div>
+<div class="opts"><button class="opt" data-val="A">A. 1次</button><button class="opt" data-val="B">B. 3次</button><button class="opt" data-val="C">C. 2次</button><button class="opt" data-val="D">D. 5次</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec8">08 闯关式任务</h2>
-<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！客户运营的完整链路你掌握得很好。" data-no="获客=拉新，服务=沟通，运营=精细化，管理=管控，每个阶段的目的不同。" data-src="原文：客户运营全链路" data-review="回到「04 原文结构地图」复习四个阶段">
-<div class="q">任务：将每个功能匹配到对应的客户运营阶段。</div>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你掌握了获客工具与场景的对应关系。" data-no="联系我=多人接待；加入群聊=社群运营；获客助手=广告跨渠道；工卡码=大型活动批量。" data-src="原文获客工具规则" data-review="回到「05 核心判断」判断1复习">
+<div class="q">任务：把获客工具匹配到最适合的业务场景。</div>
 <div style="margin:8px 0;">
-<div style="margin-bottom:6px;">获客助手 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">获客（引流添加）</option><option value="b">服务（沟通互动）</option><option value="c">运营（精细化）</option><option value="d">管理（企业管控）</option></select></div>
-<div style="margin-bottom:6px;">客户朋友圈 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">获客（引流添加）</option><option value="b">服务（沟通互动）</option><option value="c">运营（精细化）</option><option value="d">管理（企业管控）</option></select></div>
-<div style="margin-bottom:6px;">客户标签 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">获客（引流添加）</option><option value="b">服务（沟通互动）</option><option value="c">运营（精细化）</option><option value="d">管理（企业管控）</option></select></div>
-<div style="margin-bottom:6px;">离职继承 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">获客（引流添加）</option><option value="b">服务（沟通互动）</option><option value="c">运营（精细化）</option><option value="d">管理（企业管控）</option></select></div>
+<div style="margin-bottom:6px;">门店3个导购接待到店客户 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">联系我</option><option value="b">加入群聊</option><option value="c">获客助手</option><option value="d">工卡码</option></select></div>
+<div style="margin-bottom:6px;">运营200人社群（永不过期） → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">联系我</option><option value="b">加入群聊</option><option value="c">获客助手</option><option value="d">工卡码</option></select></div>
+<div style="margin-bottom:6px;">抖音/小红书广告投放区分渠道 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">联系我</option><option value="b">加入群聊</option><option value="c">获客助手</option><option value="d">工卡码</option></select></div>
+<div style="margin-bottom:6px;">展会现场批量加1000客户 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">联系我</option><option value="b">加入群聊</option><option value="c">获客助手</option><option value="d">工卡码</option></select></div>
 </div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec9">09 误解与边界</h2>
-<div class="card danger"><h3>误解1："加了客户微信就可以随便发消息"</h3><p><strong>原文真正说了什么：</strong>企业可以配置客户联系规则组，管理成员的使用范围和行为规范。过度营销可能导致客户投诉或拉黑。</p></div>
-<div class="card danger"><h3>误解2："客户群就是普通微信群"</h3><p><strong>原文真正说了什么：</strong>客户群有企业身份展示、聊天工具栏、入群欢迎语、群数据统计等管理能力，远超普通微信群。客户群上限500人（企微创建）。</p></div>
-<div class="card danger"><h3>误解3："微信客服=人工客服"</h3><p><strong>原文真正说了什么：</strong>微信客服支持AI机器人+人工客服。可以在微信内外各场景接入，核心是"轻量咨询入口"，可以升级为专属服务。</p></div>
+<div class="card danger"><h3>误解1："朋友圈每天3条=企业3条+员工3条"</h3><p><strong>为什么容易误解：</strong>"3条"听起来各自独立。</p><p><strong>原文真正说了什么：</strong>每天每客户最多3条，<strong>企业和员工共用3次</strong>。企业发2条，员工只能发1条。</p><p><strong>如何避免：</strong>规划内容时统筹额度，别各发各的导致超限。</p></div>
+<div class="card danger"><h3>误解2："群发每日1条=企业1条+个人1条"</h3><p><strong>为什么容易误解：</strong>同上，以为分开计。</p><p><strong>原文真正说了什么：</strong>企业和个人<strong>共用</strong>次数，可选每日1条/每周7条/每月=当月天数条。</p><p><strong>如何避免：</strong>记住"共用"两个字，所有频次都是总额度。</p></div>
+<div class="card danger"><h3>误解3："所有外部群都计入统计"</h3><p><strong>为什么容易误解：</strong>"外部群"听起来都算。</p><p><strong>原文真正说了什么：</strong><strong>普通外部群、群主转让给微信用户的群</strong>不计入统计。系统消息、语音通话、入群邀请也不计入消息数。数据每晚12点更新。</p><p><strong>如何避免：</strong>给客户看群数据时先说明哪些群不计入，避免数据对不上。</p></div>
+<div class="card danger"><h3>误解4："加入群聊=群活码"</h3><p><strong>为什么容易误解：</strong>都让客户扫码入群。</p><p><strong>原文真正说了什么：</strong>加入群聊是<strong>企微原生</strong>（绑5群、满200自建）；群活码是<strong>企微管家增强</strong>（顺序/分类/区域/备用），需管家才能用。</p><p><strong>如何避免：</strong>给客户做方案时先确认有没有买企微管家——没有就只能用原生加入群聊。</p></div>
 
 <h2 id="sec10">10 背景知识缺口</h2>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企微管家如何增强客户运营能力？</strong>（活码、超级群发等）→ 第4章</li><li><strong>会话存档如何与客户运营结合？</strong>→ 第5章</li><li><strong>UnionID如何与CRM打通？</strong>→ 技术文档</li><li><strong>获客助手的高级API用法</strong>→ 开发者文档</li></ul></div>
+<div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>对外收款的具体费率审核</strong>——"最低0.2%行业优惠"涉及平台核准，属于销售阶段细节。</li><li><strong>上下游空间创建上限</strong>——"20空间×1000家企业"属于跨企业协同进阶。</li><li><strong>微信客服全场景接入技术</strong>——公众号/小程序/视频号接入是开发活，记住"能接入"即可。</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>企微管家如何增强获客（活码/群活码）</strong>→ 第4章</li><li><strong>客户聊天数据如何被AI分析</strong>→ 第5章会话存档与AI</li><li><strong>上下游跨企业协同权限隔离</strong>→ 进阶（工厂群机器人每小时播报订单是经典案例）</li><li><strong>unionid打通的技术实现</strong>→ 开发者文档</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
 <div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
 <div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
-<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+<div class="footer">由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
 </main>
 </div>
 <script>
@@ -183,12 +194,15 @@
   function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
   function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
   function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
-  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'<img class="fb-emoji" src="img/sticker/ok.png" alt="">':'<img class="fb-emoji" src="img/sticker/no.png" alt="">')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
   function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
   document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
   function init(){updateBar();renderWrong();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+<link rel="stylesheet" href="promo.css">
+<script src="promo.js"></script>
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go","09":"no","10":"sleep","11":"final"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 </body>
 </html>

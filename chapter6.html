@@ -39,6 +39,18 @@
 .report-box{background:var(--paper);border-radius:8px;padding:16px;margin-top:16px;white-space:pre-wrap;font-size:14px;min-height:60px;}
 .report-btns{display:flex;gap:8px;margin-top:12px;}.report-btns button{padding:8px 16px;border-radius:var(--radius-pill);border:none;cursor:pointer;font-size:14px;}#genReport{background:var(--forest);color:var(--cream);}#copyReport{background:var(--sky);color:var(--ink);}
 .footer{text-align:center;padding:24px;margin-top:40px;border-top:1px solid #D4C4A8;font-size:13px;color:#888;}.footer a{color:var(--brick);text-decoration:underline;}
+.relevancy{margin-top:8px;font-size:13px;color:#888;border-top:1px dashed #D4C4A8;padding-top:6px;}
+.scene{background:#FFF8E1;border-left:4px solid var(--marker);border-radius:8px;padding:12px 16px;margin:10px 0;font-size:14px;}
+.scene::before{content:"🎬 场景故事";display:block;font-weight:700;color:var(--brick);font-size:12px;margin-bottom:4px;letter-spacing:1px;}
+.cmp-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;background:var(--cream);border-radius:8px;overflow:hidden;}
+.cmp-table th{background:var(--forest);color:var(--cream);padding:8px 10px;text-align:left;}
+.cmp-table td{padding:8px 10px;border-bottom:1px solid #E0D8C0;vertical-align:top;}
+.cmp-table tr:last-child td{border-bottom:none;}
+.cmp-table td:first-child{font-weight:600;background:#F0EBD8;width:24%;}
+.hardnum{background:#FFF3F0;border:2px solid var(--brick);border-radius:8px;padding:14px 18px;margin:12px 0;}
+.hardnum::before{content:"📌 记住这些硬数字/红线";display:block;font-weight:700;color:var(--brick);font-size:13px;margin-bottom:8px;letter-spacing:1px;}
+.hardnum ul{margin-left:18px;}.hardnum li{padding:3px 0;}.hardnum b{color:var(--brick);}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
 @media(max-width:768px){.sidebar{position:relative;width:100%;height:auto;}.main{margin-left:0;padding:20px;}}
 </style>
 </head>
@@ -46,7 +58,7 @@
 <div class="layout">
 <aside class="sidebar">
 <h2>📋 第6章<br>销售后端全链路</h2>
-<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 7</span></div></div>
+<div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="barFill"></div></div><div class="progress-num">进度：<span id="barNum">0 / 8</span></div></div>
 <ul class="nav-list">
 <li><a href="#sec1">01 学习目标</a></li><li><a href="#sec2">02 零基础背景包</a></li><li><a href="#sec3">03 原文问题定位</a></li><li><a href="#sec4">04 原文结构地图</a></li><li><a href="#sec5">05 核心判断与依据</a></li><li><a href="#sec6">06 关键概念拆解</a></li><li><a href="#sec7">07 苏格拉底式关卡</a></li><li><a href="#sec8">08 闯关式任务</a></li><li><a href="#sec9">09 误解与边界</a></li><li><a href="#sec10">10 背景知识缺口</a></li><li><a href="#sec11">11 复盘与学习报告</a></li>
 </ul>
@@ -54,120 +66,127 @@
 </aside>
 <main class="main">
 <h1>销售后端全链路管理</h1>
-<p style="color:#666;margin-bottom:24px;">合同报价 · 折扣审批 · 合同填写 · 工单管理 · 收款流程 · 全链路闭环</p>
+<p style="color:#666;margin-bottom:24px;">基于《销售后端必修课：合同、工单、收款全链路闭环管理》（2025年7月22日版）深度拆解</p>
 
 <h2 id="sec1">01 学习目标与阅读路径</h2>
-<div class="objective"><span class="num">1</span><div><strong>理解销售后端全流程</strong>——从报价到合同到工单到收款的完整链路。</div></div>
-<div class="objective"><span class="num">2</span><div><strong>掌握折扣审批的权限层级</strong>——标品6折、商业化85折、企微私有化需审批。</div></div>
-<div class="objective"><span class="num">3</span><div><strong>区分新购/增购/续费三种合同类型</strong>——各自的填写规范和注意事项。</div></div>
-<div class="objective"><span class="num">4</span><div><strong>理解商机锁定逻辑</strong>——招标/非招标场景的报价规则差异。</div></div>
-<div class="objective"><span class="num">5</span><div><strong>说清全链路闭环的核心原则</strong>——每一步都有审批、有记录、有追踪。</div></div>
+<p style="margin-bottom:16px;">本章讲销售签约后的"后端闭环"：报价→合同→工单→收款→开票。学完你应该能做到：</p>
+<div class="objective"><span class="num">1</span><div><strong>背出折扣审批权限表</strong>——标品6折/商业化85折/腾讯会议85折/企微私有化对外报价，各归谁审批。</div></div>
+<div class="objective"><span class="num">2</span><div><strong>记住100%成本红线</strong>——互通账号费/获客助手/外部联系人/专区会存license是100%成本，赠送工单应收不能低于成本。</div></div>
+<div class="objective"><span class="num">3</span><div><strong>区分比价和招标</strong>——比价走非招标不需授权函，招标不论是否锁定都需授权函。</div></div>
+<div class="objective"><span class="num">4</span><div><strong>记住0元赠送也要录工单</strong>——100%成本产品0元工单应收不能低于成本。</div></div>
+<div class="objective"><span class="num">5</span><div><strong>画出合同状态流转图</strong>——待提交→审核中→待签订（自动生成工单）→待归档→已归档（工单自动审批完成）。</div></div>
+<p style="margin-top:16px;color:#666;">阅读路径：先补SaaS商业模式/商机锁定背景 → 理解"报价→合同→工单→收款→开票"闭环 → 折扣权限/成本红线/拆单规则 → 闯关场景题 → 复盘。</p>
 
 <h2 id="sec2">02 零基础背景包</h2>
-<div class="card"><h3>背景补充 1：SaaS商业模式</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SaaS（Software as a Service）= 软件即服务。客户不买断软件，而是按年/按账号付费使用。SaaS的合同特点：按年收费、可续费、可增购账号。微盛的产品大部分是SaaS模式。</p></div>
-<div class="card"><h3>背景补充 2：商机锁定</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">企业微信商业化有"商机锁定"机制——第一个报备客户的服务商有优先报价权。如果客户被其他服务商锁定了，你不能直接报价。</p></div>
-<div class="card"><h3>背景补充 3：刊例价</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">刊例价 = 官方定价表。所有产品的标准价格、折扣规则、售卖方式都在刊例价文件里。折扣 = 实际售价 ÷ 标准价格（含赠送）。</p></div>
+<div class="card"><h3>背景补充 1：SaaS商业模式</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SaaS按订阅收费（License账号费+运维费），不是一次性买断。所以有"新购/增购/续费/体验单"四种订单类型。赠送也要录工单是因为财务要核算成本——赠送的不是没成本，是从别处拆出来的。</p><p class="relevancy">为什么现在需要知道：本章所有工单规则（0元也要录、100%成本红线）都源于SaaS按账号收费的商业模式。</p></div>
+<div class="card"><h3>背景补充 2：商机锁定</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">SaaS行业防止多家服务商恶性竞争抢单的机制：第一个在系统登记某客户的服务商"锁定"该商机，其他服务商不能报价（除非客户先解锁）。锁定有期限，过期自动释放。</p><p class="relevancy">为什么现在需要知道：报价前必须先查商机是否被锁定、被谁锁定。这是销售后端第一道关。</p></div>
+<div class="card"><h3>背景补充 3：刊例价</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">刊例价=官方公开标价。实际成交价=刊例价×折扣。折扣越低审批层级越高。赠送产品价值要计入原价，否则折扣算高、审批走错。</p><p class="relevancy">为什么现在需要知道：折扣审批权限的"折扣"=售卖价÷(标准价+赠送价值)。赠送必须计入。</p></div>
+<div class="card"><h3>背景补充 4：工单闭环</h3><p><span class="bg-note">背景补充</span></p><p style="margin-top:8px;">工单=订单的执行记录，含产品/金额/数量/交付要求。合同→自动生成工单→工单审核→关联收款→开票→交付。任何环节断了闭环就破了——所以叫"全链路闭环管理"。</p><p class="relevancy">为什么现在需要知道：本章核心就是"不能断环"。审核通过的工单不能在线改（要走邮件）、收款必须工单先过、开票内容必须与合同一致。</p></div>
 
 <h2 id="sec3">03 原文问题定位</h2>
-<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"销售签单后，从合同到收款的标准流程是什么？每个环节有什么风险控制？"</strong></p></div>
+<div class="card judgment"><h3>表面在讲什么？</h3><p>销售签约后的后端流程：报价规则、折扣审批、合同填写、商机锁定、工单管理、收款关联、开票。</p></div>
+<div class="card judgment"><h3>深层在回答什么问题？</h3><p><strong>"销售签了单之后，后端怎么保证钱收得回、票开得对、账算得清？"</strong></p><p style="margin-top:8px;">答案是"全链路闭环"：<span class="src">原文：报价→合同→工单→收款→开票，每个环节都关联前一个，不能断环</span>。</p></div>
+<div class="card judgment"><h3>作者为什么要写这篇？</h3><p>这是销售中心/运营中心/财务部/产品运营联合制作的内部规范（2025年7月22日版），目的是统一销售后端操作口径，防止"签了单收不到钱"或"票开错"的损失。</p></div>
+<div class="card judgment"><h3>只记一个问题</h3><p><strong>"销售后端怎么闭环？"</strong>——报价看商机锁定→合同审核→自动生成工单→工单审核→关联收款→开票→交付，全程不断环。</p></div>
 
 <h2 id="sec4">04 原文结构地图</h2>
-<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（报价→审批→合同→工单→开通→收款）</p>
+<p style="margin-bottom:12px;">原文结构类型：<strong>机制流程结构</strong>（报价→合同→工单→收款→开票的线性闭环）</p>
 <div class="structure-map">
-<div class="structure-node cluster"><strong>阶段1：报价前准备</strong></div>
-<div class="structure-node branch">确认商机状态（是否被锁定）</div>
-<div class="structure-node branch">招标场景→需授权函</div>
-<div class="structure-node branch">非招标场景→未锁定可直接报价</div>
-<div class="structure-node cluster"><strong>阶段2：折扣审批</strong></div>
-<div class="structure-node branch">标品≤6折→区域负责人审批</div>
-<div class="structure-node branch">商业化≤85折→区域负责人审批</div>
-<div class="structure-node branch">腾讯会议≤85折→云御审批</div>
-<div class="structure-node branch">企微私有化→云海审批</div>
-<div class="structure-node cluster"><strong>阶段3：合同填写</strong></div>
-<div class="structure-node branch">按刊例价填写产品名称/版本/数量/金额/期限</div>
-<div class="structure-node branch">新购/增购/续费各有填写规范</div>
-<div class="structure-node cluster"><strong>阶段4：工单→开通</strong></div>
-<div class="structure-node branch">企微license（按年）/运维/部署各有独立工单</div>
-<div class="structure-node cluster"><strong>阶段5：收款闭环</strong></div>
-<div class="structure-node branch">合同→工单→开通→收款 形成全链路闭环</div>
+<div class="structure-node cluster"><strong>核心：报价→合同→工单→收款→开票 全链路闭环</strong></div>
+<div class="structure-node branch"><strong>环节1：报价（商机锁定+折扣审批）</strong></div>
+<div class="structure-node leaf">查商机是否被锁、比价vs招标、折扣权限（标品6折/商业化85折）、截图留档</div>
+<div class="structure-node branch"><strong>环节2：合同（用章审核→自动生成工单）</strong></div>
+<div class="structure-node leaf">待提交→审核中→待签订（自动生成工单）→待归档→已归档（工单自动审批完成）</div>
+<div class="structure-node branch"><strong>环节3：工单（拆单+成本红线）</strong></div>
+<div class="structure-node leaf">标品一产品一工单、互通费单独、会存SaaS独立、私有化拆三个、0元赠送也要录、100%成本红线</div>
+<div class="structure-node branch"><strong>环节4：收款（工单先过+销售认领）</strong></div>
+<div class="structure-node leaf">工单必须先审核通过、对应销售认领、关联金额不超单笔余额、委托付款补充协议触发条件</div>
+<div class="structure-node branch"><strong>环节5：开票（内容一致+6%税率）</strong></div>
+<div class="structure-node leaf">专票/普票/电子普票、税率统一6%、内容必须与合同一致、审批链香堇→娟子→古云</div>
+<div style="margin-top:16px;padding:12px;background:#E8E4D4;border-radius:8px;font-size:14px;"><strong>节点关系说明：</strong>五个环节是<strong>严格线性+依赖</strong>——前一个不过后一个不能动。工单是枢纽，往上接合同、往下关联收款。任何环节断开=闭环破裂=财务风险。</div>
 </div>
 
 <h2 id="sec5">05 核心判断与依据</h2>
-<div class="card judgment"><h3>判断1：折扣计算必须包含赠送项目</h3><p><strong>原文依据：</strong><span class="src">原文："折扣计算须包括赠送项目，即合同提供全部服务内容+赠送项目为合同原价"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>送了东西就不算折扣了？不行。送的也按原价算进去，然后算总折扣。</p></div>
-<div class="card judgment"><h3>判断2：商机锁定决定能否报价</h3><p><strong>原文依据：</strong><span class="src">原文："非招标场景，若被其他服务商锁定，不可以报价"</span></p></div>
-<div class="card judgment"><h3>判断3：企微私有化需要三个工单</h3><p><strong>原文依据：</strong><span class="src">原文："企微原生私有化需有3个工单：license、运维、部署"</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。license和运维按年收费，部署是一次性。</p></div>
-<div class="card judgment"><h3>判断4：增购和续费必须确认原账号数</h3><p><strong>原文依据：</strong><span class="src">原文："增购、续期需要确认原账号数是否对（经常碰到采购和业务分开加购，导致数量报上来不一致）"</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>如果数量不对，合同金额就错了。必须拿后台截图确认。</p></div>
-<div class="card judgment"><h3>判断5：合同上的购买类型必须和订单一致</h3><p><strong>原文依据：</strong><span class="src">原文："合同上的续费、新购、增购一定要和订单上保持一致"</span></p></div>
+<div class="card judgment"><h3>判断1：折扣审批按产品类型分级</h3><p><strong>原文依据：</strong><span class="src">原文：标品6折→区域负责人；商业化85折→区域负责人；腾讯会议85折→云御；企微私有化→云海</span></p><table class="cmp-table"><tr><th>产品类型</th><th>折扣权限</th><th>审批人</th></tr><tr><td>标品</td><td>6折</td><td>区域负责人</td></tr><tr><td>商业化产品</td><td>85折</td><td>区域负责人</td></tr><tr><td>腾讯会议</td><td>85折</td><td>云御</td></tr><tr><td>企微私有化</td><td>对外报价</td><td>云海</td></tr></table><p style="margin-top:8px;"><strong>为什么重要：</strong>折扣公式：<strong>折扣=售卖价÷(标准价+赠送价值)</strong>。赠送必须计入原价。</p></div>
+<div class="card judgment"><h3>判断2：100%成本产品是红线</h3><p><strong>原文依据：</strong><span class="src">原文：互通账号费、获客助手、外部联系人、专区会存license是100%成本，即使赠送也必须录工单，工单应收金额不能低于成本</span></p><div class="hardnum"><ul><li><b>100%成本产品</b>：互通账号费、获客助手、外部联系人、专区会存license</li><li>赠送也要录工单，<b>应收不能低于成本</b></li><li>承诺赠送必须从其他产品<b>拆出金额</b>录入</li><li>折扣公式：<b>折扣=售卖价÷(标准价+赠送价值)</b></li><li>税率：<b>6%</b>，开票内容必须与合同一致</li><li>体验单合同期：<b>7天/15天</b></li></ul></div><div class="scene">客户要赠送10个专区会存license（100%成本）。不能直接0元送，必须从其他产品（如标品）的金额里拆出对应成本录入会存工单，且会存工单应收不能低于这10个的成本。</div></div>
+<div class="card judgment"><h3>判断3：比价≠招标，流程完全不同</h3><p><strong>原文依据：</strong><span class="src">原文：招标不论是否锁定都需授权函才能报价；比价≠招标，比价走非招标流程</span></p><table class="cmp-table"><tr><th>场景</th><th>授权函</th><th>商机锁定</th></tr><tr><td>招标</td><td>必须（不论是否锁定）</td><td>不影响，都要授权函</td></tr><tr><td>比价（非招标）</td><td>不需</td><td>被别人锁→不可报价；被自己锁且客户没要求→可直接报价</td></tr></table><p style="margin-top:8px;"><strong>可能的误读：</strong>比价不是"招标的一种"。每次报价需截屏当天商机状态（带电脑右下角时钟）留档。</p></div>
+<div class="card judgment"><h3>判断4：0元赠送也要录工单</h3><p><strong>原文依据：</strong><span class="src">原文：任何赠送产品都要有工单，0元也要；有成本的赠送工单应收不能低于成本</span></p><p style="margin-top:8px;"><strong>为什么重要：</strong>0元≠不录。财务要核算成本，赠送也是成本支出。这是销售最容易踩的坑。</p></div>
+<div class="card judgment"><h3>判断5：合同状态自动驱动工单</h3><p><strong>原文依据：</strong><span class="src">原文：合同待签订时自动生成工单；已归档后工单自动审批完成</span></p><p style="margin-top:8px;"><strong>类型：</strong>事实。合同状态机：待提交→审核中→待签订（<strong>自动生成工单</strong>）→待归档→已归档（<strong>工单自动审批完成</strong>）。</p></div>
 
 <h2 id="sec6">06 关键概念拆解</h2>
-<div class="card"><h3>概念1：折扣审批</h3><p><strong>人话解释：</strong>售价低于原价时需要领导审批。不同产品的审批权限不同：标品6折以下要区域负责人批，商业化85折以下也要区域负责人批。审批通过后才能向客户报价。</p></div>
-<div class="card"><h3>概念2：商机锁定</h3><p><strong>人话解释：</strong>企业微信官方有"报备"机制。第一个服务商报备了某个客户，这个客户就被"锁定"给他。其他服务商不能报价，除非客户自己解锁或走招标流程。</p></div>
-<div class="card"><h3>概念3：新购/增购/续费</h3><p><strong>人话解释：</strong>新购=第一次买；增购=已经买了，加买账号或功能；续费=到期了续交。合同填写时必须标明类型，且和系统订单一致。增购和续费还需要写"对齐到期时间"。</p></div>
-<div class="card"><h3>概念4：授权函</h3><p><strong>人话解释：</strong>招标场景下，服务商需要拿到腾讯（企业微信）出具的授权函才能参与投标。没有授权函不能报价。</p></div>
-<div class="card"><h3>概念5：工单</h3><p><strong>人话解释：</strong>合同签完后，系统里建工单→技术团队执行→产品开通。企微私有化需要3个工单（license+运维+部署），每个工单独立处理。</p></div>
-<div class="card"><h3>概念6：全链路闭环</h3><p><strong>人话解释：</strong>合同→工单→开通→收款，4个环节必须完成且对应。不能"收了钱没开工单"或"开工单没合同"。每个环节都有系统记录和审批追踪。</p></div>
+<div class="card"><h3>概念1：商机锁定</h3><p><strong>原文术语：</strong>商机锁定（防抢单机制）</p><p><strong>人话解释：</strong>第一个登记某客户的服务商锁定该商机，其他服务商不能报价（除非客户先解锁）。锁定有期限，过期释放。</p><div class="scene">销售A在系统登记了"某银行"商机并锁定。销售B也想报价这个银行，系统会拦——除非客户主动解锁A的锁定，或A的锁定过期。</div><p><strong>与其他概念的关系：</strong>商机锁定是报价前第一道关，决定"能不能报价"。</p><p><span class="src">原文：被其他服务商锁定→不可报价；被自己锁定且客户没要求→可直接报价</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>锁定不是"永久独占"，有期限过期释放。</p></div>
+<div class="card"><h3>概念2：刊例价与折扣</h3><p><strong>原文术语：</strong>刊例价 / 折扣（=售卖价÷(标准价+赠送价值)）</p><p><strong>人话解释：</strong>刊例价是官方标价。成交价=刊例价×折扣。关键：折扣计算时<strong>赠送产品价值必须计入原价</strong>，否则折扣算高、审批走错。</p><div class="scene">标品刊例价10000元，售卖价6000元，赠送价值2000元。正确折扣=6000÷(10000+2000)=50%（5折，超6权限要升级审批）。漏算赠送=6000÷10000=60%（6折，区域负责人可批）——这是错的。</div><p><span class="src">原文：折扣=售卖价÷(标准售卖产品价值+赠送产品价值)</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>赠送不是"不算钱"，折扣必须含赠送。</p></div>
+<div class="card"><h3>概念3：企微私有化的"3工单"</h3><p><strong>原文术语：</strong>企微原生私有化必须3个工单</p><p><strong>人话解释：</strong>企微原生私有化要拆3个工单：①企微license（按年）②企微私有化运维（按年）③企微私有化部署。不能合并成一个。</p><p><strong>与其他概念的关系：</strong>工单拆单规则：标品一产品一工单、互通费单独、会存SaaS独立、私有化拆三个。</p><p><span class="src">原文：企微原生私有化必须3个工单；标品一产品一工单；会话存档SaaS独立工单（0元也要）</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>私有化不是"一个工单搞定"，必须拆三个。</p></div>
+<div class="card"><h3>概念4：合同状态机</h3><p><strong>原文术语：</strong>待提交→审核中→待签订→待归档→已归档</p><p><strong>人话解释：</strong>合同从起草到归档5个状态。关键节点：待签订时<strong>自动生成工单</strong>；已归档（管理员确认）后<strong>工单自动审批完成</strong>。合同状态驱动工单状态。</p><table class="cmp-table"><tr><th>状态</th><th>动作</th><th>驱动</th></tr><tr><td>待提交</td><td>填写合同</td><td>-</td></tr><tr><td>审核中</td><td>用章审核</td><td>-</td></tr><tr><td>待签订</td><td>客户盖章</td><td><strong>自动生成工单</strong></td></tr><tr><td>待归档</td><td>上传双方盖章合同</td><td>-</td></tr><tr><td>已归档</td><td>管理员确认</td><td><strong>工单自动审批完成</strong></td></tr></table></div>
+<div class="card"><h3>概念5：100%成本红线</h3><p><strong>原文术语：</strong>100%成本产品（互通账号费/获客助手/外部联系人/专区会存license）</p><p><strong>人话解释：</strong>这4类产品公司要100%向上游付成本，没有利润空间。所以即使赠送，工单应收金额也<strong>不能低于成本</strong>——否则公司倒贴。</p><div class="scene">客户要赠送5个专区会存license，每个成本100元。不能录0元工单，必须录≥500元应收。承诺赠送就从其他产品（标品）拆出500元录入会存工单。</div><p><span class="src">原文：100%成本产品即使赠送也必须录工单，工单应收不能低于成本</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>"赠送=0元=不录"是错的，100%成本产品0元也必须录且不能低于成本。</p></div>
+<div class="card"><h3>概念6：体验单转正</h3><p><strong>原文术语：</strong>体验单（7天/15天）转正</p><p><strong>人话解释：</strong>客户先用7天或15天体验。转正判定：合同、付款、交付上线<strong>满足任一即有效转正</strong>（不是全部满足）。重复体验单以最后一单创建日期计算。</p><p><span class="src">原文：体验单合同期7天/15天；合同/付款/交付任一满足即转正</span></p><p style="color:var(--brick);"><strong>不要误解成：</strong>转正不是"三个条件都满足"，是"任一满足"。</p></div>
 
 <h2 id="sec7">07 苏格拉底式阅读关卡</h2>
-<div class="task" data-task="q1" data-answer="B" data-ok="正确！折扣=售卖价格÷合同原价（标准价格+赠送产品价值）。" data-no="折扣不是简单的打折，必须把赠送项目的价值也算进去。" data-src="原文：折扣=售卖价格÷合同原价（标准售卖产品价值+赠送产品价值）" data-review="回到「05 核心判断」判断1复习">
-<div class="q">1. 折扣审批中，折扣的计算方式是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 售价÷标准价格</button><button class="opt" data-val="B">B. 售价÷（标准价格+赠送产品价值）</button><button class="opt" data-val="C">C. 售价÷成本</button><button class="opt" data-val="D">D. 随便定</button></div>
+<div class="task" data-task="q1" data-answer="C" data-ok="对！标品6折权限归区域负责人。" data-no="腾讯会议85折归云御；私有化归云海。" data-src="原文：标品6折→区域负责人；腾讯会议85折→云御" data-review="回到「05 核心判断」判断1复习">
+<div class="q">1. <strong>场景：</strong>销售要给客户标品打6折。谁有权审批？</div>
+<div class="opts"><button class="opt" data-val="A">A. 云御</button><button class="opt" data-val="B">B. 云海</button><button class="opt" data-val="C">C. 区域负责人</button><button class="opt" data-val="D">D. 销售自己</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q2" data-answer="A" data-ok="正确！标品折扣权限是6折，低于6折需区域负责人审批。" data-no="标品6折、商业化85折、腾讯会议85折，各产品折扣权限不同。" data-src="原文：标品折扣权限6折→区域负责人" data-review="回到「04 原文结构地图」阶段2复习">
-<div class="q">2. SaaS标品低于多少折扣需要区域负责人审批？</div>
-<div class="opts"><button class="opt" data-val="A">A. 6折</button><button class="opt" data-val="B">B. 8折</button><button class="opt" data-val="C">C. 85折</button><button class="opt" data-val="D">D. 9折</button></div>
+<div class="task" data-task="q2" data-answer="B" data-ok="对！100%成本产品赠送也要录工单，应收不能低于成本，必须从其他产品拆出金额。" data-no="0元赠送也必须录工单且不能低于成本，这是红线。" data-src="原文：100%成本产品即使赠送也要录工单，应收不能低于成本" data-review="回到「06 关键概念拆解」概念5复习">
+<div class="q">2. <strong>场景：</strong>客户要赠送10个专区会存license（100%成本，每个100元）。怎么录工单？</div>
+<div class="opts"><button class="opt" data-val="A">A. 直接0元赠送，不录工单</button><button class="opt" data-val="B">B. 必须录工单，应收≥1000元，从其他产品拆出金额</button><button class="opt" data-val="C">C. 录0元工单即可</button><button class="opt" data-val="D">D. 不录工单</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q3" data-answer="C" data-ok="正确！企微私有化需要3个工单：license+运维+部署。" data-no="企微私有化比较复杂，需要三个独立工单。" data-src="原文：企微原生私有化需有3个工单" data-review="回到「05 核心判断」判断3复习">
-<div class="q">3. 企微原生私有化需要几个工单？</div>
-<div class="opts"><button class="opt" data-val="A">A. 1个</button><button class="opt" data-val="B">B. 2个</button><button class="opt" data-val="C">C. 3个</button><button class="opt" data-val="D">D. 5个</button></div>
+<div class="task" data-task="q3" data-answer="B" data-ok="对！比价走非招标不需授权函；招标不论是否锁定都要授权函。" data-no="比价≠招标，比价不需授权函。" data-src="原文：比价≠招标；招标都需授权函" data-review="回到「05 核心判断」判断3复习">
+<div class="q">3. <strong>场景：</strong>客户说"我们找几家服务商比比价"（非招标）。需要授权函才能报价吗？</div>
+<div class="opts"><button class="opt" data-val="A">A. 需要，所有报价都要</button><button class="opt" data-val="B">B. 不需要，比价≠招标，走非招标流程不需授权函</button><button class="opt" data-val="C">C. 看客户心情</button><button class="opt" data-val="D">D. 需区域负责人同意</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q4" data-answer="B" data-ok="正确！被锁定后不可以报价，需要客户自主找企微先解锁。" data-no="商机锁定是保护第一个报备的服务商的权益。" data-src="原文：若被其他服务商锁定，不可以报价" data-review="回到「06 关键概念拆解」概念2复习">
-<div class="q">4. 非招标场景下，如果客户被其他服务商锁定了，你怎么办？</div>
-<div class="opts"><button class="opt" data-val="A">A. 可以直接低价竞争</button><button class="opt" data-val="B">B. 不可以报价，需要客户自主找企微先解锁</button><button class="opt" data-val="C">C. 可以报价但需要加价</button><button class="opt" data-val="D">D. 无所谓，直接报</button></div>
+<div class="task" data-task="q4" data-answer="C" data-ok="对！折扣=售卖价÷(标准价+赠送价值)，赠送必须计入原价。" data-no="赠送必须计入原价，否则折扣算高、审批走错。" data-src="原文：折扣=售卖价÷(标准售卖产品价值+赠送产品价值)" data-review="回到「06 关键概念拆解」概念2复习">
+<div class="q">4. <strong>场景：</strong>标品刊例价10000元，售卖6000元，赠送价值2000元。正确折扣计算？</div>
+<div class="opts"><button class="opt" data-val="A">A. 6000÷10000=60%（6折，漏算赠送）</button><button class="opt" data-val="B">B. 6000÷8000=75%</button><button class="opt" data-val="C">C. 6000÷(10000+2000)=50%（5折，赠送计入原价）</button><button class="opt" data-val="D">D. 随便算</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q5" data-answer="C" data-ok="正确！合同上的续费/新购/增购必须和系统订单一致。" data-no="合同类型和订单类型必须对应，否则后续流程会出问题。" data-src="原文：合同上的续费、新购、增购一定要和订单上保持一致" data-review="回到「05 核心判断」判断5复习">
-<div class="q">5. 合同上的"新购/增购/续费"类型有什么要求？</div>
-<div class="opts"><button class="opt" data-val="A">A. 随便填，后续可以改</button><button class="opt" data-val="B">B. 只能选新购</button><button class="opt" data-val="C">C. 必须和系统订单上的类型一致</button><button class="opt" data-val="D">D. 由客户决定</button></div>
+<div class="task" data-task="q5" data-answer="A,B,C" data-multi="true" data-ok="对！互通账号费、获客助手、外部联系人、专区会存license都是100%成本红线。" data-no="标品不是100%成本，标品有利润空间。" data-src="原文：互通账号费/获客助手/外部联系人/专区会存license是100%成本" data-review="回到「06 关键概念拆解」概念5复习">
+<div class="q">5. <strong>场景：</strong>以下哪些是100%成本产品？（多选）</div>
+<div class="opts"><button class="opt" data-val="A">A. 互通账号费</button><button class="opt" data-val="B">B. 获客助手</button><button class="opt" data-val="C">C. 专区会存license</button><button class="opt" data-val="D">D. 标品</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q6" data-answer="A,B" data-multi="true" data-ok="正确！增购和续费都需要确认原账号数，防止数量不一致。" data-no="新购是第一次买，不存在原账号数的问题。" data-src="原文：增购、续期需要确认原账号数是否对" data-review="回到「05 核心判断」判断4复习">
-<div class="q">6. 哪些场景需要确认原账号数？（多选）</div>
-<div class="opts"><button class="opt" data-val="A">A. 增购</button><button class="opt" data-val="B">B. 续费</button><button class="opt" data-val="C">C. 新购</button><button class="opt" data-val="D">D. 退款</button></div>
+<div class="task" data-task="q6" data-answer="C" data-ok="对！企微原生私有化必须拆3个工单：license+运维+部署。" data-no="私有化不是1个工单，必须拆3个。" data-src="原文：企微原生私有化必须3个工单" data-review="回到「06 关键概念拆解」概念3复习">
+<div class="q">6. <strong>场景：</strong>客户买企微原生私有化。要录几个工单？</div>
+<div class="opts"><button class="opt" data-val="A">A. 1个合并工单</button><button class="opt" data-val="B">B. 2个</button><button class="opt" data-val="C">C. 3个（license+运维+部署）</button><button class="opt" data-val="D">D. 看客户</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
-<div class="task" data-task="q7" data-answer="D" data-ok="正确！招标场景不论是否锁定都需要授权函才能报价。" data-no="招标是特殊场景，授权函是必需的。" data-src="原文：招标场景，不论是否锁定或无法锁定，都需要授权函才可以报价" data-review="回到「06 关键概念拆解」概念4复习">
-<div class="q">7. 招标场景下报价的前提条件是什么？</div>
-<div class="opts"><button class="opt" data-val="A">A. 只要有客户需求就可以</button><button class="opt" data-val="B">B. 只要商机未被锁定</button><button class="opt" data-val="C">C. 只要区域负责人同意</button><button class="opt" data-val="D">D. 必须有授权函才能报价</button></div>
+<div class="task" data-task="q7" data-answer="B" data-ok="对！合同/付款/交付任一满足即有效转正，不是全部满足。" data-no="转正是'任一满足'，不是'全部满足'。" data-src="原文：体验单合同/付款/交付任一满足即转正" data-review="回到「06 关键概念拆解」概念6复习">
+<div class="q">7. <strong>场景：</strong>客户用7天体验单，现已交付上线但没付款也没签正式合同。算转正吗？</div>
+<div class="opts"><button class="opt" data-val="A">A. 不算，必须全部满足</button><button class="opt" data-val="B">B. 算，合同/付款/交付任一满足即转正（已交付）</button><button class="opt" data-val="C">C. 不算，必须付款</button><button class="opt" data-val="D">D. 看销售</button></div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec8">08 闯关式任务</h2>
-<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你对折扣审批权限的理解很到位。" data-no="每个产品的审批人不同：标品和商业化→区域负责人，腾讯会议→云御，企微私有化→云海。" data-src="原文：不同产品折扣权限" data-review="回到「04 原文结构地图」阶段2复习">
-<div class="q">任务：将产品类型匹配到对应的折扣审批人。</div>
+<div class="task" data-task="t1" data-type="selects" data-ok="全部匹配正确！你掌握了合同状态流转和工单拆单规则。" data-no="合同待签订自动生成工单；已归档工单自动审批完成。私有化拆3工单，会存独立，标品一产品一单。" data-src="原文合同状态机+工单拆单规则" data-review="回到「05 核心判断」判断5复习">
+<div class="q">任务：把合同状态/产品匹配到正确的工单动作。</div>
 <div style="margin:8px 0;">
-<div style="margin-bottom:6px;">SaaS标品 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
-<div style="margin-bottom:6px;">腾讯会议 → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
-<div style="margin-bottom:6px;">企微私有化 → <select class="match" data-correct="c"><option value="">请选择</option><option value="a">区域负责人（6折）</option><option value="b">云御（85折）</option><option value="c">云海</option></select></div>
+<div style="margin-bottom:6px;">合同待签订 → <select class="match" data-correct="a"><option value="">请选择</option><option value="a">自动生成工单</option><option value="b">工单自动审批完成</option><option value="c">不生成工单</option><option value="d">需手动建工单</option></select></div>
+<div style="margin-bottom:6px;">合同已归档（管理员确认） → <select class="match" data-correct="b"><option value="">请选择</option><option value="a">自动生成工单</option><option value="b">工单自动审批完成</option><option value="c">不生成工单</option><option value="d">需手动建工单</option></select></div>
+<div style="margin-bottom:6px;">企微原生私有化 → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">1个工单</option><option value="b">2个工单</option><option value="c">不录工单</option><option value="d">3个工单（license+运维+部署）</option></select></div>
+<div style="margin-bottom:6px;">会话存档SaaS → <select class="match" data-correct="d"><option value="">请选择</option><option value="a">合并到标品工单</option><option value="b">不录</option><option value="c">3个工单</option><option value="d">独立工单（0元也要）</option></select></div>
 </div>
 <button class="check">检查</button><div class="feedback" aria-live="polite">选择后点击检查，这里会显示反馈。</div>
 </div>
 
 <h2 id="sec9">09 误解与边界</h2>
-<div class="card danger"><h3>误解1："折扣就是打个折"</h3><p><strong>原文真正说了什么：</strong>折扣有严格的计算公式（含赠送），不同产品的审批权限不同，必须审批后才能报价。</p></div>
-<div class="card danger"><h3>误解2："被锁定就完全没机会了"</h3><p><strong>原文真正说了什么：</strong>被其他服务商锁定后，非招标场景下确实不能报价。但客户可以自主找企微解锁。如果是招标场景，需要授权函（不论是否锁定）。</p></div>
-<div class="card danger"><h3>误解3："工单只是一个流程步骤"</h3><p><strong>原文真正说了什么：</strong>工单是技术执行的依据。企微私有化有3个独立工单（license/运维/部署），每个都对应不同的收费周期和执行团队。</p></div>
+<div class="card danger"><h3>误解1："比价就是招标的一种"</h3><p><strong>为什么容易误解：</strong>都是"多家竞争"。</p><p><strong>原文真正说了什么：</strong>比价≠招标。比价走非招标不需授权函；招标不论是否锁定都需授权函。</p><p><strong>如何避免：</strong>客户说"比价"时不要走招标流程要授权函。</p></div>
+<div class="card danger"><h3>误解2："赠送=0元=不录工单"</h3><p><strong>为什么容易误解：</strong>0元感觉"没交易"。</p><p><strong>原文真正说了什么：</strong>任何赠送都要有工单，0元也要。100%成本产品0元工单应收不能低于成本。</p><p><strong>如何避免：</strong>承诺赠送前先算成本，从其他产品拆出金额录入。</p></div>
+<div class="card danger"><h3>误解3："审核通过的工单可以自己改"</h3><p><strong>为什么容易误解：</strong>在线系统通常能改。</p><p><strong>原文真正说了什么：</strong>审核通过后必须<strong>走邮件审批</strong>。调研发工单需PM+销售区域负责人+企鹅；调运营工单需销售区域负责人+落叶。所有调整邮件抄送泉涌、eva、ami、盛意、程瑾。</p><p><strong>如何避免：</strong>工单审核前仔细核对，过审后改动走邮件链。</p></div>
+<div class="card danger"><h3>误解4："代理商直接打款能开专票"</h3><p><strong>为什么容易误解：</strong>以为都能开专票。</p><p><strong>原文真正说了什么：</strong>代理商直接打款只能开<strong>普票</strong>，无法开专票。客户直接打款才能开专票。</p><p><strong>如何避免：</strong>给代理商报账时说明只能开普票。</p></div>
+<div class="card danger"><h3>误解5："折扣只算售卖价÷标准价"</h3><p><strong>为什么容易误解：</strong>直觉算法。</p><p><strong>原文真正说了什么：</strong>折扣=售卖价÷(标准价+赠送价值)。赠送必须计入。</p><p><strong>如何避免：</strong>算折扣前先把赠送价值加到原价里。</p></div>
 
 <h2 id="sec10">10 背景知识缺口</h2>
-<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>合同模板的具体使用方法</strong>→ "关于合同签约注意事项的指引"</li><li><strong>SaaS账号增购的折扣规则</strong>→ 刊例价文件</li><li><strong>企微私有化的技术架构</strong>→ "企微私有化案例解析"课程</li></ul></div>
+<div class="card"><h3>现在可以先不补</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>退款流程细节</strong>——属于财务专项。</li><li><strong>销售佣金计算公式</strong>——"当月提成=当月调后留存×提成比例×部门内占比"属于薪酬模块。</li><li><strong>工单平台权限两维度配置</strong>——数据权限+角色权限属于管理后台操作。</li></ul></div>
+<div class="card"><h3>后续值得追问</h3><ul style="margin-left:20px;margin-top:8px;"><li><strong>审批"办理人节点"如何与合同全流程串联</strong>→ 第2章（OA审批）</li><li><strong>CRM订单如何流转到合同/工单</strong>→ 第4章（CRM漏斗）</li><li><strong>委托付款补充协议的具体模板</strong>→ 公司材料-5.1合同模板库</li><li><strong>体验单转正的跨主体场景</strong>→ 签约主体A使用主体B的工单录入</li></ul></div>
 
 <h2 id="sec11">11 复盘与学习报告</h2>
 <div class="wrong-box"><h4>📝 错题回流区</h4><ul id="wrongBox"><li style="color:#888">还没有错题。答错的题会自动收集到这里。</li></ul></div>
 <div class="report-btns"><button id="genReport">📊 生成学习报告</button><button id="copyReport">📋 复制报告</button></div>
 <div class="report-box" id="report">点击上方按钮生成你的学习报告。</div>
-<div class="footer">由 <a href="https://github.com/lyzbcy/grokko" target="_blank" rel="noopener">Grokko</a> 生成 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
+
+<div class="footer">由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 微盛管培生学习地图<br>这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快</div>
 </main>
 </div>
 <script>
@@ -178,12 +197,15 @@
   function setFb(t,state,html){var fb=t.querySelector('.feedback');if(!fb)return;fb.className='feedback'+(state?(' '+state):'');fb.innerHTML=html;}
   function updateBar(){var all=$all('.task'),done=$all('.task[data-answered="1"]');var fill=document.getElementById('barFill'),num=document.getElementById('barNum');if(fill)fill.style.width=all.length?(done.length/all.length*100)+'%':'0%';if(num)num.textContent=done.length+' / '+all.length;}
   function renderWrong(){var box=document.getElementById('wrongBox');if(!box)return;var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(!wrong.length){box.innerHTML='<li style="color:#888">还没有错题。答错的题会自动收集到这里。</li>';return;}box.innerHTML='';wrong.forEach(function(t){var li=document.createElement('li');li.textContent='【'+(t.getAttribute('data-task')||'')+'】'+(t.getAttribute('data-review')||'回到对应模块复习');box.appendChild(li);});}
-  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'✅ ':'❌ ')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
+  function check(t){var type=t.getAttribute('data-type'),ok=false;if(type==='selects'){var sels=$all('select.match',t),allok=true,empty=false;sels.forEach(function(s){if(!s.value)empty=true;if(s.value!==s.getAttribute('data-correct'))allok=false;});if(empty){setFb(t,'no','请先把每一项都选好再检查。');return;}ok=allok;}else{var sel=selectedVals(t);if(!sel.length){setFb(t,'no','请先选择一个选项再检查。');return;}var ans=(t.getAttribute('data-answer')||'').split(',').map(function(x){return x.trim();}).sort();ok=(sel.join('|')===ans.join('|'));}var body=ok?(t.getAttribute('data-ok')||'回答正确。'):(t.getAttribute('data-no')||'再想想。');var src=t.getAttribute('data-src');setFb(t,ok?'ok':'no',(ok?'<img class="fb-emoji" src="img/sticker/ok.png" alt="">':'<img class="fb-emoji" src="img/sticker/no.png" alt="">')+body+(src?('<span class="src">'+src+'</span>'):''));t.setAttribute('data-answered','1');t.setAttribute('data-correct',ok?'1':'0');updateBar();renderWrong();}
   function genReport(){var box=document.getElementById('report');if(!box)return;var all=$all('.task'),done=$all('.task[data-answered="1"]'),right=$all('.task[data-answered="1"][data-correct="1"]');var lines=['=== 学习报告 ===','完成题目：'+done.length+' / '+all.length,'答对：'+right.length+' 题',''];var wrong=$all('.task[data-answered="1"][data-correct="0"]');if(wrong.length){lines.push('我答错的题（建议复习）：');wrong.forEach(function(t){lines.push('- '+(t.getAttribute('data-task')||'')+'：'+(t.getAttribute('data-review')||''));});}else{lines.push('暂无错题。');}box.textContent=lines.join('\n');}
   document.addEventListener('click',function(e){var c=e.target.closest?e.target:null;var opt=c&&e.target.closest('.opt');if(opt){var t=opt.closest('.task');if(!t)return;if(t.getAttribute('data-multi')==='true'){opt.classList.toggle('selected');}else{$all('.opt',t).forEach(function(o){o.classList.remove('selected');});opt.classList.add('selected');}return;}var btn=c&&e.target.closest('.check');if(btn){var tk=btn.closest('.task');if(tk)check(tk);return;}if(e.target&&e.target.id==='genReport'){genReport();return;}if(e.target&&e.target.id==='copyReport'){var r=document.getElementById('report');if(r&&navigator.clipboard)navigator.clipboard.writeText(r.textContent);return;}});
   function init(){updateBar();renderWrong();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 </script>
+<link rel="stylesheet" href="promo.css">
+<script src="promo.js"></script>
+<script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go","09":"no","10":"sleep","11":"final"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 </body>
 </html>
