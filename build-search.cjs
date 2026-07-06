@@ -23,7 +23,7 @@ const CHAPTERS = [
   { level: 1, ch: 6, file: 'chapter6.html', local: true, title: '销售后端全链路管理' },
   { level: 1, ch: 7, file: 'chapter7.html', local: true, title: '考试通关实战手册' },
   // Level 2（help.wshoto.com 远程URL）
-  { level: 2, ch: 8, file: '', url: 'https://help.wshoto.com/resource/a4ddde09072a4c7381285f09d946ee30/ee700db4.html', title: 'CEO宣讲：微盛公司介绍与管培生培养' },
+  { level: 2, ch: 8, file: '', url: 'https://help.wshoto.com/resource/a5570e78c0154a9689bfa7801f781dda/46f7a12a.html', title: 'CEO宣讲：微盛公司介绍与管培生培养' },
   { level: 2, ch: 9, file: '', url: 'https://help.wshoto.com/resource/e11f25dc55bf44a2beca9d893adee297/99d6dff3.html', title: '合同·工单·收款全链路' },
   { level: 2, ch: 10, file: '', url: 'https://help.wshoto.com/resource/784304c6fde2495386baf332bea55e17/0e679d52.html', title: '工程架构与研发规范' },
   { level: 2, ch: 11, file: '', url: 'https://help.wshoto.com/resource/421f3272d8034456832d8f1728dd586a/b3330cfd.html', title: '生产灰度发布规范' },
