@@ -53,9 +53,55 @@
 .exam-banner .eb-cta{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--forest);color:var(--cream);border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;transition:.15s;}
 .exam-banner .eb-cta:hover{opacity:.9;transform:translateX(3px);}
 @media(max-width:600px){.exam-banner{margin:0 12px 8px;padding:14px 16px;}}
+/* ===== 整页密码门 ===== */
+#gate{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:20px;}
+#gate.gone{display:none;}
+#gate .gate-card{background:var(--paper);border:2px solid var(--forest);border-radius:18px;padding:36px 32px;max-width:380px;width:100%;text-align:center;box-shadow:0 6px 24px rgba(30,58,36,.12);}
+#gate .gate-mascot{width:72px;height:72px;object-fit:contain;margin:0 auto 14px;display:block;filter:drop-shadow(2px 2px 0 rgba(30,58,36,.2));}
+#gate .gate-title{font-family:var(--font-display);font-size:22px;color:var(--forest);margin-bottom:6px;}
+#gate .gate-hint{font-size:14px;color:#777;margin-bottom:20px;}
+#gate .gate-input{width:100%;padding:14px 16px;font-size:16px;border:2px solid var(--sage);border-radius:999px;background:#fff;color:var(--ink);font-family:var(--font-body);outline:none;text-align:center;transition:border-color .15s;}
+#gate .gate-input:focus{border-color:var(--forest);}
+#gate .gate-btn{margin-top:14px;width:100%;padding:13px;border:none;border-radius:999px;background:var(--forest);color:var(--cream);font-size:15px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:opacity .15s;}
+#gate .gate-btn:hover{opacity:.9;}
+#gate .gate-err{color:var(--brick);font-size:13px;margin-top:12px;min-height:18px;opacity:0;transition:opacity .2s;}
+#gate .gate-err.show{opacity:1;}
+@keyframes gateShake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-7px);}40%,80%{transform:translateX(7px);}}
+#gate.shake .gate-card{animation:gateShake .4s;}
 </style>
 </head>
 <body>
+<!-- 密码门遮罩 -->
+<div id="gate">
+  <div class="gate-card">
+    <img class="gate-mascot" src="img/sticker/mascot.png" alt="">
+    <div class="gate-title">🔐 学习地图</div>
+    <div class="gate-hint">密码提示：开发者姓名</div>
+    <input class="gate-input" id="gateInput" type="text" placeholder="请输入密码" autocomplete="off" autofocus>
+    <button class="gate-btn" id="gateBtn">进入</button>
+    <div class="gate-err" id="gateErr">密码不对，再想想</div>
+  </div>
+</div>
+<script>
+// 整页前端密码：泽恩 | sessionStorage 记忆同会话
+(function(){
+  var GATE_PW='泽恩';
+  var gate=document.getElementById('gate');
+  if(!gate)return;
+  function open(){gate.classList.add('gone');document.body.style.overflow='';}
+  function deny(){gate.classList.add('shake');var e=document.getElementById('gateErr');if(e)e.classList.add('show');var i=document.getElementById('gateInput');if(i){i.value='';i.focus();}setTimeout(function(){gate.classList.remove('shake');},450);}
+  function tryOpen(v){ if(v===GATE_PW){try{sessionStorage.setItem('weshoto_gate','ok');}catch(e){}open();}else{deny();} }
+  try{ if(sessionStorage.getItem('weshoto_gate')==='ok'){open();return;} }catch(e){}
+  document.body.style.overflow='hidden';
+  document.addEventListener('click',function(e){
+    if(e.target.id==='gateBtn'){tryOpen(document.getElementById('gateInput').value);return;}
+  });
+  document.addEventListener('keydown',function(e){
+    if(gate.classList.contains('gone'))return;
+    if(e.key==='Enter'){tryOpen(document.getElementById('gateInput').value);}
+  });
+})();
+</script>
 <div class="header">
 <img src="img/sticker/mascot.png" alt="捞鱼吉祥物" style="width:96px;height:96px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(3px 3px 0 rgba(30,58,36,.2))">
 <h1>微盛管培生学习地图</h1>
@@ -120,6 +166,47 @@
 <div class="chapter-title">考试通关实战手册</div>
 <div class="chapter-desc"><strong>考前必看！</strong>考核公告（6月30日·无锡·笔试与实操各占50%·70分及格）、笔试题型拆解（选择/判断/简答）、<strong style="color:var(--brick)">5个实操场景通关手册（考官现场随机抽1个，含操作路径/演示话术/管家优势/易错点）</strong>、平台实操手册全菜单、考前必背速记卡、通关模拟关卡、结果应用与补考机制。<strong style="color:var(--brick)">「笔试专项题库」20题自动判分——硬数字/原生vs管家/7维差异/陷阱判断全覆盖。</strong></div>
 <div class="chapter-meta"><span>🎯 5场景通关</span><span>✏️ 20题笔试题库</span><span>⚡ 必背速记卡</span><span>🖱️ 平台实操</span><span>📊 27题交互</span></div>
+</a>
+</div>
+
+<!-- ===== 第二关：各部门学习 ===== -->
+<h2 style="max-width:900px;margin:48px auto 8px;padding:0 24px;font-family:var(--font-display);font-size:24px;color:var(--forest);border-bottom:3px solid var(--sage);padding-bottom:10px;">🗺️ 第二关 · 各部门学习</h2>
+<p style="max-width:900px;margin:0 auto 20px;padding:0 24px;font-size:14px;color:#888;">部门轮岗培训资料的保真拆解理解地图。每章含 11 个学习模块、原文依据、闯关自测、错题回流。点击卡片在新标签打开。</p>
+<div class="chapters" style="padding-bottom:40px;">
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/da9d439847fe442db9cb673174e6d72a/ef4ca1bf.html" target="_blank" rel="noopener" style="border-left-color:#B5482A;">
+<div class="chapter-num">开营第1课 · ⭐ 明早考试</div>
+<div class="chapter-title">CEO宣讲：微盛公司介绍与管培生培养</div>
+<div class="chapter-desc">老杨开营宣讲保真拆解：公司发展三阶段、与腾讯四层关系、180万好友壁垒、AI五层蛋糕、一二三四五体系、价值观三观、管培生战略定位。<strong style="color:var(--brick)">8道硬数字+核心概念题。</strong></div>
+<div class="chapter-meta"><span>📖 8 核心判断(6★必考)</span><span>🧩 4 关键概念</span><span>📝 8 道题</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/e11f25dc55bf44a2beca9d893adee297/99d6dff3.html" target="_blank" rel="noopener">
+<div class="chapter-num">销售类</div>
+<div class="chapter-title">合同 · 工单 · 收款全链路</div>
+<div class="chapter-desc">折扣审批权限线（标品6折/商业化85折）、100%成本红线四类、0元赠送也要录工单、合同状态机五态、企微私有化拆3单、收款审核前提。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 3 关键概念</span><span>📝 7 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/784304c6fde2495386baf332bea55e17/0e679d52.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · 架构</div>
+<div class="chapter-title">工程架构与研发规范</div>
+<div class="chapter-desc">pom继承wshoto-parent、POST统一、禁改接口签名(@Deprecated+6个月冗余)、禁@Transactional、雪花ID int8、禁用keys/Executors、TTL修饰器包装线程池。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 4 关键概念</span><span>📝 8 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/421f3272d8034456832d8f1728dd586a/b3330cfd.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · 发布</div>
+<div class="chapter-title">生产灰度发布规范</div>
+<div class="chapter-desc">发布窗口18-20点、需求版本双日期命名（灰度日+生产日）、紧急发布四类、灰度必上生产、17:00后不能加内容、紧急邮件审批链(Will/开发TL/Charles)。</div>
+<div class="chapter-meta"><span>📖 6 核心判断</span><span>🧩 3 关键概念</span><span>📝 6 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/13f7ed15923547a4b96579a12c77a945/241506c8.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · AI</div>
+<div class="chapter-title">哇塞智能AI工作流</div>
+<div class="chapter-desc">密钥模式vs专区模式、三套分析时机（T+1/实时/批量）、模型选型分层（FlashX/PLUS/AIR/Hunyuan）、会话过滤3规则、意向产品识别10类触发、专区无法过滤撤回。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 4 关键概念</span><span>📝 8 道题</span><span>🎧 含语音</span></div>
 </a>
 </div>
 <div class="footer">
