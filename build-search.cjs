@@ -28,7 +28,7 @@ const CHAPTERS = [
   { level: 2, ch: 10, file: '', url: 'https://help.wshoto.com/resource/1a51801d8df24cdebd571276380a58cf/002563d8.html', title: '工程架构与研发规范' },
   { level: 2, ch: 11, file: '', url: 'https://help.wshoto.com/resource/1944d71f929b4755ab68c8e1e27ec20a/694daf40.html', title: '生产灰度发布规范' },
   { level: 2, ch: 12, file: '', url: 'https://help.wshoto.com/resource/c710c8b5ff9544f09f59ce600f455ebc/0ac131df.html', title: '哇塞智能AI工作流' },
-  { level: 2, ch: 13, file: '', url: 'https://help.wshoto.com/resource/1cd3ae480fc54a98912c3e4ca9fcafb5/e1cd0b7d.html', title: 'ToB获客与品牌 — 微盛私域自我实践' },
+  { level: 2, ch: 13, file: '', url: 'https://help.wshoto.com/resource/3b2c4120497a447b934b7997b1687861/309facd1.html', title: 'ToB获客与品牌 — 微盛私域自我实践' },
 ];
 
 function fetch(url) {
