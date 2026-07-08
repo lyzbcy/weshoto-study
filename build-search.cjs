@@ -29,6 +29,7 @@ const CHAPTERS = [
   { level: 2, ch: 11, file: '', url: 'https://help.wshoto.com/resource/1944d71f929b4755ab68c8e1e27ec20a/694daf40.html', title: '生产灰度发布规范' },
   { level: 2, ch: 12, file: '', url: 'https://help.wshoto.com/resource/c710c8b5ff9544f09f59ce600f455ebc/0ac131df.html', title: '哇塞智能AI工作流' },
   { level: 2, ch: 13, file: '', url: 'https://help.wshoto.com/resource/922d54aeb8c64b36a68bfd93b7bae5f8/9eb45ab6.html', title: 'ToB获客与品牌 — 微盛私域自我实践' },
+  { level: 2, ch: 14, file: '', url: 'https://help.wshoto.com/resource/a83e41a3711b4a5bbdc0cc62cd96367a/345bde08.html', title: '商业化体系：我们怎么销售·怎么赚钱' },
 ];
 
 function fetch(url) {
