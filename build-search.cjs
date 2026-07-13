@@ -32,6 +32,7 @@ const CHAPTERS = [
   { level: 2, ch: 14, file: '', url: 'https://help.wshoto.com/resource/57798435d7c645eab2b73ec09d9901a2/4c83d9f9.html', title: '商业化体系：我们怎么销售·怎么赚钱' },
   { level: 2, ch: 15, file: '', url: 'https://help.wshoto.com/resource/3b7536cfdb494791b249a5423b1fa411/4333f4a6.html', title: '从架构理解产品长期价值' },
   { level: 2, ch: 16, file: '', url: 'https://help.wshoto.com/resource/6b52579e472c41f5a854f1408f069897/bfd8fadf.html', title: '微盛AI·企微管家产品介绍' },
+  { level: 2, ch: 17, file: '', url: 'https://help.wshoto.com/resource/575fcbb3edf34adea62d53fd7979a852/36ba931c.html', title: '客户成功的本质：服务交付与续费' },
 ];
 
 function fetch(url) {
