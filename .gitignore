@@ -1,6 +1,9 @@
 # 临时文件与敏感明文（解密后的目录页等，不可提交）
-_plaintext.html
+_plaintext*.html
 _search_index.js
+_search_out.txt
+search_index_new.js
 _final_verify.mjs
+_update_*.cjs
 .playwright-cli/
 *.tmp
