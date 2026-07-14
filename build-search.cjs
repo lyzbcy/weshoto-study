@@ -33,7 +33,7 @@ const CHAPTERS = [
   { level: 2, ch: 15, file: '', url: 'https://help.wshoto.com/resource/3b7536cfdb494791b249a5423b1fa411/4333f4a6.html', title: '从架构理解产品长期价值' },
   { level: 2, ch: 16, file: '', url: 'https://help.wshoto.com/resource/6b52579e472c41f5a854f1408f069897/bfd8fadf.html', title: '微盛AI·企微管家产品介绍' },
   { level: 2, ch: 17, file: '', url: 'https://help.wshoto.com/resource/92e2641bc746418a83c56c72dbd3e094/21dbe66b.html', title: '客户成功的本质：服务交付与续费' },
-  { level: 2, ch: 18, file: '', url: 'https://help.wshoto.com/resource/ca71a2078a964a6fb2bbf76b3b65d802/cc8f13b9.html', title: '私域运营行业全景：赛道·行业案例·AI与服务交付' },
+  { level: 2, ch: 18, file: '', url: 'https://help.wshoto.com/resource/f06850a0e25c45e5889eda552fe1f980/fa8796d9.html', title: '私域运营行业全景：赛道·行业案例·AI与服务交付' },
 ];
 
 function fetch(url) {
