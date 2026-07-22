@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>管培生学习地图 — 捞鱼·学习与工具</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;min-height:100vh;}
+.header{text-align:center;padding:60px 20px 24px;}
+.header h1{font-family:var(--font-display);font-size:42px;color:var(--forest);margin-bottom:8px;}
+.header p{font-size:18px;color:#666;max-width:600px;margin:0 auto;}
+.search-wrap{max-width:680px;margin:24px auto 0;position:relative;}
+.search-box{display:flex;gap:0;max-width:680px;margin:0 auto;}
+.search-box input{flex:1;padding:14px 18px;font-size:16px;border:2px solid var(--sage);border-radius:999px 0 0 999px;background:var(--paper);color:var(--ink);font-family:var(--font-body);outline:none;}
+.search-box input:focus{border-color:var(--forest);}
+.search-box button{padding:0 24px;border:none;border-radius:0 999px 0 999px;background:var(--forest);color:var(--cream);font-size:15px;cursor:pointer;font-family:var(--font-body);}
+.search-box button:hover{opacity:.88;}
+.search-hint{text-align:center;font-size:13px;color:#999;margin-top:8px;}
+.search-results{max-width:760px;margin:16px auto 0;padding:0 24px;}
+.result-item{display:block;background:var(--paper);border-radius:10px;padding:14px 18px;margin-bottom:10px;text-decoration:none;color:var(--ink);transition:.15s;border-left:4px solid var(--sky);}
+.result-item:hover{transform:translateX(4px);box-shadow:0 2px 10px rgba(30,58,36,.1);border-left-color:var(--forest);}
+.result-tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-right:8px;font-weight:600;vertical-align:middle;}
+.result-tag.ch1{background:#E8F0E5;color:#2F7D46;}.result-tag.ch2{background:#E8EEF5;color:#2563EB;}.result-tag.ch3{background:#FFF3E0;color:#D97706;}.result-tag.ch4{background:#FCE7F3;color:#BE185D;}.result-tag.ch5{background:#EDE9FE;color:#7C3AED;}.result-tag.ch6{background:#FEE2E2;color:#B91C1C;}
+.result-type{font-size:11px;color:#999;margin-left:6px;}
+.result-title{font-weight:600;font-size:15px;}
+.result-context{font-size:13px;color:#777;margin-top:2px;}
+.result-empty{text-align:center;color:#999;padding:30px;font-size:14px;}
+.chapters{max-width:900px;margin:0 auto;padding:0 24px 60px;}
+.chapter-card{display:block;background:var(--paper);border-radius:var(--radius-card);padding:28px;margin-bottom:20px;text-decoration:none;color:var(--ink);transition:.2s;border-left:6px solid var(--sage);}
+.chapter-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(30,58,36,.1);border-left-color:var(--forest);}
+.chapter-num{font-family:var(--font-display);font-size:14px;color:var(--brick);margin-bottom:4px;letter-spacing:2px;}
+.chapter-title{font-family:var(--font-head);font-size:22px;font-weight:700;color:var(--forest);margin-bottom:8px;}
+.chapter-desc{font-size:15px;color:#555;line-height:1.6;}
+.chapter-meta{display:flex;gap:16px;margin-top:12px;font-size:13px;color:#888;flex-wrap:wrap;}
+.chapter-meta span{display:flex;align-items:center;gap:4px;}
+.footer{text-align:center;padding:32px;font-size:13px;color:#888;border-top:1px solid #D4C4A8;}
+.footer a{color:var(--brick);text-decoration:underline;}
+.fb-emoji{width:36px;height:36px;vertical-align:middle;margin-right:8px;float:left;border-radius:6px}.feedback{min-height:44px;overflow:hidden}.feedback::after{content:"";display:block;clear:both}.sec-sticker{width:34px;height:34px;vertical-align:middle;margin:0 2px 4px;display:inline-block;border-radius:6px}
+@media(max-width:600px){.header h1{font-size:30px;}.chapter-card{padding:20px;}}
+.exam-banner{max-width:900px;margin:0 auto 8px;padding:18px 24px;background:linear-gradient(135deg,#FFF3F0 0%,#FFF8E1 100%);border:2px solid var(--brick);border-radius:14px;box-shadow:0 3px 12px rgba(181,72,42,.12);position:relative;}
+.exam-banner .eb-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.exam-banner .eb-tag{display:inline-block;background:var(--brick);color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:1px;}
+.exam-banner .eb-date{font-size:15px;font-weight:700;color:var(--brick);}
+.exam-banner .eb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px 18px;margin:8px 0;font-size:14px;color:var(--ink);}
+.exam-banner .eb-grid b{color:var(--forest);}
+.exam-banner .eb-score{font-size:13px;color:#666;margin-top:4px;}
+.exam-banner .eb-score b{color:var(--brick);}
+.exam-banner .eb-cta{display:inline-block;margin-top:10px;padding:8px 20px;background:var(--forest);color:var(--cream);border-radius:999px;text-decoration:none;font-size:14px;font-weight:600;transition:.15s;}
+.exam-banner .eb-cta:hover{opacity:.9;transform:translateX(3px);}
+@media(max-width:600px){.exam-banner{margin:0 12px 8px;padding:14px 16px;}}
+.level-nav{position:sticky;top:0;z-index:100;display:flex;gap:0;max-width:900px;margin:0 auto;background:var(--forest);border-radius:0 0 12px 12px;overflow:hidden;box-shadow:0 2px 12px rgba(30,58,36,.15);}
+.level-nav .ln-item{flex:1;padding:12px 16px;color:var(--cream);text-decoration:none;text-align:center;font-family:var(--font-head);font-size:14px;font-weight:600;transition:background .15s;border-right:1px solid rgba(250,246,235,.15);}
+.level-nav .ln-item:last-child{border-right:none;}
+.level-nav .ln-item:hover{background:rgba(250,246,235,.12);}
+.level-nav .ln-item.active{background:var(--brick);}
+@media(max-width:600px){.level-nav .ln-item{font-size:12px;padding:10px 8px;}}
+
+/* 返回首页浮条 */
+.back-home{position:fixed;left:20px;bottom:20px;z-index:1000;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;border:2px solid var(--forest);background:var(--cream);color:var(--forest);font-weight:700;font-size:14px;font-family:var(--font-body);text-decoration:none;box-shadow:3px 3px 0 rgba(30,58,36,.25);transition:transform .15s,box-shadow .15s;}
+.back-home:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(30,58,36,.25);}
+</style>
+</head>
+<body>
+<a class="back-home" href="../index.html">🏠 返回首页</a>
+<nav class="level-nav" id="levelNav">
+<a href="#level1" class="ln-item active">第一关 · 产品功能</a>
+<a href="#level2" class="ln-item">第二关 · 各部门学习</a>
+</nav>
+<div class="header">
+<img src="../img/sticker/mascot.png" alt="捞鱼吉祥物" style="width:96px;height:96px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(3px 3px 0 rgba(30,58,36,.2))">
+<h1>微盛管培生学习地图</h1>
+<p>基于微盛·企微管家学习资料，拆解的交互式理解地图<br><span id="siteStats">加载中…</span> · 业务场景故事 + 对比表 + 硬数字卡片</p>
+<div class="search-wrap">
+<div class="search-box">
+<input id="searchInput" type="text" placeholder="搜索关键词，如：活码、会话存档、CRM、折扣、离职继承…" autocomplete="off">
+<button id="searchBtn">🔍 搜索</button>
+</div>
+<div class="search-hint" id="searchHint">在学习地图中搜索任意关键词，点击结果直达对应章节位置</div>
+</div>
+</div>
+<div class="exam-banner">
+<div class="eb-head"><span class="eb-tag">🔴 考核公告</span><span class="eb-date">2026年6月30日 · 无锡办公室</span></div>
+<div class="eb-grid">
+<div>📝 <b>第一部分 笔试</b>：选择题 + 判断题 + 简答题，满分100分（会议室集中、线上系统、1小时内）</div>
+<div>🎯 <b>第二部分 通关</b>：5个实操场景考官现场随机抽1个演示，2考官打分取平均，满分100分</div>
+</div>
+<div class="eb-score">计分：<b>笔试、通关各占 50%</b>，最终得分 = 单项得分 × 权重 · <b>≥ 70 分及格</b>（第二次未过则综合评估，offer 可能失效）</div>
+<a class="eb-cta" href="chapter7.html">进入考试通关手册 →</a>
+</div>
+<div class="search-results" id="searchResults"></div>
+<a id="level1"></a>
+<div class="chapters" id="chaptersList">
+<a class="chapter-card" href="chapter1.html">
+<div class="chapter-num">第 1 章</div>
+<div class="chapter-title">企业微信产品全景</div>
+<div class="chapter-desc">产品定位、四大连接方向（内部/产业/消费/社会）、特点能力概览、开放能力、安全保障体系。理解企业微信"为什么存在"。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道题</span></div>
+</a>
+<a class="chapter-card" href="chapter2.html">
+<div class="chapter-num">第 2 章</div>
+<div class="chapter-title">企业微信内部协作与效率工具</div>
+<div class="chapter-desc">通讯录权限三档、5种群类型（全员1万/部门2千/外部500）、或签/会签/依次审批、智能表格vs在线表格、企业自主加密边界。含群上限对比表、审批方式对比表。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道场景题</span></div>
+</a>
+<a class="chapter-card" href="chapter3.html">
+<div class="chapter-num">第 3 章</div>
+<div class="chapter-title">企业微信客户运营与微信互通</div>
+<div class="chapter-desc">获客四件套（联系我/加入群聊/获客助手/工卡码）、群发2000/朋友圈3条共用、离职继承24h/90天2次、企业标签vs个人标签。含加入群聊vs群活码对比表。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道场景题</span></div>
+</a>
+<a class="chapter-card" href="chapter4.html">
+<div class="chapter-num">第 4 章</div>
+<div class="chapter-title">企微管家产品体系</div>
+<div class="chapter-desc">活码vs联系我7维对比、群活码vs加入群聊7维对比、CRM3.0漏斗、超级群发、智能质检/知识库/智能问答。含完整7维对比表+时刻码/区域活码场景。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道场景题</span></div>
+</a>
+<a class="chapter-card" href="chapter5.html">
+<div class="chapter-num">第 5 章</div>
+<div class="chapter-title">会话内容存档与AI能力</div>
+<div class="chapter-desc">会话存档三版本（办公/服务/企业）、5天保存窗口、密钥模式vs专区模式、T+1/实时/条件触发、13类子意图。含硬数字卡片+三版本对比+密钥专区对比。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道场景题</span></div>
+</a>
+<a class="chapter-card" href="chapter6.html">
+<div class="chapter-num">第 6 章</div>
+<div class="chapter-title">销售后端全链路管理</div>
+<div class="chapter-desc">折扣审批权限表（标品6折/商业化85折）、100%成本红线（4类产品）、比价≠招标、0元赠送也要录工单、合同状态机。含折扣权限表+成本红线卡片+合同流转图。</div>
+<div class="chapter-meta"><span>📖 5个核心判断</span><span>🧩 6个关键概念</span><span>📝 8道场景题</span></div>
+</a>
+<a class="chapter-card" href="chapter7.html" style="border-left-color:#B5482A;">
+<div class="chapter-num">🎯 考试通关</div>
+<div class="chapter-title">考试通关实战手册</div>
+<div class="chapter-desc"><strong>考前必看！</strong>考核公告（6月30日·无锡·笔试与实操各占50%·70分及格）、笔试题型拆解（选择/判断/简答）、<strong style="color:var(--brick)">5个实操场景通关手册（考官现场随机抽1个，含操作路径/演示话术/管家优势/易错点）</strong>、平台实操手册全菜单、考前必背速记卡、通关模拟关卡、结果应用与补考机制。<strong style="color:var(--brick)">「笔试专项题库」20题自动判分——硬数字/原生vs管家/7维差异/陷阱判断全覆盖。</strong></div>
+<div class="chapter-meta"><span>🎯 5场景通关</span><span>✏️ 20题笔试题库</span><span>⚡ 必背速记卡</span><span>🖱️ 平台实操</span><span>📊 27题交互</span></div>
+</a>
+</div>
+
+<a id="level2"></a>
+<!-- ===== 第二关：各部门学习 ===== -->
+<h2 style="max-width:900px;margin:48px auto 8px;padding:0 24px;font-family:var(--font-display);font-size:24px;color:var(--forest);border-bottom:3px solid var(--sage);padding-bottom:10px;">🗺️ 第二关 · 各部门学习</h2>
+<p style="max-width:900px;margin:0 auto 20px;padding:0 24px;font-size:14px;color:#888;">部门轮岗培训资料的保真拆解理解地图。每章含 11 个学习模块、原文依据、闯关自测、错题回流。点击卡片在新标签打开。</p>
+<div class="chapters" style="padding-bottom:40px;">
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/28bc6df5c1254f579d2e3f65d4dc9cf5/e07b7220.html" target="_blank" rel="noopener" style="border-left-color:#B5482A;">
+<div class="chapter-num">开营第1课</div>
+<div class="chapter-title">CEO宣讲：微盛公司介绍与管培生培养</div>
+<div class="chapter-desc">老杨开营宣讲保真拆解：公司发展三阶段、与腾讯四层关系、180万好友壁垒、AI五层蛋糕、一二三四五体系、价值观三观、管培生战略定位。<strong style="color:var(--brick)">8道硬数字+核心概念题。</strong></div>
+<div class="chapter-meta"><span>📖 8 核心判断(6★必考)</span><span>🧩 4 关键概念</span><span>📝 8 道题</span></div>
+</a>
+<a class="chapter-card" href="https://help.wshoto.com/resource/922d54aeb8c64b36a68bfd93b7bae5f8/9eb45ab6.html" target="_blank" rel="noopener">
+<div class="chapter-num">第 2 课 · 市场部 @崔崔</div>
+<div class="chapter-title">ToB获客与品牌 — 微盛私域自我实践</div>
+<div class="chapter-desc">品牌定位"企业微信AI客户管家"、市场地位硬数字(160+500强/80%/5倍)、获客正循环、自我实践三铁律、三大内容类型、公众号方法论(标题四公式/四维评分)、AI写作九步SOP、GEO三级信源与EEAT。</div>
+<div class="chapter-meta"><span>📖 8 核心判断(6★必考)</span><span>🧩 4 关键概念</span><span>📝 8 道题</span></div>
+</a>
+<a class="chapter-card" href="https://help.wshoto.com/resource/57798435d7c645eab2b73ec09d9901a2/4c83d9f9.html" target="_blank" rel="noopener">
+<div class="chapter-num">第 3 课 · 商业化 @Judy</div>
+<div class="chapter-title">商业化体系：我们怎么销售·怎么赚钱</div>
+<div class="chapter-desc">四大产品板块(SCRM/AI/腾讯/运营)与交叉销售、客户四层分层、销售一二三四五方法论(判断6维度/人6动作/流程6步/方案5要素/坚持3项)、竞品三类打法、铁三角协同、回款全流程(50%首付)、AI时代三大能力。</div>
+<div class="chapter-meta"><span>📖 10 核心判断(7★必考)</span><span>🧩 6 关键概念</span><span>📝 12 道题</span><span>🎧 含语音</span></div>
+</a>
+<a class="chapter-card" href="https://help.wshoto.com/resource/3b7536cfdb494791b249a5423b1fa411/4333f4a6.html" target="_blank" rel="noopener">
+<div class="chapter-num">第 4 课 · 研发中心 @企鹅</div>
+<div class="chapter-title">从架构理解产品长期价值</div>
+<div class="chapter-desc">领域拆分与不可能三角、Werner六条原则、云原生微服务收益与代价、代码同源私有化护城河、开放能力(300+API/100+扩展点)、数据飞轮、AI Agent工程体系、AI Coding三阶段。<strong style="color:#c0392b;">★04½三图必考划线：3000QPS/100万员工/1亿C端/6亿研发/700+KA/3W+下游/90%降本/信创全适配/自动化80%。</strong></div>
+<div class="chapter-meta"><span>📖 10 核心判断(7★必考)</span><span>🧩 6 关键概念</span><span>📝 25 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/6b52579e472c41f5a854f1408f069897/bfd8fadf.html" target="_blank" rel="noopener">
+<div class="chapter-num">第 5 课 · 产品全景 @一休</div>
+<div class="chapter-title">微盛AI·企微管家产品介绍</div>
+<div class="chapter-desc">SCRM迭代历程(2015→6.0)、四大难题(获客难/跟进差/转化难/管理乱)、6.0框架三结构(开放能力/三大业务模块/AI底座)、AI六大产品(聊天管家/聊天智能体/分析智能体/企微管家Claw/WeModel/录音硬件)、三种运营模式与客户案例(京东超市/连锁便利店/爱尔眼科/洋葱学园/绿城物业)。20万+企业客户、160+500强(占80%)、企微赛道第一。</div>
+<div class="chapter-meta"><span>📖 10 核心判断</span><span>🧩 5 关键概念</span><span>📝 10 道题</span><span>🎧 含语音(31min)</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/92e2641bc746418a83c56c72dbd3e094/21dbe66b.html" target="_blank" rel="noopener">
+<div class="chapter-num">第 6 课 · 客户成功 @上扬</div>
+<div class="chapter-title">客户成功的本质：服务交付与续费</div>
+<div class="chapter-desc">为什么做客户成功（70%+收入来自续费）、三个核心结果（体验转正/增购/续费）、服务SOP五阶段、用好企微四因素（高层推动/命中痛点/有人运营/深度绑定）、客户健康度三档分类、20+实战案例（绿城/极狐/保利/东方理财/自如/九牧/阳光医美/0090/中公/华为）、续费SOP时间轴。<strong style="color:#c0392b;">★KA续费率120%+/到期前3月启动续费/全员客户成功。</strong></div>
+<div class="chapter-meta"><span>📖 8 核心判断</span><span>🧩 4 关键因素</span><span>📝 10 道题</span><span>🎧 含语音</span></div>
+</a>
+  <a class="chapter-card" href="https://help.wshoto.com/resource/f06850a0e25c45e5889eda552fe1f980/fa8796d9.html" target="_blank" rel="noopener">
+    <div class="chapter-num">第 7 课 · 运营中心 @一桐</div>
+    <div class="chapter-title">私域运营行业全景：赛道·行业案例·AI与服务交付</div>
+    <div class="chapter-desc">从腾讯生态定位到五大行业案例（零售/汽车/文旅/大健康/电商），再到AI对私域的重构。14亿MAU·1500万企微企业·上千亿GMV。</div>
+    <div class="chapter-meta">
+      <span>📖 10 核心判断</span>
+      <span>🧩 5 大行业案例</span>
+      <span>🎯 15 互动题（10选择+5简答）</span>
+    </div>
+  </a>
+
+  <a class="chapter-card" href="https://help.wshoto.com/resource/c1c2ef77fd4f4da2b11aa4d4a9f52fb0/b7082633.html" target="_blank" rel="noopener">
+    <div class="chapter-num">第 8 课 · 产品中心 @一休</div>
+    <div class="chapter-title">管培生AI工具使用培训</div>
+    <div class="chapter-desc">从"会聊天的AI"升级到"做事的AI同事"。AI工具三类、企微管家Cloud vs WorkBuddy、Agent原理(ReAct循环/上下文五部分/模型无记忆)、Skill技能(专家菜谱稳定80分)、四层应用场景、任务五要素、企微AI四件套、AI安全复核与AIFirst。🎧 含语音播报。</div>
+    <div class="chapter-meta">
+      <span>📖 10 核心判断</span>
+      <span>🧩 6 关键概念</span>
+      <span>🎯 10 互动题</span>
+      <span>🎧 12 段语音</span>
+    </div>
+  </a>
+
+  <a class="chapter-card" href="https://help.wshoto.com/resource/113323039d4b4d028d9738aaf528feec/25f253d5.html" target="_blank" rel="noopener">
+    <div class="chapter-num">第 9 课 · 金融运营 @苏茉</div>
+    <div class="chapter-title">金融行业专题培训：微盛X金融一场双向奔赴</div>
+    <div class="chapter-desc">为什么120+金融机构选微盛（监管办法9月30号+网点趋势255家=需求爆发）、金融市场600家空间（占公司收入20%第二）、银行两模式（管护/指引长尾经营）、金融企业管家（唯一行业版2024上线）、项目8环节流程、三大场景案例（发薪日1.35亿/活动1.99亿/到期31%承接率）、运营反哺三功能（分层码/在职继承/无感认证）、AI五大场景、管培生四能力成长。🎧 含语音播报。</div>
+    <div class="chapter-meta">
+      <span>📖 8 核心判断</span>
+      <span>🧩 6 关键概念</span>
+      <span>🎯 11 互动题</span>
+      <span>🎧 11 段语音</span>
+    </div>
+  </a>
+  <a class="chapter-card" href="https://help.wshoto.com/resource/35b0a6ab56144aa5b93c9ed0df82e86e/0c5e0f07.html" target="_blank" rel="noopener">
+    <div class="chapter-num">第 10 课 · 售前解决方案 @星矢</div>
+    <div class="chapter-title">售前解决方案方法论：从需求到方案</div>
+    <div class="chapter-desc">售前三角色定义（翻译官/包装师/助攻手）、售前三重知识（业务>技术>产品）、全流程6阶段（线索判断→需求挖掘→方案设计→演示汇报→POC→签约交接）、SPIN销售法（S→P→I→N暗示是灵魂）、BANT商机评分、DST项目理解（描绘理想/审视现实/识别课题）、好方案5标准避4大常见病（按场景写不按功能写）、竞争铁律（证明自己好不是证明别人差）+控标（赢的标准是你引导客户定义的）、决策链4角色+铁三角作战、高情商应对3原则、从扁鹊成长到大哥。通用岗位方法论课。🎧 含语音播报。</div>
+    <div class="chapter-meta">
+      <span>📖 7 核心判断</span>
+      <span>🧩 6 关键概念</span>
+      <span>🎯 11 互动题</span>
+      <span>🎧 11 段语音</span>
+    </div>
+  </a>
+<a class="chapter-card" href="https://help.wshoto.com/resource/16c2f775d1b140baace27183da342db1/0760021c.html" target="_blank" rel="noopener">
+<div class="chapter-num">销售类</div>
+<div class="chapter-title">合同 · 工单 · 收款全链路</div>
+<div class="chapter-desc">折扣审批权限线（标品6折/商业化85折）、100%成本红线四类、0元赠送也要录工单、合同状态机五态、企微私有化拆3单、收款审核前提。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 3 关键概念</span><span>📝 7 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/1a51801d8df24cdebd571276380a58cf/002563d8.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · 架构</div>
+<div class="chapter-title">工程架构与研发规范</div>
+<div class="chapter-desc">pom继承wshoto-parent、POST统一、禁改接口签名(@Deprecated+6个月冗余)、禁@Transactional、雪花ID int8、禁用keys/Executors、TTL修饰器包装线程池。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 4 关键概念</span><span>📝 8 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/1944d71f929b4755ab68c8e1e27ec20a/694daf40.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · 发布</div>
+<div class="chapter-title">生产灰度发布规范</div>
+<div class="chapter-desc">发布窗口18-20点、需求版本双日期命名（灰度日+生产日）、紧急发布四类、灰度必上生产、17:00后不能加内容、紧急邮件审批链(Will/开发TL/Charles)。</div>
+<div class="chapter-meta"><span>📖 6 核心判断</span><span>🧩 3 关键概念</span><span>📝 6 道题</span><span>🎧 含语音</span></div>
+</a>
+
+<a class="chapter-card" href="https://help.wshoto.com/resource/c710c8b5ff9544f09f59ce600f455ebc/0ac131df.html" target="_blank" rel="noopener">
+<div class="chapter-num">研发类 · AI</div>
+<div class="chapter-title">哇塞智能AI工作流</div>
+<div class="chapter-desc">密钥模式vs专区模式、三套分析时机（T+1/实时/批量）、模型选型分层（FlashX/PLUS/AIR/Hunyuan）、会话过滤3规则、意向产品识别10类触发、专区无法过滤撤回。</div>
+<div class="chapter-meta"><span>📖 7 核心判断</span><span>🧩 4 关键概念</span><span>📝 8 道题</span><span>🎧 含语音</span></div>
+</a>
+
+
+</div>
+<div class="footer">
+由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 微盛管培生学习地图<br>
+这个工具能帮你系统学习产品知识，但不能代替实际操作。学习愉快
+</div>
+<script>
+// 搜索索引（从各章节标题/概念/判断提取）
+var SEARCH_INDEX = [
+  {
+    "ch": 1,
+    "level": 1,
+    "file": "chapter1.html",
+    "title": "企业微信产品全景",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SCRM（社交化客户关系管理）",
+      "背景补充 2：ToB vs ToC",
+      "背景补充 3：开放平台与 API",
+      "背景补充 4：SOC2 / ISO27001",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：企业微信的核心差异化是\"连接微信\"",
+      "判断2：上下游解决的是跨企业协同问题",
+      "判断3：内外协作靠的是\"融合腾讯全家桶\"",
+      "判断4：安全认证是企业微信进入大客户市场的入场券",
+      "判断5：开放能力让企业微信从\"产品\"变成\"平台\"",
+      "概念1：连接微信",
+      "概念2：上下游",
+      "概念3：微信客服",
+      "概念4：客户朋友圈",
+      "概念5：开放能力（API）",
+      "概念6：SOC2 Type 2",
+      "误解1：\"企业微信就是微信的企业版\"",
+      "误解2：\"上下游就是拉个企业微信群\"",
+      "误解3：\"有了安全认证就不会出安全问题\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：客户质疑\"钉钉、飞书也能加外部联系人，企业微信凭什么更贵\"，你要怎么点出企微独有的核心优势？",
+      "2. 场景：客户听到\"连接消费互联网\"后问\"是不是能连淘宝、抖音做电商带货\"，你要澄清它真正指的是什么。",
+      "3. 场景：客户说\"我们既要跟供应商经销商沟通，又想让员工在一个App里写文档、开会、收邮件\"，这两个需求企微分别用什么能力解决？",
+      "4. 场景：金融客户投标时要求提供SOC2审计报告，你要解释企微拿到的SOC2 Type 2比Type 1\"多审了什么\"，才能证明含金量。",
+      "5. 场景：客户要盘点\"能用来直接触达微信客户的能力清单\"，以下哪些算\"连接微信\"的范畴？（多选）",
+      "6. 场景：销售老王用企业微信加了300个客户，下周要跳槽去竞品。老板问\"这些客户会不会跟着跑了\"，企微怎么兜底？",
+      "7. 场景：客户问\"我们有自己的OA和ERP，企业微信能不能对接？像微盛这种第三方公司又是怎么在企微上做产品的\"，你在解释开放能力时最该强调哪一点？",
+      "任务1：将每个\"连接方向\"与它对应的目标对象匹配。"
+    ]
+  },
+  {
+    "ch": 2,
+    "level": 1,
+    "file": "chapter2.html",
+    "title": "企业微信内部协作与效率工具",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：OA系统（办公自动化）",
+      "背景补充 2：RBAC（基于角色的权限控制）",
+      "背景补充 3：数据库型表格 vs 电子表格",
+      "背景补充 4：明水印 vs 暗水印",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：通讯录是所有权限的底层基础",
+      "判断2：群的类型决定人数上限和行为",
+      "判断3：审批的\"或签/会签/依次\"解决三种决策场景",
+      "判断4：智能表格是\"数据库\"不是\"高级Excel\"",
+      "判断5：企业自主加密有明确覆盖边界",
+      "概念1：通讯录权限三档",
+      "概念2：全员群",
+      "概念3：或签 vs 会签 vs 依次审批",
+      "概念4：智能表格",
+      "概念5：企业自主加密",
+      "概念6：明水印 vs 暗水印",
+      "误解1：\"管理员能撤回任何群消息\"",
+      "误解2：\"企业自主加密=全公司聊天都加密\"",
+      "误解3：\"智能表格=更好看的在线表格\"",
+      "误解4：\"智能机器人能拉进任何群\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：某公司有8个部门，HR希望每个部门有自己的群，新员工自动进自己部门的群。应该用？",
+      "2. 场景：员工提交200元打车报销单，财务部3个财务。希望\"谁在岗谁批，不用等齐\"。应该用？",
+      "3. 场景：跨部门采购合同，必须产品部、技术部、法务部三个部门都点头才能签。希望\"缺一个都不行\"。应该用？",
+      "4. 场景：员工请婚假7天，审批流程：直属领导先同意→部门总监→HR备案。应该用？",
+      "5. 场景：客户想要\"客户跟进表填了'下次跟进日期'后，到那天自动提醒负责人\"。应该用？",
+      "6. 场景：关于企业微信内部协作，以下哪些说法正确？（多选）",
+      "7. 场景：合同审批走完后，需要财务实际打款。这个\"打款\"环节在审批里属于？",
+      "任务：把审批方式匹配到最合适的业务场景。"
+    ]
+  },
+  {
+    "ch": 3,
+    "level": 1,
+    "file": "chapter3.html",
+    "title": "客户运营与微信互通",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：私域流量",
+      "背景补充 2：UnionID（跨应用身份打通）",
+      "背景补充 3：SCRM触点",
+      "背景补充 4：客户继承",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：获客四件套各有适用场景",
+      "判断2：群发和朋友圈有严格频次共用规则",
+      "判断3：离职继承让客户资产无感转接",
+      "判断4：客户标签分企业级和个人级",
+      "判断5：微信客服是大流量咨询入口",
+      "概念1：加入群聊（原生）vs 群活码（管家）",
+      "概念2：在职继承 vs 离职继承",
+      "概念3：企业标签 vs 个人标签",
+      "概念4：朋友圈（每天3条共用）",
+      "概念5：微信客服",
+      "概念6：unionid打通",
+      "误解1：\"朋友圈每天3条=企业3条+员工3条\"",
+      "误解2：\"群发每日1条=企业1条+个人1条\"",
+      "误解3：\"所有外部群都计入统计\"",
+      "误解4：\"加入群聊=群活码\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：店庆要给5000客户群发优惠券，一次发不完。企业微信群发客户一次最多发多少？",
+      "2. 场景：店庆日企业官号已发2条朋友圈。每个员工当天还能发几条？",
+      "3. 场景：销售小王离职，名下300客户转给小李。客户那边多长时间切换？",
+      "4. 场景：某品牌投放广告，希望不同渠道（抖音/小红书/百度）来客区分来源，且自动分配给100个销售。应该用？",
+      "5. 场景：关于客户标签，以下哪些正确？（多选）",
+      "6. 场景：客户问\"加入群聊和群活码有什么区别\"。正确回答？",
+      "7. 场景：客户在微信客服咨询，AI连续几次没匹配到知识库答案才转人工？",
+      "任务：把获客工具匹配到最适合的业务场景。"
+    ]
+  },
+  {
+    "ch": 4,
+    "level": 1,
+    "file": "chapter4.html",
+    "title": "企微管家产品体系",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SaaS增强层",
+      "背景补充 2：CRM与销售漏斗",
+      "背景补充 3：营销自动化",
+      "背景补充 4：智能质检",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：活码是联系我的\"7维超级升级版\"",
+      "判断2：群活码是加入群聊的\"7维超级升级版\"",
+      "判断3：CRM3.0的核心是漏斗管理",
+      "判断4：超级群发是原生没有的组合触达",
+      "判断5：AI功能聚焦质检+知识赋能",
+      "概念1：活码",
+      "概念2：时刻码",
+      "概念3：区域活码（群）",
+      "概念4：CRM漏斗",
+      "概念5：智能质检",
+      "概念6：知识库+智能问答",
+      "误解1：\"企微管家=企业微信\"",
+      "误解2：\"活码就是动态二维码（图案会变）\"",
+      "误解3：\"CRM只是通讯录\"",
+      "误解4：\"时刻码按时间区分\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：连锁餐饮50家门店，希望客户扫码后按GPS定位自动进最近的门店群。应该用？",
+      "2. 场景：奶茶店想让\"新客扫码领新人券加好友，老客扫码跳转会员日8折页\"。应该用？",
+      "3. 场景：客户问\"企微管家CRM管什么\"。正确回答？",
+      "4. 场景：双11大促，品牌希望一次操作同时1对1私发客户+批量发群+朋友圈曝光。应该用？",
+      "5. 场景：企微管家AI功能包含哪些？（多选）",
+      "6. 场景：活码相比原生联系我的增强包括哪些？（多选）",
+      "7. 场景：客户问\"我们能只用企微管家不用企业微信吗\"。正确回答？",
+      "任务：把企微管家增强功能匹配到对应的原生功能/场景。"
+    ]
+  },
+  {
+    "ch": 5,
+    "level": 1,
+    "file": "chapter5.html",
+    "title": "会话内容存档与AI能力",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：合规存档",
+      "背景补充 2：大模型调用链",
+      "背景补充 3：T+1 vs 实时分析",
+      "背景补充 4：数据出境合规",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：会话存档三版本覆盖不同合规范围",
+      "判断2：5天保存窗口是拉取期限不是留存期",
+      "判断3：同意机制决定能不能存",
+      "判断4：密钥模式vs专区模式是合规分流",
+      "判断5：AI分析按\"是否实时\"分三类触发",
+      "概念1：会话存档三版本",
+      "概念2：5天保存窗口",
+      "概念3：密钥模式vs专区模式",
+      "概念4：T+1分析",
+      "概念5：13类子意图",
+      "概念6：情感判断的中性范围",
+      "误解1：\"会话存档=企微永久帮你存聊天\"",
+      "误解2：\"专区模式=更好的AI\"",
+      "误解3：\"客户说谢谢=正向情感\"",
+      "误解4：\"投诉和抱怨一样\"",
+      "误解5：\"买了服务版以后能升级企业版\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：银行要做合规审计，需留存所有员工与客户的文字聊天记录（不需要留存语音/电话通话）。该买哪个版本？",
+      "2. 场景：客户问\"会话存档聊天记录企微帮我们存多久\"。正确回答？",
+      "3. 场景：客户数据必须留腾讯专区，且很在意\"已撤回消息不应被分析\"。关于专区模式？",
+      "4. 场景：客户对销售说\"我们过两天聊聊\"。AI会识别为\"邀约排程\"吗？",
+      "5. 场景：以下哪些AI分析是T+1批量？（多选）",
+      "6. 场景：客户说\"谢谢你，辛苦了\"。AI情感判断归为？",
+      "7. 场景：客户说\"把报价单发我\"。AI识别为哪个子意图？",
+      "任务：把会话存档版本和AI模式匹配到正确特征。"
+    ]
+  },
+  {
+    "ch": 6,
+    "level": 1,
+    "file": "chapter6.html",
+    "title": "销售后端全链路管理",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式阅读关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 闯关式任务"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SaaS商业模式",
+      "背景补充 2：商机锁定",
+      "背景补充 3：刊例价",
+      "背景补充 4：工单闭环",
+      "表面在讲什么？",
+      "深层在回答什么问题？",
+      "作者为什么要写这篇？",
+      "只记一个问题",
+      "判断1：折扣审批按产品类型分级",
+      "判断2：100%成本产品是红线",
+      "判断3：比价≠招标，流程完全不同",
+      "判断4：0元赠送也要录工单",
+      "判断5：合同状态自动驱动工单",
+      "概念1：商机锁定",
+      "概念2：刊例价与折扣",
+      "概念3：企微私有化的\"3工单\"",
+      "概念4：合同状态机",
+      "概念5：100%成本红线",
+      "概念6：体验单转正",
+      "误解1：\"比价就是招标的一种\"",
+      "误解2：\"赠送=0元=不录工单\"",
+      "误解3：\"审核通过的工单可以自己改\"",
+      "误解4：\"代理商直接打款能开专票\"",
+      "误解5：\"折扣只算售卖价÷标准价\"",
+      "现在可以先不补",
+      "后续值得追问",
+      "1. 场景：销售要给客户标品打6折。谁有权审批？",
+      "2. 场景：客户要赠送10个专区会存license（100%成本，每个100元）。怎么录工单？",
+      "3. 场景：客户说\"我们找几家服务商比比价\"（非招标）。需要授权函才能报价吗？",
+      "4. 场景：标品刊例价10000元，售卖6000元，赠送价值2000元。正确折扣计算？",
+      "5. 场景：以下哪些是100%成本产品？（多选）",
+      "6. 场景：客户买企微原生私有化。要录几个工单？",
+      "7. 场景：客户用7天体验单，现已交付上线但没付款也没签正式合同。算转正吗？",
+      "任务：把合同状态/产品匹配到正确的工单动作。"
+    ]
+  },
+  {
+    "ch": 7,
+    "level": 1,
+    "file": "chapter7.html",
+    "title": "考试通关实战手册",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 考试总览（考核公告）"
+      },
+      {
+        "id": "sec2",
+        "title": "02 笔试怎么考"
+      },
+      {
+        "id": "sec3",
+        "title": "03 通关怎么考（5场景现场抽1个）"
+      },
+      {
+        "id": "sec4",
+        "title": "04 五场景实操演示手册"
+      },
+      {
+        "id": "sec6",
+        "title": "07 考前必背速记卡"
+      },
+      {
+        "id": "sec7",
+        "title": "08 通关模拟关卡"
+      },
+      {
+        "id": "sec11",
+        "title": "09 结果应用与补考机制"
+      },
+      {
+        "id": "sec9",
+        "title": "05 平台实操手册 · platform.wshoto.com 全菜单"
+      },
+      {
+        "id": "sec12",
+        "title": "📌 官方权威补充（来自公司知识库）"
+      },
+      {
+        "id": "sec10",
+        "title": "06 笔试专项题库（37题·自动判分）"
+      },
+      {
+        "id": "sec8",
+        "title": "10 考前一晚清单"
+      }
+    ],
+    "concepts": [
+      "两段式考核流程",
+      "备考优先级（按得分占比）",
+      "简答题得分策略（关键词评分制）",
+      "5 个实操场景功能组合（官方原题，逐字照抄）",
+      "🎯 场景一：区域活码（关联员工活码）+ 客户群发 + 轨迹素材 + 客户画像 + AI智能回复",
+      "🎯 场景二：区域活码（关联群活码）+ 群裂变 + 群群发 + 超级群发 + AI话题洞察",
+      "🎯 场景三：识客码 + 微信客服 + 标准化营销 + 好友裂变 + 群发朋友圈 + AI朋友圈广场",
+      "🎯 场景四：员工活码短链 + 收集表 + 客户画像 + 标准化营销 + 敏感词预警 + AI分析智能体",
+      "🎯 场景五：超级活码 + 跟进任务 + 抽奖 + 标准化营销 + 超时回复 + AI客户洞察",
+      "📊 必背对比表一：四种群发（场景一二三都要用）",
+      "📊 必背对比表二：活码家族（场景一二四五都要用）",
+      "📊 必背对比表三：AI功能家族（5场景都涉及AI）",
+      "⚡ 5个场景一图速记",
+      "🗣️ 现场演示技巧（\"主持人的周旋\"）",
+      "备考启示",
+      "🔴 先分清两套后台（说错=考场大忌）",
+      "① 首页",
+      "② 我的企业（权限/通讯录/系统配置的根）",
+      "③ 客户营销（功能最多，考试重点）",
+      "④ 客户管理（含CRM）",
+      "⑤ 内容中心（素材）",
+      "⑥ 商城中心待确认",
+      "⑦ 会话存档（功能最多，顶一个小产品）",
+      "🔑 必背·超级群发官方定义（场景二必考）",
+      "🔑 必背·会话存档三版本（笔试高频）",
+      "🔑 必背·活码家族核心差异（场景一二四五通用）",
+      "第一组：硬数字（单选，必背）",
+      "第二组：原生 vs 管家归属（单选，判别口诀）",
+      "第三组：7维差异（多选，必考）",
+      "第四组：判断对错（单选，陷阱题）",
+      "第五组：功能定位与场景（单选）",
+      "第六组：硬数字进阶（单选，真考易错）",
+      "第七组：CRM 与公海（单选+判断，chapter6 配套）",
+      "第八组：会话存档深度（单选+判断，chapter5 配套）",
+      "第九组：客户管理与运营（单选+判断，chapter4 配套）",
+      "考前一晚必做（按顺序）",
+      "1. 场景：考官问\"连锁餐饮50家门店，客户扫码后按定位自动进最近门店群\"，你应该介绍什么功能？",
+      "2. 场景：考官质疑\"联系我企业微信原生不就有吗，为什么要买管家\"。你怎么回应？",
+      "3. 场景：考官问\"会话存档的聊天记录企微帮我们存多久\"。正确回答？",
+      "4. 场景：考官问\"企业官号发了2条朋友圈，员工还能发几条\"。正确回答？",
+      "5. 场景：考官说\"你画一下CRM的流程\"。你画的应该是？",
+      "6. 场景：考官问\"活码比联系我多了什么\"（多选）",
+      "7. 场景：考官问\"销售离职了他名下300个客户怎么办\"。正确回答？",
+      "1. 会话存档的聊天记录，企微侧保存多久？",
+      "2. 客户朋友圈每天每客户最多几条？企业和员工额度怎么算？",
+      "3. \"群发客户\"单次最多发给多少客户？每日频次？",
+      "4. 离职继承中，客户多久后自动切换给接替员工？转接次数上限？",
+      "5. 客户群达到多少人后，系统可自动创建新群继续承接？",
+      "6. \"联系我\"二维码这个功能，属于哪个系统？",
+      "7. 以下哪个是企微管家独有、企业微信原生没有的功能？",
+      "8. 会话内容存档功能，开启入口在哪个后台？",
+      "9. 企微管家\"员工活码\"比原生\"联系我\"多了哪些能力？（多选）",
+      "10. 企微管家\"客户群活码\"比原生\"加入群聊\"多了哪些？（多选）",
+      "11. \"活码就是动态二维码，二维码图案会自动变化。\" 这句话对吗？",
+      "12. \"买了会话存档，企业微信会永久帮我们保存所有聊天记录。\" 对吗？",
+      "13. \"CRM就是企业通讯录，用来存客户联系方式的。\" 对吗？",
+      "14. \"时刻码就是按时间区分的二维码。\" 对吗？",
+      "15. \"企微管家可以替代企业微信，单独使用。\" 对吗？",
+      "16. 连锁餐饮50家门店，希望客户扫码后自动进最近的门店群。用哪个功能？",
+      "17. 日常小额报销，希望\"谁在岗谁批、快\"，应选哪种审批方式？",
+      "18. 关于企业微信\"智能表格\"，正确的理解是？",
+      "19. 企微管家\"智能质检\"的核心价值是？",
+      "20. 客户加好友后，希望\"第一天发欢迎、第三天推活动、第七天发优惠券\"自动执行，用哪个功能？",
+      "21. 企业微信原生「联系我」的多人类型，单个二维码最多可配置多少个成员？",
+      "22. 企业微信中，企业客户标签的上限是多少个？",
+      "23. 企业客户标签的标签组上限是多少？",
+      "24. 上传到内容中心的轨迹素材里的视频，最大不超过多少？",
+      "25. 普通素材可以一次性上传多少张图片？",
+      "26. 公海的分配规则有哪几种？（多选）",
+      "27. 公海的回收规则，按条件筛选最多支持设置几个条件？",
+      "28. \"只有负责人可以将联系人或者企业退回公海。\" 对吗？",
+      "29. \"销售管理默认开启，关闭后将不能创建联系人、商机、订单，历史数据也不可见；再次开启后数据可恢复。\" 对吗？",
+      "30. \"企微客户自动创建联系人默认关闭，可选择开启，30 天只能切换一次。\" 对吗？",
+      "31. 会话存档【数据与智能专区】是从哪年正式开始使用的？",
+      "32. 敏感行为管理中，有几项拦截方式？",
+      "33. 常用的会话存档有哪几个版本可供普通企业选择？（多选）",
+      "34. \"企业微信原生的会话存档 license，可以直接查看员工的会话内容。\" 对吗？",
+      "35. 客户管理中的客户，是查看\"配置使用权限的员工\"的客户吗？",
+      "36. 在企微管家后台添加的客户标签，可以同步到企业微信吗？",
+      "37. 查看客户轨迹，能看到多长时间的轨迹？"
+    ]
+  },
+  {
+    "ch": 8,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/28bc6df5c1254f579d2e3f65d4dc9cf5/e07b7220.html",
+    "title": "CEO宣讲：微盛公司介绍与管培生培养",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据（考点标注）"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SCRM 与 CRM",
+      "背景补充 2：SaaS 与 AI Agent",
+      "背景补充 3：企业微信生态",
+      "背景补充 4：私域与好友",
+      "判断 1：公司发展三阶段 ★必考",
+      "判断 2：与腾讯的四层关系 ★必考",
+      "判断 3：180万好友是核心壁垒 ★必考",
+      "判断 4：AI 产业五层蛋糕 ★必考",
+      "判断 5：\"一二三四五\"体系 ★必考",
+      "判断 6：自我实践的使命与逻辑 ★必考",
+      "判断 7：行业第一带来头部效应与虹吸效应 ★必考",
+      "判断 8：管培生的战略定位 ☆可能考",
+      "概念 1：AI SCRM",
+      "概念 2：头部效应与虹吸效应",
+      "概念 3：人效（人效比）",
+      "概念 4：内外一体化",
+      "误解 1：\"微盛过度依赖腾讯是风险\"",
+      "误解 2：\"AI 会完全替代人，所以学什么都没用\"",
+      "误解 3：\"好工作就是钱多事少离家近\"",
+      "Q1 微盛是哪一年成立的？",
+      "Q2 微盛的股权结构中，腾讯3个主体合计持股多少？",
+      "Q3 微盛180万B端好友每年节省的广告费大约是多少？",
+      "Q4 AI产业五层蛋糕，从下到上的正确顺序是？",
+      "Q5 微盛\"一二三四五\"中的\"三观\"包含哪三条？（多选）",
+      "Q6 关于微盛和腾讯的关系，下列哪些说法正确？（多选）",
+      "Q7 微盛单个销售的年度产值是多少？是行业的几倍？",
+      "Q8 判断：微盛的产品只要能卖出去就行，不一定要自己先使用验证。",
+      "Q9 根据PPT第57页，微盛相对于其他SCRM友商，在以下哪些维度处于碾压优势？（多选）",
+      "Q10 老杨给山水一期管培生的第一条建议\"气如兰兮长不改，心若兰兮终不改\"出自哪里？"
+    ]
+  },
+  {
+    "ch": 9,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/16c2f775d1b140baace27183da342db1/0760021c.html",
+    "title": "合同·工单·收款全链路",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：工单（Work Order）",
+      "背景补充 2：刊例价（Price List）",
+      "背景补充 3：KA 客户",
+      "判断 1：折扣计算必须含赠送，不是只算售卖价",
+      "判断 2：折扣审批权限按产品线分档",
+      "判断 3：四类产品是 100% 成本红线",
+      "判断 4：0 元赠送也要独立录工单",
+      "判断 5：合同状态机五态",
+      "判断 6：企微原生私有化必须拆 3 个工单",
+      "判断 7：收款审核前提是工单审核通过",
+      "概念 1：折扣（Discount）",
+      "概念 2：拆单（Split Order）",
+      "概念 3：委托付款补充协议",
+      "误解 1：\"0 元赠送就不用录工单了\"",
+      "误解 2：\"比价就是招标\"",
+      "误解 3：\"折扣率越低越好通过\"",
+      "Q1 微盛标品的标准折扣审批权限中，标品折扣低于多少需要区域负责人审批？",
+      "Q2 关于企微原生私有化产品的工单录入，下列哪些说法正确？（多选）",
+      "Q3 会话存档 SaaS 的工单录入规则，哪项正确？",
+      "Q4 判断：折扣计算时只需计算实际售卖产品的价格，赠送项目不计入合同原价。",
+      "Q5 工单审核满足\"复核审批标准\"需同时具备哪些条件？（多选）",
+      "Q6 下列哪些产品属于\"100% 成本红线\"（即使是赠送也必须录入工单且不能低于成本）？（多选）",
+      "Q7 关于收款审核与工单审核的关系，哪项正确？"
+    ]
+  },
+  {
+    "ch": 10,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/1a51801d8df24cdebd571276380a58cf/002563d8.html",
+    "title": "工程架构与研发规范",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：pom 与 Maven",
+      "背景补充 2：BFF 层与 SCG",
+      "背景补充 3：TTL 与线程池",
+      "背景补充 4：雪花算法（Snowflake）",
+      "判断 1：pom 必须继承 wshoto-parent，源码禁止私自拷改",
+      "判断 2：接口 METHOD 统一 POST，禁用路径参数",
+      "判断 3：接口签名禁止修改，靠 @Deprecated + 6 个月冗余兜底",
+      "判断 4：线程必须走线程池，ThreadPoolExecutor 单例 + TTL 包装",
+      "判断 5：主键必须 int8 雪花算法，数据库必备 5 字段",
+      "判断 6：异常 code 是申请制，跨服务原码原样上抛",
+      "判断 7：Redis key 必须 expire，禁止线上 keys/flushall",
+      "概念 1：BFF 层",
+      "概念 2：@Deprecated + 冗余容忍",
+      "概念 3：TTL 修饰器",
+      "概念 4：雪花 ID（int8）",
+      "误解 1：\"框架源码拷过来改改更方便\"",
+      "误解 2：\"接口要改就直接改签名\"",
+      "误解 3：\"Redis 的 key 业务上长期有效，不设过期也行\"",
+      "Q1 Wshoto 接口请求的 METHOD 类型，原文【强制】统一规定为哪一种？",
+      "Q2 Redis 开发规范中，以下哪个命令被原文【强制】禁止在线上使用？",
+      "Q3 关于数据库开发规范，下列哪些是原文【强制】要求的？（多选）",
+      "Q4 判断：接口需要变更时，可以直接修改原接口的签名。",
+      "Q5 Wshoto 开发规范中，线程池的正确创建方式是哪一种？",
+      "Q6 工程架构规范中，哪些包名被原文明确禁止用作 base 包名？（多选）",
+      "Q7 数据库表的主键，原文【强制】要求使用什么类型和生成方式？",
+      "Q8 判断：Redis 的 key 可以不设置过期时间，只要业务需要就一直存在。"
+    ]
+  },
+  {
+    "ch": 11,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/1944d71f929b4755ab68c8e1e27ec20a/694daf40.html",
+    "title": "生产灰度发布规范",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：灰度环境",
+      "背景补充 2：任意门",
+      "背景补充 3：feature 分支 与 release 分支",
+      "判断 1：发布窗口期固定为 18:00-20:00",
+      "判断 2：需求版本用\"灰度日+生产日\"双日期命名",
+      "判断 3：紧急发布有四类情形",
+      "判断 4：上了灰度的版本对应企业，非必要不可以不上生产",
+      "判断 5：17:00 截止登记，之后不能加发布内容",
+      "判断 6：紧急发布邮件需 Will、开发 TL、Charles 三方批复",
+      "概念 1：灰度环境（Canary Environment）",
+      "概念 2：需求版本 vs Bugfix 版本",
+      "概念 3：发布执行人（两周轮值）",
+      "误解 1：\"上了灰度就可以选择不上生产\"",
+      "误解 2：\"17:00 后还能加发布内容，找执行人补一下就行\"",
+      "误解 3：\"只是灰度上重启一下，不用写邮件申请\"",
+      "Q1 微盛正常发布流程中，真正的\"发布窗口期\"是哪个时间段？",
+      "Q2 版本号 v2024072620220728 的命名规则是？（需求版本）",
+      "Q3 下列哪些情形属于\"紧急发布\"？（多选）",
+      "Q4 判断：上了灰度的版本对应的企业，可以选择不上生产（永远停在灰度）。",
+      "Q5 过了发布计划上的确认时间（一般 17:00），还能添加发布信息吗？",
+      "Q6 紧急发布邮件需要获得谁的同意批复才能由测试发布执行人发布？（多选）"
+    ]
+  },
+  {
+    "ch": 12,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/c710c8b5ff9544f09f59ce600f455ebc/0ac131df.html",
+    "title": "哇塞智能AI工作流",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：大模型与 GLM 系列",
+      "背景补充 2：Embedding + 余弦相似度",
+      "背景补充 3：T+1 vs 实时 vs 批量",
+      "背景补充 4：P1 标记是什么",
+      "判断 1：三套分析时机各管一摊",
+      "判断 2：会话过滤的 3 条规则",
+      "判断 3：模型选型按任务分层",
+      "判断 4：意向产品识别的 10 类触发条件",
+      "判断 5：购买异议点 ≠ 意向产品，触发条件要分清",
+      "判断 6：专区模式的关键局限——无法过滤已撤回会话",
+      "判断 7：日程识别有 5 分钟延迟",
+      "概念 1：密钥模式 vs 专区模式",
+      "概念 2：T+1 分析",
+      "概念 3：Embedding + 余弦相似度聚类",
+      "概念 4：子意图（客户洞察）",
+      "误解 1：\"话题洞察是实时的\"",
+      "误解 2：把意向产品和购买异议的触发条件搞混",
+      "误解 3：\"专区模式也能过滤已撤回会话\"",
+      "Q1 话题洞察采用什么分析时机？",
+      "Q2 分析会话时，下列哪些会话会被过滤不分析？（多选）",
+      "Q3 密钥模式下，意图大类识别调用哪个模型？",
+      "Q4 意向产品识别在哪些客户意图下会触发？（多选）",
+      "Q5 判断：专区模式能像密钥模式一样，识别并过滤已撤回的会话。",
+      "Q6 员工质检采用什么分析时机？",
+      "Q7 日程识别在客户同意线下交流后，多久分析一次？",
+      "Q8 专区模式下，客户洞察（子意图识别/智能信息提取等）调用什么模型？（多选）"
+    ]
+  },
+  {
+    "ch": 13,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/922d54aeb8c64b36a68bfd93b7bae5f8/9eb45ab6.html",
+    "title": "ToB获客与品牌 — 微盛私域自我实践",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据（考点标注）"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "🔴 考卷形式（崔崔确认）",
+      "背景补充 1：ToB市场部 vs ToC市场部",
+      "背景补充 2：私域与好友资产",
+      "背景补充 3：SEO / GEO / 算法推荐",
+      "判断 1：品牌定位\"企业微信AI客户管家\" ★必考",
+      "判断 2：市场地位的硬数字 ★必考",
+      "判断 2.5：市场部四个组的分工 ★必考",
+      "判断 3：获客正循环与流量公式 ★必考",
+      "判断 4：自我实践三条铁律 ★必考",
+      "判断 5：三大内容类型与产品宣传要点 ★必考",
+      "判断 6：公众号深耕原因与文章三问 ★必考",
+      "判断 6.5：四维评分体系 + AI写作九步SOP ★必考",
+      "判断 6.8：转化四层设计 + 发布后追踪 ☆可能考",
+      "判断 6.9：AI写作三个 Prompt 模板 ★必考（背诵）",
+      "判断 6.95：微盛软植入标准 ★必考（背诵）",
+      "判断 7：GEO 三级信源与 EEAT 原则 ☆可能考",
+      "判断 8：流量入口三次迁移 ☆可能考",
+      "概念 1：获客正循环",
+      "概念 2：GEO（生成式引擎优化）",
+      "概念 3：三级信源",
+      "概念 4：EEAT",
+      "误解 1：\"内容好看/有创意就够了\"",
+      "误解 2：\"GEO就是往AI里塞内容\"",
+      "误解 3：\"活动参加完就结束了\"",
+      "上汽案例四段结构（★问答题备考）",
+      "🔴 考前划重点（崔崔确认）",
+      "Q1 微盛的品牌定位全称是什么？",
+      "Q2 微盛服务了多少家500强企业？占企微服务商500强客户总数的多少？",
+      "Q3 市场部的流量公式是什么？",
+      "Q4 市场部的自我实践三条铁律是哪些？（多选）",
+      "Q5 市场部为什么深耕公众号（而不是只做短视频）？",
+      "Q6 在GEO的三级信源体系中，T1级信源（政府数据/学术论文/专利/白皮书）的AI信任权重是多少？",
+      "Q7 GEO中的EEAT原则包含哪四个维度？（多选）",
+      "Q8 流量入口的三次迁移，正确顺序是？",
+      "Q9 调教AI写文章时，必须让AI牢记的微盛三条核心信息是哪些？（多选）",
+      "Q10 崔崔的Prompt 1（出大纲）包含哪五个要素？"
+    ]
+  },
+  {
+    "ch": 14,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/57798435d7c645eab2b73ec09d9901a2/4c83d9f9.html",
+    "title": "商业化体系：我们怎么销售·怎么赚钱",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据（考点标注）"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡（12题闯关）"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "🔴 考卷形式（诺亚复习资料确认）",
+      "背景补充 1：SCRM vs CRM（这是基础认知）",
+      "背景补充 2：SaaS版 vs 私有化版（部署方式）",
+      "背景补充 3：大客户销售 vs 小客户销售（方法论适用场景）",
+      "背景补充 4：POC / 控标 / 上下游（销售黑话）",
+      "判断 1：人效700万与赛道定位 ★必考（填空）",
+      "判断 2：为什么是微盛——4大核心优势 ★必考（选择）",
+      "判断 3：四大产品板块与交叉销售 ★必考（填空+选择）",
+      "判断 4：SCRM产品线四版本 ★必考（选择）",
+      "判断 5：运营服务刊例价 ★必考（填空硬数字）",
+      "判断 6：客户四层分层 ★必考（选择+解析）",
+      "判断 7：销售\"一二三四五\"方法论 ★★★最核心考点（问答必考）",
+      "判断 8：报价体系4部分 + 回款5步 ★必考（填空）",
+      "判断 9：竞品3类 + 4大壁垒 + 4个必问 ★必考（选择）",
+      "判断 10：内部铁三角协同 + AI三大能力 ★必考（选择）",
+      "判断 11：WorkBuddy — 腾讯云AI原生桌面智能体平台 ★必考（独立重点）",
+      "概念 1：SCRM（社交化客户关系管理）★基本盘",
+      "概念 2：交叉销售（Cross-selling）★核心商业逻辑",
+      "概念 3：上下游（企微独有能力）★差异化",
+      "概念 4：SPIN销售法（顾问式提问）★问答考点",
+      "概念 5：控标 ★销售黑话",
+      "概念 6：外部联系人一毛钱 ★硬数字",
+      "概念 7：数字员工四大核心能力（WorkBuddy 技术卖点）★必考",
+      "概念 8：企业AI资产五类（WorkBuddy 评估核心）★必考",
+      "概念 9：WorkBuddy 落地三步走 ★场景题考点",
+      "错题回流",
+      "误解 1：「我们是行业第一」就够了",
+      "误解 2：销售就是比产品功能",
+      "误解 3：合同签了就算赢",
+      "误解 4：直接贬低竞品",
+      "误解 5：卖给客户一个产品就够了",
+      "🔴 场景题标准答案（诺亚整理 · 每题15分共45分，占比最高必练）",
+      "🔴 易错判断题（诺亚整理 · 20题选高频易错）",
+      "🔴 考前划重点",
+      "Q1 微盛和企业微信的分工是？",
+      "Q2 微盛的人效是多少？（填空硬数字）",
+      "Q3（多选）微盛卖的四大产品板块，战略定位对应正确的有？",
+      "Q4 企业微信落地推广服务的刊例价是？",
+      "Q5 销售「一二三四五」中的「一·判断」有6大维度，下列哪个不属于？",
+      "Q6 PPT说「大多数成交发生在第几次跟进之后」？（填空硬数字）",
+      "Q7 回款流程中，签合同后首付款比例是？",
+      "Q8（多选）微盛的4大竞争壁垒包括哪些？",
+      "Q9 SPIN销售法的正确顺序是？",
+      "Q10（多选）AI时代三大核心能力是？",
+      "Q11 WorkBuddy的月访问量是多少？（中国PC端AI原生办公智能体第一）",
+      "Q12（多选）WorkBuddy数字员工四大核心能力是？"
+    ]
+  },
+  {
+    "ch": 15,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/3b7536cfdb494791b249a5423b1fa411/4333f4a6.html",
+    "title": "从架构理解产品长期价值",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标与阅读路径"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据（考点标注）"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡（10题闯关）"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "🔴 不同岗位听这门课，各自抓什么（PPT第3页）",
+      "背景补充 1：单体应用 → 微服务 → 云原生（架构演进三阶段）",
+      "背景补充 2：SaaS vs 私有化（部署模式）",
+      "背景补充 3：领域驱动设计（DDD）和横切能力",
+      "背景补充 4：QPS / APM / 信创 / VPC",
+      "🔴 三张图里划线内容：优先背这些",
+      "信创、监控、自动化、私有化：选择题高频陷阱",
+      "数据集成与AI应用：填空/多选压轴点",
+      "原图依据（已归档到学习地图/img）",
+      "判断 1：领域拆分与不可能三角 ★必考（选择+解析）",
+      "判断 2：Werner Vogels 六条原则 ★必考（选择+填空）",
+      "判断 3：为什么用云原生/微服务 ★必考（选择+解析）",
+      "判断 4：高可用硬数字 ★必考（填空）",
+      "判断 5：私有化代码同源 ★必考（解析重点）",
+      "判断 6：开放能力——稳定核心与深度定制的桥 ★必考（选择+问答）",
+      "判断 7：数据飞轮——数据是护城河 ★必考（选择）",
+      "判断 8：AI架构——Agent是工程体系 ★必考（选择）",
+      "判断 9：可观测性与安全 ★必考（选择+填空）",
+      "判断 10：技术优势是一张能力网 + AI Coding ★必考（选择）",
+      "概念 1：不可能三角 ★核心认知",
+      "概念 2：扩展点 ★开放能力核心",
+      "概念 3：代码同源 ★私有化护城河",
+      "概念 4：数据飞轮 ★数据是护城河",
+      "概念 5：Harness Engineering ★AI Coding前沿",
+      "概念 6：单元化（Cell-based） ★Werner第4条",
+      "错题回流",
+      "误解 1：微服务是为了显得技术先进",
+      "误解 2：客户想改什么就改核心代码",
+      "误解 3：私有化就是拷一份代码出去",
+      "误解 4：大数据就是collect all the data",
+      "误解 5：AI Coding就是让AI写代码、人偷懒",
+      "🔴 考前划重点",
+      "Q1 微盛和企业微信的技术分工是？",
+      "Q2 Werner Vogels的六条原则来自哪家公司？",
+      "Q3（多选）云原生/微服务的核心收益包括？",
+      "Q4 微盛核心接口吞吐能力是？（填空硬数字）",
+      "Q5 微盛SaaS和私有化代码的关系是？",
+      "Q6 扩展点的本质是什么？",
+      "Q7 数据飞轮的三要素是？",
+      "Q8（多选）AI Agent工程体系包括哪些组件？",
+      "Q9 AI Coding的三个阶段，最高阶段是？",
+      "Q10 PPT原话：\"行业AI的核心价值不只是通用知识，而是？\"",
+      "M1 Werner六原则第2条\"Break complexity into pieces\"的中文是？",
+      "M2 微盛SaaS系统中有多少个业务服务？（填空硬数字）",
+      "M3 微盛的安全合规等级是？",
+      "M4 微盛私有化监控底座用的核心工具组合是？",
+      "M5 OpenAPI和扩展点的核心区别是？",
+      "M6（多选）企业微信的应用开发模式有哪三种？",
+      "M7（多选）微盛私有化代码同源的四个机制是？",
+      "M8（多选）云原生/微服务带来的代价包括？",
+      "M9（多选）技术方案思维的四个步骤是？",
+      "M10 判断：微服务/云原生是为了显得技术先进才使用的。",
+      "M11 判断：扩展点就是在核心系统里随便插代码让客户定制。",
+      "M12 判断：私有化就是把SaaS代码拷一份出去独立维护。",
+      "M13 判断：数据应该尽可能全量收集，越多越好。",
+      "M14 判断：AI Coding的本质是把工程经验、上下文和质量规则交给AI执行。",
+      "M15 场景题：企鹅说\"这不是研发内部分享，而是帮助全公司看懂产品技术体系\"。如果你是销售/运营/产品/研发，各自应该从这堂课抓什么？面对一个新客户需求，怎么判断该放标准能力、开放能力还是项目定制？"
+    ]
+  },
+  {
+    "ch": 16,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/6b52579e472c41f5a854f1408f069897/bfd8fadf.html",
+    "title": "微盛AI·企微管家产品介绍",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 原文问题定位"
+      },
+      {
+        "id": "sec4",
+        "title": "04 原文结构地图"
+      },
+      {
+        "id": "sec5",
+        "title": "05 核心判断与依据（考点标注）"
+      },
+      {
+        "id": "sec6",
+        "title": "06 关键概念拆解"
+      },
+      {
+        "id": "sec7",
+        "title": "07 苏格拉底式关卡（10题闯关）"
+      },
+      {
+        "id": "sec8",
+        "title": "08 错题本与学习报告"
+      },
+      {
+        "id": "sec9",
+        "title": "09 误解与边界"
+      },
+      {
+        "id": "sec10",
+        "title": "10 背景知识缺口"
+      },
+      {
+        "id": "sec11",
+        "title": "11 复盘与学习报告"
+      },
+      {
+        "id": "sec12",
+        "title": "12 产品培训资料包·补充考点（🌟也会考）"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SCRM vs CRM（一字之差）",
+      "背景补充 2：私域运营",
+      "背景补充 3：企微互通微信（关键时间点）",
+      "背景补充 4：会话存档",
+      "判断 1：微盛 10 年 = 企微管家 10 年（迭代历程）★必考（选择+排序）",
+      "判断 2：产品定位与四大难题 ★必考（选择+填空）",
+      "判断 3：6.0 框架三结构 ★必考（选择+填空）",
+      "判断 4：AI 不替代 SaaS，而是升级 ★必考（选择+解析）",
+      "判断 5：AI 聊天管家 = 侧边栏战略 ★必考（选择+填空）",
+      "判断 6：AI 聊天智能体 = 4 渠道一键发布 ★必考（选择）",
+      "判断 7：AI 分析智能体 = AI 连接器 ★必考（选择+解析）",
+      "判断 8：企微管家 Claw ≠ 普通大模型聊天 ★必考（选择）",
+      "判断 9：WeModel = 大模型服务平台 ★必考（选择）",
+      "判断 10：产品领先优势（硬数字压轴）★必考（填空）",
+      "概念 1：SCRM",
+      "概念 2：四大难题",
+      "概念 3：会话存档",
+      "概念 4：Skill 中心",
+      "概念 5：AI 分析智能体（AI 连接器）",
+      "错题回流",
+      "误解 1：AI 替代 SaaS 功能",
+      "误解 2：智能回复 = AI 自动发消息",
+      "误解 3：Claw = 普通 ChatGPT",
+      "误解 4：所有客户都用同一种运营模式",
+      "误解 5：微盛只做 SaaS 工具",
+      "🔴 考前划重点",
+      "Q1 微盛是哪一年发布 SCRM1.0 的？",
+      "Q2（多选）微盛企微管家解决的「四大难题」包括哪些？",
+      "Q3 SCRM 6.0 的产品架构由哪三部分组成？",
+      "Q4 AI 和 SaaS 在微盛 6.0 里的关系是？",
+      "Q5 AI 聊天管家的核心价值（战略）是？",
+      "Q6（多选）AI 聊天智能体可以一键发布到哪些渠道？",
+      "Q7 AI 分析智能体的本质定位是？",
+      "Q8 企微管家 Claw 和普通大模型聊天（如 ChatGPT）的区别是？",
+      "Q9 「集中化线上社群」运营模式的代表案例是？",
+      "Q10 微盛的规模硬数字（累计企业客户数）是？"
+    ]
+  },
+  {
+    "ch": 17,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/92e2641bc746418a83c56c72dbd3e094/21dbe66b.html",
+    "title": "客户成功的本质：服务交付与续费",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 为什么做客户成功"
+      },
+      {
+        "id": "sec4",
+        "title": "04 客户成功的工作内容"
+      },
+      {
+        "id": "sec5",
+        "title": "05 服务SOP流程"
+      },
+      {
+        "id": "sec6",
+        "title": "06 用好企微的四个关键因素（★核心考点）"
+      },
+      {
+        "id": "sec7",
+        "title": "07 客户健康度"
+      },
+      {
+        "id": "sec8",
+        "title": "08 体验转正 · 4个实战案例"
+      },
+      {
+        "id": "sec9",
+        "title": "09 增购 · 4个实战案例"
+      },
+      {
+        "id": "sec10",
+        "title": "10 续费 · 4个实战案例"
+      },
+      {
+        "id": "sec11",
+        "title": "11 协同机制与服务保障"
+      },
+      {
+        "id": "sec12",
+        "title": "12 复盘与学习报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：SaaS的商业模式",
+      "背景补充 2：续费率（金额维度）",
+      "背景补充 3：企微管家与企微的关系",
+      "核心判断 1：老客户是SaaS的生命线",
+      "核心判断 2：签约≠成功，用出价值才是",
+      "核心判断 3：客户成功是全员的事",
+      "续费率数据（★必背）",
+      "与其他岗位的协同",
+      "错题本",
+      "学习报告",
+      "Q1：做得好的SaaS企业，老客户续费收入占比大约是多少？",
+      "Q2（多选）：客户成功的三个核心结果是？",
+      "Q3：用好企微的第一个关键因素是？",
+      "Q4：因素二'命中痛点'的核心逻辑是？",
+      "Q5（多选）：CS要帮客户找到'不用会很痛'的场景，三大痛点是？",
+      "Q6：因素四'深度绑定'要达到什么效果？",
+      "Q7：微盛KA客户的金额续费率大约是多少？",
+      "Q8：续费SOP规定到期前多久启动续费动作？",
+      "Q9：客户健康度中，最大的风险信号是？",
+      "Q10：上扬课程最后的核心观点是？"
+    ]
+  },
+  {
+    "ch": 18,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/f06850a0e25c45e5889eda552fe1f980/fa8796d9.html",
+    "title": "私域运营行业全景：赛道·行业案例·AI与服务交付",
+    "sections": [
+      {
+        "id": "sec1",
+        "title": "01 学习目标"
+      },
+      {
+        "id": "sec2",
+        "title": "02 零基础背景包"
+      },
+      {
+        "id": "sec3",
+        "title": "03 赛道：为什么做私域运营"
+      },
+      {
+        "id": "sec4",
+        "title": "04 腾讯生态与微盛定位"
+      },
+      {
+        "id": "sec5",
+        "title": "05 为什么做运营服务"
+      },
+      {
+        "id": "sec6",
+        "title": "06 行业案例·零售快消"
+      },
+      {
+        "id": "sec7",
+        "title": "07 行业案例·汽车"
+      },
+      {
+        "id": "sec8",
+        "title": "08 行业案例·文旅"
+      },
+      {
+        "id": "sec9",
+        "title": "09 行业案例·大健康·平台电商"
+      },
+      {
+        "id": "sec10",
+        "title": "10 AI 对私域运营的重构"
+      },
+      {
+        "id": "sec11",
+        "title": "11 运营服务交付与人才"
+      },
+      {
+        "id": "sec12",
+        "title": "12 复盘与报告"
+      }
+    ],
+    "concepts": [
+      "背景补充 1：什么是\"私域运营\"",
+      "背景补充 2：SCRM 与 SaaS 的续费模式",
+      "背景补充 3：ToB 与 ToC 的根本差异",
+      "核心判断 1：企业微信是不可替代的私域基础设施",
+      "撑起赛道的四个硬数字（★必考填空）",
+      "核心判断 2：微盛卡在企微 × 腾讯云的交叉点",
+      "核心判断 3：微盛是腾讯四轮投资的服务商",
+      "核心判断 4：SCRM 是业务型 SaaS，工具型交付不够用",
+      "核心判断 5：做运营服务的四个商业价值",
+      "核心判断 6：私域服务市场四类玩家，微盛是唯一全能型",
+      "★必考：企业把私域运营做好的先决条件",
+      "品牌到消费者的三大营销通路（★必考）",
+      "案例：海天味业（三条业务线全覆盖）",
+      "汽车行业四大营销场景",
+      "案例1：一汽红旗——CDC 线索外呼 + 集中培育",
+      "案例2：零跑汽车——保客服务（厂店协同）",
+      "案例3：广汽本田——经销商赋能（精准营销）",
+      "文旅行业六大营销场景",
+      "案例1：长隆旅游——年卡拼团（社交裂变）",
+      "案例2：精准直销 vs 粗放营销（转化翻倍）",
+      "案例3：会员旅程二消（入园前/中/后全链路）",
+      "案例4：IP 粉丝运营 + AI 智能问答",
+      "案例1：美年大健康——团检转个检",
+      "案例2：穗华口腔——标准化营销 SOP",
+      "案例3：京东多部门深度合作（平台电商规模化）",
+      "核心判断 7：AI 替代标准化重复工作，不替代人的 know-how（★必考）",
+      "AI 能替代 vs 不能替代（★简答高频）",
+      "核心判断 8：微盛的 AI 两条路线——内部提效 + 外部商业化",
+      "案例：达能——三个已上线 AI Agent 场景",
+      "案例：某头部手机品牌——会话存档 AI 数据分析（年费 100 万+）",
+      "核心判断 9：行业化 know-how 是真正的壁垒",
+      "四类服务（由浅到深）",
+      "行业运营管培生培养路径（★简答）",
+      "核心判断 10：ToB 必须在一线，微盛是最佳起点",
+      "10 条核心判断速记",
+      "全部硬数字速记（考前必背）",
+      "✍️ 简答题（6题，点击展开参考答案）",
+      "错题本",
+      "学习报告",
+      "Q1：为什么钉钉、飞书做不了私域运营？",
+      "Q2：企业微信注册企业数是多少？占中国企业多大比例？",
+      "Q3：微盛为什么一定要做运营服务（而不只是卖工具）？",
+      "Q4：微盛在私域服务市场的核心竞争优势是？",
+      "Q5（多选）：运营服务的四个商业价值是？",
+      "Q6：一桐认为 AI 对私域运营的核心影响是？",
+      "Q7：零售快消品牌到消费者的三大营销通路，占比正确的是？",
+      "Q8：某头部手机品牌的会话存档 AI 数据分析服务规模和收费是？",
+      "Q9：微盛在 ToB 领域真正的壁垒是？",
+      "Q10：一桐认为做 ToB 最重要的原则是？",
+      "简答 1：请论述微盛为什么必须做运营服务，而不仅仅是卖 SCRM 工具？（至少 3 个理由）",
+      "简答 2：一桐说\"AI 能替代的越多，不能替代的越凸显\"。请解释这句话，并举例说明 AI 能替代什么、不能替代什么。",
+      "简答 3：请简述零售快消行业\"品牌到消费者\"的三大营销通路及其占比，并说明各通路的私域运营角色。",
+      "简答 4：某头部手机品牌的会话存档 AI 数据分析服务包含哪些核心价值？为什么企业愿意为此付费（年费 100 万+）？",
+      "简答 5：一桐认为\"做 ToB 应该在最接近企业的创业公司（如微盛），而不是在大厂平台\"。请论述她的理由。",
+      "简答 6（★必考）：一个企业要把私域运营做好，需要哪些先决条件？"
+    ]
+  },
+{
+    "ch": 19,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/c1c2ef77fd4f4da2b11aa4d4a9f52fb0/b7082633.html",
+    "title": "管培生AI工具使用培训",
+    "sections": [
+        {
+            "id": "sec1",
+            "title": "01 学习目标"
+        },
+        {
+            "id": "sec2",
+            "title": "02 零基础背景包"
+        },
+        {
+            "id": "sec3",
+            "title": "03 原文问题定位"
+        },
+        {
+            "id": "sec4",
+            "title": "04 原文结构地图"
+        },
+        {
+            "id": "sec5",
+            "title": "05 核心判断与依据"
+        },
+        {
+            "id": "sec6",
+            "title": "06 关键概念拆解"
+        },
+        {
+            "id": "sec7",
+            "title": "07 苏格拉底式关卡"
+        },
+        {
+            "id": "sec8",
+            "title": "08 错题本与学习报告"
+        },
+        {
+            "id": "sec9",
+            "title": "09 误解与边界"
+        },
+        {
+            "id": "sec10",
+            "title": "10 背景知识缺口"
+        },
+        {
+            "id": "sec11",
+            "title": "11 复盘与学习报告"
+        },
+        {
+            "id": "sec12",
+            "title": "12 课后作业"
+        }
+    ],
+    "concepts": [
+        "背景补充 1：大模型（LLM）是什么",
+        "背景补充 2：Agent（智能体）是什么",
+        "背景补充 3：上下文窗口（Context Window）",
+        "背景补充 4：微盛 S+（SCRM）",
+        "判断1 · AI 是基础能力，不是额外工具课 ★必考",
+        "判断2 · 微盛主推企微管家 Cloud + WorkBuddy，入门优先 Cloud ★必考",
+        "判断3 · 大模型无记忆、不知实时信息，靠 Agent 调工具+打包上下文 ★必考",
+        "判断4 · ReAct = 推理思考+行动+观察的循环 ★必考",
+        "判断5 · AI 不是自动知道你全部工作，只看上下文窗口 ★必考",
+        "判断6 · Skill=专家经验菜谱，有Skill稳定80分，无Skill 50-60分 ★必考",
+        "判断7 · 你讲得越清楚越精确，越模糊越不稳定 ★必考",
+        "判断8 · AI 适合规则清晰+重复度高的任务",
+        "判断9 · AI 有幻觉、能删文件，关键判断和责任在使用人 ★必考",
+        "判断10 · AIFirst + 会用AI的人持续放大能力 ★最重要",
+        "概念1：通用聊天 vs 通用 Agent",
+        "概念2：企微管家 Cloud vs WorkBuddy",
+        "概念3：ReAct 框架",
+        "概念4：上下文窗口五部分",
+        "概念5：Skill 技能",
+        "概念6：任务五要素",
+        "错题本",
+        "生成学习报告",
+        "误解1：以为豆包/千问能查本地文件",
+        "误解2：以为大模型有记忆",
+        "误解3：以为 WorkBuddy 不能调微盛技能",
+        "误解4：以为 AI 输出可以直接用",
+        "误解5：以为 AIFirst 是\"会用某个工具\"",
+        "作业①（核心）：生成客户专属 SCRM 解决方案 PPT",
+        "作业②（进阶）：沉淀一个自己的 Skill",
+        "作业③（进阶）：分享一个 AI 使用案例",
+        "Q1 能访问你本地文件、交付文件/PPT 等实际产出的是哪类 AI 工具？",
+        "Q2 一休建议管培生入门阶段优先用哪个工具？",
+        "Q3（多选）Agent 打包给大模型的上下文窗口包含哪些部分？",
+        "Q4 大模型为什么能\"记住\"你前几轮聊过什么？",
+        "Q5 ReAct 框架的核心机制是？",
+        "Q6 一休说\"有 Skill 能稳定到___分，没有 Skill 只能___分\"？",
+        "Q7（多选）一休说的\"任务五要素\"（发起一个好任务）包括？",
+        "Q8 怎么把企微聊天记录喂给 AI？",
+        "Q9（多选）一休对管培生的四个期望是？",
+        "Q10 一休说\"未来的工作\"本质是？"
+    ]
+},
+{
+    "ch": 20,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/113323039d4b4d028d9738aaf528feec/25f253d5.html",
+    "title": "金融行业专题培训：微盛X金融一场双向奔赴",
+    "sections": [
+        {
+            "id": "sec1",
+            "title": "01 学习目标"
+        },
+        {
+            "id": "sec2",
+            "title": "02 零基础背景包"
+        },
+        {
+            "id": "sec3",
+            "title": "03 原文问题定位"
+        },
+        {
+            "id": "sec4",
+            "title": "04 原文结构地图"
+        },
+        {
+            "id": "sec5",
+            "title": "05 核心判断与依据"
+        },
+        {
+            "id": "sec6",
+            "title": "06 关键概念拆解"
+        },
+        {
+            "id": "sec7",
+            "title": "07 苏格拉底式关卡"
+        },
+        {
+            "id": "sec8",
+            "title": "08 错题本与学习报告"
+        },
+        {
+            "id": "sec9",
+            "title": "09 误解与边界"
+        },
+        {
+            "id": "sec10",
+            "title": "10 背景知识缺口"
+        },
+        {
+            "id": "sec11",
+            "title": "11 复盘与作业"
+        }
+    ],
+    "concepts": [
+        "背景补充 1：企业微信（企微）与企微管家",
+        "背景补充 2：AUM（资产管理规模）",
+        "背景补充 3：长尾客群与代发工资",
+        "背景补充 4：合规与KYC认证",
+        "背景补充 5：苏茉是谁（讲师视角）",
+        "概念1：双向奔赴",
+        "概念2：管护模式 vs 指引模式",
+        "概念3：金融企业管家（金融版）",
+        "概念4：上输下送（在职继承）",
+        "概念5：无感认证",
+        "概念6：对照组实验",
+        "错题本",
+        "生成学习报告",
+        "误解1：以为金融需求爆发是运气好",
+        "误解2：以为金融是第一大收入",
+        "误解3：以为微盛所有行业都有专属版",
+        "误解4：以为运营只在签约后介入",
+        "误解5：以为三大案例数据是自吹自擂",
+        "误解6：以为上输下送方向一样",
+        "课后作业",
+        "Q1 微盛坚定金融战略，金融需求爆发的依据是？",
+        "Q2 金融给微盛贡献的收入占比和排名是？",
+        "Q3 关于金融企业管家（金融版），正确的是？",
+        "Q4 金融机构用企微的核心目的是？",
+        "Q5 银行的管护模式和指引模式的区别是？",
+        "Q6 金融项目签约前的流程顺序是？",
+        "Q7 三大场景案例的AUM提升数据，正确的是？",
+        "Q8（多选）运营反哺系统的三个功能是？",
+        "Q9 金融机构拥抱AI的核心动力是？",
+        "Q10（多选）管培生在金融项目能长出哪些能力？",
+        "Q11 苏茉给管培生的核心寄语是？"
+    ]
+},
+  {
+    "ch": 21,
+    "level": 2,
+    "file": "https://help.wshoto.com/resource/35b0a6ab56144aa5b93c9ed0df82e86e/0c5e0f07.html",
+    "title": "售前解决方案方法论：从需求到方案",
+    "sections": [
+        { "id": "sec1", "title": "01 学习目标" },
+        { "id": "sec2", "title": "02 零基础背景包" },
+        { "id": "sec3", "title": "03 原文问题定位" },
+        { "id": "sec4", "title": "04 原文结构地图" },
+        { "id": "sec5", "title": "05 核心判断与依据" },
+        { "id": "sec6", "title": "06 关键概念拆解" },
+        { "id": "sec7", "title": "07 苏格拉底式关卡" },
+        { "id": "sec8", "title": "08 错题本与学习报告" },
+        { "id": "sec9", "title": "09 误解与边界" },
+        { "id": "sec10", "title": "10 背景知识缺口" },
+        { "id": "sec11", "title": "11 复盘与作业" }
+    ],
+    "concepts": [
+        "背景补充 1：B2B销售与售前岗位",
+        "背景补充 2：SPIN销售法与尼尔·雷克汉姆",
+        "背景补充 3：SOW、POC、ROI、KP",
+        "背景补充 4：DST、铁三角、控标",
+        "概念1：SPIN销售法",
+        "概念2：BANT商机评分",
+        "概念3：DST项目理解",
+        "概念4：控标",
+        "概念5：决策链4角色",
+        "概念6：铁三角作战单元",
+        "错题本",
+        "生成学习报告",
+        "误解1：售前是销售的技术助理/下级",
+        "误解2：SPIN是固定话术",
+        "误解3：方案功能讲全越专业",
+        "误解4：控标=作弊/违法",
+        "误解5：搞定决策人就够了",
+        "误解6：被问住要硬编答案",
+        "课后作业",
+        "Q1 售前三角色是？",
+        "Q2 售前三重知识价值排序？",
+        "Q3 售前全流程6阶段顺序？",
+        "Q4 SPIN四类问题正确顺序？",
+        "Q5（多选）方案四大常见病？",
+        "Q6 方案撰写铁律？",
+        "Q7 竞争铁律？",
+        "Q8 控标最佳时机？",
+        "Q9 决策链决策人讲什么？",
+        "Q10 客户说太贵高情商应对？",
+        "Q11 售前成长三段位本质差异？"
+    ]
+  }
+];;;;;
+
+// 搜索关键词扩展（同义词/别名）
+var SYNONYMS = {
+  '活码': ['活码','智能二维码','时刻码','区域活码','群活码'],
+  '联系我': ['联系我','加好友','二维码'],
+  'crm': ['CRM','漏斗','线索','商机','订单','联系人'],
+  '会话存档': ['会话存档','存档','留痕','合规','5天','拉取'],
+  '离职': ['离职','继承','转接','客户资产'],
+  '折扣': ['折扣','6折','85折','审批','刊例价'],
+  '成本': ['成本','100%','红线','赠送'],
+  '审批': ['审批','或签','会签','依次','办理人','OA'],
+  '群': ['群','全员群','部门群','客户群','500人','2000人'],
+  '朋友圈': ['朋友圈','3条','共用'],
+  '群发': ['群发','2000','超级群发'],
+  '存档版本': ['办公版','服务版','企业版','VOIP'],
+  'ai': ['AI','智能质检','知识库','智能问答','混元','智谱','GLM'],
+  '合同': ['合同','工单','收款','开票','闭环'],
+  '标签': ['标签','企业标签','个人标签'],
+  '安全': ['安全','加密','SOC2','水印','截屏'],
+  '平台操作': ['platform','wshoto','平台','后台','操作','配置','点击路径','怎么配','怎么用','菜单','入口','实操手册'],
+  '商机': ['商机','销售管理','CRM','漏斗','赢单','公海','代客订单']
+};
+
+function escapeReg(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+
+function search(kw){
+  if(!kw||!kw.trim()) return [];
+  kw=kw.trim().toLowerCase();
+  // 同义词扩展
+  var kws=[kw];
+  for(var k in SYNONYMS){
+    if(kw.indexOf(k.toLowerCase())>=0||k.toLowerCase().indexOf(kw)>=0){
+      kws=kws.concat(SYNONYMS[k].map(function(s){return s.toLowerCase();}));
+    }
+  }
+  // 去重
+  kws=kws.filter(function(v,i,self){return self.indexOf(v)===i;});
+  var results=[];
+  SEARCH_INDEX.forEach(function(ch){
+    var chTag='ch'+ch.ch;
+    var chLabel='第'+ch.ch+'章';
+    // 搜章节标题
+    ch.sections.forEach(function(sec){
+      var text=(sec.title||'').toLowerCase();
+      var hit=kws.some(function(k){return text.indexOf(k)>=0;});
+      if(hit){
+        results.push({ch:ch.ch,file:ch.file,anchor:sec.id,title:sec.title,type:'章节',chTag:chTag,chLabel:chLabel,context:ch.title});
+      }
+    });
+    // 搜概念/判断
+    ch.concepts.forEach(function(con){
+      var text=(con||'').toLowerCase();
+      var hit=kws.some(function(k){return text.indexOf(k)>=0;});
+      if(hit){
+        // 概念多在 sec5/sec6，简单归类
+        var anchor = con.indexOf('判断')>=0?'sec5':'sec6';
+        var type = con.indexOf('判断')>=0?'核心判断':(con.indexOf('概念')>=0?'关键概念':(con.indexOf('误解')>=0?'误解边界':'知识点'));
+        results.push({ch:ch.ch,file:ch.file,anchor:anchor,title:con,type:type,chTag:chTag,chLabel:chLabel,context:ch.title});
+      }
+    });
+    // 搜章节大标题（整章匹配）
+    var chTitle=ch.title.toLowerCase();
+    if(kws.some(function(k){return chTitle.indexOf(k)>=0;})){
+      results.push({ch:ch.ch,file:ch.file,anchor:'sec1',title:ch.title,type:'整章',chTag:chTag,chLabel:chLabel,context:'进入第'+ch.ch+'章学习'});
+    }
+  });
+  // 去重（同章节同标题只留一条）
+  var seen={};var dedup=[];
+  results.forEach(function(r){var key=r.ch+'|'+r.title+'|'+r.anchor;if(!seen[key]){seen[key]=1;dedup.push(r);}});
+  return dedup;
+}
+
+function renderResults(kw){
+  var box=document.getElementById('searchResults');
+  var list=document.getElementById('chaptersList');
+  if(!kw||!kw.trim()){
+    box.innerHTML='';
+    list.style.display='';
+    return;
+  }
+  list.style.display='none';
+  var results=search(kw);
+  if(!results.length){
+    box.innerHTML='<div class="result-empty">没有找到包含"'+kw+'"的内容，试试其他关键词，如：活码、CRM、会话存档、折扣</div>';
+    return;
+  }
+  box.innerHTML='<div style="font-size:13px;color:#888;margin-bottom:8px;">找到 '+results.length+' 条结果（点击直达）：</div>';
+  results.forEach(function(r){
+    var a=document.createElement('a');
+    a.className='result-item';
+    a.href=r.file+'#'+r.anchor;a.target='_blank';a.rel='noopener';
+    a.innerHTML='<span class="result-tag '+r.chTag+'">'+r.chLabel+'</span><span class="result-type">'+r.type+'</span><div class="result-title">'+r.title+'</div><div class="result-context">'+r.context+'</div>';
+    box.appendChild(a);
+  });
+}
+
+document.getElementById('searchBtn').addEventListener('click',function(){
+  renderResults(document.getElementById('searchInput').value);
+});
+document.getElementById('searchInput').addEventListener('input',function(){
+  renderResults(this.value);
+});
+document.getElementById('searchInput').addEventListener('keydown',function(e){
+  if(e.key==='Enter'){renderResults(this.value);}
+});
+
+// === 首页统计：从 SEARCH_INDEX 动态计算，绝不写死 ===
+// 写死会导致"加了章/题但统计没更新"的错误信息。这里一律从数据算。
+(function(){
+  var chCount = SEARCH_INDEX.length;
+  var moduleCount = SEARCH_INDEX.reduce(function(s,ch){return s+(ch.sections?ch.sections.length:0);},0);
+  // 交互题在各 chapter*.html 里，index 页静态读不到。这里只展示能从数据算准的数（章/模块），
+  // 题数交给各章页内的进度条显示，避免在首页维护第二份易错的题数。
+  var el = document.getElementById('siteStats');
+  if(el) el.textContent = chCount + ' 章 · ' + moduleCount + ' 个学习模块';
+  var hint = document.getElementById('searchHint');
+  if(hint) hint.textContent = '在 ' + chCount + ' 章学习地图中搜索任意关键词，点击结果直达对应章节位置';
+})();
+</script>
+<link rel="stylesheet" href="../promo.css">
+<script src="../promo.js"></script>
+</body>
+</html>

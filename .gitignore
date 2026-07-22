@@ -5,5 +5,9 @@ _search_out.txt
 search_index_new.js
 _final_verify.mjs
 _update_*.cjs
+_decrypt.cjs
+_encrypt_home.cjs
+_build_trainee.cjs
+_verify_home.cjs
 .playwright-cli/
 *.tmp

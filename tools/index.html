@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>泽恩的小工具 — 捞鱼·学习与工具</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF6EB;--paper:#F3EDDD;--forest:#1E3A24;--sky:#BCD8EE;--sage:#AFCDA8;--ink:#1A2018;--marker:#F5E08A;--brick:#B5482A;--font-display:"Archivo Black","Noto Sans SC","PingFang SC",sans-serif;--font-head:"Poppins","Noto Sans SC","PingFang SC",sans-serif;--font-body:-apple-system,"PingFang SC","Noto Sans SC",sans-serif;--radius-card:14px;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-height:1.7;min-height:100vh;}
+.header{text-align:center;padding:60px 20px 24px;}
+.header img.mascot{width:96px;height:96px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(3px 3px 0 rgba(30,58,36,.2));}
+.header h1{font-family:var(--font-display);font-size:42px;color:var(--forest);margin-bottom:8px;}
+.header p{font-size:18px;color:#666;max-width:600px;margin:0 auto;}
+.tools{max-width:900px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+.tool-card{background:var(--paper);border-radius:var(--radius-card);padding:24px;text-decoration:none;color:var(--ink);transition:.2s;border-left:6px solid var(--sage);position:relative;overflow:hidden;}
+.tool-card:hover{transform:translateX(4px);box-shadow:0 4px 16px rgba(30,58,36,.1);border-left-color:var(--forest);}
+.tool-card .tc-icon{font-size:34px;margin-bottom:8px;display:block;}
+.tool-card .tc-title{font-family:var(--font-head);font-size:19px;font-weight:700;color:var(--forest);margin-bottom:6px;}
+.tool-card .tc-desc{font-size:14px;color:#555;line-height:1.6;}
+.tool-card .tc-soon{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--brick);background:#FFF3F0;border:1px dashed var(--brick);padding:3px 10px;border-radius:999px;}
+.empty-note{max-width:900px;margin:0 auto 30px;padding:20px 24px;background:var(--paper);border-radius:var(--radius-card);border-left:6px solid var(--sky);font-size:15px;color:#555;}
+.empty-note b{color:var(--forest);}
+.footer{text-align:center;padding:32px;font-size:13px;color:#888;border-top:1px solid #D4C4A8;}
+.footer a{color:var(--brick);text-decoration:underline;}
+.back-home{position:fixed;left:20px;bottom:20px;z-index:1000;display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;border:2px solid var(--forest);background:var(--cream);color:var(--forest);font-weight:700;font-size:14px;font-family:var(--font-body);text-decoration:none;box-shadow:3px 3px 0 rgba(30,58,36,.25);transition:transform .15s,box-shadow .15s;}
+.back-home:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(30,58,36,.25);}
+@media(max-width:600px){.header h1{font-size:30px;}}
+</style>
+</head>
+<body>
+<a class="back-home" href="../index.html">🏠 返回首页</a>
+
+<div class="header">
+  <img class="mascot" src="../img/sticker/sprint.png" alt="泽恩的小工具">
+  <h1>泽恩的小工具 🛠️</h1>
+  <p>这里收集我做的一些实用小工具，陆续更新中。</p>
+</div>
+
+<div class="empty-note">
+  🔧 工具还在打磨中，先占个坑。<b>有想法、想定制，或者发现 bug</b>，欢迎到「关于捞鱼」里找我反馈。
+</div>
+
+<div class="tools">
+  <div class="tool-card">
+    <span class="tc-icon">⚡</span>
+    <div class="tc-title">效率工具</div>
+    <div class="tc-desc">日常办公、批处理类的小脚本与在线工具，帮我把重复活儿自动化。</div>
+    <span class="tc-soon">🚧 即将上线</span>
+  </div>
+  <div class="tool-card">
+    <span class="tc-icon">🔄</span>
+    <div class="tc-title">格式转换</div>
+    <div class="tc-desc">文档、图片、数据格式互转，少装一个软件、少开一次浏览器。</div>
+    <span class="tc-soon">🚧 即将上线</span>
+  </div>
+  <div class="tool-card">
+    <span class="tc-icon">📊</span>
+    <div class="tc-title">数据可视化</div>
+    <div class="tc-desc">把表格数据一键变成好看又清楚的图表，汇报、复盘都能用。</div>
+    <span class="tc-soon">🚧 即将上线</span>
+  </div>
+  <div class="tool-card">
+    <span class="tc-icon">🎁</span>
+    <div class="tc-title">更多工具</div>
+    <div class="tc-desc">敬请期待，好玩又实用的小东西会持续往这里放。</div>
+    <span class="tc-soon">🚧 即将上线</span>
+  </div>
+</div>
+
+<div class="footer">
+  由 <a href="https://lyzbcy.github.io/" target="_blank" rel="noopener" style="color:#1d70b8;text-decoration:underline;font-weight:700">捞鱼</a> 制作 · 泽恩的小工具
+</div>
+
+<link rel="stylesheet" href="../promo.css">
+<script src="../promo.js"></script>
+</body>
+</html>
