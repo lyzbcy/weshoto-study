@@ -23,6 +23,11 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-
 .tool-card .tc-title{font-family:var(--font-head);font-size:19px;font-weight:700;color:var(--forest);margin-bottom:6px;}
 .tool-card .tc-desc{font-size:14px;color:#555;line-height:1.6;}
 .tool-card .tc-soon{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--brick);background:#FFF3F0;border:1px dashed var(--brick);padding:3px 10px;border-radius:999px;}
+.tool-card.live{border-left-color:var(--forest);}
+.tool-card .tc-tag{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:#2F7D46;background:#E8F5EC;border:1px solid var(--sage);padding:3px 10px;border-radius:999px;}
+.tool-card .tc-meta{font-size:12px;color:#888;margin-top:8px;}
+.tool-card .tc-features{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.tool-card .tc-features span{font-size:11px;color:#555;background:var(--cream);border:1px solid var(--paper);padding:2px 8px;border-radius:999px;}
 .empty-note{max-width:900px;margin:0 auto 30px;padding:20px 24px;background:var(--paper);border-radius:var(--radius-card);border-left:6px solid var(--sky);font-size:15px;color:#555;}
 .empty-note b{color:var(--forest);}
 .footer{text-align:center;padding:32px;font-size:13px;color:#888;border-top:1px solid #D4C4A8;}
@@ -42,16 +47,20 @@ body{font-family:var(--font-body);background:var(--cream);color:var(--ink);line-
 </div>
 
 <div class="empty-note">
-  🔧 工具还在打磨中，先占个坑。<b>有想法、想定制，或者发现 bug</b>，欢迎到「关于捞鱼」里找我反馈。
+  🎉 第一个工具已上线：<b>捞鱼的网络工具</b>（macOS 网络诊断修复神器）。后面还有更多在准备中。<b>有想法、想定制，或者发现 bug</b>，欢迎到「关于捞鱼」里找我反馈。
 </div>
 
 <div class="tools">
-  <div class="tool-card">
-    <span class="tc-icon">⚡</span>
-    <div class="tc-title">效率工具</div>
-    <div class="tc-desc">日常办公、批处理类的小脚本与在线工具，帮我把重复活儿自动化。</div>
-    <span class="tc-soon">🚧 即将上线</span>
-  </div>
+  <a class="tool-card live" href="https://help.wshoto.com/resource/70c3ed19ddbc4a9fa158d585895e683d/f4d7c86e.html" target="_blank" rel="noopener">
+    <span class="tc-icon">🛠️</span>
+    <div class="tc-title">捞鱼的网络工具</div>
+    <div class="tc-desc">macOS 网络自诊断、自修复神器。DNS / 代理 / WiFi / 网速测试 / 公网守护 / 公司 VPN 与梯子共存，一个工具搞定网络问题。</div>
+    <div class="tc-features">
+      <span>🚀 一键诊断</span><span>🛡️ 公网守护</span><span>🧹 修复工具箱</span><span>📶 WiFi测速</span><span>🔒 VPN共存</span>
+    </div>
+    <div class="tc-meta">🍎 仅 macOS（Apple Silicon）· v4.3 · 1.6 MB · 开源免费</div>
+    <span class="tc-tag">✅ 查看详情 / 下载 →</span>
+  </a>
   <div class="tool-card">
     <span class="tc-icon">🔄</span>
     <div class="tc-title">格式转换</div>
