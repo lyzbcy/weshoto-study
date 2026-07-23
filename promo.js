@@ -5,6 +5,11 @@
   "use strict";
 
   // —— 配置（按 skill 默认值，可改）——
+  // 站点根路径：本仓库部署在 https://lyzbcy.github.io/weshoto-study/（GitHub 项目站）。
+  // promo.js 被根目录、trainee/、tools/ 三类页面共用，图片必须用"根相对路径"
+  // （即 /weshoto-study/ 开头），否则在子目录页（trainee/*.html、tools/*.html）
+  // 会解析成 trainee/img/... → 404 裂图。
+  var BASE = "/weshoto-study/";
   var CONFIG = {
     studio: "捞鱼工作室",
     author: "捞鱼",
@@ -13,14 +18,14 @@
     about: "https://lyzbcy.github.io/about/", // 作者主页（更详细介绍）
     // 作者头像（固定 URL，imgtu 图床）
     avatar: "https://s41.ax1x.com/2025/12/05/pZmPZPH.png",
-    // QQ群二维码（与项目同仓库托管，路径相对页面）
-    qqGroupImg: "img/qq-group.jpg",
+    // QQ群二维码（自托管，根相对路径）
+    qqGroupImg: BASE + "img/qq-group.jpg",
     qqGroupTip: "📱 长按或扫码加群 · 也可以直接搜索群号",
-    // 赞赏二维码（与项目同仓库托管）
-    rewardImg: "img/reward-qr.jpg",
+    // 赞赏二维码（自托管，根相对路径）
+    rewardImg: BASE + "img/reward-qr.jpg",
     rewardTip: "📱 长按或扫码赞赏 · 金额随意，心意到就好",
-    // 微信表情包下载二维码（自托管，与项目同仓库，避免图床失效）
-    stickerQr: "img/sticker/sticker-qr.png",
+    // 微信表情包下载二维码（自托管，根相对路径）
+    stickerQr: BASE + "img/sticker/sticker-qr.png",
     stickerTip: "📱 长按或扫码 · 微信里也能用这些表情"
   };
 
@@ -82,11 +87,11 @@
           // 表情包
           '<div class="promo-cell">' +
             '<div class="promo-cell-head"><span class="icon">😺</span>微信表情包</div>' +
-            '<p class="promo-cell-sub">周三涵 / 周五涵 / 星星布丁系列，扫码即可在微信使用 ✨</p>' +
+            '<p class="promo-cell-sub">星星布丁系列，扫码即可在微信使用 ✨</p>' +
             '<div class="promo-sticker-preview">' +
-              '<img src="img/sticker/welcome.png" alt="">' +
-              '<img src="img/sticker/ok.png" alt="">' +
-              '<img src="img/sticker/cheer.png" alt="">' +
+              '<img src="' + BASE + 'img/sticker/stars/snicker.png" alt="偷笑">' +
+              '<img src="' + BASE + 'img/sticker/stars/cheer.png" alt="加油">' +
+              '<img src="' + BASE + 'img/sticker/stars/thanks.png" alt="谢谢">' +
             '</div>' +
             '<img src="' + CONFIG.stickerQr + '" alt="微信表情包二维码">' +
             '<p class="promo-cell-tip">' + CONFIG.stickerTip + '</p>' +

@@ -94,7 +94,7 @@
 (function(){
   "use strict";
   // 版本检测：内联版本号 vs version.json，不一致就刷新（解决CDN缓存旧HTML的问题）
-  var PAGE_V = 26;
+  var PAGE_V = 27;
   fetch('version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(d){
     if(PAGE_V!==d.v){
       var alreadyRefreshed=false;
