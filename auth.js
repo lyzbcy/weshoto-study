@@ -32,8 +32,29 @@
   }
 
   // —— 用户名 → 假邮箱 ——
+  // 邮箱 @ 前只允许 ASCII，所以中文/特殊字符要编码成可逆的 ASCII。
+  // 策略：纯字母数字用户名直接用（如 zeen → zeen@weshoto.local，可读）；
+  //       含中文等非 ASCII 字符则整体 encodeURIComponent（如 泽恩 → %E6%B3%BD%E6%81%A9@weshoto.local）。
+  //       登录时同样用这套转换，保证输入"泽恩"两次编码结果一致、能匹配上。
   function toFakeEmail(username) {
-    return username.trim().toLowerCase() + "@" + FAKE_DOMAIN;
+    var s = username.trim();
+    // 全是 ASCII 字母数字下划线连字符 → 直接拼（邮箱可读、符合 Supabase 校验）
+    if (/^[A-Za-z0-9_\-]+$/.test(s)) {
+      return s.toLowerCase() + "@" + FAKE_DOMAIN;
+    }
+    // 含中文等非 ASCII → 整体 URL 编码（纯 ASCII，Supabase 接受）
+    return encodeURIComponent(s) + "@" + FAKE_DOMAIN;
+  }
+
+  // —— 假邮箱 → 显示用用户名（从 session.email 反解出原始名）——
+  function emailToUsername(email) {
+    if (!email) return "";
+    var local = email.split("@")[0];
+    // 带 % 的是编码过的中文，解码还原；纯字母数字直接用
+    if (local.indexOf("%") !== -1) {
+      try { return decodeURIComponent(local); } catch (e) { return local; }
+    }
+    return local;
   }
 
   // —— 用户名校验：2~16 位，字母数字下划线中文（防注入、防拼出非法邮箱）——
@@ -49,7 +70,7 @@
   function parseUser(session) {
     if (!session || !session.user) return null;
     var email = session.user.email || "";
-    var username = email.split("@")[0];
+    var username = emailToUsername(email);
     return { id: session.user.id, username: username, session: session };
   }
 
@@ -241,7 +262,7 @@
     var password = document.getElementById("authPass").value || "";
 
     if (!validUsername(username)) {
-      showErr("用户名要 2~16 位，只能中文/字母/数字/下划线");
+      showErr("用户名要 2~16 位，支持中文/字母/数字/下划线");
       return;
     }
     if (password.length < 6) {
@@ -267,11 +288,26 @@
         showErr("注册成功，但 Supabase 开了邮箱验证。去 Authentication→Providers→Email 关掉 Confirm email 即可免验证登录");
         return;
       }
+      // 注册成功：把可读的真实用户名写进 profiles（覆盖触发器存的编码值，让中文正常显示）
+      if (mode === "register" && res.data && res.data.user) {
+        ensureProfile(res.data.user.id, username);
+      }
       close();
     }).catch(function (err) {
       setLoading(false);
       showErr(humanizeError(err));
     });
+  }
+
+  // —— 注册后修正 profile.username 为真实（中文）用户名 ——
+  // 触发器只会存 email 的 @ 前部分（编码过的），这里 upsert 成可读的原始名。
+  // 失败不影响登录（评论显示名走 comments.username 冗余字段），静默处理。
+  function ensureProfile(uid, displayName) {
+    if (!SUPA) return;
+    SUPA.from("profiles").upsert(
+      { id: uid, username: displayName },
+      { onConflict: "id" }
+    ).then(function () {}).catch(function () {});
   }
 
   function doLogout() {

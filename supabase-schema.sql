@@ -67,19 +67,17 @@ create policy "comments_delete_self" on public.comments
 
 
 -- ---------- 3. 注册触发器：新建 auth 用户 → 自动建 profile ----------
--- 用户名从假邮箱 `用户名@weshoto.local` 的 @ 前部分提取
--- （前端把「用户名」拼成假邮箱去注册，用户无感知）
+-- 触发器只做兜底：存 email 的 @ 前部分（可能是 URL 编码的中文，如 %E6%B3%BD%E6%81%A9）。
+-- 真实的中文显示名由前端在注册成功后直接 upsert 到 profiles.username（见 auth.js ensureProfile），
+-- 这样 profiles.username 始终是可读的原始用户名，不依赖 SQL 端做 URL 解码。
 create or replace function public.handle_new_user()
 returns trigger
 language plpgsql
 security definer set search_path = public
 as $$
-declare
-  v_username text;
 begin
-  v_username := split_part(new.email, '@', 1);
   insert into public.profiles (id, username)
-  values (new.id, v_username)
+  values (new.id, split_part(new.email, '@', 1))
   on conflict (id) do nothing;
   return new;
 end;
