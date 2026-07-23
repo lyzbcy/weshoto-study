@@ -204,6 +204,15 @@
 </script>
 <link rel="stylesheet" href="../promo.css">
 <script src="../promo.js"></script>
+<!-- weshoto-comments-inject-begin -->
+<!-- 登录 + 划选文字评论（依赖顺序：supabase-js → config → auth → comments） -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="../auth.css">
+<link rel="stylesheet" href="../comments.css">
+<script src="../supabase-config.js"></script>
+<script src="../auth.js"></script>
+<script src="../comments.js"></script>
+<!-- weshoto-comments-inject-end -->
 <script>(function(){"use strict";var MAP={"01":"go","02":"welcome","03":"important","04":"cheer","05":"important","06":"sleep","07":"sprint","08":"go","09":"no","10":"sleep","11":"final"};function run(){document.querySelectorAll("h2[id^=sec]").forEach(function(h){var m=h.id.match(/sec(\d+)/);if(!m)return;var name=MAP[m[1]];if(!name)return;if(h.querySelector(".sec-sticker"))return;var img=document.createElement("img");img.className="sec-sticker";img.src="../img/sticker/"+name+".png";img.alt="";h.insertBefore(img,h.firstChild)})}if(document.readyState=="loading")document.addEventListener("DOMContentLoaded",run);else run()})();</script>
 </body>
 </html>

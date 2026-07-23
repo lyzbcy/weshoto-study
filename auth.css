@@ -1,0 +1,186 @@
+/* 用户登录/注册 · auth.css
+   视觉风格与 promo.css、首页密码门保持一致（手绘风：粗边框 + 黄 marker + 偏移阴影） */
+
+/* —— 右下角登录态入口浮条（与 promo-bar 并列，z-index 低一档避免打架）—— */
+.auth-bar {
+  position: fixed;
+  right: 20px;
+  bottom: 72px;             /* 避开 promo-bar（它在 bottom:20px） */
+  z-index: 9998;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+.auth-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--forest, #1E3A24);
+  background: #fffaf0;
+  color: var(--forest, #1E3A24);
+  font-weight: 700;
+  font-size: 14px;
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 rgba(30, 58, 36, 0.25);
+  transition: transform .15s, box-shadow .15s;
+  line-height: 1.2;
+  max-width: 220px;
+}
+.auth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 5px 0 rgba(30, 58, 36, 0.3);
+}
+.auth-btn .emoji { font-size: 16px; }
+.auth-btn .name {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.auth-btn.logout {
+  background: #FAF6EB;
+  font-size: 12px;
+  padding: 7px 12px;
+  box-shadow: 2px 2px 0 rgba(30, 58, 36, 0.2);
+}
+
+/* —— 登录/注册浮窗 —— */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 32, 24, 0.55);
+  z-index: 10001;           /* 压在 promo-overlay(10000) 之上 */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.auth-overlay.show { display: flex; }
+.auth-card {
+  background: var(--cream, #FAF6EB);
+  border: 3px solid var(--forest, #1E3A24);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 8px 8px 0 rgba(30, 58, 36, 0.2);
+  position: relative;
+  animation: authPop .25s ease;
+  margin: auto;
+}
+@keyframes authPop {
+  from { transform: scale(.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.auth-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: var(--forest, #1E3A24);
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  opacity: 0.6;
+}
+.auth-close:hover { opacity: 1; }
+
+.auth-title {
+  font-family: "Archivo Black", "Noto Sans SC", "PingFang SC", sans-serif;
+  font-size: 22px;
+  color: var(--forest, #1E3A24);
+  margin-bottom: 4px;
+}
+.auth-sub {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.auth-field { margin-bottom: 14px; }
+.auth-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--forest, #1E3A24);
+  margin-bottom: 6px;
+}
+.auth-field input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 2px solid var(--sage, #AFCDA8);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink, #1A2018);
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+  outline: none;
+  transition: border-color .15s;
+}
+.auth-field input:focus { border-color: var(--forest, #1E3A24); }
+.auth-field .hint {
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.auth-submit {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 999px;
+  background: var(--forest, #1E3A24);
+  color: var(--cream, #FAF6EB);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", sans-serif;
+  transition: opacity .15s;
+  margin-top: 4px;
+}
+.auth-submit:hover { opacity: 0.9; }
+.auth-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.auth-switch {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  margin-top: 16px;
+}
+.auth-switch a {
+  color: var(--brick, #B5482A);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+.auth-switch a:hover { text-decoration: underline; }
+
+.auth-err {
+  color: var(--brick, #B5482A);
+  font-size: 13px;
+  min-height: 18px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.auth-err.show { opacity: 1; }
+
+.auth-loading {
+  font-size: 13px;
+  color: #888;
+  margin-top: 10px;
+  display: none;
+}
+
+/* —— 响应式 —— */
+@media (max-width: 600px) {
+  .auth-bar { right: 12px; bottom: 64px; }
+  .auth-btn { padding: 8px 12px; font-size: 13px; }
+  .auth-card { padding: 22px 16px; }
+}
